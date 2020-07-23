@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B57A070A-800F-409F-A1B3-2BD39C152AF3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Array_CSharp_Learning</RootNamespace>
-    <AssemblyName>Array_CSharp_Learning</AssemblyName>
+    <ProjectGuid>{5CD0E8DC-9E0E-433C-BF21-BB7FD5BDC447}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IListDataStructure</RootNamespace>
+    <AssemblyName>IListDataStructure</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,13 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculateProgramRunningTime">
-      <HintPath>..\..\CalculateProgramRunningTime\CalculateProgramRunningTime\bin\Debug\CalculateProgramRunningTime.dll</HintPath>
-    </Reference>
-    <Reference Include="IListDataStructure">
-      <HintPath>..\..\IListDataStructure\IListDataStructure\bin\Debug\IListDataStructure.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IListDS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SequenceList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B57A070A-800F-409F-A1B3-2BD39C152AF3}</ProjectGuid>
+    <ProjectGuid>{D8C364AA-4958-42A4-9459-ADE569A6BC19}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Array_CSharp_Learning</RootNamespace>
-    <AssemblyName>Array_CSharp_Learning</AssemblyName>
+    <RootNamespace>Genericity_1</RootNamespace>
+    <AssemblyName>Genericity_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,12 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculateProgramRunningTime">
-      <HintPath>..\..\CalculateProgramRunningTime\CalculateProgramRunningTime\bin\Debug\CalculateProgramRunningTime.dll</HintPath>
-    </Reference>
-    <Reference Include="IListDataStructure">
-      <HintPath>..\..\IListDataStructure\IListDataStructure\bin\Debug\IListDataStructure.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SequenceList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

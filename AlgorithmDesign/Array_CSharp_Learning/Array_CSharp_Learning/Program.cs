@@ -23,8 +23,7 @@ namespace Array_CSharp_Learning
     {
         static void Main(string[] args)
         {
-            int[] int_array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            int test_num = 0;
+            int[] int_array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };    
 
             //数组越界
             //for (int i = 0; i <= int_array.Length; i++)
@@ -154,6 +153,41 @@ namespace Array_CSharp_Learning
                 }
                 Console.WriteLine();
             }
+
+
+            //内存寻址
+            //a[k]_address = base_address + k * type_size   type_size指偏移量
+            // m * n 二维数组  i < m ; j < n
+            //a[i][j]_address = base_address + (i * n + j) * type_size
+            //m * n * q 三维数组  i < m ; j < n ; k < q
+            //a[i][j][k]_address = base_address + (i * n * q + j * q + k) * type_size
+
+
+            SequenceList<int> seqList = new SequenceList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                seqList.Append(i);
+            }
+            Console.WriteLine("顺序表数量：" + seqList.Count);
+            Console.WriteLine("顺序表容量：" + seqList.Capacity);
+
+            Console.WriteLine("顺序表内容:" + seqList.ToString());
+
+            seqList.InsertBefore(10, 0);
+            seqList.InsertAfter(11, 3);
+            seqList.InsertBefore(12, 11);
+            seqList.InsertBefore(13, 13);
+            seqList.InsertAfter(14, 13);
+
+            ProgramRunningTime pRunningTime = new ProgramRunningTime(()=> {
+                seqList.Capacity = 10000;
+            });
+            Console.WriteLine("顺序表扩容耗时：" + pRunningTime.StartCalculate());
+
+            Console.WriteLine("顺序表数量：" + seqList.Count);
+            Console.WriteLine("顺序表容量：" + seqList.Capacity);
+
+            Console.WriteLine("顺序表内容:" + seqList.ToString());
 
             Console.ReadKey();
         }
