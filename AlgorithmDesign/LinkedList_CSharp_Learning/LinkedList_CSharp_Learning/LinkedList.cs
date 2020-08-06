@@ -7,7 +7,12 @@ using IListDataStructure;
 
 namespace LinkedList_CSharp_Learning
 {
-    //单链表
+    /// <summary>
+    /// 单链表
+    /// 
+    /// 参考：https://www.cnblogs.com/yjmyzz/archive/2010/10/17/1853562.html
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class LinkedList<T> : IListDS<T>
     {
         private Node<T> head;
@@ -26,6 +31,14 @@ namespace LinkedList_CSharp_Learning
         {
             get {
                 return this.GetItemAt(index);
+            }
+            set
+            {
+                Node<T> tempNode = GetNodeAt(index);
+                if (tempNode != null)
+                {
+                    tempNode.Data = value;
+                }                
             }
         }
 
@@ -246,6 +259,37 @@ namespace LinkedList_CSharp_Learning
             }
 
             return default(T);
+        }
+
+        public Node<T> GetNodeAt(int index)
+        {
+            if (IsEmpty())
+            {
+                Console.WriteLine("[LinkedList] - find this failed, index : {0}, linkedList {1} empty", index, IsEmpty() ? "is" : "is not");
+                return null;
+            }
+
+            Node<T> currNode = head;
+
+            // O(1)
+            if (index == 0)
+            {
+                return currNode;
+            }
+
+            // O(n)
+            int j = 0;
+            //找到index位置的元素
+            while (currNode.Next != null && j < index)
+            {
+                j++;
+                currNode = currNode.Next;
+            }
+            if (j == index)
+            {
+                return currNode;
+            }
+            return null;
         }
 
         public int IndexOf(T value)

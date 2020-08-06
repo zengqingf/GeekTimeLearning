@@ -11,6 +11,8 @@ namespace IListDataStructure
     {
         int Count { get; }
 
+        T this[int index] { get; set; }
+
         void Clear();
 
         bool IsEmpty();

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74291D69-2A6C-49DA-9FAD-964B44037025}</ProjectGuid>
+    <ProjectGuid>{025E9208-8D93-4C14-9A0E-07F43807FD67}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LinkedList_CSharp_Learning</RootNamespace>
-    <AssemblyName>LinkedList_CSharp_Learning</AssemblyName>
+    <RootNamespace>Attribute_1</RootNamespace>
+    <AssemblyName>Attribute_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,12 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculateProgramRunningTime">
-      <HintPath>..\..\CalculateProgramRunningTime\CalculateProgramRunningTime\bin\Debug\CalculateProgramRunningTime.dll</HintPath>
-    </Reference>
-    <Reference Include="IListDataStructure">
-      <HintPath>..\..\IListDataStructure\IListDataStructure\bin\Debug\IListDataStructure.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircularLinkedList.cs" />
-    <Compile Include="LinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

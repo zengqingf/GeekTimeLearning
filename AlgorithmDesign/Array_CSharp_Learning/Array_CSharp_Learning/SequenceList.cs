@@ -11,6 +11,7 @@ namespace Array_CSharp_Learning
     /// <summary>
     /// 线性表 - 顺序表
     /// 内置List是一个顺序表  Cs SourceCode : https://referencesource.microsoft.com/#mscorlib/system/collections/generic/list.cs
+    /// https://www.cnblogs.com/yjmyzz/archive/2010/10/17/1853376.html
     /// </summary>
     public class SequenceList<T> : IListDS<T>
     {
