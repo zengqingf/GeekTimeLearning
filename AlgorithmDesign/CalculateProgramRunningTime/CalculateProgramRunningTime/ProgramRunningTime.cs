@@ -11,20 +11,27 @@ namespace CalculateProgramRunningTime
     {
         public delegate void SimpleMethodHandler();
         private SimpleMethodHandler mSimpleSyncMethod;
+        private Stopwatch sw = null;
 
         public ProgramRunningTime(SimpleMethodHandler simpleMethod)
         {
-            this.mSimpleSyncMethod = simpleMethod;
+            sw = new Stopwatch();
+            ResetHandler(simpleMethod);
         }
 
         public ProgramRunningTime()
         {
+            sw = new Stopwatch();
+        }
 
+        public void ResetHandler(SimpleMethodHandler simpleMethod)
+        {
+            this.mSimpleSyncMethod = simpleMethod;
         }
 
         public double StartCalculate()
         {
-            Stopwatch sw = new Stopwatch();
+            sw.Reset();
             sw.Start();
             if (this.mSimpleSyncMethod != null)
             {
