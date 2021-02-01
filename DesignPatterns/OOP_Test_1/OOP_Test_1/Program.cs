@@ -46,6 +46,8 @@ namespace OOP_Test_1
 
     /// <summary>
     /// GeekTime ie. 封装    
+    /// 
+    /// 对访问做限制、暴露有限的，单一的方法
     /// </summary>
     public class Wallet
     {
@@ -97,7 +99,7 @@ namespace OOP_Test_1
 
 
 
-    // GeekTime ie. 抽象       abstract /  interface 
+    // GeekTime ie. 抽象      通用 abstract /  interface 来实现
 
     public class Picture { }
     public class Image { }
@@ -111,6 +113,13 @@ namespace OOP_Test_1
         void modifyMetaInfo(String pictureId, PictureMetaInfo metaInfo);
     }
 
+
+    /*
+     调用者只需要了解IPictureStorage暴露了哪些方法，而不需要了解具体实现
+
+        其实方法（函数）本身也是抽象，通过函数的命名、注释或者文档即可了解
+         
+         */
     public class PictureStorage : IPictureStorage
     {
         // ...省略其他属性...
@@ -124,7 +133,9 @@ namespace OOP_Test_1
     // GeekTime ie. 继承        少用继承 多用组合
 
 
-    // GeekTime ie. 多态        形式： 1. 继承加方法重写   2. 接口类语法   3. duck-typing语法 (python ruby)
+    // GeekTime ie. 多态        形式： 1. 继承加方法重写   2. 接口类语法  
+    
+    // 3. duck-typing语法 (python ruby)   鸭子类型：不使用继承下使用多态  两个类具有相同方法，即可使用多态，不要求两个类之间有任何关系
 
     //形式 1
     public class DynamicArray
@@ -246,6 +257,39 @@ namespace OOP_Test_1
 
     #endregion
 
+    #region 注意点
+
+
+    /*
+     1. 滥用 getter、setter 方法
+     给不应该暴露的属性设置setter方法
+     getter方法返回容器或者对象，外部还是可以修改容器和对象的数据 ---> 
+                                                                       返回不可修改的容器 （java : Collections.unmodifiableList()）
+                                                                       返回对象的拷贝 (不能是浅拷贝) 这样修改对象也不会修改源对象了
+     
+         
+
+
+
+    2. 滥用全局变量和全局方法
+    单例类对象  静态成员变量  常量  (Constants)  静态方法 （Utils）
+         
+    Constants类拆分为多个单一的类，当然最好是将各自的常量定义到属于它的类中   如 RedisConfig
+
+    Utils也要细化成不同功能的类 不要设计大而全的类
+
+    Utils是面向过程的  能实现方法复用  但是用之前需要考虑这些方法是否能定义到其他类中 而不是一味的使用Utils
+
+
+
+    3. 定义数据和方法分离的类
+    MVC 贫血模型
+         
+         */
+
+
+
+    #endregion
 
     #region 抽象类和接口
 
@@ -300,6 +344,17 @@ namespace OOP_Test_1
     (8) 抽象类实现的具体方法默认为虚的，但实现接口的类中的接口方法却默认为非虚的，当然您也可以声明为虚的 
 
     (9) 如果抽象类实现接口，则可以把接口中方法映射到抽象类中作为抽象方法而不必实现，而在抽象类的子类中实现接口中方法
+
+
+
+        对于接口  可以称为  协议
+
+        抽象类 更多为了代码复用
+        接口 更侧重解耦
+
+
+        抽象类是自下而上的设计思路  现有子类代码重复 再抽象成上层的父类（抽象类）
+        接口自上而下   先设计接口 再考虑具体实现
 
      */
 
@@ -523,7 +578,7 @@ namespace OOP_Test_1
         {
             //TODO Not Support
             //设计不太合理
-            //违反了 迪米特法则， 暴露了不该暴露的接口 给外部，增加了类的误用概率
+            //违反了 迪米特法则（最少知识原则）， 暴露了不该暴露的接口 给外部，增加了类的误用概率
         }
     }
 
@@ -597,8 +652,61 @@ namespace OOP_Test_1
         public FlyHandler fly;
         public EggLayHandler layEgg;
         public TweetHandler tweet;
+    }
 
-        
+    //5. Java中实现委托
+    public class FlyAbility : Flyable
+    {
+        public void Fly()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Sparrow2 : Flyable
+    {
+        private FlyAbility flyAbility = new FlyAbility();
+
+        public void Fly()
+        {
+            flyAbility.Fly();
+        }
+    }
+
+    //6. 区分组合和聚合
+
+    public class Url
+    {
+        //...省略属性和方法
+    }
+
+    public class Crawler
+    {
+        private Url url; // 组合
+        public Crawler()
+        {
+            this.url = new Url();
+        }
+        //...
+    }
+
+    public class PageAnalyzer
+    {
+        private Url url; // 组合
+        public PageAnalyzer()
+        {
+            this.url = new Url();
+        }
+        //..
+    }
+
+    public class UrlAnalyzer
+    {
+        private Url url; // 聚合
+        public UrlAnalyzer(Url url)
+        {
+            this.url = url;
+        }
     }
 
     #endregion
