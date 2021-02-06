@@ -18,8 +18,17 @@
     <ClCompile Include="LearningBase_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="complex_test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="string_test.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="complex_test.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="complex.h">
       <Filter>头文件</Filter>
     </ClInclude>
