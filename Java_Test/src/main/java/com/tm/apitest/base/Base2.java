@@ -1,6 +1,6 @@
 package com.tm.apitest.base;
 
-public class base2 {
+public class Base2 {
     /*
     * ÊäÈë Êä³ö
     *

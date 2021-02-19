@@ -154,6 +154,7 @@
     <ClCompile Include="complex_test.cpp" />
     <ClCompile Include="LearningBase_1.cpp" />
     <ClCompile Include="string_test.cpp" />
+    <ClCompile Include="string_test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complex.h" />

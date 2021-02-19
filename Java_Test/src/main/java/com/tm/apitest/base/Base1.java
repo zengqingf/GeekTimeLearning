@@ -1,6 +1,6 @@
 package com.tm.apitest.base;
 
-public class base1 {
+public class Base1 {
     public static void baseData() {
         int bInt = 0b1111;
         int xInt = 0xf;

@@ -1,0 +1,5 @@
+task hello{
+    doLast{                         // Task 执行完毕后 要回调 doLast 的闭包代码
+        println'hello world'
+    }
+}

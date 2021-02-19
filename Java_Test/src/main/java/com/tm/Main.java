@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    //args 命令行参数
+    // 使用：
+    // $ javac Main.java
+    // $ java Main -version
     public static void main(String[] args) {
 	// write your code here
         //System.out.println("hello world");
@@ -12,6 +16,7 @@ public class Main {
 
         //TestReflection.test();
 
+        /*
         double df2 = 1.2 + 24 / 5; // 5.2       24/5 ~= 4
         char a = 'A';     //表示ASCII字符
         char zh = '中';   //可以表示 Unicode字符
@@ -21,5 +26,15 @@ public class Main {
         char zh2 = '\u4e2d';
         System.out.println(a2);
         System.out.println(zh2);
+         */
+
+        //com.tm.apitest.base.base3.cal_pi_value();
+
+        for (String arg : args) {
+            if ("-version".equals(arg)) {
+                System.out.println("v 1.0");
+                break;
+            }
+        }
     }
 }

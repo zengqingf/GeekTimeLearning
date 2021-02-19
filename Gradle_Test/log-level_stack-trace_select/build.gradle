@@ -1,0 +1,46 @@
+/*
+Error
+Quiet
+Warning
+LiftCycle
+Info
+Debug
+
+
+重要信息及以上
+gralde -q tasks   
+gradle --quiet tasks
+
+info 及以上
+gradle -i tasks
+gradle --info tasks
+
+调试日志及以上
+gradle -d tasks
+gradle --debug tasks
+
+无选项 输出 Liftcycle及以上
+
+
+输出关键性 堆栈信息
+gradle -s tasks
+gradle --stacktrace tasks
+
+输出全部堆栈信息
+gradle -S tasks
+gradle --full-stacktrace tasks  
+
+无选项 不输出 堆栈
+ */
+
+task test_log {
+    println '用println输出的日志为 Quiet 重要'
+
+    logger.error('error log...')
+    logger.quiet('quiet log...')
+    logger.warn('warning log...')
+    logger.lifecycle('lifecycle log...')
+
+    logger.info('info log...')
+    logger.debug('debug log...')
+}

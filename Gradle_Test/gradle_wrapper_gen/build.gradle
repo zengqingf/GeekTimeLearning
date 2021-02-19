@@ -1,0 +1,20 @@
+/**
+Cannot add task 'wrapper' as a task with that name already exists.
+
+Overriding built-in tasks deprecated in 4.8 now produces an error.
+Attempting to replace a built-in task will produce an error similar to the following:
+ */
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '6.7'
+//}
+
+wrapper {
+    gradleVersion = '6.7.1'
+
+    //以下为可扩展添加
+    //archieveBase = 'GRADLE_URSE_HOME'  //不需要  添加后 执行gradle wrapper 生成 wrapper  执行如 .\gradlew.bat tasks 后 执行不正确   
+    //archievePath = 'wrapper/dists'        // 报错 ： > Could not set unknown property 'archieveBase' for task ':wrapper' of type org.gradle.api.tasks.wrapper.Wrapper.
+
+    //... distributionBase = 
+}

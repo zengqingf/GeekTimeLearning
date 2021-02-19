@@ -21,8 +21,11 @@
     <ClCompile Include="complex_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="string_test.cpp">
+    <ClCompile Include="string_test.h">
       <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="string_test.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
