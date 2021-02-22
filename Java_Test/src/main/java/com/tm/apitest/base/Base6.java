@@ -45,7 +45,12 @@ package com.tm.apitest.base;
  *
  * */
 
+import java.util.HashMap;
+
 public class Base6 {
+
+    private String name;
+    private static String alias;
 
     private static void Test() {
         System.out.println("私有静态方法");
@@ -59,5 +64,60 @@ public class Base6 {
 
     class Inner {
 
+    }
+
+    //匿名内部类
+    void annoymousInner() {
+
+        /*
+        * Runnable 是 interface  不能被实例化
+        *
+        * 以下 实现了Runnable 接口的匿名类  并实例化了 然后转型为 Runnable
+        *
+        * 定义匿名类时，必须就要实例化了
+        *
+        * 和Inner class一样，可以访问Outer class的private字段和方法
+        *
+        * 匿名类会编译成  Outer$1.class
+        * 有多个匿名类 会编译成  Outer$1.class  Outer$2.class .。。
+        *
+        * 可以访问 Outer.this 和 Outer private
+        * */
+
+        //可以替换成lambda
+        // Runnable r = () -> System.out.println("annoymous inner ...");
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("annoymous inner ..." + Base6.this.name); //可以省略  Base6.this
+            }
+        };
+        new Thread(r).start();
+
+        /*
+        * 除接口外 匿名类 也能完全继承自 普通类
+        *
+        *
+        *
+        * */
+
+        HashMap<String, String> map1 = new HashMap<>();
+        HashMap<String, String> map2 = new HashMap<String, String>() {}; //匿名类
+        //匿名类不能省略 HashMap<String, String> map2 = new HashMap<>() {};
+        HashMap<String, String> map3 = new HashMap<String, String>() {
+            {
+                put("A", "1");
+                put("B", "2");
+            }
+        };
+    }
+
+    //static nested class
+    // 不同于普通内部类， 不在依附于 Outer实例， 而是一个完全独立的类， 无法引用 Outer.this,
+    // 可以访问 Outer private static 字段和方法
+    static class StaticNested {
+        void TestStaticNested() {
+            System.out.println("static nested ..." + Base6.alias);  // 可以省略 Base6.
+        }
     }
 }

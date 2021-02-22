@@ -134,7 +134,6 @@ String s2(s1);	   //以s1为蓝本创建s2
 using namespace std;
 ostream& operator<<(ostream& os, const String& str)
 {
-
 	//cout 能接收到 c string pointer 并打印string出来
 	os << str.get_c_str();
 	return os;
