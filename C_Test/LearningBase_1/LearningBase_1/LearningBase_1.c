@@ -76,7 +76,22 @@ int main()
 
 	*/
 
+	//八进制和十六进制表示（打印）
+	int x = 100;
+	printf("dec = %d, octal = %o, hex = %x\n", x, x, x);    //八进制 %o   十六进制 %x
+	printf("dec = %d, octal = %#o, hex = %#x\n", x, x, x);  //会输出 0..   0x..
 
+	// unsigned int （无符号整型） 能表示 比 int 更大的数
+
+	// signed 关键字 强调使用有符号数的意图  
+	// short == short int == signed short = signed short int
+
+	//整数溢出
+	//常见例子：在超过最大值时  unsigned int 从 0 开始    int从 -2147483648 开始
+	int ii = 2147483647;
+	unsigned int jj = 4294967295;
+	printf("%d, %d, %d\n", ii, ii+1, ii+2);
+	printf("%u, %u, %u\n", jj, jj + 1, jj + 2);
 
 	getchar();
 

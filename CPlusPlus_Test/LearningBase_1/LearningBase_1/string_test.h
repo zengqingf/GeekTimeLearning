@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #ifndef __STRING_TEST__
 #define __STRING_TEST__
 
@@ -33,7 +35,7 @@ C / C++
 
 */
 inline 
-String::String(const char* cstr = 0)
+String::String(const char* cstr)   //不能写成 inline String::String(const char* cstr = 0) 这种赋初值的写法
 {
 	//动态分配内存，一般类里有指针，一般需要进行动态分配
 	if (cstr) {
@@ -128,16 +130,6 @@ String s2(s1);	   //以s1为蓝本创建s2
 
 
 */
-
-
-#include <iostream>
-using namespace std;
-ostream& operator<<(ostream& os, const String& str)
-{
-	//cout 能接收到 c string pointer 并打印string出来
-	os << str.get_c_str();
-	return os;
-}
 
 
 #endif // !__STRING_TEST__
