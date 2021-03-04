@@ -24,6 +24,9 @@ build
 hs_err_pid*
 
 
+.idea
+
+
 .gradle
 **/build/
 !src/**/build/
