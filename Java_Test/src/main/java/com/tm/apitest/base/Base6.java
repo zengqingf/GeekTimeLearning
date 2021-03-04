@@ -56,14 +56,10 @@ public class Base6 {
         System.out.println("私有静态方法");
     }
 
-    static class StaticInner {
-        public void Test() {
-            Base6.Test();
-        }
-    }
-
     class Inner {
-
+        public void TestInner() {
+            System.out.println("测试 内部 普通类");
+        }
     }
 
     //匿名内部类
@@ -106,7 +102,7 @@ public class Base6 {
         //匿名类不能省略 HashMap<String, String> map2 = new HashMap<>() {};
         HashMap<String, String> map3 = new HashMap<String, String>() {
             {
-                put("A", "1");
+                put("A", "1" + Base6.this.name);
                 put("B", "2");
             }
         };
@@ -118,6 +114,12 @@ public class Base6 {
     static class StaticNested {
         void TestStaticNested() {
             System.out.println("static nested ..." + Base6.alias);  // 可以省略 Base6.
+        }
+    }
+
+    static class StaticInner {
+        public void Test() {
+            Base6.Test();
         }
     }
 }

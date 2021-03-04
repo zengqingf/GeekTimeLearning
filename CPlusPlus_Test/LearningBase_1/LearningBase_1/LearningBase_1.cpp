@@ -165,7 +165,7 @@ delete ps;
 
 编译器转换为：
 String::~String(ps);   //析构函数
-operatior delete(ps);  //释放内存
+operatior delete(ps);  //释放内存  operatior delete 函数内部调用 free()
 
 上述由两个delete操作 析构函数内部一个
 */
@@ -248,7 +248,7 @@ VC环境下
 	
 	51h
 	debugger header(32 bytes)
-	3                         -->  array length
+	3                         -->  array length  VC使用整数记录数组长度
 	double
 	double
 	double
@@ -260,4 +260,65 @@ VC环境下
 	00000000(pad)
 	51h
 
+	31h
+	3
+	double  ---->
+	double  ---->  一个complex
+	double
+	double
+	double
+	double
+	00000000(pad)
+	00000000(pad)
+	00000000(pad)
+	31h
+
+
+
+	String* p = new String[3];
+
+	41h
+	Debuger Header (32 bytes)
+	3
+	pointer ->  一个String指针
+	pointer ->
+	pointer ->
+	no man head  (debugger header)
+	00000000(pad)
+	41h
+
+	21h
+	3
+	pointer ->
+	pointer ->
+	pointer ->
+	00000000(pad) 
+	21h
+
+
+
+	！！array new (即 new XX[] ) 一定要搭配 array delete (即 delete[] )！！
+	
+	如果不搭配 array delete  会发生内存泄露  但是内存泄露发生位置 需要注意：
+
+	例如 String* p = new String[3]; 内存块如下：
+	21h
+	3
+	pointer ->
+	pointer ->
+	pointer ->
+	00000000(pad)
+	21h
+
+	如果使用delete 而非delete[] 删除 p ，从21h开始的内存块会删掉（因为21h记录的就是当前内存块的大小）, 只会调用 1次 dtor（析构）
+
+	21h
+	3
+	pointer ->   只会调用这个的dtor
+	pointer ->   ？！这里发生内存泄露了
+	pointer ->   ？！这里发生内存泄露了
+	00000000(pad)
+	21h
+
+	而使用delete[] 会调用3次析构函数
 */

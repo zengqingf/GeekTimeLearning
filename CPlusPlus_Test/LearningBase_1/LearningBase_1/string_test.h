@@ -8,7 +8,7 @@ class String
 public:
 	String(const char* cstr = 0);			//接收一个指针
 
-	//Big Three 三个特殊函数
+	//Big Three 三个特殊函数       一定会改变目标数据，所以不用加const，加的位置时()后面
 	String(const String& str);				//拷贝构造：自定义，接收一个自身类型的String引用
 	String& operator=(const String& str);   //拷贝赋值：自定义，赋值一个自身类型的String引用
 	~String();								//析构函数   触发时机：1.对象离开作用域
@@ -69,16 +69,16 @@ String::String(const String& str)
 
 //拷贝赋值 （copy assignment operator）
 inline 
-String& String::operator=(const String& str)
+String& String::operator=(const String& str)				//String& &表示引用
 {
-	if (this == &str)										//检测自我赋值 （self assignment）
+	if (this == &str)										//检测自我赋值 （self assignment）   ！！不能省略 不只是多进行下述流程的问题 还会产生错误结果！！
 		return *this;										//因为是成员函数 所以会有this pointer传入    
 															//str是传入的引用 即 对象本身， 所以通过取地址& 获取对象地址
 
 	delete[] m_data;										//删除目标被赋值对象现有的 
 	m_data = new char[ strlen(str.m_data) + 1 ];			//创建一份足够大的空间 和赋值对象长度一样 并 加上 末尾标记
 	strcpy(m_data, str.m_data);								//拷贝赋值对象到被赋值对象上
-	return *this;
+	return *this;											//返回（传出去的）不用考虑接收端的接收形式（String&）（by value or by reference）  （*this *取值）
 }
 
 

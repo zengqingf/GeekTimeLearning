@@ -1,5 +1,9 @@
 package com.tm;
 
+import com.tm.apitest.core.TestJavaBean;
+import com.tm.apitest.core.TestString;
+
+import java.beans.IntrospectionException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +12,7 @@ public class Main {
     //  π”√£∫
     // $ javac Main.java
     // $ java Main -version
-    public static void main(String[] args) {
+    public static void main(String[] args){
 	// write your code here
         //System.out.println("hello world");
 
@@ -36,5 +40,12 @@ public class Main {
                 break;
             }
         }
+
+        //TestString ts = new TestString();
+        //ts.test1();
+
+        try {
+            TestJavaBean.test1();
+        }catch (IntrospectionException e) {}
     }
 }
