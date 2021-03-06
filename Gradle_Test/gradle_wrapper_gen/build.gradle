@@ -18,3 +18,15 @@ wrapper {
 
     //... distributionBase = 
 }
+
+task testPrint{
+ def str1 = '单引号'
+ def str2 = "双引号"
+ 
+ println "单引号定义的字符串类型:" + str1.getClass().name
+ println "双引号定义的字符串类型:" + str2.getClass().name
+ 
+ def name = "张三"
+ println '单引号的变量输出：${name}'       //out：xxx：${name}  单引号没有运算能力， 里面表示的都是常量字符串   
+ println "双引号的变量输出：${name}"
+}
