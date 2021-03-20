@@ -80,33 +80,6 @@ protected:
 
 };
 
-//扩展：模板类
-/*
-//模板声明 T
-template<typename T>
-class complex
-{
-public:
-	complex(T r = 0, T i = 0)
-		: re(r), im(i)
-	{}
-	complex& operator += (const complex&);
-	T real() const { return re; }
-	T imag() const { return im; }
-
-private:
-	T re, im;
-
-	friend complex& __doapl(complex*, const complex&);
-};
-
-//模板使用
-{
-	complex<T> c1(2.5, 1.5);
-	complex<T> c2(2, 6);
-}
-*/
-
 
 //扩展：内联函数（inline） 执行效率高 
 //含义：函数在class body内定义完成，便自动成为inline候选，编译器会进行选择

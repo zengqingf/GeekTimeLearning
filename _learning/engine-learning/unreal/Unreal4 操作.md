@@ -31,6 +31,56 @@
 
 * Editor
 
+  * 几个运行启动的术语区分
+
+    * Play（运行）：PIE (Play In Editor)  SIE (Simulate In Editor)     
+
+      ​							不能修改蓝图类
+
+      ​							可以修改C++类 并编译 修改会同步到游戏 不用停止Play
+
+      ​							可以选择Keep Simulation Changes保存运行时的修改
+
+      ​							不需要Cook
+
+      
+
+    * Launch（启动）：一般不需要使用Windows和Mac平台，Play更方便运行查看
+
+      ​								提供选择外接的移动设备的执行步骤：
+
+      ​										Editor先开始烘培地图，然后在指定设备上安装，然后在运行
+
+      ​										只支持当前地图安装运行，不支持关卡间的切换
+
+      ​								单独的编辑器窗口：ProjectLauncher  （菜单栏/窗口）
+
+      ​							    可配置项目的发布的执行步骤：
+
+      ​										需要在高级设置中指定：项目（Project）、编译（build）、烘培（Cook）、
+
+      ​																				   包（Package）、存档（Archive）、部署（Deploy）、启动（Launch）
+
+      
+
+    * Package Project（打包项目）：可以在项目设置-项目-打包和项目设置-平台 配置参数
+
+      * 打包类型：发布（Distribution / Shipping）、DebugGame（调试游戏）、Developmenet（开发）
+
+      
+
+    * 补充工具：
+
+      * UnrealFrontend.exe  （独立的Editor，执行高级编译、烘焙、部署、打包及启动选项）
+
+        ``` text
+        示例目录：D:\programs\EpicGames\UE_4.26\Engine\Binaries\Win64\UnrealFrontend.exe
+        ```
+
+        
+
+  
+
   * 复制 
 
     ``` text
@@ -69,4 +119,10 @@
     1 + 鼠标左键 ==> 创建常量参数块
     ```
 
-    
+
+---
+
+
+
+* 
+

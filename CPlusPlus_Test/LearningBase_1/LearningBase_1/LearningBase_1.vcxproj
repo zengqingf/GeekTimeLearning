@@ -151,14 +151,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="base_1.cpp" />
     <ClCompile Include="complex_test.cpp" />
     <ClCompile Include="LearningBase_1.cpp" />
+    <ClCompile Include="opp_test.cpp" />
     <ClCompile Include="string_test.cpp" />
     <ClCompile Include="string_test.h" />
+    <ClCompile Include="template_test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base_1.h" />
     <ClInclude Include="complex.h" />
     <ClInclude Include="complex_test.h" />
+    <ClInclude Include="opp_test.h" />
+    <ClInclude Include="template_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

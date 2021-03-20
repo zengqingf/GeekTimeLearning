@@ -14,6 +14,7 @@
 
 using namespace std;
 
+#include "base_1.h"
 
 complex global_c(1, 2);//《全局 stack对象》
 
@@ -61,6 +62,11 @@ int main()
 	//delete操作 ==> 编译后的实现              
 	ps->~String();								//调用析构函数
 	operator delete(ps);                        //operator delete 是一个函数名称：  内部调用 free(ps)
+
+
+	Derived der;	
+	der.get("", 0);
+	der.get("");
 
 	return 0;
 }
@@ -321,4 +327,29 @@ VC环境下
 	21h
 
 	而使用delete[] 会调用3次析构函数
+*/
+
+
+/*
+待补充
+
+operator type() const;        //转换函数
+explicit complex(...) : initialization list{}
+pointer-like object
+function-like object
+
+namespace 补充
+template specialization  模板特化偏特化
+
+Standard Library   标准库
+
+variadic template c++11
+move ctor c++11
+Rvalue reference c++11
+auto c++11
+lambda c++11
+range-base for loop  c++11
+unordered containers  c++11
+...
+
 */

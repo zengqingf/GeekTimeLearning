@@ -10,4 +10,17 @@
   | 细节光照 | 在整个场景中显示中性材质，使用法线贴图       |
   | 仅光照   | 显示无法线信息且仅被光照影响的中性材质       |
 
-  
+
+
+
+---
+
+
+
+* UE4 模块
+
+  [UE4 模块,PrivateDependencyModuleNames?](https://zhuanlan.zhihu.com/p/107270501)
+
+  * Public / Private 文件夹
+  * Build.cs 之 DependencyModuleNames / IncludePathModuleNames 依赖
+  * 
