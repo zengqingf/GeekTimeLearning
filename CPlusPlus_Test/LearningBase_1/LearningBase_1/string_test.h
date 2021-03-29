@@ -6,19 +6,19 @@
 class String
 {
 public:
-	String(const char* cstr = 0);			//½ÓÊÕÒ»¸öÖ¸Õë
+	String(const char* cstr = 0);			//æŽ¥æ”¶ä¸€ä¸ªæŒ‡é’ˆ
 
-	//Big Three Èý¸öÌØÊâº¯Êý       Ò»¶¨»á¸Ä±äÄ¿±êÊý¾Ý£¬ËùÒÔ²»ÓÃ¼Óconst£¬¼ÓµÄÎ»ÖÃÊ±()ºóÃæ
-	String(const String& str);				//¿½±´¹¹Ôì£º×Ô¶¨Òå£¬½ÓÊÕÒ»¸ö×ÔÉíÀàÐÍµÄStringÒýÓÃ
-	String& operator=(const String& str);   //¿½±´¸³Öµ£º×Ô¶¨Òå£¬¸³ÖµÒ»¸ö×ÔÉíÀàÐÍµÄStringÒýÓÃ
-	~String();								//Îö¹¹º¯Êý   ´¥·¢Ê±»ú£º1.¶ÔÏóÀë¿ª×÷ÓÃÓò
+	//Big Three ä¸‰ä¸ªç‰¹æ®Šå‡½æ•°       ä¸€å®šä¼šæ”¹å˜ç›®æ ‡æ•°æ®ï¼Œæ‰€ä»¥ä¸ç”¨åŠ constï¼ŒåŠ çš„ä½ç½®æ—¶()åŽé¢
+	String(const String& str);				//æ‹·è´æž„é€ ï¼šè‡ªå®šä¹‰ï¼ŒæŽ¥æ”¶ä¸€ä¸ªè‡ªèº«ç±»åž‹çš„Stringå¼•ç”¨
+	String& operator=(const String& str);   //æ‹·è´èµ‹å€¼ï¼šè‡ªå®šä¹‰ï¼Œèµ‹å€¼ä¸€ä¸ªè‡ªèº«ç±»åž‹çš„Stringå¼•ç”¨
+	~String();								//æžæž„å‡½æ•°   è§¦å‘æ—¶æœºï¼š1.å¯¹è±¡ç¦»å¼€ä½œç”¨åŸŸ
 
-	inline char* get_c_str() const { return m_data; }   //inline¹Ø¼ü×Ö¿ÉÒÔÊ¡ÂÔ ×îºÃ¼Ó º¯Êý¹»¼òµ¥ ËùÒÔ±àÒëÆ÷Ó¦¸Ã»á±ê¼ÇÎªinline
-														//ÒòÎª²»»á¸Ä±äm_data Õâ¸öÖ¸Õë ËùÒÔ const ²»ÄÜÍü¼Ç¼Ó
+	inline char* get_c_str() const { return m_data; }   //inlineå…³é”®å­—å¯ä»¥çœç•¥ æœ€å¥½åŠ  å‡½æ•°å¤Ÿç®€å• æ‰€ä»¥ç¼–è¯‘å™¨åº”è¯¥ä¼šæ ‡è®°ä¸ºinline
+														//å› ä¸ºä¸ä¼šæ”¹å˜m_data è¿™ä¸ªæŒ‡é’ˆ æ‰€ä»¥ const ä¸èƒ½å¿˜è®°åŠ 
 
 private:
-	char* m_data;                 //×Ö·û´®ÄÚ²¿Êý¾Ý ´æÒ»¸öÖ¸Õë   Ö¸ÏòÒ»¸öÄÚ´æ¿Õ¼ä  (»á¶¯Ì¬·ÖÅä)
-								  //¶ø²»ÊÇ´æÒ»¸öÊý×é ·ÅÒ»¸öÊý×é´æ×Ö·û¡£¡£¡£
+	char* m_data;                 //å­—ç¬¦ä¸²å†…éƒ¨æ•°æ® å­˜ä¸€ä¸ªæŒ‡é’ˆ   æŒ‡å‘ä¸€ä¸ªå†…å­˜ç©ºé—´  (ä¼šåŠ¨æ€åˆ†é…)
+								  //è€Œä¸æ˜¯å­˜ä¸€ä¸ªæ•°ç»„ æ”¾ä¸€ä¸ªæ•°ç»„å­˜å­—ç¬¦ã€‚ã€‚ã€‚
 };
 
 
@@ -26,102 +26,102 @@ private:
 
 /*
 C / C++
-×Ö·û´®±íÊ¾£º
-Ö¸ÕëÖ¸ÏòÒ»¸öÄÚ´æµØÖ·µÄÍ·²¿ Ä©Î²ÓÐ\0Õâ¸ö½áÊø·ûºÅ
+å­—ç¬¦ä¸²è¡¨ç¤ºï¼š
+æŒ‡é’ˆæŒ‡å‘ä¸€ä¸ªå†…å­˜åœ°å€çš„å¤´éƒ¨ æœ«å°¾æœ‰\0è¿™ä¸ªç»“æŸç¬¦å·
 
-ÓïÑÔ ×Ö·û´®³¤¶È±íÊ¾£º
-1. Ö¸ÕëÖ¸ÏòÄÚ´æµØÖ· Ä©Î²ÓÐ\0 £¨ ²»Ò»¶¨ÊÇ0°É, C/C++ ÊÇ \0 £©Õâ¸ö½áÊø·ûºÅ  ¿ÉÒÔ¼ÆËã³ö³¤¶È  (Èç C/C++)
-2. Ö¸ÕëÖ¸ÏòÄÚ´æµØÖ· Ç°²¿ÓÐÒ»¸ö³¤¶ÈµÄÖµ£¨Èç£¬pascal£©
+è¯­è¨€ å­—ç¬¦ä¸²é•¿åº¦è¡¨ç¤ºï¼š
+1. æŒ‡é’ˆæŒ‡å‘å†…å­˜åœ°å€ æœ«å°¾æœ‰\0 ï¼ˆ ä¸ä¸€å®šæ˜¯0å§, C/C++ æ˜¯ \0 ï¼‰è¿™ä¸ªç»“æŸç¬¦å·  å¯ä»¥è®¡ç®—å‡ºé•¿åº¦  (å¦‚ C/C++)
+2. æŒ‡é’ˆæŒ‡å‘å†…å­˜åœ°å€ å‰éƒ¨æœ‰ä¸€ä¸ªé•¿åº¦çš„å€¼ï¼ˆå¦‚ï¼Œpascalï¼‰
 
 */
 inline 
-String::String(const char* cstr)   //²»ÄÜÐ´³É inline String::String(const char* cstr = 0) ÕâÖÖ¸³³õÖµµÄÐ´·¨
+String::String(const char* cstr)   //ä¸èƒ½å†™æˆ inline String::String(const char* cstr = 0) è¿™ç§èµ‹åˆå€¼çš„å†™æ³•
 {
-	//¶¯Ì¬·ÖÅäÄÚ´æ£¬Ò»°ãÀàÀïÓÐÖ¸Õë£¬Ò»°ãÐèÒª½øÐÐ¶¯Ì¬·ÖÅä
+	//åŠ¨æ€åˆ†é…å†…å­˜ï¼Œä¸€èˆ¬ç±»é‡Œæœ‰æŒ‡é’ˆï¼Œä¸€èˆ¬éœ€è¦è¿›è¡ŒåŠ¨æ€åˆ†é…
 	if (cstr) {
-		m_data = new char[strlen(cstr) + 1];		//+1 ±íÊ¾»¹ÓÐÒ»¸ö½áÊø·ûºÅ \0   new³öÀ´µÄÊÇÒ»¿ém_dataÖ¸ÕëÖ¸ÏòµÄÄÚ´æ¿Õ¼ä£¬ ³¤¶È = ´«ÈëµÄ×Ö·û´®³¤¶È + 1
+		m_data = new char[strlen(cstr) + 1];		//+1 è¡¨ç¤ºè¿˜æœ‰ä¸€ä¸ªç»“æŸç¬¦å· \0   newå‡ºæ¥çš„æ˜¯ä¸€å—m_dataæŒ‡é’ˆæŒ‡å‘çš„å†…å­˜ç©ºé—´ï¼Œ é•¿åº¦ = ä¼ å…¥çš„å­—ç¬¦ä¸²é•¿åº¦ + 1
 		strcpy(m_data, cstr);
 	}
 	else {
 		m_data = new char[1];
-		*m_data = '\0';								//×Ö·û±íÊ¾µÄ½áÊø·ûºÅ
+		*m_data = '\0';								//å­—ç¬¦è¡¨ç¤ºçš„ç»“æŸç¬¦å·
 	}
 }
 
 inline 
 String::~String()
 {
-	//ÒòÎª´æÔÚ¶¯Ì¬·ÖÅäµÄÄÚ´æ£¬ÎªÁË±ÜÃâÄÚ´æÐ¹Â¶£¬ÐèÒªÔÚÎö¹¹º¯ÊýÀïÇåÀíµôÕâ¿é·ÖÅäµÄÄÚ´æ
+	//å› ä¸ºå­˜åœ¨åŠ¨æ€åˆ†é…çš„å†…å­˜ï¼Œä¸ºäº†é¿å…å†…å­˜æ³„éœ²ï¼Œéœ€è¦åœ¨æžæž„å‡½æ•°é‡Œæ¸…ç†æŽ‰è¿™å—åˆ†é…çš„å†…å­˜
 	delete[] m_data;								//delete vs delete[]      https://www.runoob.com/note/15971
-													//delete ptr -- ´ú±íÓÃÀ´ÊÍ·ÅÄÚ´æ£¬ÇÒÖ»ÓÃÀ´ÊÍ·ÅptrÖ¸ÏòµÄÄÚ´æ¡£
-													//delete[] rg -- ÓÃÀ´ÊÍ·ÅrgÖ¸ÏòµÄÄÚ´æ£¬£¡£¡»¹ÖðÒ»µ÷ÓÃÊý×éÖÐÃ¿¸ö¶ÔÏóµÄ destructor£¡£¡
+													//delete ptr -- ä»£è¡¨ç”¨æ¥é‡Šæ”¾å†…å­˜ï¼Œä¸”åªç”¨æ¥é‡Šæ”¾ptræŒ‡å‘çš„å†…å­˜ã€‚
+													//delete[] rg -- ç”¨æ¥é‡Šæ”¾rgæŒ‡å‘çš„å†…å­˜ï¼Œï¼ï¼è¿˜é€ä¸€è°ƒç”¨æ•°ç»„ä¸­æ¯ä¸ªå¯¹è±¡çš„ destructorï¼ï¼
 }
 
 
-//¿½±´¹¹Ôì
+//æ‹·è´æž„é€ 
 inline 
 String::String(const String& str)
 {
-	m_data = new char[ strlen(str.m_data) + 1 ];			//Ö±½ÓÄÃÁíÒ»¸öobjectµÄprivate Êý¾Ý£¬ÒòÎª¶ÔÏóÖ®¼ä»¥ÎªÓÑÔª
+	m_data = new char[ strlen(str.m_data) + 1 ];			//ç›´æŽ¥æ‹¿å¦ä¸€ä¸ªobjectçš„private æ•°æ®ï¼Œå› ä¸ºå¯¹è±¡ä¹‹é—´äº’ä¸ºå‹å…ƒ
 	strcpy(m_data, str.m_data);
 }
 
 
-//¿½±´¸³Öµ £¨copy assignment operator£©
+//æ‹·è´èµ‹å€¼ ï¼ˆcopy assignment operatorï¼‰
 inline 
-String& String::operator=(const String& str)				//String& &±íÊ¾ÒýÓÃ
+String& String::operator=(const String& str)				//String& &è¡¨ç¤ºå¼•ç”¨
 {
-	if (this == &str)										//¼ì²â×ÔÎÒ¸³Öµ £¨self assignment£©   £¡£¡²»ÄÜÊ¡ÂÔ ²»Ö»ÊÇ¶à½øÐÐÏÂÊöÁ÷³ÌµÄÎÊÌâ »¹»á²úÉú´íÎó½á¹û£¡£¡
-		return *this;										//ÒòÎªÊÇ³ÉÔ±º¯Êý ËùÒÔ»áÓÐthis pointer´«Èë    
-															//strÊÇ´«ÈëµÄÒýÓÃ ¼´ ¶ÔÏó±¾Éí£¬ ËùÒÔÍ¨¹ýÈ¡µØÖ·& »ñÈ¡¶ÔÏóµØÖ·
+	if (this == &str)										//æ£€æµ‹è‡ªæˆ‘èµ‹å€¼ ï¼ˆself assignmentï¼‰   ï¼ï¼ä¸èƒ½çœç•¥ ä¸åªæ˜¯å¤šè¿›è¡Œä¸‹è¿°æµç¨‹çš„é—®é¢˜ è¿˜ä¼šäº§ç”Ÿé”™è¯¯ç»“æžœï¼ï¼
+		return *this;										//å› ä¸ºæ˜¯æˆå‘˜å‡½æ•° æ‰€ä»¥ä¼šæœ‰this pointerä¼ å…¥    
+															//stræ˜¯ä¼ å…¥çš„å¼•ç”¨ å³ å¯¹è±¡æœ¬èº«ï¼Œ æ‰€ä»¥é€šè¿‡å–åœ°å€& èŽ·å–å¯¹è±¡åœ°å€
 
-	delete[] m_data;										//É¾³ýÄ¿±ê±»¸³Öµ¶ÔÏóÏÖÓÐµÄ 
-	m_data = new char[ strlen(str.m_data) + 1 ];			//´´½¨Ò»·Ý×ã¹»´óµÄ¿Õ¼ä ºÍ¸³Öµ¶ÔÏó³¤¶ÈÒ»Ñù ²¢ ¼ÓÉÏ Ä©Î²±ê¼Ç
-	strcpy(m_data, str.m_data);								//¿½±´¸³Öµ¶ÔÏóµ½±»¸³Öµ¶ÔÏóÉÏ
-	return *this;											//·µ»Ø£¨´«³öÈ¥µÄ£©²»ÓÃ¿¼ÂÇ½ÓÊÕ¶ËµÄ½ÓÊÕÐÎÊ½£¨String&£©£¨by value or by reference£©  £¨*this *È¡Öµ£©
+	delete[] m_data;										//åˆ é™¤ç›®æ ‡è¢«èµ‹å€¼å¯¹è±¡çŽ°æœ‰çš„ 
+	m_data = new char[ strlen(str.m_data) + 1 ];			//åˆ›å»ºä¸€ä»½è¶³å¤Ÿå¤§çš„ç©ºé—´ å’Œèµ‹å€¼å¯¹è±¡é•¿åº¦ä¸€æ · å¹¶ åŠ ä¸Š æœ«å°¾æ ‡è®°
+	strcpy(m_data, str.m_data);								//æ‹·è´èµ‹å€¼å¯¹è±¡åˆ°è¢«èµ‹å€¼å¯¹è±¡ä¸Š
+	return *this;											//è¿”å›žï¼ˆä¼ å‡ºåŽ»çš„ï¼‰ä¸ç”¨è€ƒè™‘æŽ¥æ”¶ç«¯çš„æŽ¥æ”¶å½¢å¼ï¼ˆString&ï¼‰ï¼ˆby value or by referenceï¼‰  ï¼ˆ*this *å–å€¼ï¼‰
 }
 
 
 /*
-1. Àà´øÖ¸Õë£¬ÀàÖÐµÄ¿½±´²Ù×÷ÐèÒª×Ô¶¨Òå£¬²»ÄÜÊ¹ÓÃ±àÒëÆ÷ÄÚÖÃµÄ£¨¿½±´¹¹Ôì¡¢¿½±´¸³Öµ£©
-2. Ö¸ÕëÀë¿ª×÷ÓÃÓò£¬ÐèÒªÉ¾³ýËü
-Àý£º
-×÷ÓÃÓò scope
+1. ç±»å¸¦æŒ‡é’ˆï¼Œç±»ä¸­çš„æ‹·è´æ“ä½œéœ€è¦è‡ªå®šä¹‰ï¼Œä¸èƒ½ä½¿ç”¨ç¼–è¯‘å™¨å†…ç½®çš„ï¼ˆæ‹·è´æž„é€ ã€æ‹·è´èµ‹å€¼ï¼‰
+2. æŒ‡é’ˆç¦»å¼€ä½œç”¨åŸŸï¼Œéœ€è¦åˆ é™¤å®ƒ
+ä¾‹ï¼š
+ä½œç”¨åŸŸ scope
 {
-	String s1();								//Àë¿ª×÷ÓÃÓòÊ±£¬»áµ÷ÓÃÎö¹¹º¯Êý
-	String s2("hello");							//Àë¿ª×÷ÓÃÓòÊ±£¬»áµ÷ÓÃÎö¹¹º¯Êý
+	String s1();								//ç¦»å¼€ä½œç”¨åŸŸæ—¶ï¼Œä¼šè°ƒç”¨æžæž„å‡½æ•°
+	String s2("hello");							//ç¦»å¼€ä½œç”¨åŸŸæ—¶ï¼Œä¼šè°ƒç”¨æžæž„å‡½æ•°
 
 	String* p = new String("hello");
-	delete p;									//Àë¿ª×÷ÓÃÓòÊ± ÐèÒªÉ¾³ýÖ¸Õëp    Àë¿ª×÷ÓÃÓòÊ±£¬»áµ÷ÓÃÎö¹¹º¯Êý
+	delete p;									//ç¦»å¼€ä½œç”¨åŸŸæ—¶ éœ€è¦åˆ é™¤æŒ‡é’ˆp    ç¦»å¼€ä½œç”¨åŸŸæ—¶ï¼Œä¼šè°ƒç”¨æžæž„å‡½æ•°
 }
 
-3.class with pointer members (´øÖ¸Õë³ÉÔ±µÄÀà) ±ØÐëÓÐ copy ctor (¿½±´¹¹Ôì) ºÍ copy op= (¿½±´¸³Öµ)
-Èç¹û²»×Ô¶¨Òå copy ctor ºÍ copy op=  Ôò»áÊ¹ÓÃ±àÒëÆ÷Ìá¹©µÄ¿½±´ºÍ¸³Öµ²Ù×÷
+3.class with pointer members (å¸¦æŒ‡é’ˆæˆå‘˜çš„ç±») å¿…é¡»æœ‰ copy ctor (æ‹·è´æž„é€ ) å’Œ copy op= (æ‹·è´èµ‹å€¼)
+å¦‚æžœä¸è‡ªå®šä¹‰ copy ctor å’Œ copy op=  åˆ™ä¼šä½¿ç”¨ç¼–è¯‘å™¨æä¾›çš„æ‹·è´å’Œèµ‹å€¼æ“ä½œ
 
-1£©¿ÉÄÜ³öÏÖÄÚ´æÐ¹Â¶
-Àý£º
+1ï¼‰å¯èƒ½å‡ºçŽ°å†…å­˜æ³„éœ²
+ä¾‹ï¼š
 String a("hello");  //hello\0
 String b("world");	//world\0
 
-Ê¹ÓÃdefault copy ctor »òÕß default copy op= 
-b = a;  //aºÍb¶¼Ö¸Ïò hello\0		b×÷Îª±ðÃûalias					²»½¨Òé¶à¸öÖ¸ÕëÖ¸ÏòÍ¬Ò»¸ö¶ÔÏó£¬ÐÞ¸ÄÒ»¸ö£¬»áÓ°ÏìÆäËû      
-		//world\0Õâ¿éÄÚ´æ¿éÃ»ÓÐÖ¸ÕëÖ¸Ïò Ð¹Â¶£¡
-		//ÊôÓÚ Ç³¿½±´   ±àÒëÆ÷Ä¬ÈÏÌá¹©µÄ·½Ê½
+ä½¿ç”¨default copy ctor æˆ–è€… default copy op= 
+b = a;  //aå’Œbéƒ½æŒ‡å‘ hello\0		bä½œä¸ºåˆ«åalias					ä¸å»ºè®®å¤šä¸ªæŒ‡é’ˆæŒ‡å‘åŒä¸€ä¸ªå¯¹è±¡ï¼Œä¿®æ”¹ä¸€ä¸ªï¼Œä¼šå½±å“å…¶ä»–      
+		//world\0è¿™å—å†…å­˜å—æ²¡æœ‰æŒ‡é’ˆæŒ‡å‘ æ³„éœ²ï¼
+		//å±žäºŽ æµ…æ‹·è´   ç¼–è¯‘å™¨é»˜è®¤æä¾›çš„æ–¹å¼
 
 
-4. Éî¿½±´ vs. Ç³¿½±´
-Éî¿½±´£º´´½¨Ò»·ÝÐÂµÄÄÚ´æ¿Õ¼ä£¬½«À¶±¾¿½±´¹ýÈ¥
-Ç³¿½±´£º²»´´½¨ÐÂµÄÄÚ´æ¿Õ¼ä£¬Ö»ÊÇ¿½±´Ö¸Õë
-Àý£º
+4. æ·±æ‹·è´ vs. æµ…æ‹·è´
+æ·±æ‹·è´ï¼šåˆ›å»ºä¸€ä»½æ–°çš„å†…å­˜ç©ºé—´ï¼Œå°†è“æœ¬æ‹·è´è¿‡åŽ»
+æµ…æ‹·è´ï¼šä¸åˆ›å»ºæ–°çš„å†…å­˜ç©ºé—´ï¼Œåªæ˜¯æ‹·è´æŒ‡é’ˆ
+ä¾‹ï¼š
 String s1("hello");
-String s2(s1);	   //ÒÔs1ÎªÀ¶±¾´´½¨s2
-//String s2 = s1;  //´´½¨s2 °Ñs1¸³Öµ¸øs2  ²»Í¬ÓÚ¿½±´¸³Öµ
+String s2(s1);	   //ä»¥s1ä¸ºè“æœ¬åˆ›å»ºs2
+//String s2 = s1;  //åˆ›å»ºs2 æŠŠs1èµ‹å€¼ç»™s2  ä¸åŒäºŽæ‹·è´èµ‹å€¼
 
 
-5. ¿½±´¸³Öµ ±ØÐë¼ì²é ×ÔÎÒ¸³ÖµµÄÇé¿ö 
-1£©Ìá¸ßÐ§ÂÊ
-2£©ÒòÎª¿½±´¸³Öµ µÚÒ»²½¾ÍÊÇÉ¾³ýÄ¿±ê±¾Éí ËùÒÔÈç¹ûÊÇ×ÔÎÒ¸³Öµ ¾ÍÎÞ·¨½øÐÐµÚ¶þ²½ÖèÁË
-Àý£º
+5. æ‹·è´èµ‹å€¼ å¿…é¡»æ£€æŸ¥ è‡ªæˆ‘èµ‹å€¼çš„æƒ…å†µ 
+1ï¼‰æé«˜æ•ˆçŽ‡
+2ï¼‰å› ä¸ºæ‹·è´èµ‹å€¼ ç¬¬ä¸€æ­¥å°±æ˜¯åˆ é™¤ç›®æ ‡æœ¬èº« æ‰€ä»¥å¦‚æžœæ˜¯è‡ªæˆ‘èµ‹å€¼ å°±æ— æ³•è¿›è¡Œç¬¬äºŒæ­¥éª¤äº†
+ä¾‹ï¼š
 {
 	String s1("hello");
 	String s2(s1);           

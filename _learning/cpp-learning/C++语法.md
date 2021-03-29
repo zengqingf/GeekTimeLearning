@@ -115,10 +115,4 @@
 
 * 数组
 
-  ``` c++
-  
-  ```
-
-  
-
-  
+* static_cast     vs.     dynamic_cast      vs.     reinterpret_cast     vs.    const_cast 

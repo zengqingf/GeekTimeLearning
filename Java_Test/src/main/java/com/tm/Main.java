@@ -1,6 +1,7 @@
 package com.tm;
 
 import com.tm.apitest.core.TestJavaBean;
+import com.tm.apitest.core.TestStaticBlock;
 import com.tm.apitest.core.TestString;
 
 import java.beans.IntrospectionException;
@@ -47,5 +48,8 @@ public class Main {
         try {
             TestJavaBean.test1();
         }catch (IntrospectionException e) {}
+
+        //测试 static块和构造函数的调用先后顺序
+        TestStaticBlock staticBlock = new TestStaticBlock();
     }
 }

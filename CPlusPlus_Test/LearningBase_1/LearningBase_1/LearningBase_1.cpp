@@ -1,29 +1,65 @@
-﻿// LearningBase_1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-
 #define _CRT_SECURE_NO_WARNINGS
+// LearningBase_1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 
-#include <iostream>
 //#include <iostream.h> //for c++ 当前版本不可用
+#include <iostream>
+
 
 //#include <cstdio>   //for c 可用
 //#include <stdio.h>  //for c 可用
 
 
 #include "complex_test.h"
-#include "string_test.h"
 
-using namespace std;
+#include "string_test.h"
 
 #include "base_1.h"
 
+#include "oop_test.h"
+
 complex global_c(1, 2);//《全局 stack对象》
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+int main() {
+
+
+	/**测试继承和组合结合关系下的构造和析构的执行情况**/   //多加几个*****  不然会报错 错误 C1075 “{”: 未找到匹配令牌
+	//OOP_Derived_1 oopd1;
+	/***
+	
+	输出结果
+	OOP Base 1 ctor
+	OOP Derived 1 Part ctor
+	OOP Derived 1 ctor
+	OOP Derived 1 dtor
+	OOP Derived 1 Part dtor
+	OOP Base 1 dtor
+	
+	***/
+	
+	OOP_Derived_2 oopd2;
+	
+	/***
+	构造顺序：最里面的先调用
+	OOP Base 2 Part ctor
+	OOP Base 2 ctor
+	OOP Derived 2 ctor
+
+	析构顺序：最外面的先调用 
+	OOP Derived 2 dtor
+	OOP Base 2 dtor
+	OOP Base 2 Part dtor
+
+	***/
+
+	return 0;
+
+
+	std::cout << "Hello World!\n";
 	int i = 8;
 	cout << "i=" << i << endl;
-	
+
 	//for c
 	printf("i = %d \n", i);
 
@@ -40,7 +76,7 @@ int main()
 
 	complex *p = new complex(3);  //complex(3)是一个《临时 heap对象》，其所占的空间是 以new 自 heap动态分配而得，并且由 p 指向
 	delete p;                     //动态获得的对象，从heap获取，离开作用域时，需要手动delete  否则会内存泄露 （memory leak）
-							      //原因：如果不进行delete, 当作用域结束时, p所指的heap object 仍然存在，但是指针p的生命周期结束了，作用域外无法访问到p，没机会再delete p
+								  //原因：如果不进行delete, 当作用域结束时, p所指的heap object 仍然存在，但是指针p的生命周期结束了，作用域外无法访问到p，没机会再delete p
 
 
 	static complex c4(2, 1);   //《静态 stack对象》
@@ -55,7 +91,7 @@ int main()
 	pc->complex::complex(1, 2);					  //构造函数 (构造函数可以这么调用)
 	cout << pc->imag() << endl;
 
-	
+
 	String *ps = new String("Hello");
 	//delete ps;
 
@@ -64,7 +100,7 @@ int main()
 	operator delete(ps);                        //operator delete 是一个函数名称：  内部调用 free(ps)
 
 
-	Derived der;	
+	Derived der;
 	der.get("", 0);
 	der.get("");
 

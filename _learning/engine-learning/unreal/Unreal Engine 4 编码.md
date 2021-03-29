@@ -112,8 +112,111 @@
 
 
 
+### Compile
+
+* 加快编译
+
+  1. Precompile header
+  2. 多线程编译
+  3. 分布式编译
+  4. 减少依赖性
+  5. 增量编译(Incremantal)
+
+* 工具
+
+  * incredibuild
+
+  * fastbuild
+
+    [github - note_fastbuild](https://github.com/sbfhy/note_fastbuild)
+
+    [保姆式教你使用FASTBuild对UE4进行联机编译](https://zhuanlan.zhihu.com/p/158400394)
+
+  * distcc
+
+    [搭建Linux下的分布式编译系统](http://blog.xeonxu.info/blog/2012/08/30/da-jian-linuxxia-de-fen-bu-shi-bian-yi-xi-tong/)
+
+    [使用distcc分布式编译加速Android NDK原生项目编译生成](https://blog.k-res.net/archives/1298.html)
+  
+    [github-distcc](https://github.com/distcc/distcc)
+  
+    [Android系统分布式编译(distcc)](https://blog.csdn.net/hui5110/article/details/107046883)
+  
+  * ccache
+  
+  * clcache
+  
+  * stashed
+  
+    for cache
+  
+  * 补充
+  
+    * UE4 开关 IncredBuild  /  Fastbuild 加速编译插件
+  
+      ``` text
+      如果没有incredibuild服务器，这个功能开启的话会造成cpu编译的时候不用全力（离线），即使是本地一个小的修改也会编译几十秒，甚至上百秒，可以通过ue的配置文件强制关闭
+      
+      目录：
+    \UnrealEngine\Engine\Programs\UnrealBuildTool\BuildConfiguration.xml
+       C:\Users\<user>\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+    
+      <bAllowXGE>false</bAllowXGE>
+      <bAllowFASTBuild>false</bAllowFASTBuild>
+      ```
+  
+    * 使用超线程
+  
+      ``` text
+  目录：
+      \UnrealEngine\Engine\Programs\UnrealBuildTool\BuildConfiguration.xml
+     C:\Users\<user>\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+      
+      添加<ProcessorCountMultiplier>2</ProcessorCountMultiplier>
+      ```
+  
+    * 使用SSD链接
+  
+      ``` text
+      正常编译的时候I/O也会成为你的瓶颈，如果没有足够的ssd空间存放引擎和工程可以通过一些骚操作达到类似效果，你只需要把生成的中间文件和源文件联接到SSD上即可
+      
+      cd UnrealEngine\Engine mklink /J Intermediate C:\UE4\Test\Intermediate mklink /J Source C:\UE4\Test\Source
+      ```
+  
+* 预编译宏
+
+  ``` text
+  #pragma clang diagnostic ignored "-W<warning>"            ->  android ndk / ios xcode
+  #pragma GCC diagnostic ignored "-W<warning>"			  ->  
+  ```
+
+* 编译器
+
+  * clang
+
+    [Clang 12 documentation](https://clang.llvm.org/docs/UsersManual.html)
+
+  * gcc
+  
+  * llvm
+
+* link
+
+  [C++服务编译耗时优化原理及实践](https://tech.meituan.com/2020/12/10/apache-kylin-practice-in-meituan.html)
+
+
+
+---
+
+
+
 ### ThirdParty
+
+* 引擎内置
+
+  [简单介绍 - Unity与UE4引擎源码内使用到的第三方库的比较](https://blog.csdn.net/u010019717/article/details/108113589)
 
 * HotPatcher
 
   [UE4 资源热更打包工具 HotPatcher](https://imzlp.me/posts/17590/)
+

@@ -450,4 +450,20 @@ https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSyst
               }
   ```
 
+*  fatal error LNK1181: cannot open input file 'Plugins目录下的插件名.lib'
+
+  ``` text
+  在编辑器 编译时
+  问题目录：Projects\Plugins\插件名\Intermediate\Build\Win64\UE4Editor\Development\插件名\
+  发现插件没有用到迭代生成的 UEEditor-插件名-0001.lib 
+  而是报错指向没有找到/无法打开 UEEditor-插件名.lib
+  同时也发现没有生成 UEEditor-插件名.lib 只有UEEditor-插件名.lib.response
+  
+  临时解决方法：
+  去对应的VS安装目录下 
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\Hostx64\x64
+  执行 
+  .lib.exe  @项目根目录\Projects\Plugins\插件名\Intermediate\Build\Win64\UE4Editor\Development\插件名\UEEditor-插件名.lib.response
+  ```
+
   

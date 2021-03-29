@@ -2,15 +2,15 @@
 
 class Account {
 public:
-	static double m_rate;                             //ÉùÃ÷ £¨±äÁ¿Ã»ÓĞ»ñµÃÄÚ´æ£¬Ö»ÊôÓÚclass·¶³ë£©   
-													  //¾²Ì¬¶ÔÏóµÄ³õÊ¼»¯¹æ·¶ £¬ ĞèÒªÔÚclassÍâ²¿£¨gcc / clang²¢ÇÒ²»ÄÜÔÚÍ·ÎÄ¼şÖĞ£©½øĞĞ¶¨Òå³õÊ¼Öµ £¨²»Ò»¶¨ĞèÒªÉè³õÊ¼Öµ£¡£©
+	static double m_rate;                             //å£°æ˜ ï¼ˆå˜é‡æ²¡æœ‰è·å¾—å†…å­˜ï¼Œåªå±äºclassèŒƒç•´ï¼‰   
+													  //é™æ€å¯¹è±¡çš„åˆå§‹åŒ–è§„èŒƒ ï¼Œ éœ€è¦åœ¨classå¤–éƒ¨ï¼ˆgcc / clangå¹¶ä¸”ä¸èƒ½åœ¨å¤´æ–‡ä»¶ä¸­ï¼‰è¿›è¡Œå®šä¹‰åˆå§‹å€¼ ï¼ˆä¸ä¸€å®šéœ€è¦è®¾åˆå§‹å€¼ï¼ï¼‰
 	static void set_rate(const double& x) { m_rate = x; }
 };
 
 /*
-<<static  ¾²Ì¬>>
+<<static  é™æ€>>
 
-complexµÄ×é³É½á¹¹
+complexçš„ç»„æˆç»“æ„
 ---
 data members
 static data members
@@ -19,9 +19,9 @@ member functions
 static member functions
 ---
 
-Ã÷È· this pointer¸ÅÄî
+æ˜ç¡® this pointeræ¦‚å¿µ
 
-Àı£º
+ä¾‹ï¼š
 complex c1,c2,c3;
 cout << c1.real();
 cout << c2.real();
@@ -32,62 +32,57 @@ complex c1,c2,c3;
 cout << complex::real(&c1);
 cout << complex::real(&c2);
 
-//·Ç¾²Ì¬º¯Êı£ºÏàÍ¬µÄº¯Êı£¬´«Èë²»Í¬µÄ¶ÔÏóµÄµØÖ· £¨this£©
-//¾²Ì¬¶ÔÏó ¾²Ì¬º¯Êı Ö»´æÔÚÒ»·İ  Ã»ÓĞthis pointer  ËùÒÔ²»ÄÜ´¦Àí·Ç¾²Ì¬¶ÔÏó£¨Êı¾İ£©
+//éé™æ€å‡½æ•°ï¼šç›¸åŒçš„å‡½æ•°ï¼Œä¼ å…¥ä¸åŒçš„å¯¹è±¡çš„åœ°å€ ï¼ˆthisï¼‰
+//é™æ€å¯¹è±¡ é™æ€å‡½æ•° åªå­˜åœ¨ä¸€ä»½  æ²¡æœ‰this pointer  æ‰€ä»¥ä¸èƒ½å¤„ç†éé™æ€å¯¹è±¡ï¼ˆæ•°æ®ï¼‰
 */
 
 /*
-¾²Ì¬º¯Êıµ÷ÓÃ
+é™æ€å‡½æ•°è°ƒç”¨
 
-1. Í¨¹ıobjectµ÷ÓÃ
+1. é€šè¿‡objectè°ƒç”¨
 	Account a;
-	a.set_rate(xxx);                //×¢Òâ this²»»á·ÅÈë ËùÒÔÊ¹ÓÃ  .  ´úÌæ ->
+	a.set_rate(xxx);                //æ³¨æ„ thisä¸ä¼šæ”¾å…¥ æ‰€ä»¥ä½¿ç”¨  .  ä»£æ›¿ ->
 
-2. Í¨¹ıclass name µ÷ÓÃ
+2. é€šè¿‡class name è°ƒç”¨
 	Account::set_rate(yyy);
 
 */
 
-//ctor·Åµ½privateÖĞ
+//ctoræ”¾åˆ°privateä¸­
 
 /*
-µ¥Àı
-Àı×Ó£º
+å•ä¾‹
+ä¾‹å­ï¼š
 */
 class SingletonA {
 
 public:
 	static SingletonA& getInstance() { return a; }
 	void setup();
+
 private:
 	SingletonA();
 	SingletonA(const SingletonA& rhs);
-	static SingletonA a;
+	static SingletonA a;							//å£°æ˜ éå®šä¹‰
 };
 
 //SingletonA::getInstance().setup();
 
-//ÓÅ»¯  ÀÁºº
+//ä¼˜åŒ–  æ‡’æ±‰
 class SingletonAA {
 public :
 	static SingletonAA& getInstance();
 	void setup();
 
 private:
-	SingletonAA();
-	SingletonAA(const SingletonAA& rhs);
+	SingletonAA() {}
+	SingletonAA(const SingletonAA& rhs) {}
 };
 
-SingletonAA& SingletonAA::getInstance()
-{
-	static SingletonAA a; //×ÔcÒÔÀ´µÄ¹æ·¶£º Ö»ÓĞµ÷ÓÃµ½Õâ¸öº¯Êı   static a²Å´´½¨
-	return a;
-}
 
-
-//À©Õ¹£ºÄ£°åÀà
+//æ‰©å±•ï¼šæ¨¡æ¿ç±»
 /*
-//Ä£°åÉùÃ÷ T
+//æ¨¡æ¿å£°æ˜ T
 template<typename T>                           ------------------->  typename
 class complex
 {
@@ -105,7 +100,7 @@ private:
 	friend complex& __doapl(complex*, const complex&);
 };
 
-//Ä£°åÊ¹ÓÃ
+//æ¨¡æ¿ä½¿ç”¨
 {
 	complex<double> c1(2.5, 1.5);
 	complex<int> c2(2, 6);
@@ -113,7 +108,7 @@ private:
 */
 
 
-//À©Õ¹£ºÄ£°å·½·¨¡¢Ä£°åº¯Êı
+//æ‰©å±•ï¼šæ¨¡æ¿æ–¹æ³•ã€æ¨¡æ¿å‡½æ•°
 /*
 
 class stone
@@ -138,27 +133,27 @@ private:
 };
 
 
-Ä£°å·½·¨ Ê¹ÓÃÇé¿ö£º
+æ¨¡æ¿æ–¹æ³• ä½¿ç”¨æƒ…å†µï¼š
 stone r1(2, 3), r2(3, 3), r3;
 r3 = min(r1, r2);
 
-ºÍÄ£°åÀà²»Í¬£¬²»ĞèÒª½øĞĞÉùÃ÷<ÀàĞÍ>
-±àÒëÆ÷µÄÊµ²ÎÍÆµ¼
+å’Œæ¨¡æ¿ç±»ä¸åŒï¼Œä¸éœ€è¦è¿›è¡Œå£°æ˜<ç±»å‹>
+ç¼–è¯‘å™¨çš„å®å‚æ¨å¯¼
 
-±àÒëÆ÷ÍÆµ¼¹ı³Ì£º
-¸ù¾İ operator < ×÷ÓÃÔÚ  Êµ²ÎbÉÏ£¬ ±àÒëÆ÷²éÑ¯ b¶ÔÓ¦µÄÀàĞÍstone È»ºóÑéÖ¤stoneÊÇ·ñÓĞ¶ÔÏó operator< ·½·¨£¨»òÕßÊÇÖØÔØ·½·¨£©¿ÉÒÔµ÷ÓÃ
+ç¼–è¯‘å™¨æ¨å¯¼è¿‡ç¨‹ï¼š
+æ ¹æ® operator < ä½œç”¨åœ¨  å®å‚bä¸Šï¼Œ ç¼–è¯‘å™¨æŸ¥è¯¢ bå¯¹åº”çš„ç±»å‹stone ç„¶åéªŒè¯stoneæ˜¯å¦æœ‰å¯¹è±¡ operator< æ–¹æ³•ï¼ˆæˆ–è€…æ˜¯é‡è½½æ–¹æ³•ï¼‰å¯ä»¥è°ƒç”¨
 
-±àÒëÆ÷ÍÆµ¼½á¹û£º
-TÎªStone  ÓÚÊÇµ÷ÓÃstone::operator<
+ç¼–è¯‘å™¨æ¨å¯¼ç»“æœï¼š
+Tä¸ºStone  äºæ˜¯è°ƒç”¨stone::operator<
 
-²¹³ä£ºÒòÎªoperator< ÖØÔØÊµÏÖÔÚ StoneÀàÖĞ  ËùÒÔÊµÏÖÁË¾ßÌåµ÷ÓÃ·½·¨min ºÍ ¾ßÌåÊµÏÖ·½·¨operator< µÄ·ÖÀë
+è¡¥å……ï¼šå› ä¸ºoperator< é‡è½½å®ç°åœ¨ Stoneç±»ä¸­  æ‰€ä»¥å®ç°äº†å…·ä½“è°ƒç”¨æ–¹æ³•min å’Œ å…·ä½“å®ç°æ–¹æ³•operator< çš„åˆ†ç¦»
 */
 
 
 
 //namespace
 /*
-Ê¹ÓÃ£º
+ä½¿ç”¨ï¼š
 
 using namespace std;
 
