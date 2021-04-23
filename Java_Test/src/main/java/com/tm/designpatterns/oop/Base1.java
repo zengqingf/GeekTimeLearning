@@ -3,6 +3,14 @@ package com.tm.designpatterns.oop;
 
 public class Base1 {
 
+    //常量类常用写法
+    public final class Constants{
+        private Constants() {
+            //restrict instantiation
+        }
+        public static final int TRUE = 1;
+        public static final int FALSE = 0;
+    }
 
     //继承
     /*

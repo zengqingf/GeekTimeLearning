@@ -6,57 +6,42 @@
 
 * ref
 
-  [Unity与Android通信的中间件](https://ykbjson.github.io/2019/01/30/Unity%E4%B8%8EAndroid%E9%80%9A%E4%BF%A1%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6(%E4%B8%80)/)
-
-  [Unity与Android通信的中间件(二)](https://ykbjson.github.io/2019/05/21/Unity%E4%B8%8EAndroid%E9%80%9A%E4%BF%A1%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6(%E4%BA%8C)/)
-
-  [Unity3d Android SDK接入解析（四）通用的Android SDK接入中间件](https://blog.csdn.net/yang8456211/article/details/52231305)
-
   [浅谈Unity与Android原生的桥接](https://juejin.cn/post/6844904165760565261)
 
-  [Unity 与 Android 互调用](https://www.cnblogs.com/alps/p/11206465.html)
-
-  [Unity Android Callback AndroidJavaProxy](https://www.cnblogs.com/herenzhiming/articles/8334117.html)
-
-  [unity写android插件时的回调接口处理AndroidJavaProxy](http://www.unitycn.cn/?p=237)
-
-  [Unity中的回调监听器 - 如何从Android中的UnityPlayerActivity调用脚本文件方法?](https://codefanyi.com/post/53748615829)
-
-  [Unity 调用java代码 以及java回调](https://blog.csdn.net/BDDNH/article/details/100583822)
-
-  [Unity 与 Android 互调用](https://www.jianshu.com/p/b5e3cfcdf081)
-
-  [unity写android插件时的回调接口处理AndroidJavaProxy](https://blog.csdn.net/generallizhong/article/details/105951805)
-
-  [Unity与Android交互之AndroidJavaProxy的使用](https://www.jianshu.com/p/ceaac83808f2)
-
-  [Unity的AndroidJavaProxy的使用](https://blog.csdn.net/qq_33337811/article/details/87815573)
-
-  [Unity Android 之 AndroidJavaProxy 交互，实现 Unity 委托事件到 Android 端（aar包形式）](https://blog.csdn.net/u014361280/article/details/105866782)
-
-  [Unity通过NDK、JNI实现C#、java、C/C++之间的相互调用](https://www.xiaoheidiannao.com/219697.html)
-
-  
-
-  
-
-  [Unity3d Android SDK接入解析（一）Unity3d 与 Android之间的互相调用](https://blog.csdn.net/yang8456211/article/details/51331358)
-
   ``` text
+Android 需要为Unity 提供大量功能接口。
+  Unity 为 Android 部分提供少量接口。
+```
+  
+
+  
+
+  
+[Unity 与 Android 互调用](https://www.cnblogs.com/alps/p/11206465.html)
+  
+
+  
+[Unity3d Android SDK接入解析（一）Unity3d 与 Android之间的互相调用](https://blog.csdn.net/yang8456211/article/details/51331358)
+  
+``` text
   所以，我们使用的currentActivity 就是当前activity的上下文。写到这里，我还有一个疑问，就是currentActivity是拿到的UnityPlayerNativeActivity的上下文，但是是怎么调用到的Myactivity里面的方法的呢？希望知道的人告诉我。
-  ```
+```
+  
+
+  
+[Unity与Android交互](https://blog.csdn.net/ykmzy/article/details/82704534)
+  
+[在unity中如何高效的使用内置android方法](https://blog.csdn.net/osuckseed/article/details/84940618)
+  
 
   
 
-  [Unity与Android交互](https://blog.csdn.net/ykmzy/article/details/82704534)
-
-  [在unity中如何高效的使用内置android方法](https://blog.csdn.net/osuckseed/article/details/84940618)
+  
 
   
+[Android中嵌入Unity Module - unity开发之android与unity跨平台开发](https://www.jianshu.com/p/74722e8b29ec)
   
-  
-  
-  [unity开发之android与unity跨平台开发](https://www.jianshu.com/p/74722e8b29ec)
+[github - unity - Unity as a Library integration example to iOS and Android](https://github.com/Unity-Technologies/uaal-example)
   
   ![](./Unity-Android_UML.png)
 
@@ -140,6 +125,8 @@
           at UnityEng
     */
     
+    ```
+  
   //可行9 10：
     //9:  using (AndroidJavaClass wifiManagerClass = new AndroidJavaClass("android.net.wifi.WifiManager"))
     //	  using (AndroidJavaObject wifiManagerClass = new AndroidJavaObject("android.net.wifi.WifiManager"))
@@ -227,7 +214,7 @@
             }
         }
     ```
-    
+  
 
 
 

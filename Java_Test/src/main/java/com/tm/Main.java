@@ -7,6 +7,8 @@ import com.tm.apitest.core.TestString;
 import java.beans.IntrospectionException;
 import java.util.Scanner;
 
+import com.tm.apitest.reflection.TestReflection;
+
 public class Main {
 
     //args 命令行参数
@@ -19,7 +21,7 @@ public class Main {
 
         //System.out.println(TestJson.serializeRes());
 
-        //TestReflection.test();
+        TestReflection.test();
 
         /*
         double df2 = 1.2 + 24 / 5; // 5.2       24/5 ~= 4
@@ -35,21 +37,25 @@ public class Main {
 
         //com.tm.apitest.base.base3.cal_pi_value();
 
+        /*
         for (String arg : args) {
             if ("-version".equals(arg)) {
                 System.out.println("v 1.0");
                 break;
             }
         }
+        */
 
         //TestString ts = new TestString();
         //ts.test1();
 
+        /*
         try {
             TestJavaBean.test1();
         }catch (IntrospectionException e) {}
+         */
 
         //测试 static块和构造函数的调用先后顺序
-        TestStaticBlock staticBlock = new TestStaticBlock();
+        //TestStaticBlock staticBlock = new TestStaticBlock();
     }
 }

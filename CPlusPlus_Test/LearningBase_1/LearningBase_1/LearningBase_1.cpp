@@ -17,15 +17,35 @@
 
 #include "oop_test.h"
 
+#include "base_2.h"
+
 complex global_c(1, 2);//《全局 stack对象》
 
 using namespace std;
 
 int main() {
 
+	//int *p_1 = new int();
+	//cout << *p_1 << endl; // 输出0 默认构造函数
+	//int *q_1 = new int;
+	//cout << *q_1 << endl; //输出一个很大的数
+	//delete p_1;
+	//delete q_1;
+	//return 0;
+
+
+	/**测试指针和引用**/
+	Base_2 base_2;
+	base_2.test_swap_by_pointer();
+	base_2.test_pass_by_value_pointer();
+	base_2.test_pass_by_reference();
+	base_2.test_pass_by_reference_pointer();
+	base_2.test_pass_by_pointer_pointer();
+	return 0;
+
 
 	/**测试继承和组合结合关系下的构造和析构的执行情况**/   //多加几个*****  不然会报错 错误 C1075 “{”: 未找到匹配令牌
-	//OOP_Derived_1 oopd1;
+	OOP_Derived_1 oopd1;
 	/***
 	
 	输出结果
@@ -39,7 +59,6 @@ int main() {
 	***/
 	
 	OOP_Derived_2 oopd2;
-	
 	/***
 	构造顺序：最里面的先调用
 	OOP Base 2 Part ctor

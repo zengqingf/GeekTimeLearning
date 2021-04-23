@@ -277,6 +277,13 @@ public:
 
 //《观察者模式》
 
+class Subject;
+class Observer
+{
+public:
+	virtual void update(Subject* sub, int value) = 0;
+};
+
 #include<vector>
 using namespace std;
 class Subject
@@ -308,14 +315,6 @@ public:
 		}
 	}
 };
-
-class Observer
-{
-public:
-	virtual void update(Subject* sub, int value) = 0;
-};
-
-
 
 
 
@@ -353,6 +352,7 @@ enum  imageType
 {
 	LSAT, SPOT
 };
+
 //父类
 class Image
 {
@@ -374,18 +374,6 @@ private:
 	static Image* _prototypes[10];
 	static int _nextSlot;
 };
-
-//静态对象需要在class外部定义   clang/gcc同时需要在cpp中定义，而非hpp中
-Image* Image::_prototypes[];
-int Image::_nextSlot;
-Image* Image::findAndClone(imageType type)
-{
-	for (int i = 0; i < _nextSlot; i++)
-	{
-		if (_prototypes[i]->returnType == type)
-			return _prototypes[i]->clone();
-	}
-}
 
 
 //子类1
@@ -420,10 +408,6 @@ private:
 	int _id;
 	static int _count;
 };
-
-LandSatImage LandSatImage::_landSatImage;
-int LandSatImage::_count = 1;
-
 
 /*
 应用：

@@ -67,3 +67,22 @@ OOP_Derived_2::~OOP_Derived_2()
 {
 	cout << "OOP Derived 2 dtor" << endl;
 }
+
+
+/******************************************************/
+
+//静态对象需要在class外部定义   clang/gcc同时需要在cpp中定义，而非hpp中
+Image* Image::_prototypes[];
+int Image::_nextSlot;
+Image* Image::findAndClone(imageType type)
+{
+	for (int i = 0; i < _nextSlot; i++)
+	{
+		if (_prototypes[i]->returnType() == type)
+			return _prototypes[i]->clone();
+	}
+}
+
+
+LandSatImage LandSatImage::_landSatImage;
+int LandSatImage::_count = 1;

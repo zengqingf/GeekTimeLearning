@@ -81,12 +81,27 @@
     ``` text
     Q: Received status code 401 from server: Unauthorized
     
-    A: 进入设置界面，Administration -> Security -> Anonymous Access ， 选中Allow Anonymous Access，然后点击保存。
+    A: 进入设置界面，Administration -> Security -> Anonymous Access ， 选中Allow Anonymous Access，然后点击存。
     ```
 
     
 
-    
+* docker 搭建 nexus
+
+  [Docker中Maven私服的搭建](https://www.cnblogs.com/niceyoo/p/11204143.html)
+
+  [docker - sonatype/nexus3](https://hub.docker.com/r/sonatype/nexus3)
+
+  ``` shell
+  # 下载
+  docker pull sonatype/nexus3
+  # 挂载目录
+  docker run -d -p 8081:8081 --name nexus -v /root/nexus-data:/var/nexus-data --restart=always sonatype/nexus3
+  
+  
+  ```
+
+  
 
 
 

@@ -148,3 +148,338 @@
     # WITH_EDITOR一般只是在CPP中使用的
   ```
 
+
+
+* UE4 C++ with Java
+
+  ``` java
+  public class Base<T>
+  {
+      public void doSomething()
+      {
+          nativeDoSomething();
+      }
+  
+      private native void nativeDoSomething();
+  }
+  ```
+
+  ``` c++
+  //泛型类的jni方法签名
+  JNIEXPORT void JNICALL Java_Base_nativeDoSomething
+     (JNIEnv *, jobject);
+  ```
+
+
+
+
+
+* UE4 隐藏Actor
+
+  ``` c++
+  MyActor->bHidden = true;
+  MyActor->GetMesh()->SetVisibility(false);
+  MyActor->SetActorHiddenInGame(true);
+  ```
+
+
+
+
+* UE4 json
+
+  使用参考见UE4 JsonTests.cpp （UE 4.25.4）
+
+  [虚幻4之JSON学习](https://sanctorum003.github.io/2019/08/07/CG/UE4/JSON/)
+
+  ``` c++
+  //例子：
+  
+  //build.cs 添加依赖  Json  (自定义构建Json)         JsonUtilities (封装的一些接口)
+  //Json.h  JsonUtilities.h
+  
+  /** Data.json **/
+  [
+      {
+          "1-1":"1-1",
+          "1-2":"1-2"
+      },
+      {
+          "2-1":"2-1"
+      },
+      {
+          "3-1":
+          [
+              {
+                  "1":"3-1-1"
+              },
+              {
+                  "2":"3-1-2"
+              }
+          ]
+      }
+  ]
+  
+  //FPaths::GameContentDir() 能获取 */Content/ 的位置
+  //FFileHelper::LoadFileToString() Load a text file to an FString.
+  bool MyJsonHandle::LoadStringFromFile(FString & RelativePathName, FString & FileName, FString & ResultString)
+  {
+      if (!FileName.IsEmpty())
+      {
+          FString AbsloutePathName = FPaths::GameContentDir() + RelativePathName + FileName;
+          if (FPaths::FileExists(AbsloutePathName))
+          {
+              if (FFileHelper::LoadFileToString(ResultString, *AbsloutePathName))
+              {
+                  return true;
+              }
+          }
+      }
+      return false;
+  }
+  
+  /** MyJsonHandle.cpp **/
+  bool MyJsonHandle::RecordDataJsonRead()
+  {
+      FString result;
+      //这是我们上面自定义的函数
+      LoadStringFromFile(RelativePathName, DataFileName, result);
+  
+      TArray<TSharedPtr<FJsonValue>> JsonParse;
+      TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(result);
+  
+      if (FJsonSerializer::Deserialize(JsonReader, JsonParse))
+      { //这样解析后的节点全部存在JsonParse中
+          UE_LOG(LogTemp, Warning, TEXT("%s"), *JsonParse[0]->AsObject()->GetStringField(FString("1-1")));
+          UE_LOG(LogTemp, Warning, TEXT("%s"), *JsonParse[0]->AsObject()->GetStringField(FString("1-2")));
+          UE_LOG(LogTemp, Warning, TEXT("%s"), *JsonParse[1]->AsObject()->GetStringField(FString("2-1")));
+          //如果对象是嵌套的，则需要再声明一次TArray<TSharedPtr<FJsonValue>>来获取
+          TArray<TSharedPtr<FJsonValue>> JsonParse3 = JsonParse[2]->AsObject()->GetArrayField(FString("3-1"));
+          if (JsonParse3.IsValidIndex(0))
+          {
+              for (int cnt = 1; cnt <= JsonParse3.Num(); ++cnt)
+              {
+             UE_LOG(LogTemp, Warning, TEXT("%s"), *JsonParse3[cnt-1]->AsObject()->GetStringField(FString::FromInt(cnt)));
+              }
+          }
+          else
+          {
+              UE_LOG(LogTemp, Warning, TEXT("error JsonParse3"));
+          }
+          return true;
+      }
+      return false;
+  }
+  
+  //修改json
+  TSharedPtr<FJsonObject> Object1 = MakeShareable(new FJsonObject);
+  Object1->SetStringField("1-1", "1--1");
+  Object1->SetStringField("1-2", "1--2");
+  TSharedPtr<FJsonValueObject> CultureValue = MakeShareable(new FJsonValueObject(CultureObject));
+  ```
+
+  [UE4 序列化,反序列化,读写 Json](https://blog.csdn.net/qq_35760525/article/details/77531286)
+
+  ``` c++
+  //注意：
+  /*
+  TSharedPtr<FJsonObject> t_ptr;    需要先判断共享指针是否为空，再判断里面是否有值
+  
+  if (_ptrJsonObj.IsValid() && _ptrJsonObj->Values.Num()>0)
+  */
+  
+  //创建Json Object
+  TSharedPtr<FJsonObject> t_jsonObject = MakeShareable(new FJsonObject);
+  
+  //设置键值对 三种基本类型：bool  string   number
+  t_jsonObject->SetBoolField("userBool",true)
+  t_jsonObject->SetStringField("userName",_data.m_userName);
+  t_jsonObject->SetNumberField("userId", _data.m_userIndex);
+  //嵌套单个json object
+  TSharedPtr<FJsonObject> t_insideObj = MakeShareable(new FJsonObject);
+  t_jsonObject->SetObjectField("insideObj",t_insideObj );
+  //嵌套多个object 数组
+  TArray<TSharedPtr<FJsonValue>> t_objects;
+  TSharedPtr<FJsonValueObject>t_objValue=MakeShareable(newFJsonValueObject(t_insideObj));
+  /*
+  注意：
+  		TSharedPtr<FJsonObject> aObjPtr = arg->GetJsonObj();
+  
+  		//错误！
+  		FJsonValueObject aObjValue(aObjPtr);
+  		TSharedPtr<FJsonValue> aObjValuePtr = MakeShareable(&aObjValue);
+  		//正确做法
+  		TSharedPtr<FJsonValueObject> aObjValuePtr = MakeShareable(new FJsonValueObject(aObjPtr));
+  */
+  t_objects.Add(t_objValue);
+  // json value 类型可以不同
+  TArray<TSharedPtr<FJsonValue>> _res;
+  for (int i = 0; i < t_datasNum; ++i)
+  {
+      TSharedPtr<FJsonValueNumber> t_value = MakeShareable(new FJsonValueNumber(_datas[i]));
+      _res.Add(t_value);
+  }
+  
+  //FJsonObject to FString
+  bool GetFStringInJsonFormat(const TSharedPtr<FJsonObject> &_ptrJsonObj, FString &_strGet)
+  {
+  	if (_ptrJsonObj.IsValid()&&_ptrJsonObj->Values.Num()>0)
+  	{		
+  		TSharedRef<TJsonWriter<TCHAR>> t_writer = TJsonWriterFactory<>::Create(&_strGet);
+  		FJsonSerializer::Serialize(_ptrJsonObj.ToSharedRef(), t_writer);
+  		return true;
+  	}
+  	return false;
+  }
+  
+  //FString to FJsonObject
+  bool GetJsonObjectFromJsonFString(const FString &_jsonFString, TSharedPtr<FJsonObject> &_jsonObject)
+  {
+  	if (!_jsonFString.IsEmpty())
+  	{
+  		TSharedRef<TJsonReader<>> t_reader = TJsonReaderFactory<>::Create(_jsonFString);
+  		if (FJsonSerializer::Deserialize(t_reader,_jsonObject))
+  		{
+  UE_LOG(LogTemp,Warning,TEXT("GetJsonObjectFromJsonFString---Read JsonObject from Json FString "));
+  			return true;
+  		}
+  	}
+  	return false;
+  }
+  
+  //Object to JsonObject
+  TSharedPtr<FJsonObject> :SerializeDataToJson(TMap<int, FData> &_data)
+  {
+  	TSharedPtr<FJsonObject> t_jsonObject = MakeShareable(new FJsonObject);
+  	if (_data.Num()>0)
+  	{
+  		TArray<TSharedPtr<FJsonValue>> t_objects;
+  		for (auto it:_data)
+  		{
+  			FWallPointStoredData t_data = it.Value;
+  			if (t_data.IsValid())
+  			{
+  				TSharedPtr<FJsonObject> t_obj = MakeShareable(new FJsonObject);
+  				t_obj->SetNumberField("id", t_data.m_id);								
+  				TSharedPtr<FJsonValue> t_value = t_data.m_tv;
+  				t_obj->SetField("tv", t_value);
+                  TArray<TSharedPtr<FJsonValue>> t_value_arry = t_data.m_arr;
+  				t_obj->SetArrayField("arr", t_value_arry);
+  				TSharedPtr<FJsonValueObject> t_objValue = MakeShareable(new FJsonValueObject(t_obj));				
+  				t_objects.Add(t_objValue);
+  			}
+  			else
+  			{
+  				UE_LOG(LogTemp, Error, TEXT("SerializeDataToJson %d"),it.Key);
+  			}
+  		}
+   
+  		t_jsonObject->SetArrayField("datas", t_objects);
+  	}
+   
+  	return t_jsonObject;
+  }
+  
+  //JsonObject to Object
+  bool DeserializeFromJson(const TSharedPtr<FJsonObject> &_jsonObject, TMap<int, Data> &_data)
+  {
+  	if _jsonObject.IsValid() && _jsonObject->Values.Num()>0)
+  	{
+  		TArray<TSharedPtr<FJsonValue>> t_objects;
+  		t_objects = _jsonObject->GetArrayField("datas");
+  		int t_objectsNum = t_objects.Num();
+  		if (t_objectsNum>0)
+  		{
+  			for (int i=0;i<t_objectsNum;i++)
+  			{
+  				TSharedPtr<FJsonObject> t_obj = t_objects[i]->AsObject();
+  				if (t_obj->Values.Num()>0)
+  				{
+  					Data t_data;
+  					int t_id = t_obj->GetNumberField("id");
+  					t_data.m_id = t_id;
+                      t_data.m_tv = t_obj->GetField<EJson::Object>("tv")
+  					t_data.m_arr = t_obj>GetArrayField("arr")
+  					_data.Add(t_id,t_data);
+  				}
+  				else
+  				{
+  					UE_LOG(LogTemp, Error, TEXT("DeserializeFromJson %d"),i);
+  				}
+  			}
+  			return _data.Num() > 0;
+  		}
+  	}
+  	return false;
+  }
+  
+  //文件读写
+  bool WriteFileWithJsonData(const FString &_jsonStr, const FString &_fileName)
+  {
+  	if (!_jsonStr.IsEmpty())
+  	{
+  		if (!_fileName.IsEmpty())
+  		{
+  			FString t_path = FPaths::GameContentDir() + "/"+_fileName+".json";
+  			if (!FPaths::FileExists(t_path))
+  			{
+  				if (FFileHelper::SaveStringToFile(_jsonStr, *t_path))
+  				{
+      UE_LOG(LogTemp, Warning, TEXT("WriteTextFileWithJsonData---Save file : %s , path:  %s"), *_fileName, *t_path);
+  					return true;
+  				}		
+  				else
+  				{
+  	UE_LOG(LogTemp,Error,TEXT("WriteTextFileWithJsonData---Save file : %s , path:  %s"), *_fileName,*t_path);
+  				}
+  			}			
+  		}
+  	}
+  	return false;
+  }
+  bool LoadFStringFromFile(const FString &_fileName,const FString &_fromatStr,FString &_resultStr)
+  {
+  	if (!_fileName.IsEmpty())
+  	{
+  		FString t_path = FPaths::GamePluginsDir() + "DrawHouse/SaveData/" + _fileName + _fromatStr;
+  		if (FPaths::FileExists(t_path))
+  		{
+  			if (FFileHelper::LoadFileToString(_resultStr, *t_path))
+  			{
+  	UE_LOG(LogTemp, Warning, TEXT("LoadFStringFromFile---load file : %s , path:  %s"), *_fileName, *t_path);
+  				return true;
+  			}
+  			else
+  			{
+  	UE_LOG(LogTemp, Error, TEXT("LoadFStringFromFile---load file : %s , path:  %s"), *_fileName, *t_path);				
+  			}
+  		}
+  		else
+  		{
+  	UE_LOG(LogTemp, Error, TEXT("LoadFStringFromFile---load file : %s , path:  %s"), *_fileName, *t_path);			
+  		}
+  	}
+  	return false;
+  }
+  ```
+
+  
+
+  
+
+
+
+---
+
+
+
+### UE4 C++编码规范
+
+* link
+
+  [UE4编码规范](https://wangjie.rocks/2017/03/23/ue4-coding-standard/)
+
+  [UE4官方 - 代码规范](https://docs.unrealengine.com/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/index.html)
+
+  [UE4 项目的设计规范和代码标准](https://imzlp.com/posts/25915/)
+
+  

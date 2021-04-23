@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @ReflectClass("test")
-public class TestReflection extends BaseReflection implements ITestReflection {
+public class TestReflection extends BaseReflection  {
 
     public void method1(String p1, int p2, String p3) {
         System.out.println(p1 + p2 + p3);
@@ -36,7 +36,7 @@ public class TestReflection extends BaseReflection implements ITestReflection {
             e.printStackTrace();
         }
 
-        Class<?>[] an = clazz.getInterfaces();
+        Class<?>[] an = clazz.getSuperclass().getInterfaces();
         System.out.println(String.format("getAnnotations interface - %s", an[0].getAnnotations()[0].annotationType()));
         System.out.println(String.format("getAnnotations interface - %s", an[0].getAnnotation(ReflectClass.class)));
         System.out.println(String.format("getAnnotations interface - %s", an[0].getMethods()[0].getAnnotation(ReflectMethod.class)));

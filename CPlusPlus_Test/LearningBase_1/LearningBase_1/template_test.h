@@ -1,5 +1,80 @@
 #pragma once
 
+/*
+区分定义和声明
+
+<变量>
+声明：指出存储类型，并给存储单元指定名称  （引用性声明）
+
+定义：分配内存空间，还可为变量指定初始值  （定义性声明）
+
+声明不是定义，定义也是声明
+
+extern关键字：声明变量名，而不是定义，不会分配内存空间；
+			  告诉编译器变量在其他地方定义
+			  变量可以在多个文件中声明
+
+非静态变量，并且为一般内置类型，如int val;   声明了变量val，同时也是定义，也会分配内存空间
+加上extern才是声明
+
+extern声明的外部变量，指定初始值后，也是定义，注意定义必须位于函数外部，如 extern int val = 1;
+extern声明的局部变量，不能设置初始值
+如
+int main()
+{
+extern int a = 20; //错误！
+}
+
+
+
+
+<函数>
+函数原型（函数声明）：只有函数头
+函数定义：带函数体
+
+函数原型的返回值类型必须和函数定义的返回值类型相同
+函数原型的形参表的类型于顺序必须和函数定义中的相同
+函数原型可以不写形参名称，形参名称可以和原函数不一样（形参类型必须写）
+函数原型中可以不写形参（空形参）
+	C语言中：
+		int func();		//表示可以有多个参数
+		int func(void); //表示没有参数
+	C++中：
+		上述两个写法都表示没有参数
+
+函数原型必须在调用函数前，函数定义可以写在调用函数之后
+extern标识函数声明的作用：可以在外部调用函数
+*/
+
+
+/*
+static 声明变量
+1.对局部变量用static声明，使该变量在本函数调用结束后不释放，整个程序执行期间始终存在，使其存储期为程序的全过程。
+2.全局变量用static声明，则该变量的作用域只限于本文件模块(即被声明的文件中)。
+
+
+static 内部机制
+将变量存储在程序的静态存储区，而非栈空间
+静态数据成员按定义出现的先后顺序依次初始化
+静态成员嵌套时，要保证所嵌套的成员已经初始化
+
+static优势：
+	有效节省内存，它是其类的全部对象所共有的；
+	提高效率，只需要更新一次，保证其他对象获取到相同值；（有利有弊）
+	不会破坏封装
+
+类的对象构建过程不会动到static变量和函数，static类成员存在于内存的静态区，程序载入进内存的时候它就存在，和类对象生命周期不同
+static数据成员需要在程序一开始就初始化（定义），不能在类的非static成员函数中进行空间分配
+			不能在类的声明中定义（只能声明数据成员），也崩在头文件的类声明的外部定义，会导致多个使用该类的源文件里，对其反复定义
+			必须在类定义体的外部定义（即初始化）（只定义一次）
+
+
+
+*/
+
+
+
+
 class Account {
 public:
 	static double m_rate;                             //声明 （变量没有获得内存，只属于class范畴）   
@@ -34,6 +109,8 @@ cout << complex::real(&c2);
 
 //非静态函数：相同的函数，传入不同的对象的地址 （this）
 //静态对象 静态函数 只存在一份  没有this pointer  所以不能处理非静态对象（数据）
+
+//静态成员函数没有this指针，不能被声明为const，不能被声明为virtual
 */
 
 /*
@@ -48,21 +125,21 @@ cout << complex::real(&c2);
 
 */
 
-//ctor放到private中
 
 /*
-单例
-例子：
+<单例>
+ctor放到private中
 */
 class SingletonA {
 
 public:
-	static SingletonA& getInstance() { return a; }
+	static SingletonA & getInstance() { return a; }
 	void setup();
 
 private:
-	SingletonA();
-	SingletonA(const SingletonA& rhs);
+	SingletonA() {}
+	SingletonA(const SingletonA &rhs) {}
+	SingletonA & operator=(const SingletonA &other) {}
 	static SingletonA a;							//声明 非定义
 };
 
@@ -71,13 +148,99 @@ private:
 //优化  懒汉
 class SingletonAA {
 public :
-	static SingletonAA& getInstance();
+	static SingletonAA & getInstance();
 	void setup();
 
 private:
 	SingletonAA() {}
-	SingletonAA(const SingletonAA& rhs) {}
+	SingletonAA(const SingletonAA &rhs) {}
+	SingletonAA & operator=(const SingletonAA &other) {}
 };
+
+class SingletonB {
+public:
+	static SingletonB * getInstance();
+private:
+
+	SingletonB() {}
+	SingletonB(const SingletonB &rhs) {}
+	SingletonB & operator=(const SingletonB &other) {}
+	~SingletonB() {}
+
+	static SingletonB *instance; //声明（引用性声明）
+};
+
+
+/*
+单例优化清理：
+让这个类自己知道在合适的时候把自己删除，或者说把删除自己的操作挂在操作系统中的某个合适的点上，使其在恰当的时候被自己主动运行。
+
+语言特性：
+程序在结束的时候，系统会自己主动析构全部的全局变量。其实，系统也会析构全部的类的静态成员变量，就像这些静态成员也是全局变量一样
+*/
+class SingletonC 
+{
+public:
+	static SingletonC * getInstance() {}
+
+private:
+	SingletonC() {}
+	SingletonC(const SingletonC &rhs) {}
+	SingletonC & operator=(const SingletonC &other) {}
+	~SingletonC() {}
+
+	static SingletonC *instance;
+
+	//程序执行结束时，系统会调用SingletonC的静态成员Garbo的析构函数，该析构函数会删除单例的唯一实例。
+	class CGarbo //嵌套类作用：析构时删除SingletonC实例
+	{
+	public:
+		~CGarbo()
+		{
+			if (SingletonC::instance != nullptr)
+				delete SingletonC::instance;
+		}
+	};
+	static CGarbo garbo_;  //声明（引用性声明）一个静态成员变量，当SingletonC的生命周期结束，garbo_对象也会销毁，会调用其析构函数
+};
+
+
+//单例注册表 (registry of singleton)
+#include<vector>
+class SingletonD;
+class NameSingletonPair
+{
+public:
+	char *name;
+	SingletonD *singletonD;
+};
+
+class SingletonD {
+public:
+	static void Register(const char* name, SingletonD *);
+	static SingletonD * getInstance();
+protected:
+	static SingletonD * Lookup(const char* name);
+private:
+	static SingletonD *instance_;
+	static std::vector<NameSingletonPair*> * _registry;
+};
+
+/*
+应用：
+
+MySingleton::MySingleton() {
+	Sinleton::Register("MySingleton",this);
+}
+*/
+
+
+
+
+
+
+
+
 
 
 //扩展：模板类

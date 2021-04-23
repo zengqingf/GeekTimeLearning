@@ -36,6 +36,15 @@
     <ClCompile Include="oop_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="base_2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="base_3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="base_4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complex_test.h">
@@ -51,6 +60,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="oop_test.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base_2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base_3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base_4.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

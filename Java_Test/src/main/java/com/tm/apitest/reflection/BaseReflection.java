@@ -1,7 +1,8 @@
 package com.tm.apitest.reflection;
 
-@ReflectClass("Test")
-public class BaseReflection {
-    @ReflectMethod("method2")
-    void method2(){}
+//@ReflectClass("Test")
+public class BaseReflection implements ITestReflection {
+    //@ReflectMethod("method2")
+    @Override
+    public void method2(){}
 }

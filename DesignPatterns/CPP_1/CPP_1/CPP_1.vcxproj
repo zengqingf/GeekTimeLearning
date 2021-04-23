@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2303D597-DF98-4F80-944E-FD471CC6D72D}</ProjectGuid>
+    <ProjectGuid>{F8AF6C0F-48C0-4C2A-B96E-2517D274C63A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LearningBase1</RootNamespace>
+    <RootNamespace>CPP1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,26 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="base_1.cpp" />
-    <ClCompile Include="base_2.cpp" />
-    <ClCompile Include="base_3.cpp" />
-    <ClCompile Include="base_4.cpp" />
-    <ClCompile Include="complex_test.cpp" />
-    <ClCompile Include="LearningBase_1.cpp" />
-    <ClCompile Include="oop_test.cpp" />
-    <ClCompile Include="string_test.cpp" />
-    <ClCompile Include="string_test.h" />
-    <ClCompile Include="template_test.cpp" />
+    <ClCompile Include="CPP_1.cpp" />
+    <ClCompile Include="FactoryMethod_1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base_1.h" />
-    <ClInclude Include="base_2.h" />
-    <ClInclude Include="base_3.h" />
-    <ClInclude Include="base_4.h" />
-    <ClInclude Include="complex.h" />
-    <ClInclude Include="complex_test.h" />
-    <ClInclude Include="oop_test.h" />
-    <ClInclude Include="template_test.h" />
+    <ClInclude Include="FactoryMethod_1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
