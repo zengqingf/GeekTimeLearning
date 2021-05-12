@@ -49,3 +49,58 @@ class TypeCast_Test_1
 public:
 	void Test1();
 };
+
+
+
+//测试 函数模板 子类override父类
+template<typename D>
+class Base_BB
+{
+	template<typename T>
+	std::string _method() { return "Base"; }
+public:
+
+	template<typename T>
+	std::string method()
+	{
+		return static_cast<D&>(*this).template _method<T>();
+	}
+};
+
+class Derived_BB : public Base_BB<Derived_BB>
+{
+	friend class Base_BB<Derived_BB>;
+
+	template<typename T>
+	std::string _method() { return "Derived"; }
+public:
+	//...
+};
+
+
+
+//测试2 函数模板 子类override父类
+struct BaseOfBase
+{
+	virtual void do_something() = 0;
+};
+
+template <typename T>
+struct Base_CC : public BaseOfBase
+{
+	T val;
+
+	void do_something() override
+	{
+		std::cout << "Base::do_something() [" << val << "]\n";
+	};
+};
+
+template <typename T>
+struct Derived_CC : public Base_CC<T>
+{
+	void do_something() override
+	{
+		std::cout << "Derived::do_something() [" << this->val << "]\n";
+	}
+};

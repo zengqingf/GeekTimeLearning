@@ -234,7 +234,7 @@
     	container_name=$1
     	echo "检查$container_name容器启动状态......"
     	container_run_id=`docker ps --filter name=$container_name -q`
-    	if [ x"$container_run_id" == xvi "" ]; then
+    	if [ x"$container_run_id" == x"" ]; then
     		echo "$container_name容器未启动......"
     		
     		echo "检查$container_name容器ID挂载状态......"
@@ -318,47 +318,43 @@
     	echo "找不到stf重新启动脚本"
     	exit 1
     fi
-if [ ! -x "./stf-setup-run-linux-centos7.sh" ]; then
-       chmod +x "./stf-setup-run-linux-centos7.sh"
-fi
-    sh stf-setup-run-linux-centos7.sh
-```
-    
-    
-    
-    stf-reinstall.sh
-    
-    ``` shell
-    i#!/bin/bash
-    
-    echo "准备关闭stf provider 端口 5037"
-    stf_port5037_pid=`ps -ef | grep 5037 | grep stf | awk '{print $2}'`
-    echo "`kill -s 9 ${stf_port5037_pid}`占用端口5037的进程${stf_port5037_pid}已关闭......"
-    
-    echo "`docker stop stf`已关闭......"
-    stf_contain_id=`docker ps -a --filter name=stf -q`
-    echo "`docker rm $stf_contain_id`容器已删除"
-    
-    stf_image_id=`docker images | grep devicefarmer/stf | awk '{print $3}'`
-    echo "`docker rmi $stf_image_id`镜像已删除"
-
-    if [ ! -f "./stf-setup-run-linux-centos7.sh" ]; then
-    	echo "找不到stf重新启动脚本"
-    	exit 1
-    fi
     if [ ! -x "./stf-setup-run-linux-centos7.sh" ]; then
        chmod +x "./stf-setup-run-linux-centos7.sh"
     fi
     sh stf-setup-run-linux-centos7.sh
     ```
-    
-    
-    
-    
-    
-    stf-provider-add-device-host-ip.sh
-    
+
+    stf-reinstall.sh
+
     ``` shell
+    #!/bin/bash
+        
+        echo "准备关闭stf provider 端口 5037"
+        stf_port5037_pid=`ps -ef | grep 5037 | grep stf | awk '{print $2}'`
+        echo "`kill -s 9 ${stf_port5037_pid}`占用端口5037的进程${stf_port5037_pid}已关闭......"
+        
+        echo "`docker stop stf`已关闭......"
+        stf_contain_id=`docker ps -a --filter name=stf -q`
+        echo "`docker rm $stf_contain_id`容器已删除"
+        
+        stf_image_id=`docker images | grep devicefarmer/stf | awk '{print $3}'`
+        echo "`docker rmi $stf_image_id`镜像已删除"
+    
+        if [ ! -f "./stf-setup-run-linux-centos7.sh" ]; then
+        	echo "找不到stf重新启动脚本"
+        	exit 1
+        fi
+        if [ ! -x "./stf-setup-run-linux-centos7.sh" ]; then
+           chmod +x "./stf-setup-run-linux-centos7.sh"
+        fi
+        sh stf-setup-run-linux-centos7.sh
+    ```
+
+    
+
+    stf-provider-add-device-host-ip.sh
+
+    ```shell
     #!/bin/bash
     
     IP=`hostname -I | awk '{print $1}'`
@@ -379,7 +375,55 @@ fi
     fi
     docker exec -it ${stf_contain_id} /bin/sh -c "stf provider --name `hostname` --min-port 7400 --max-port 7700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip $IP --storage-url http://$IP:7100/ --adb-host ${TargetIP} --adb-port 5037 --vnc-initial-size 600x800 --mute-master never --allow-remote"
     ```
+
+  * stf 扩展
+
+    ``` shell
+    #修改最大支持包大小
+    #docker环境
     
+    #进入容器内部修改 (root)
+    docker exec -it -u root stf容器ID /bin/bash
+    #安装vim
+    apt-get update
+    apt-get install vim
+    #保存修改后的镜像
+    #离开镜像bash
+    exit
+    docker commit 容器ID 新容器名 (格式：devicefarmer/stf_vim_changed)
+    
+    ################################################################################################################
+    
+    # lib/incoming_form.js
+    ### 上述文件详细路径 ：  /Users/hegu/.nvm/v8.11.0/lib/node_modules/stf/node_modules/formidable/lib/incoming_form.js
+    #this.maxFileSize = opts.maxFileSize || 2 * 1024 * 1024; 
+    this.maxFileSize = opts.maxFileSize || 2000 * 1024 * 1024;
+    #修改上面文件这里没用 
+    
+    # 需要修改 
+    #lib/cli/storage-s3/index.js
+    #lib/cli/storage-temp/index.js 
+    ### 上述文件的详细路径 ： /Users/hegu/.nvm/v8.11.0/lib/node_modules/stf/lib/cli ###
+    
+    #lib/cli/storage-s3/index.js
+    option('max-file-size', {
+          describe: 'Maximum file size to allow for uploads. Note that nginx ' +
+            'may have a separate limit, meaning you should change both.'
+        , type: 'number'
+        , default: 1 * 1024 * 1024 * 1024 ###修改此处 默认为1G 
+        })
+    
+    #lib/cli/storage-temp/index.js 
+        .option('max-file-size', {
+          describe: 'Maximum file size to allow for uploads. Note that nginx ' +
+            'may have a separate limit, meaning you should change both.'
+        , type: 'number'
+        , default: 1 * 1024 * 1024 * 1024   ###修改此处 默认为1G 
+        })
+        
+    ################################################################################################################
+    ```
+
     
 
 
@@ -476,12 +520,155 @@ fi
 
   [移动设备管理平台的搭建（基于STF/ATXServer2）](https://segmentfault.com/a/1190000038807238)
 
+  [移动端设备管理平台 atx server2实践](https://www.cnblogs.com/webDepOfQWS/p/11031830.html)
+  
   ``` text
   推荐使用  ATXServer2
-  基于ATXServer2搭建移动设备管理平台
+基于ATXServer2搭建移动设备管理平台
   基于python3
-还支持IOS
+  还支持IOS
   https://github.com/openatx/atxserver2
+  ```
+  
+  ``` shell
+  # 安装rethinkdb
+  # [Installing RethinkDB](https://rethinkdb.com/docs/install/)
+  
+  # for centos7
+  sudo cat << EOF > /etc/yum.repos.d/rethinkdb.repo
+  [rethinkdb]
+  name=RethinkDB
+  enabled=1
+  baseurl=https://download.rethinkdb.com/repository/centos/7/x86_64/
+  gpgkey=https://download.rethinkdb.com/repository/raw/pubkey.gpg
+  gpgcheck=1
+  EOF
+  
+  sudo yum install rethinkdb
+  
+  
+  #下载 clone 上传 atxserver2
+  git clone https://github.com/openatx/atxserver2.git
+  
+  #cd 到根目录  安装依赖
+  pip3 install -r requirements.txt
+  
+  #启动
+  #1
+  python3 main.py
+  
+  #2
+  python3 main.py --port 4000 # 默认监听的就是这个地址
+  #测试访问http://宿主机IP地址:4000
+  
+  
+  
+  #1
+  #下载android 设备支持
+  git clone https://github.com/openatx/atxserver2-android-provider.git
+  
+  #安装依赖
+  pip3 install -r requirements.txt
+  
+  #cd 到android-provider根目录
+  python main.py --server 宿主机IP地址:4000
+  #provider会通过 adb track-devices 访问已经接入的设备
+  #会主动安装 minicap，minitouch，atx-agent，app-uiautomator-[test].apk，whatsinput-apk
+  ```
+  
+  atx-server2-setup-run-linux-centos7.sh
+  
+  ``` shell
+  #!/bin/bash
+   
+  #IP
+  #IP=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print$2}' | awk -F "/" '{print $1}'`
+  IP=`hostname -I | awk '{print $1}'`
+  echo $IP
+  
+  #检查docker是否安装
+  systemctl start docker
+  
+  if [ $? != 0 ]; then
+      #docker安装-安装软件包
+      yum install -y yum-utils device-mapper-persistent-data lvm2
+  
+      #docker安装-设置稳定的仓库
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  
+      #docker安装---列出并排序存储库中可用的docker版本
+      yum list docker-ce --showduplicates | sort -r
+  
+      #docker安装---通过其完整的软件包名称安装特定版本
+      echo "Please enter the version number of docker(e.g. 19.03.5):"
+      read version
+      echo "准备安装docker.........."
+      yum install docker-ce-$version docker-ce-cli-$version containerd.io
+      echo "docker安装完毕.........."
+  
+      #docker安装---查看当前docker的版本信息
+      echo "---------- docker versionInfo ----------"
+      docker version
+      echo "----------//docker versionInfo ----------"
+  else 
+  	echo "docker已安装.........."
+  fi
+   
+  #docker安装---启动docker
+  systemctl start docker
+  echo "docker已启动.........."
+   
+  function dockerpull_by_nametag_with_checkexist()
+  {
+  	image_name_tag=$1
+  	image_id=`docker images -q $image_name_tag`
+  	if [ x"$image_id" == x"" ]; then
+  		echo "拉取$image_name_tag镜像......"
+  		docker pull $image_name_tag
+  	else 
+  		echo "$image_name_tag镜像已存在......"
+  	fi
+  }
+  
+  #通过docker 配置android 设备支持
+  SERVER_URL="http://${IP}:4000"
+  CONTAINER="atxserver2-android-provider"
+  IMAGE="codeskyblue/${CONTAINER}"
+  
+  #拉取devicefarmer stf镜像
+  dockerpull_by_nametag_with_checkexist ${IMAGE}:latest
+  
+  function check_docker_run_status_by_containername()
+  {
+  	container_name=$1
+  	echo "检查$container_name容器启动状态......"
+  	container_run_id=`docker ps --filter name=$container_name -q`
+  	if [ x"$container_run_id" == x"" ]; then
+  		echo "$container_name容器未启动......"
+  		
+  		echo "检查$container_name容器ID挂载状态......"
+  		container_exist_id=`docker ps -a --filter name=$container_name -q`
+  		if [ x"$container_exist_id" != x"" ]; then
+  			echo "$container_name容器ID已挂载 准备删除......"
+  			docker rm $container_exist_id
+  		else
+  			echo "$container_name容器ID未挂载......"
+  		fi
+  		
+  		return 1
+  	else
+  		echo "$container_name容器已启动......"
+  		return 0
+  	fi
+  }
+   
+  check_docker_run_status_by_containername ${CONTAINER}
+  if [ $? == 1 ]; then
+  #启动usb 连接atxserver2主服务
+  docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb --net host \
+      ${IMAGE} python3 main.py --server ${SERVER_URL} --allow-remote
+  fi
+  
   ```
   
   

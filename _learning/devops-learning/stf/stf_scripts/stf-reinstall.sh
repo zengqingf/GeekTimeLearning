@@ -1,6 +1,6 @@
-i#!/bin/bash
+#!/bin/bash
 
-echo "准备关闭stf provider 端口 5037"
+echo "准备关闭：stf provider 端口 5037"
 stf_port5037_pid=`ps -ef | grep 5037 | grep stf | awk '{print $2}'`
 echo "`kill -s 9 ${stf_port5037_pid}`占用端口5037的进程${stf_port5037_pid}已关闭......"
 

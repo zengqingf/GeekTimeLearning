@@ -147,7 +147,7 @@
       	(向下转换时，具有类型检查，比static_cast更安全)
       2. 必须要有虚函数。  注意:非多态类的父类和子类用static_cast转换
       	（这是由于运行时类型检查需要运行时类型信息，而这个信息存储在类的虚函数表
-      	（关于虚函数表的概念，详细可见<Inside c++ object model>）中，只有定义了虚			函数的类才有虚函数表，没有定义虚函数的类是没有虚函数表的。）
+      	（关于虚函数表的概念，详细可见<Inside c++ object model>）中，只有定义了虚函数的类才有虚函数表，没有定义虚函数的类是没有虚函数表的。）
       3. 相同基类不同子类之间的交叉转换但结果是NULL。
       
       dynamic_cast主要用于类层次间的上行转换和下行转换，还可以用于类之间的交叉转换。
@@ -183,6 +183,49 @@
   ```
 
   
+
+  [c++ - converting a base class pointer to a derived class pointer](https://stackoverflow.com/questions/18873871/c-converting-a-base-class-pointer-to-a-derived-class-pointer)
+
+  ``` c++
+  #include <iostream>
+  using namespace std;
+  
+  class Base {
+  public:
+      Base() {};
+      virtual ~Base(){};
+  };
+  
+  template<class T>
+  class Derived: public Base {
+    T _val;
+  public:
+    Derived() {}
+    Derived(T val): _val(val) {}
+    T raw() {return _val;}
+  };
+  
+  int main()
+  {
+    Base * b = new Derived<int>(1);
+    Derived<int> * d = b;
+    cout << d->raw() << endl;
+    return 0;
+  }
+  
+  Base *b = new Derived<int>(1);
+  Derived<int> *d = dynamic_cast<Derived<int> *>(b);
+  
+  //also , due to the cast cannot fail , not polymorphic
+  Base *b = new Derived<int>(1);
+  Derived<int> *d = static_cast<Derived<int> *>(b);
+  ```
+
+  
+
+  
+
+
 
 * virtual + override
 
@@ -847,7 +890,28 @@
 
   
 
+* 左值 vs. 右值（扩展：右值引用）
 
+  ``` text
+  一般定义：
+  左值为非临时对象，右值是临时对象（没有变量名的类实例，直接量、字面量）
+  在赋值语句中
+  int i = 1; //i为左值，1为右值；i可以被引用
+  
+  右值常在赋值表达式的右边，但也可以在赋值表达式的左边
+  ((i > 0) ? i : j) = 1;   //i j 为左值  0为右值
+  
+  在C++ 11前右值不能被引用，常绑定到一个常量引用上，同时右值不能被修改
+  const int &a = 1;
+  
+  右值存在可以被修改的情况
+  T().set().get()   //T() 生成一个临时对象，就是右值，set() 修改了变量的值，也就修改了这个右值
+  
+  因为右值可以被修改，所以可以实现右值引用
+  右值引用(Rvalue Referene) ： C++11加入，实现转移语义（move）和精确传递（perfect forwarding）
+  ```
+
+  
 
 
 

@@ -30,3 +30,30 @@
   ```
 
   
+
+* 配置Win DevOps开发环境
+
+  ``` text
+  java / android
+  
+  1.jdk
+  2.sdk (adb)
+  3.apktool
+  4.svn 
+  5.git  (github desktop)
+  6.finalshell
+  7.python2 / 3  (virtualenv)
+  8.vmware 
+  9.vs code
+  10.typora
+  11.picgo
+  12.drawio
+  13.android studio
+  14.lua
+  15.vs
+  16.notepad++
+  17.beyondcompare
+  18.filezilla client
+  ```
+
+  

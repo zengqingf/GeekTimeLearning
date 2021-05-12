@@ -322,9 +322,33 @@
 
   
 
+* svn可以创建软链接
+
+  ![](svn_001.png)
+
+  ``` shell
+  //递归展示当前目录下的软链接
+  svn propget svn:externals -R
   
+  
+  //获取目录的信息
+  svn propget svn:externals dirpath（指定一个目录）
+  //创建软链接
+  svn propset svn:externals -F dirPath oPath
+  //大规模编辑
+  svn propedit svn:externals dirpath
+  
+  svn propset svn:externals "-r611 htp://svn.company.com/svn/Build" Build/Tool
+  等同于
+  文件 externals.txt 内容 ： -r611 htp://svn.company.com/svn/Build  （无双引号）
+  svn propset svn:externals -F externals.txt Build/Tool
+  
+  
+  ```
 
   
+
+
 
 
 

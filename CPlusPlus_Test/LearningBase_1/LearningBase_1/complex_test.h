@@ -1,20 +1,20 @@
-//Í·ÎÄ¼þ·ÀÎÀÊ½ÉùÃ÷
+//å¤´æ–‡ä»¶é˜²å«å¼å£°æ˜Ž
 
-//·½Ê½1. ÓÉ±àÒëÆ÷Ìá¹©±£Ö¤  Í¬Ò»ÎÄ¼þ²»»á±»°üº¬¶à´Î
+//æ–¹å¼1. ç”±ç¼–è¯‘å™¨æä¾›ä¿è¯  åŒä¸€æ–‡ä»¶ä¸ä¼šè¢«åŒ…å«å¤šæ¬¡
 #pragma once  
 
-//·½Ê½2. ·ÀÓùÊ½  ·ÀÎÀÊ½  ÉùÃ÷  guard
+//æ–¹å¼2. é˜²å¾¡å¼  é˜²å«å¼  å£°æ˜Ž  guard
 #ifndef __COMPLEX__
 #define __COMPLEX__
 
 /*
-ÀàÉùÃ÷µÄ¼ì²é
+ç±»å£°æ˜Žçš„æ£€æŸ¥
 
-1. Êý¾Ý¶¼·ÅÔÚprivate
-2. ²ÎÊý¾¡Á¿Í¨¹ýreference´«µÝ  ¿´Çé¿ö¶ø¶¨ÊÇ·ñÐèÒª¼Óconst £¨Ê×ÏÈ¿¼ÂÇ´«µÝÒýÓÃ£©
-3. ·µ»ØÖµ¾¡Á¿Í¨¹ýreference´«µÝ							£¨Ê×ÏÈ¿¼ÂÇ´«µÝÒýÓÃ£©
-4. ÔÚÀàÖÐµÄº¯Êý£¨³ÉÔ±º¯Êý£© ÄÜ¼ÓconstµÄ¾¡Á¿¼Ó			 Èç¹û²»¸Ä±äº¯ÊýÄÚ²¿¶ÔÏó£¨Êý¾Ý£©Ê± Ìí¼Óconst		
-5. ¹¹Ôìº¯Êý¾¡Á¿Ê¹ÓÃ³õÊ¼ÁÐ
+1. æ•°æ®éƒ½æ”¾åœ¨private
+2. å‚æ•°å°½é‡é€šè¿‡referenceä¼ é€’  çœ‹æƒ…å†µè€Œå®šæ˜¯å¦éœ€è¦åŠ const ï¼ˆé¦–å…ˆè€ƒè™‘ä¼ é€’å¼•ç”¨ï¼‰
+3. è¿”å›žå€¼å°½é‡é€šè¿‡referenceä¼ é€’							ï¼ˆé¦–å…ˆè€ƒè™‘ä¼ é€’å¼•ç”¨ï¼‰
+4. åœ¨ç±»ä¸­çš„å‡½æ•°ï¼ˆæˆå‘˜å‡½æ•°ï¼‰ èƒ½åŠ constçš„å°½é‡åŠ 			 å¦‚æžœä¸æ”¹å˜å‡½æ•°å†…éƒ¨å¯¹è±¡ï¼ˆæ•°æ®ï¼‰æ—¶ æ·»åŠ const		
+5. æž„é€ å‡½æ•°å°½é‡ä½¿ç”¨åˆå§‹åˆ—
 
 
 
@@ -25,7 +25,7 @@
 
 
 
-/*******************************************************************    Ç°ÖÃÉùÃ÷    ***************************************************************/
+/*******************************************************************    å‰ç½®å£°æ˜Ž    ***************************************************************/
 
 #include <cmath>
 
@@ -38,53 +38,53 @@ complex&
 
 
 
-/*****************************************************************      ÀàÉùÃ÷      *************************************************************/
+/*****************************************************************      ç±»å£°æ˜Ž      *************************************************************/
 class complex										//class head
 {													//class body start
 
-//access level·ÃÎÊ¼¶±ð  ¿ÉÒÔ½»´íÐ´ ²»Ò»¶¨ÐèÒªÐ´ÈçÏÂÁ½¶Ë
+//access levelè®¿é—®çº§åˆ«  å¯ä»¥äº¤é”™å†™ ä¸ä¸€å®šéœ€è¦å†™å¦‚ä¸‹ä¸¤ç«¯
 public:
-	//ctor :  ²ÎÊý¿ÉÒÔÐ¯´øÄ¬ÈÏÖµ Ä¬ÈÏÊµ²Î
+	//ctor :  å‚æ•°å¯ä»¥æºå¸¦é»˜è®¤å€¼ é»˜è®¤å®žå‚
 	complex(double r = 0, double i = 0)
-		: re(r), im(i)							   //³õÊ¼ÁÐ£¬³õÖµÁÐ(initialization list)  Ð§ÂÊ¸ßÓÚ ÔÚ¹¹Ôìº¯ÊýÄÚ²¿½øÐÐ¸³Öµ²Ù×÷ £¨¸³³õÊ¼Öµ assignments£©
-												   //±äÁ¿¸³ÖµÓÐÁ½¸ö½×¶Î£¬³õÊ¼»¯£¬ ¸³Öµ
+		: re(r), im(i)							   //åˆå§‹åˆ—ï¼Œåˆå€¼åˆ—(initialization list)  æ•ˆçŽ‡é«˜äºŽ åœ¨æž„é€ å‡½æ•°å†…éƒ¨è¿›è¡Œèµ‹å€¼æ“ä½œ ï¼ˆèµ‹åˆå§‹å€¼ assignmentsï¼‰
+												   //å˜é‡èµ‹å€¼æœ‰ä¸¤ä¸ªé˜¶æ®µï¼Œåˆå§‹åŒ–ï¼Œ èµ‹å€¼
 	{}
 
-	//complex() : re(0), im(0) {}				   //Õâ¸ö¹¹Ôìº¯ÊýºÍÉÏÃæ´øÄ¬ÈÏÖµµÄ ÎÞ·¨Í¬Ê±´æÔÚ  ²»·ûºÏº¯ÊýÖØÔØ
+	//complex() : re(0), im(0) {}				   //è¿™ä¸ªæž„é€ å‡½æ•°å’Œä¸Šé¢å¸¦é»˜è®¤å€¼çš„ æ— æ³•åŒæ—¶å­˜åœ¨  ä¸ç¬¦åˆå‡½æ•°é‡è½½
 
-	complex& operator += (const complex&);		   //²ÎÊý-ÒýÓÃ´«µÝ (²¢ÇÒÊÇ to const ²»»á±»½ÓÊÕ·½ÐÞ¸ÄÓ°Ïì×ÔÉí) 
-												   //·µ»ØÖµ´«µÝ£¬ÒýÓÃ´«µÝ
+	complex& operator += (const complex&);		   //å‚æ•°-å¼•ç”¨ä¼ é€’ (å¹¶ä¸”æ˜¯ to const ä¸ä¼šè¢«æŽ¥æ”¶æ–¹ä¿®æ”¹å½±å“è‡ªèº«) 
+												   //è¿”å›žå€¼ä¼ é€’ï¼Œå¼•ç”¨ä¼ é€’
 
-	//ÏÂÃæÁ½¸öº¯ÊýºÜ¿ÉÄÜ»á±»±àÒëÆ÷¶¨Òå³Éinline
-	double real() const { return re; }			   //const  Î»ÖÃÔÚ() ºÍ {} Ö®¼ä
-	double imag() const { return im; }			   //×÷ÓÃ  Èç¹ûº¯Êý²»¸Ä±äÊý¾ÝÄÚÈÝ Ìí¼Óconst ÈçÈ¡µÃÀàÖÐ²ÎÊý µ«ÊÇÊÇÐèÒªÈ¡µÃ ²»ÐèÒª¸Ä±ä
-												   //ÈÎºÎ²»»á¸Ä±äÊý¾Ý³ÉÔ±µÄ³ÉÔ±º¯Êý ½¨ÒéÉùÃ÷const  
-												   //Èç¹û²»É÷ÐÞ¸ÄÁËÊý¾Ý³ÉÔ± »òÕßµ÷ÓÃÁË·Çconst ³ÉÔ±º¯Êý ±àÒëÆ÷»á±¨´í Ôö¼Ó³ÌÐò½¡×³ÐÔ
+	//ä¸‹é¢ä¸¤ä¸ªå‡½æ•°å¾ˆå¯èƒ½ä¼šè¢«ç¼–è¯‘å™¨å®šä¹‰æˆinline
+	double real() const { return re; }			   //const  ä½ç½®åœ¨() å’Œ {} ä¹‹é—´
+	double imag() const { return im; }			   //ä½œç”¨  å¦‚æžœå‡½æ•°ä¸æ”¹å˜æ•°æ®å†…å®¹ æ·»åŠ const å¦‚å–å¾—ç±»ä¸­å‚æ•° ä½†æ˜¯æ˜¯éœ€è¦å–å¾— ä¸éœ€è¦æ”¹å˜
+												   //ä»»ä½•ä¸ä¼šæ”¹å˜æ•°æ®æˆå‘˜çš„æˆå‘˜å‡½æ•° å»ºè®®å£°æ˜Žconst  
+												   //å¦‚æžœä¸æ…Žä¿®æ”¹äº†æ•°æ®æˆå‘˜ æˆ–è€…è°ƒç”¨äº†éžconst æˆå‘˜å‡½æ•° ç¼–è¯‘å™¨ä¼šæŠ¥é”™ å¢žåŠ ç¨‹åºå¥å£®æ€§
 
-	//ÖØÔØ
+	//é‡è½½
 	void real(double r) { re = r; }
 
 
 	//test friend func
-	//int func(const complex& param) { return param.re + param.im; } // Í¬Ò»¸öclassµÄ¸÷¸öobject ±Ë´Ë»¥ÎªÓÑÔª 	c2.func(c1);
+	//int func(const complex& param) { return param.re + param.im; } // åŒä¸€ä¸ªclassçš„å„ä¸ªobject å½¼æ­¤äº’ä¸ºå‹å…ƒ 	c2.func(c1);
 
-//Êý¾Ý¾¡Á¿·ÅÔÚprivate
+//æ•°æ®å°½é‡æ”¾åœ¨private
 private:
 	double re, im;
 
 protected:
 	double test;
 
-	friend complex& __doapl(complex*, const complex&); //ÓÑÔª ¿ÉÒÔ¼Óµ½º¯ÊýÉÏ   Õâ¸öº¯Êý¿ÉÒÔ×ÔÓÉÈ¡µÃ friend µÄ privateµÄ³ÉÔ±
-														//Ò²¿ÉÒÔÍ¨¹ýº¯Êýµ÷ÓÃÄÃÊý¾Ý£¬ µ«Ã»ÓÐÖ±½ÓÄÃ¿ì£¬ µ«ÊÇfriend´òÆÆÁË·â×°µÄÌØÐÔ
+	friend complex& __doapl(complex*, const complex&); //å‹å…ƒ å¯ä»¥åŠ åˆ°å‡½æ•°ä¸Š   è¿™ä¸ªå‡½æ•°å¯ä»¥è‡ªç”±å–å¾— friend çš„ privateçš„æˆå‘˜
+														//ä¹Ÿå¯ä»¥é€šè¿‡å‡½æ•°è°ƒç”¨æ‹¿æ•°æ®ï¼Œ ä½†æ²¡æœ‰ç›´æŽ¥æ‹¿å¿«ï¼Œ ä½†æ˜¯friendæ‰“ç ´äº†å°è£…çš„ç‰¹æ€§
 
 };
 
 
-//À©Õ¹£ºÄÚÁªº¯Êý£¨inline£© Ö´ÐÐÐ§ÂÊ¸ß 
-//º¬Òå£ºº¯ÊýÔÚclass bodyÄÚ¶¨ÒåÍê³É£¬±ã×Ô¶¯³ÉÎªinlineºòÑ¡£¬±àÒëÆ÷»á½øÐÐÑ¡Ôñ
-//º¯ÊýÌ«¸´ÔÓ ¿ÉÄÜ¾ÍÎÞ·¨±»±àÒëÆ÷´¦ÀíÎªinline
-//Àý£ºÔÚclass body Íâ¶¨ÒåµÄ£¬µ«ÊÇÄÚ²¿ÊµÏÖ¼òµ¥£¬Ö÷¶¯ÉùÃ÷³Éinline ½øÈëºòÑ¡
+//æ‰©å±•ï¼šå†…è”å‡½æ•°ï¼ˆinlineï¼‰ æ‰§è¡Œæ•ˆçŽ‡é«˜ 
+//å«ä¹‰ï¼šå‡½æ•°åœ¨class bodyå†…å®šä¹‰å®Œæˆï¼Œä¾¿è‡ªåŠ¨æˆä¸ºinlineå€™é€‰ï¼Œç¼–è¯‘å™¨ä¼šè¿›è¡Œé€‰æ‹©
+//å‡½æ•°å¤ªå¤æ‚ å¯èƒ½å°±æ— æ³•è¢«ç¼–è¯‘å™¨å¤„ç†ä¸ºinline
+//ä¾‹ï¼šåœ¨class body å¤–å®šä¹‰çš„ï¼Œä½†æ˜¯å†…éƒ¨å®žçŽ°ç®€å•ï¼Œä¸»åŠ¨å£°æ˜Žæˆinline è¿›å…¥å€™é€‰
 /*
 inline double imag(const complex& x)
 {
@@ -92,15 +92,15 @@ inline double imag(const complex& x)
 }*/
 
 
-//À©Õ¹£º¹¹Ôìº¯Êý
-//ÏÂÃæ¶¼ÊÇ´´½¨¶ÔÏóµÄ·½Ê½
+//æ‰©å±•ï¼šæž„é€ å‡½æ•°
+//ä¸‹é¢éƒ½æ˜¯åˆ›å»ºå¯¹è±¡çš„æ–¹å¼
 /*
 complex c1(2, 1);
 complex c2;
 complex* p = new complex(4);
 */
 
-//Èç¹û°Ñ¹¹Ôìº¯Êý·ÅÔÚprivateÖÐ ³£¼ûµÄÊÇµ¥ÀýÄ£Ê½ Singleton
+//å¦‚æžœæŠŠæž„é€ å‡½æ•°æ”¾åœ¨privateä¸­ å¸¸è§çš„æ˜¯å•ä¾‹æ¨¡å¼ Singleton
 /*
 class A {
 public:
@@ -119,46 +119,46 @@ A& A::getInstance()
 	return a;
 }
 
-µ÷ÓÃ
+è°ƒç”¨
 A::getInstance().setup();
 
 */
 
-//À©Õ¹£ºº¯ÊýÖØÔØ(overloading) £¬°üÀ¨¹¹Ôìº¯Êý
-//±àÒëºóµÄÊµ¼ÊÃû³Æ²»Ò»Ñù
-//º¯ÊýÖØÔØ³£³£ÓÃÓÚ¹¹Ôìº¯Êý
-//Èç¹ûº¯Êý²ÎÊý´øÓÐÄ¬ÈÏÖµ£¬Òª×¢ÒâºÍÃ»ÓÐ²ÎÊýµÄº¯ÊýÄÜ²»ÄÜ¹²´æÖØÔØ
+//æ‰©å±•ï¼šå‡½æ•°é‡è½½(overloading) ï¼ŒåŒ…æ‹¬æž„é€ å‡½æ•°
+//ç¼–è¯‘åŽçš„å®žé™…åç§°ä¸ä¸€æ ·
+//å‡½æ•°é‡è½½å¸¸å¸¸ç”¨äºŽæž„é€ å‡½æ•°
+//å¦‚æžœå‡½æ•°å‚æ•°å¸¦æœ‰é»˜è®¤å€¼ï¼Œè¦æ³¨æ„å’Œæ²¡æœ‰å‚æ•°çš„å‡½æ•°èƒ½ä¸èƒ½å…±å­˜é‡è½½
 
 
-//À©Õ¹£ºconst ×÷ÓÃ
+//æ‰©å±•ï¼šconst ä½œç”¨
 /*
-	const complex c1(2, 1); //´´½¨Ò»¸öconst ¶ÔÏó
-	cout << c1.real();      //real() ÐèÒªconst ÉùÃ÷
-	cout << c1.imag();	    //imag() ÐèÒªconst ÉùÃ÷
+	const complex c1(2, 1); //åˆ›å»ºä¸€ä¸ªconst å¯¹è±¡
+	cout << c1.real();      //real() éœ€è¦const å£°æ˜Ž
+	cout << c1.imag();	    //imag() éœ€è¦const å£°æ˜Ž
 */
 
 
-//À©Õ¹£º ²ÎÊý´«µÝ
+//æ‰©å±•ï¼š å‚æ•°ä¼ é€’
 //pass by value vs. pass by reference(to const)
-//ÒýÓÃ¾ÍÊÇÍ¨¹ýÖ¸ÕëÊµÏÖµÄ
-//´«µÝÒýÓÃ¾ÍÊÇ´«µÝÖ¸Õë Ð§ÂÊ¿ì
-//c++ ½¨Òé ¾¡Á¿È«²¿²ÎÊý¶¼´«µÝÒýÓÃ
-//µ«ÊÇ Èç¹û´«µÝÒýÓÃ »áÒýÆð±ðÈËµÄ²»È·¶¨ÐÞ¸Ä ¶øÓ°Ïì´«µÝ·½  ¿ÉÒÔÑ¡Ôñ ´«µÝ reference (to const)
-//Ï¸½ÚÉÏ Èç¹û²ÎÊýÖ»ÓÐÒ»Á½¸ö×Ö½Ú£¬¶øÖ¸ÕëÓÐËÄ¸ö×Ö½Ú£¬ÄÇ¿ÉÒÔ´«µÝÖµµÄ·½Ê½
+//å¼•ç”¨å°±æ˜¯é€šè¿‡æŒ‡é’ˆå®žçŽ°çš„
+//ä¼ é€’å¼•ç”¨å°±æ˜¯ä¼ é€’æŒ‡é’ˆ æ•ˆçŽ‡å¿«
+//c++ å»ºè®® å°½é‡å…¨éƒ¨å‚æ•°éƒ½ä¼ é€’å¼•ç”¨
+//ä½†æ˜¯ å¦‚æžœä¼ é€’å¼•ç”¨ ä¼šå¼•èµ·åˆ«äººçš„ä¸ç¡®å®šä¿®æ”¹ è€Œå½±å“ä¼ é€’æ–¹  å¯ä»¥é€‰æ‹© ä¼ é€’ reference (to const)
+//ç»†èŠ‚ä¸Š å¦‚æžœå‚æ•°åªæœ‰ä¸€ä¸¤ä¸ªå­—èŠ‚ï¼Œè€ŒæŒ‡é’ˆæœ‰å››ä¸ªå­—èŠ‚ï¼Œé‚£å¯ä»¥ä¼ é€’å€¼çš„æ–¹å¼
 
-//À©Õ¹£º ·µ»ØÖµ´«µÝ
+//æ‰©å±•ï¼š è¿”å›žå€¼ä¼ é€’
 //return by value vs. return by reference(to const)
-//·µ»ØÖµµÄ´«µÝÒ²¾¡Á¿´«µÝÒýÓÃ
+//è¿”å›žå€¼çš„ä¼ é€’ä¹Ÿå°½é‡ä¼ é€’å¼•ç”¨
 
 
-//Ê²Ã´Çé¿öÏÂ¿ÉÒÔ´«Öµ Ê²Ã´Çé¿öÏÂ¿ÉÒÔ´«ÒýÓÃ
+//ä»€ä¹ˆæƒ…å†µä¸‹å¯ä»¥ä¼ å€¼ ä»€ä¹ˆæƒ…å†µä¸‹å¯ä»¥ä¼ å¼•ç”¨
 /*
-Èç¹ûº¯ÊýÉúÃüÖÜÆÚÖÐ£¬ÐèÒª´´½¨ÁÙÊ±¶ÔÏó´æ·ÅÊý¾Ý£¬º¯Êý½áÊøÊ±£¬ÁÙÊ±¶ÔÏó²»Ó¦¸Ã±»´«µÝµ½Íâ²¿±»ÒýÓÃ£¬ÕâÖÖÇé¿öÏÂ²»ÄÜ´«µÝÒýÓÃ
-º¯ÊýµÄ²ÎÊý ÈçµÚÒ»²ÎÊý»á±»¸Ä¶¯ µÚ¶þ²ÎÊý²»»á±»¸Ä¶¯ ÐèÒª½«µÚ¶þ²ÎÊý¸½¼Óµ½µÚÒ»²ÎÊýÉÏÊ± ¿ÉÒÔ´«µÝÒýÓÃ
+å¦‚æžœå‡½æ•°ç”Ÿå‘½å‘¨æœŸä¸­ï¼Œéœ€è¦åˆ›å»ºä¸´æ—¶å¯¹è±¡å­˜æ”¾æ•°æ®ï¼Œå‡½æ•°ç»“æŸæ—¶ï¼Œä¸´æ—¶å¯¹è±¡ä¸åº”è¯¥è¢«ä¼ é€’åˆ°å¤–éƒ¨è¢«å¼•ç”¨ï¼Œè¿™ç§æƒ…å†µä¸‹ä¸èƒ½ä¼ é€’å¼•ç”¨
+å‡½æ•°çš„å‚æ•° å¦‚ç¬¬ä¸€å‚æ•°ä¼šè¢«æ”¹åŠ¨ ç¬¬äºŒå‚æ•°ä¸ä¼šè¢«æ”¹åŠ¨ éœ€è¦å°†ç¬¬äºŒå‚æ•°é™„åŠ åˆ°ç¬¬ä¸€å‚æ•°ä¸Šæ—¶ å¯ä»¥ä¼ é€’å¼•ç”¨
 
 
-//º¯ÊýµÄÊý¾Ý²Ù×÷ÓÐÁ½ÖÖÇé¿ö
-//Çé¿ö1£ºº¯Êý²Ù×÷ºóµÄÊý¾Ý´æ·Åµ½Ä³¸ö²ÎÊýÖÐ
+//å‡½æ•°çš„æ•°æ®æ“ä½œæœ‰ä¸¤ç§æƒ…å†µ
+//æƒ…å†µ1ï¼šå‡½æ•°æ“ä½œåŽçš„æ•°æ®å­˜æ”¾åˆ°æŸä¸ªå‚æ•°ä¸­
 inline complex&
 __doapl(complex* ths, const complex& r)
 {
@@ -166,8 +166,8 @@ __doapl(complex* ths, const complex& r)
 	ths->im += r.im;
 	return *ths;
 }
-//Çé¿ö2£ºº¯Êý´´½¨ÐÂ¿Õ¼ä´æ·Å²Ù×÷ºóµÄÊý¾Ý
-//²»¿ÉÐÐ c3µÄÉúÃüÖÜÆÚÔÚº¯Êý½áÊøÊ±ÒÑ¾­½áÊø ÊÇlocal¸ÅÄî ²»ÄÜ°ÑÒýÓÃ´«³öÈ¥
+//æƒ…å†µ2ï¼šå‡½æ•°åˆ›å»ºæ–°ç©ºé—´å­˜æ”¾æ“ä½œåŽçš„æ•°æ®
+//ä¸å¯è¡Œ c3çš„ç”Ÿå‘½å‘¨æœŸåœ¨å‡½æ•°ç»“æŸæ—¶å·²ç»ç»“æŸ æ˜¯localæ¦‚å¿µ ä¸èƒ½æŠŠå¼•ç”¨ä¼ å‡ºåŽ»
 inline complex&
 __doapl(complex* ths, const complex& r)
 {
@@ -178,25 +178,25 @@ __doapl(complex* ths, const complex& r)
 */
 
 
-//À©Õ¹: ÓÑÔª
-//Í¬Ò»¸öclassµÄ¸÷¸öobject ±Ë´Ë»¥ÎªÓÑÔª
-//Àý£ºint func(const complex& param) { return param.re + param.im; }  Ö±½ÓÄÃ³ÉÔ±
+//æ‰©å±•: å‹å…ƒ
+//åŒä¸€ä¸ªclassçš„å„ä¸ªobject å½¼æ­¤äº’ä¸ºå‹å…ƒ
+//ä¾‹ï¼šint func(const complex& param) { return param.re + param.im; }  ç›´æŽ¥æ‹¿æˆå‘˜
 //    c2.func(c1);
 
 
-//À©Õ¹£º²Ù×÷·ûÖØÔØ  (operator overloading)   //²»Í¬¶¨ÒåÎ»ÖÃ£º³ÉÔ±º¯Êý
-//²Ù×÷·ûÊµ¼ÊÊÇÒ»¸öº¯Êý
-/* Àý£º c2 += c1
-¶þÔª²Ù×÷·û Á½¸ö²Ù×÷Êý£¨×óÊý¡¢ÓÒÊý£©
-±àÒëÆ÷»á½« += ×÷ÓÃÔÚ×óÊýÉÏ
-Èç¹û×óÊý¶Ô += ×ö¶¨Òå£¨ÖØÔØ£© ±àÒëÆ÷¾ÍÄÜÖ´ÐÐ¶ÔÓ¦µÄ²Ù×÷·ûº¯Êý
+//æ‰©å±•ï¼šæ“ä½œç¬¦é‡è½½  (operator overloading)   //ä¸åŒå®šä¹‰ä½ç½®ï¼šæˆå‘˜å‡½æ•°
+//æ“ä½œç¬¦å®žé™…æ˜¯ä¸€ä¸ªå‡½æ•°
+/* ä¾‹ï¼š c2 += c1
+äºŒå…ƒæ“ä½œç¬¦ ä¸¤ä¸ªæ“ä½œæ•°ï¼ˆå·¦æ•°ã€å³æ•°ï¼‰
+ç¼–è¯‘å™¨ä¼šå°† += ä½œç”¨åœ¨å·¦æ•°ä¸Š
+å¦‚æžœå·¦æ•°å¯¹ += åšå®šä¹‰ï¼ˆé‡è½½ï¼‰ ç¼–è¯‘å™¨å°±èƒ½æ‰§è¡Œå¯¹åº”çš„æ“ä½œç¬¦å‡½æ•°
 */
 
 /*
-1. ³ÉÔ±º¯Êý
+1. æˆå‘˜å‡½æ•°
 
-ËùÓÐ³ÉÔ±º¯Êý»á´øÓÐÒþ²ØµÄ²ÎÊý this pointer£¬  µ«ÊÇÕâ¸ö²ÎÊý²»ÄÜÐ´µ½²ÎÊýÁÐÀï£¬ µ«ÊÇº¯ÊýÄÚ¿ÉÒÔÓÃµ½£¬ Í¬Ê±²»Í¬±àÒëÆ÷ Õâ¸öthisµÄÎ»ÖÃÒ²²»Ò»¶¨ÏàÍ¬
-Àý£º__doapl  ==>  do assignment plus
+æ‰€æœ‰æˆå‘˜å‡½æ•°ä¼šå¸¦æœ‰éšè—çš„å‚æ•° this pointerï¼Œ  ä½†æ˜¯è¿™ä¸ªå‚æ•°ä¸èƒ½å†™åˆ°å‚æ•°åˆ—é‡Œï¼Œ ä½†æ˜¯å‡½æ•°å†…å¯ä»¥ç”¨åˆ°ï¼Œ åŒæ—¶ä¸åŒç¼–è¯‘å™¨ è¿™ä¸ªthisçš„ä½ç½®ä¹Ÿä¸ä¸€å®šç›¸åŒ
+ä¾‹ï¼š__doapl  ==>  do assignment plus
 inline complex&
 complex::operator += (const complex& r)
 {
@@ -210,30 +210,30 @@ complex::operator += (   this,    const complex& r)
 }
 
 c2 += c1;
-¼´thisÖ¸´úc2µÄµØÖ· 
+å³thisæŒ‡ä»£c2çš„åœ°å€ 
 
 
-return by reference Óï·¨·ÖÎö
-´«µÝÕßÎÞÐèÖªµÀ½ÓÊÕÕßÊÇÒÔreferenceÐÎÊ½½ÓÊÕµÄ
-inline complex&                                       //ÒýÓÃ
-__doapl(complex* ths, const complex& r)				  //complex* ÉùÃ÷Ö¸Õë
+return by reference è¯­æ³•åˆ†æž
+ä¼ é€’è€…æ— éœ€çŸ¥é“æŽ¥æ”¶è€…æ˜¯ä»¥referenceå½¢å¼æŽ¥æ”¶çš„
+inline complex&                                       //å¼•ç”¨
+__doapl(complex* ths, const complex& r)				  //complex* å£°æ˜ŽæŒ‡é’ˆ
 {
 	ths->re += r.re;
 	ths->im += r.im;
-	return *ths;									  //Ö¸ÕëËùÖ¸ÏòµÄ¶ÔÏó value / object		ÒòÎªthsÊÇÖ¸Õë *ths¼´ÎªÖ¸ÕëÖ¸ÏòµÄ¶«Î÷
+	return *ths;									  //æŒ‡é’ˆæ‰€æŒ‡å‘çš„å¯¹è±¡ value / object		å› ä¸ºthsæ˜¯æŒ‡é’ˆ *thså³ä¸ºæŒ‡é’ˆæŒ‡å‘çš„ä¸œè¥¿
 }
-### ÒÔÉÏÆäÊµ¿ÉÒÔ´«µÝ ¡¶Ö¸Õë¡· µ«ÊÇ»áÔö¼Ó½ÓÊÕÕßµÄ²Ù×÷ÄÑ¶È ÐèÒª´¦ÀíÖ¸Õë
+### ä»¥ä¸Šå…¶å®žå¯ä»¥ä¼ é€’ ã€ŠæŒ‡é’ˆã€‹ ä½†æ˜¯ä¼šå¢žåŠ æŽ¥æ”¶è€…çš„æ“ä½œéš¾åº¦ éœ€è¦å¤„ç†æŒ‡é’ˆ
 
 
-ÓÉÓÚ´æÔÚÁ¬´®µ÷ÓÃ
-c3 += c2 += c1  ÏÈµ÷ÓÃc2 += c1£¬·µ»ØÖµt21, È»ºóµ÷ÓÃc3 += t21
-ËùÒÔÉÏÃæµÄ+=ÖØÔØ²Ù×÷·ûº¯Êý²»ÄÜ·µ»Øvalue ²»È»ÎÞ·¨ÊµÏÖÁ¬´®µ÷ÓÃ
+ç”±äºŽå­˜åœ¨è¿žä¸²è°ƒç”¨
+c3 += c2 += c1  å…ˆè°ƒç”¨c2 += c1ï¼Œè¿”å›žå€¼t21, ç„¶åŽè°ƒç”¨c3 += t21
+æ‰€ä»¥ä¸Šé¢çš„+=é‡è½½æ“ä½œç¬¦å‡½æ•°ä¸èƒ½è¿”å›žvalue ä¸ç„¶æ— æ³•å®žçŽ°è¿žä¸²è°ƒç”¨
 
 */
 
 
 
-/***************************************************************     Àà¶¨Òå     **************************************************************/
+/***************************************************************     ç±»å®šä¹‰     **************************************************************/
 
 inline complex&
 __doapl(complex* ths, const complex& r)
@@ -250,20 +250,20 @@ complex::operator += (const complex& r)
 }
 
 /*
-class body ÍâµÄ¸÷ÖÖ¶¨Òå £¨definitions£©
+class body å¤–çš„å„ç§å®šä¹‰ ï¼ˆdefinitionsï¼‰
 
-2. È«¾Ö£¨È«Óò£©º¯Êý
-²»´øclassÃû³ÆµÄº¯Êý
-Çø·Ö£º
+2. å…¨å±€ï¼ˆå…¨åŸŸï¼‰å‡½æ•°
+ä¸å¸¦classåç§°çš„å‡½æ•°
+åŒºåˆ†ï¼š
 
-³ÉÔ±º¯Êý
+æˆå‘˜å‡½æ•°
 inline complex&
 complex::operator += (   this,    const complex& r)
 {
 	return __doapl(this, r);
 }
 
-È«¾Öº¯Êý
+å…¨å±€å‡½æ•°
 inline double
 imag(const complex& x)
 {
@@ -271,20 +271,20 @@ imag(const complex& x)
 }
 */
 
-//À©Õ¹£º²Ù×÷·ûÖØÔØ  (operator overloading)   //²»Í¬¶¨ÒåÎ»ÖÃ£º·Ç³ÉÔ±º¯Êý 
+//æ‰©å±•ï¼šæ“ä½œç¬¦é‡è½½  (operator overloading)   //ä¸åŒå®šä¹‰ä½ç½®ï¼šéžæˆå‘˜å‡½æ•° 
 /*
-È«¾Öº¯Êý ²»ÓÃÐ¯´øÒþ²Øthis
-ÎªÁËÂú×ãÐèÇó£¬¿ÉÄÜÐèÒªÖØÔØ¶à¸ö
+å…¨å±€å‡½æ•° ä¸ç”¨æºå¸¦éšè—this
+ä¸ºäº†æ»¡è¶³éœ€æ±‚ï¼Œå¯èƒ½éœ€è¦é‡è½½å¤šä¸ª
 
-Àý£º
-¸´Êý + ¸´Êý
+ä¾‹ï¼š
+å¤æ•° + å¤æ•°
 inline complex
 operator + (const complex& x, const complex& y)
 {
 	return complex (real(x) + real(y), imag(x) + imag(y));
 }
 
-ÊµÊý + ¸´Êý
+å®žæ•° + å¤æ•°
 inline complex
 operator + (const complex& x, double y)
 {
@@ -296,49 +296,49 @@ operator + (double x, const complex& y)
 	return complex ( x + real (y), imag(y));
 }
 
-µÈµÈ¡£¡£¡£
+ç­‰ç­‰ã€‚ã€‚ã€‚
 
-ÉÏÊöº¯Êý·µ»ØÖµ ±Ø¶¨ÊÇ local object  ²»¿ÉÄÜÊÇ return by reference  ¶øÊÇ return by value
-²»Í¬ÓÚÔ­ÏÈµÄÀý×Ó £¨½«Ò»¸öÊý¼Óµ½ÁíÒ»¸öÒÑ¾­´æÔÚµÄÊý£©
-ÏÖÔÚÊÇÁ½¸öÊý¼ÓÆðÀ´ »ñµÃÒ»¸öÐÂµÄÊýÖµ£¨ÐèÒª´´½¨³öÀ´£©
-Èç¹û»¹ÊÇ·µ»ØÒýÓÃ£¬ÔÚº¯Êý½áÊøÊ±£¬Õâ¸ö´´½¨¶ÔÏóµÄÉúÃüÖÜÆÚ¾Í½áÊøÁË£¬Èç¹û´«³öÈ¥ÒýÓÃ£¬ÄÇÃ´ÒýÓÃ¶ÔÏó¿ÉÄÜÊÇ¿ÕÖµ
+ä¸Šè¿°å‡½æ•°è¿”å›žå€¼ å¿…å®šæ˜¯ local object  ä¸å¯èƒ½æ˜¯ return by reference  è€Œæ˜¯ return by value
+ä¸åŒäºŽåŽŸå…ˆçš„ä¾‹å­ ï¼ˆå°†ä¸€ä¸ªæ•°åŠ åˆ°å¦ä¸€ä¸ªå·²ç»å­˜åœ¨çš„æ•°ï¼‰
+çŽ°åœ¨æ˜¯ä¸¤ä¸ªæ•°åŠ èµ·æ¥ èŽ·å¾—ä¸€ä¸ªæ–°çš„æ•°å€¼ï¼ˆéœ€è¦åˆ›å»ºå‡ºæ¥ï¼‰
+å¦‚æžœè¿˜æ˜¯è¿”å›žå¼•ç”¨ï¼Œåœ¨å‡½æ•°ç»“æŸæ—¶ï¼Œè¿™ä¸ªåˆ›å»ºå¯¹è±¡çš„ç”Ÿå‘½å‘¨æœŸå°±ç»“æŸäº†ï¼Œå¦‚æžœä¼ å‡ºåŽ»å¼•ç”¨ï¼Œé‚£ä¹ˆå¼•ç”¨å¯¹è±¡å¯èƒ½æ˜¯ç©ºå€¼
 
-¡¶Ò»¸öº¯ÊýÄÜ·ñ·µ»ØÒýÓÃ£º¿´Õâ¸öº¯ÊýÊÇ·ñÐèÒªÔÚÄÚ²¿´´½¨ÁÙÊ±Êý¾Ý²¢ÐèÒª¸øµ½Íâ²¿¡·
+ã€Šä¸€ä¸ªå‡½æ•°èƒ½å¦è¿”å›žå¼•ç”¨ï¼šçœ‹è¿™ä¸ªå‡½æ•°æ˜¯å¦éœ€è¦åœ¨å†…éƒ¨åˆ›å»ºä¸´æ—¶æ•°æ®å¹¶éœ€è¦ç»™åˆ°å¤–éƒ¨ã€‹
 
 
-À©Õ¹£ºÁÙÊ±¶ÔÏó£¬temp object   Ã»ÓÐÃû³Æ
- ÐÂÓï·¨£ºtypename();
- Àý£º
+æ‰©å±•ï¼šä¸´æ—¶å¯¹è±¡ï¼Œtemp object   æ²¡æœ‰åç§°
+ æ–°è¯­æ³•ï¼štypename();
+ ä¾‹ï¼š
  inline complex
 operator + (double x, const complex& y)
 {
 	return complex ( x + real (y), imag(y));
 }
 
-´´½¨ÁÙÊ±¶ÔÏó²¢ÇÒÁ¢¿Ì·µ»Ø
+åˆ›å»ºä¸´æ—¶å¯¹è±¡å¹¶ä¸”ç«‹åˆ»è¿”å›ž
 complex ( x + real (y), imag(y));
 
-Çø±ð´´½¨¶ÔÏó£º
+åŒºåˆ«åˆ›å»ºå¯¹è±¡ï¼š
 complex c1(2, 1);
 complex c2;
 
-´´½¨ÁÙÊ±¶ÔÏó£º
+åˆ›å»ºä¸´æ—¶å¯¹è±¡ï¼š
 complex();
 complex(4, 5);
 complex(2);
-×¢Òâ£ºÖ´ÐÐµ½ÏÂÒ»ÐÐ ÕâÁ½¸öÁÙÊ±¶ÔÏóµÄÉúÃüÖÜÆÚÒÑ¾­½áÊø
+æ³¨æ„ï¼šæ‰§è¡Œåˆ°ä¸‹ä¸€è¡Œ è¿™ä¸¤ä¸ªä¸´æ—¶å¯¹è±¡çš„ç”Ÿå‘½å‘¨æœŸå·²ç»ç»“æŸ
 
 
 
-À©Õ¹£º²Ù×÷·ûÖØÔØ
-Àý£º¸´ÊýÈ¡Õý È¡·´£¨·´Ïò£©
+æ‰©å±•ï¼šæ“ä½œç¬¦é‡è½½
+ä¾‹ï¼šå¤æ•°å–æ­£ å–åï¼ˆåå‘ï¼‰
 inline complex
 operator + (const complex& x)
 {
 	return x;
 }
 
-// ÐÞ¸ÄÎª·µ»ØÒýÓÃ Ó¦¸ÃÒ²¿ÉÒÔ ÒòÎª·µ»ØµÄ¾ÍÊÇÔ­À´µÄÖµ
+// ä¿®æ”¹ä¸ºè¿”å›žå¼•ç”¨ åº”è¯¥ä¹Ÿå¯ä»¥ å› ä¸ºè¿”å›žçš„å°±æ˜¯åŽŸæ¥çš„å€¼
 inline complex&
 operator + (const complex& x)
 {
@@ -356,8 +356,8 @@ operator - (const complex& x)
 // cout << -c1;
 // cout << +c1;
 
-Àý£º
-//¹²éî¸´Êý£ºÊµ²¿ÏàµÈ£¬Ðé²¿Õý¸ºÏà·´
+ä¾‹ï¼š
+//å…±è½­å¤æ•°ï¼šå®žéƒ¨ç›¸ç­‰ï¼Œè™šéƒ¨æ­£è´Ÿç›¸å
 inline complex
 conj (const complex&)
 {
@@ -365,9 +365,9 @@ conj (const complex&)
 }
 
 
-À©Õ¹£ºÌØÊâ²Ù×÷·ûÖØÔØ - È«¾Öº¯Êý
-ÖØÔØÄÚÖÃ²Ù×÷·û
-Àý£º
+æ‰©å±•ï¼šç‰¹æ®Šæ“ä½œç¬¦é‡è½½ - å…¨å±€å‡½æ•°
+é‡è½½å†…ç½®æ“ä½œç¬¦
+ä¾‹ï¼š
 #include <iostream.h>
 ostream& 
 operator << (ostream& os, const complex& x)
@@ -376,47 +376,47 @@ operator << (ostream& os, const complex& x)
 			  << imag(x) << ')';
 }
 
-C++Ã»ÓÐ×÷ÓÃÔÚÓÒÖµÉÏµÄ²Ù×÷·û
+C++æ²¡æœ‰ä½œç”¨åœ¨å³å€¼ä¸Šçš„æ“ä½œç¬¦
 
-Àý£º
+ä¾‹ï¼š
 complex c1(2, 1);
 cout << conj(c1);
-// << ×÷ÓÃÔÚ ×ø±êcoutÉÏ   coutÊÇ±ê×¼¿âµÄ¶ÔÏó £¨²éÑ¯±ê×¼¿â £ºÀàÐÍÊÇ ostream£©  ²»ÈÏÊ¶ ÐÂ¶¨ÒåµÄ conj(c1) ËùÒÔ²»ÄÜ°Ñ << µÄÖØÔØº¯ÊýÐ´³É³ÉÔ±º¯Êý
-//×¢Òâ£º²»ÄÜ°ÑÄÚÖÃ´æÔÚµÄ²Ù×÷·û µÄÖØÔØº¯Êý Ð´³É³ÉÔ±º¯Êý Ö»ÄÜÐ´³ÉÈ«¾Öº¯Êý £¡
-// ÖØÔØ<<µÄº¯ÊýÖÐµÄ²ÎÊý ÆäÖÐ ostream& Ö¸´ú cout  const complex& Ö¸´ú conj(c1)
+// << ä½œç”¨åœ¨ åæ ‡coutä¸Š   coutæ˜¯æ ‡å‡†åº“çš„å¯¹è±¡ ï¼ˆæŸ¥è¯¢æ ‡å‡†åº“ ï¼šç±»åž‹æ˜¯ ostreamï¼‰  ä¸è®¤è¯† æ–°å®šä¹‰çš„ conj(c1) æ‰€ä»¥ä¸èƒ½æŠŠ << çš„é‡è½½å‡½æ•°å†™æˆæˆå‘˜å‡½æ•°
+//æ³¨æ„ï¼šä¸èƒ½æŠŠå†…ç½®å­˜åœ¨çš„æ“ä½œç¬¦ çš„é‡è½½å‡½æ•° å†™æˆæˆå‘˜å‡½æ•° åªèƒ½å†™æˆå…¨å±€å‡½æ•° ï¼
+// é‡è½½<<çš„å‡½æ•°ä¸­çš„å‚æ•° å…¶ä¸­ ostream& æŒ‡ä»£ cout  const complex& æŒ‡ä»£ conj(c1)
 
-// ²»ÄÜÐ´   ostream& 
+// ä¸èƒ½å†™   ostream& 
 			operator << const (ostream& os, const complex& x) 
-			{...} £¡
-// ²»ÄÜÐ´ const µÄÔ­ÒòÊÇ º¯ÊýÄÚ²¿ Íù cout / os ÖÐÈû(<<) ÐèÒª´òÓ¡µÄÊý¾ÝÊ± ÒÑ¾­¸ÄÁËosÁË
+			{...} ï¼
+// ä¸èƒ½å†™ const çš„åŽŸå› æ˜¯ å‡½æ•°å†…éƒ¨ å¾€ cout / os ä¸­å¡ž(<<) éœ€è¦æ‰“å°çš„æ•°æ®æ—¶ å·²ç»æ”¹äº†osäº†
 
-// ·µ»ØÀàÐÍÆäÊµ¿ÉÒÔÊÇ void µ«ÊÇ¿¼ÂÇµ½Ê¹ÓÃÕß»áÁ¬´®Êä³ö
-// ²»ÄÜÐ´   void
+// è¿”å›žç±»åž‹å…¶å®žå¯ä»¥æ˜¯ void ä½†æ˜¯è€ƒè™‘åˆ°ä½¿ç”¨è€…ä¼šè¿žä¸²è¾“å‡º
+// ä¸èƒ½å†™   void
 			operator << (ostream& os, const complex& x)
-			{...} £¡
-Àý£º
+			{...} ï¼
+ä¾‹ï¼š
 cout << c1 << conj(c1);
-// ÏÈÊä³öc1 µÃµ½µÄ½á¹ûÔÙ½ÓÊÕ conj(c1)  ÄÇ·µ»ØµÄÐèÒªÊÇ cout  ¿¼ÂÇÊÇ·ñÊÇreturn by value »¹ÊÇ by reference ÒòÎª osÔÚº¯ÊýÄÚ²¿²»ÊÇlocal¶ÔÏó  ¼´Ð´³É ostream&
-// º¯Êý·µ»ØÇ°²»ÄÜ¼Ó const  Á¬´®ÖÐ Êä³öc1 ºó »¹ÐèÒª¸Ä±äcout Êä³ö conj(c1)
-// ²»ÄÜÐ´   const ostream& 
+// å…ˆè¾“å‡ºc1 å¾—åˆ°çš„ç»“æžœå†æŽ¥æ”¶ conj(c1)  é‚£è¿”å›žçš„éœ€è¦æ˜¯ cout  è€ƒè™‘æ˜¯å¦æ˜¯return by value è¿˜æ˜¯ by reference å› ä¸º osåœ¨å‡½æ•°å†…éƒ¨ä¸æ˜¯localå¯¹è±¡  å³å†™æˆ ostream&
+// å‡½æ•°è¿”å›žå‰ä¸èƒ½åŠ  const  è¿žä¸²ä¸­ è¾“å‡ºc1 åŽ è¿˜éœ€è¦æ”¹å˜cout è¾“å‡º conj(c1)
+// ä¸èƒ½å†™   const ostream& 
 			operator << (ostream& os, const complex& x) 
-			{...} £¡
-//Èç¹ûº¯Êý·µ»ØÖµ²ÉÓÃ by value ÄÇ¼Óconst Ã»ÓÐ¼ÛÖµ
-Àý:
+			{...} ï¼
+//å¦‚æžœå‡½æ•°è¿”å›žå€¼é‡‡ç”¨ by value é‚£åŠ const æ²¡æœ‰ä»·å€¼
+ä¾‹:
 double real() const { return re;}
-Ð´³É const double real() const {return re;}
+å†™æˆ const double real() const {return re;}
 
 
 
 
-//Èç¹ûÒªÊµÏÖÎ¥±³¾­ÑéµÄÐ´·¨ £¨µ±È»ÊÇ²»ÍÆ¼öµÄÀ­£©
-Àý£º
+//å¦‚æžœè¦å®žçŽ°è¿èƒŒç»éªŒçš„å†™æ³• ï¼ˆå½“ç„¶æ˜¯ä¸æŽ¨èçš„æ‹‰ï¼‰
+ä¾‹ï¼š
 complex c1(1, 2);
 c1 << cout;
 
-ÔòÆäÊµÒ²¿ÉÒÔÔÚcomplexÖÐÖØÔØ²Ù×÷·û <<   
-Ö»ÄÜ×÷ÓÃÔÚ×óÖµÉÏ ËùÒÔ¿ÉÒÔ×÷Îª³ÉÔ±º¯Êý Òþ²Øthis
-ÄÚ²¿ÊµÏÖ ¿ÉÄÜÊÇ
+åˆ™å…¶å®žä¹Ÿå¯ä»¥åœ¨complexä¸­é‡è½½æ“ä½œç¬¦ <<   
+åªèƒ½ä½œç”¨åœ¨å·¦å€¼ä¸Š æ‰€ä»¥å¯ä»¥ä½œä¸ºæˆå‘˜å‡½æ•° éšè—this
+å†…éƒ¨å®žçŽ° å¯èƒ½æ˜¯
 void
 complex::operator << (ostream& os)
 {

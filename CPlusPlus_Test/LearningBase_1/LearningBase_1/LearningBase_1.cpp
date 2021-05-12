@@ -4,6 +4,8 @@
 //#include <iostream.h> //for c++ 当前版本不可用
 #include <iostream>
 
+#include <string>
+
 
 //#include <cstdio>   //for c 可用
 //#include <stdio.h>  //for c 可用
@@ -19,11 +21,94 @@
 
 #include "base_2.h"
 
+#include "base_4.h"
+
+#include "base_5.h"
+
+#include "template_test_2.h"
+
+#include "base_6.h"
+
 complex global_c(1, 2);//《全局 stack对象》
 
 using namespace std;
 
 int main() {
+
+	//base_6  左值右值测试
+	TestLRValue tlrv_1;
+	tlrv_1.Test_1();
+
+	return 0;
+
+	//template_test_2  模板测试
+	TestTemplate_1 tt_1;
+	int tt_1_a = 1, tt_1_b = 2;
+	int result = tt_1.Add(tt_1_a, tt_1_b);  //可以省略Add<int>
+
+
+	return 0;
+
+	//base_5 智能指针测试
+	//1. 栈中创建对象
+	TestObject *ptr1;
+	{
+		TestObject test1;
+		ptr1 = &test1;
+	}
+	ptr1->TestFunc();  //test已经被销毁了
+
+	//2. 在堆中创建对象
+	{
+		TestObject* ptr2 = new TestObject();
+		ptr2->TestFunc();  //创建的对象 离开作用域 也不会被销毁  需要找合适的时机来销毁
+	}
+
+	//3.自定义智能指针测试
+	{
+		TestObject* ptr2 = new TestObject();
+		TestSmartPointer<TestObject> smartPtr1 = ptr2;
+		smartPtr1->TestFunc();
+		{
+			TestSmartPointer<TestObject> smartPtr2 = smartPtr1;
+			{
+				TestSmartPointer<TestObject> smartPtr3 = smartPtr2;
+			}
+			cout << "SmartPtr3 leave action scope" << endl;
+		}
+		cout << "SmartPtr2 leave action scope" << endl;
+	}
+	cout << "SmartPtr1 leave action scope" << endl;
+
+	return 0;
+
+
+	//base_4 类型转换测试
+	std::vector<BaseOfBase*> vpbb;
+	Base_CC<int>            bi;
+	Derived_CC<int>         di;
+	Base_CC<std::string>    bs;
+	Derived_CC<std::string> ds;
+
+	bi.val = 1;
+	di.val = 2;
+	bs.val = "foo";
+	ds.val = "bar";
+
+	vpbb.push_back(&bi);
+	vpbb.push_back(&di);
+	vpbb.push_back(&bs);
+	vpbb.push_back(&ds);
+
+	for (auto const & pbb : vpbb)
+		pbb->do_something();
+
+	return 0;
+
+
+	Base_BB<Derived_BB> *b = new Derived_BB();
+	std::cout << b->method<bool>() << std::endl;
+	return 0;	
 
 	//int *p_1 = new int();
 	//cout << *p_1 << endl; // 输出0 默认构造函数
@@ -34,7 +119,7 @@ int main() {
 	//return 0;
 
 
-	/**测试指针和引用**/
+	//base_2 指针和引用测试
 	Base_2 base_2;
 	base_2.test_swap_by_pointer();
 	base_2.test_pass_by_value_pointer();
@@ -113,7 +198,6 @@ int main() {
 
 	String *ps = new String("Hello");
 	//delete ps;
-
 	//delete操作 ==> 编译后的实现              
 	ps->~String();								//调用析构函数
 	operator delete(ps);                        //operator delete 是一个函数名称：  内部调用 free(ps)

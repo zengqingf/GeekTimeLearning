@@ -35,7 +35,9 @@
       class XX_API XX {...};
   ```
 
-* error LNK2019: unresolved external symbol  ( module A和B，B调用不到A的Public下的.h  )
+* error LNK2019: unresolved external symbol  ( module A和B，B调用不到A的Public下的.h  )   
+
+  __LNK2019错误一般都是 compile时找到了相应的（.h）文件，但链接时找不到相应的 lib 库文件（也含dll文件）__
 
   ``` 
   解决方法： A中.h class中添加 A_API
@@ -44,18 +46,20 @@
   
   //B.h
   #include 'A.h'
+  
+  
+  注意：需要在A.h中依赖的其他类及其子类中都添加  A_API !!!
   ```
 
 * error LNK2019: unresolved external symbol ( UE4.26 编辑器创建C++继承AIController，并且调用了UNavigationSystemV1的GetCurrent等接口 )
 
   ``` text
   需要在模块的*.Build.cs中的 PublicDependencyModuleNames 引入 NavigationSystem
-  （如何确定名称是：NavigationSystem，可以在Unreal Engine API Reference中的 搜索到 UNavigationSystemV1，看文档中 Module: NavigationSystem 即可确定）
-https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSystemV1/index.html
+  
+（如何确定名称是：NavigationSystem，可以在Unreal Engine API Reference中的 搜索到 UNavigationSystemV1，看文档中 Module: NavigationSystem 即可确定）
+  https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSystemV1/index.ht19ml![](https://i.loli.net/2021/03/09/WMlnuCSye8ozJpc.jpg)
   ```
   
-  ![](https://i.loli.net/2021/03/09/WMlnuCSye8ozJpc.jpg)
-
 * UE4输出日志乱码
 
   ``` text
@@ -403,7 +407,7 @@ https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSyst
   ```
 
   ``` c++
-  	template<typename RangeType>
+  2	template<typename RangeType>
   	class FllowRangeFilter : public BeRangeFilter
   	{
   		RangeType m_range;
@@ -467,3 +471,15 @@ https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSyst
   ```
 
   
+
+* missing referenced directories
+
+  ``` 
+  Build.cs中添加依赖需要注意：
+  
+  using System.IO;
+  
+  PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
+  相当于添加了   [PLUGINNAME]/Public
+  ```
+

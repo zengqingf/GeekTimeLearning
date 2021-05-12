@@ -92,3 +92,23 @@
 
      ![](./androidstudio-配置gradle插件版本.jpg)
 
+
+
+
+
+* 修改module的packagename 
+
+  ``` text
+  每个Module都有一个AndroidManifest.xml 
+  修改根节点的packagename 即可
+  ```
+
+  
+
+* 把so加入到build后的aar中
+
+  [How to Build *.so Library Files into AAR Bundle in Android Studio](https://www.dynamsoft.com/codepool/build-so-aar-android-studio.html)
+
+  ``` text
+  在对应module的src/main/下新建文件夹 jniLibs ，将so按cpu架构目录分别放入（armeabi-v7a / x86 ...）
+  ```

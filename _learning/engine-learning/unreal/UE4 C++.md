@@ -462,7 +462,10 @@
   }
   ```
 
-  
+
+
+
+* 智能指针
 
   
 
@@ -483,3 +486,56 @@
   [UE4 项目的设计规范和代码标准](https://imzlp.com/posts/25915/)
 
   
+
+
+
+---
+
+
+
+### UE4 GC
+
+link: [UE4 TSharedPtr和UObject的垃圾回收](http://www.v5xy.com/?p=808)
+
+``` text
+TSharedPtr 不能用于 UObject
+UObject基于UE4自身宏机制实现的GC, 即必须要添加UProperty()
+例如：
+    UProperty()
+    UObject* Obj;
+
+Unreal Build Tool(UBT)和Unreal Header Tool (UHT)
+两个协同工作来生成运行时反射需要的数据。UBT属性通过扫描头文件，记录任何至少有一个反射类型的头文件的模块。如果其中任意一个头文件从上一次编译起发生了变化，那么 UHT就会被调用来利用和更新反射数据。UHT分析头文件，创建一系列反射数据，并且生成包含反射数据的C++代码（放到每一个模块的moulde.generated.inl中。注：最新版会生成到moudle.generated.cpp中），还有各种帮助函数以及thunk函数（每一个 头文件 .generated.h）
+
+反射系统在对整个系统的宏进行扫描都是在系统编译之前
+UE4本身利用UBT和UHT进行宏扫描和展开，然后生成特定记录元数据的代码提供给最后VS进行编译
+
+如果是本身在函数内定义的对象，并不能加入UProperty，可选择使用虚幻自身的TArray和TMap进行存储也可参与GC。
+
+如果不使用宏标记，也不适用TArray和TMap存储，尝试用自定义别名方式对UE4的UProperty宏进行预定义
+例如：
+    typedef UPROPERTY() AEntity* EntityPtr;
+    #define EntityDefinePtr UPROPERTY() AEntity*
+
+    测试：
+    //1
+    EntityPtr testP;
+    //2
+    EntityDefinePtr defP;
+    //3
+    UPROPERTY()
+    AEntity* entityPtr;
+    
+测试结果：编译之后，虚幻自身GC对我们自定义的宏和别名并没进行替换和展开，generated.h里面并没有记录，也就不会参与GC。
+原因：关键在于虚幻自身实现的UBT对他自身宏的展开，其实早于VS编译时的展开。
+	UBT首先完成makefile的创建和编译规则，然后就会请求扫描头文件中的宏（UNFUNCTIN,UProperty...）生成generated.h文件，
+	随后发出编译请求，链接到当前的编译器（VS），这时候才启动VS自身的编译，
+	那么无论是#define在VS编译之前或者typedef别名替换在编译中，都已经晚于虚幻4自身的CG宏展开，那么自然也就没法实现GC了，
+	其实从VS中提示intell语法检测中提示没有generated.h文件时的错误时可以看出generated.h文件并不被VS编辑器生成的，编译结果也能正常通过。
+
+结论：
+	只有常规定义的宏才被正确展开了，typedef和define都未正确被UBT展开。
+	
+
+```
+

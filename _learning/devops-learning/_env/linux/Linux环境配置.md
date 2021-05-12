@@ -4,6 +4,14 @@
 
 [Linux系统下载](https://man.linuxde.net/download/)
 
+* 系统
+
+  ubuntu （Debian）适合开发环境
+
+  centos（RHEL） 适合稳定运行环境，企业级
+
+  ![](https://i.loli.net/2021/05/08/jk3hSdJbq8FZPLN.jpg)
+
 
 
 ### android

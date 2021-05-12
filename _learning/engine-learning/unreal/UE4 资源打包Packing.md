@@ -372,3 +372,119 @@
     ```
 
     
+
+* UE4 Android apk size > 2GB
+
+  ``` text
+  解决1：
+  Packaging - 高级 - Create compressed cooked packages
+  ```
+
+* UE4 iOS ipa : per pak size > 2GB
+
+  ``` text
+  iPhonePackager.cs / exe
+  
+  
+  
+  ```
+
+  
+
+  [在Linux和Windows平台上操作MemoryMappedFile(简称MMF)](https://www.cnblogs.com/shanyou/p/3353622.html)
+
+  ``` text
+  c#中 byte[] 不能大于2GB  int32.MaxSize
+  会增加out of memory的风险
+  ```
+
+  
+
+---
+
+
+
+### 资源处理
+
+* Cook
+
+  ``` text
+  UE4是跨平台的引擎，导入资源到UE4中时，是以uasset格式存储的
+  这个格式无法被其他平台读取
+  打包前需要把这个通用平台格式转换成对应平台格式（或者是性能更好的格式）
+  
+  Cook是一种转换的过程
+  ```
+
+  
+
+
+
+
+
+---
+
+
+
+### 热更新
+
+* 热更新关键
+
+  ``` text
+  基于Pak的更新
+  	资源存储在Pak中
+  	可控的挂载Pak的时机(通过Mount方式挂载到游戏中)
+  	Pak可以设定优先级
+  
+  UFS读取文件具有优先级(PakOrder)
+  默认读取Order最大的Pak中的文件
+  
+  ==> 保证了热更新的基础
+  ```
+
+* 资源管理
+
+  ``` text
+  pak中包含
+  
+  Cooked uasset
+  Slate资源				 窗体
+  Internationalization  国际化（多语言）
+  .uproject / .uplugin  包含插件 / 包含插件中的模块
+  Config				  INI文件
+  AssetRegistry.bin
+  资产注册表（游戏中包含的资源及其引用关系）
+  ushaderbytecode		  （需要开启共享材质ShaderCode才会有   ProjectSetting -> Packaging -> Share Material Shader Code）
+  shadercache			  （需要开启共享材质ShaderCode才会有） 
+  添加的Non-Asset文件     lua / .db等数据类文件
+  
+  
+  推荐热更新内容：
+  uasset
+  Internationalization
+  AssetRegistry.bin
+  Shaderbytecode
+  Shadercache
+  外部文件(lua等)
+  ```
+
+* Pak打包
+
+  ``` text
+  收集要打包的资源及外部文件
+  cook uasset
+  存储打包的Response文件
+  使用UnrealPak执行打包
+  
+  ResponseFile格式：
+  文件绝对路径 + Mount之后的路径 + 打包参数
+  如：
+  "F:\_Dev\projects\Tenmove_Project_A8_trunk\Client\NextGenGame\Saved\Cooked\IOS\NextGenActionGame\Content\Resources\Scenes\Chapter\Chapter_A\Styles\Style01\Material\MI_a1sbcj_jianshiqi01_05.uexp" "../../../NextGenActionGame/Content/Resources/Scenes/Chapter/Chapter_A/Styles/Style01/Material/MI_a1sbcj_jianshiqi01_05.uexp"
+  
+  UnrealPak打包命令：
+  UnrealPak.exe SAVE_PAK.pak -create=RESPONSE_FILE.txt -compress
+  ```
+
+  
+
+  

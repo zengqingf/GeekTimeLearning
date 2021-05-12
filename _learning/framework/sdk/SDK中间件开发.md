@@ -11,6 +11,7 @@
   ``` text
 Android 需要为Unity 提供大量功能接口。
   Unity 为 Android 部分提供少量接口。
+  ```
 ```
   
 
@@ -23,26 +24,26 @@ Android 需要为Unity 提供大量功能接口。
   
 [Unity3d Android SDK接入解析（一）Unity3d 与 Android之间的互相调用](https://blog.csdn.net/yang8456211/article/details/51331358)
   
-``` text
+​``` text
   所以，我们使用的currentActivity 就是当前activity的上下文。写到这里，我还有一个疑问，就是currentActivity是拿到的UnityPlayerNativeActivity的上下文，但是是怎么调用到的Myactivity里面的方法的呢？希望知道的人告诉我。
 ```
-  
 
-  
+
+
 [Unity与Android交互](https://blog.csdn.net/ykmzy/article/details/82704534)
-  
+
 [在unity中如何高效的使用内置android方法](https://blog.csdn.net/osuckseed/article/details/84940618)
-  
 
-  
 
-  
 
-  
+
+
+
+
 [Android中嵌入Unity Module - unity开发之android与unity跨平台开发](https://www.jianshu.com/p/74722e8b29ec)
-  
+
 [github - unity - Unity as a Library integration example to iOS and Android](https://github.com/Unity-Technologies/uaal-example)
-  
+
   ![](./Unity-Android_UML.png)
 
 
@@ -125,98 +126,98 @@ Android 需要为Unity 提供大量功能接口。
           at UnityEng
     */
     
-    ```
-  
-  //可行9 10：
-    //9:  using (AndroidJavaClass wifiManagerClass = new AndroidJavaClass("android.net.wifi.WifiManager"))
-    //	  using (AndroidJavaObject wifiManagerClass = new AndroidJavaObject("android.net.wifi.WifiManager"))
-    //10: using (AndroidJavaClass contextClass = new AndroidJavaClass("android.content.Context"))
-    //    using (AndroidJavaObject contextClass = new AndroidJavaObject("android.content.Context"))
+    
+    //可行9 10：
+      //9:  using (AndroidJavaClass wifiManagerClass = new AndroidJavaClass("android.net.wifi.WifiManager"))
+      //	  using (AndroidJavaObject wifiManagerClass = new AndroidJavaObject("android.net.wifi.WifiManager"))
+      //10: using (AndroidJavaClass contextClass = new AndroidJavaClass("android.content.Context"))
+      //    using (AndroidJavaObject contextClass = new AndroidJavaObject("android.content.Context"))
     ```
     
     ``` c#
-    //用例
-     protected int GetKeyboardSize()
-        {
-            //using (AndroidJavaClass testjo1 = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-            //using (AndroidJavaObject testjo1 = new AndroidJavaObject("com.unity3d.player.UnityPlayer")) 
-            //{            
-            //    int value1 = Int32.MaxValue;
-            //    value1 = testjo1.Get<int>("c");                                                                                         
-            //    androidKeyboardSize = "测试1 ： " + value1;
-    
-            //    AndroidJavaObject testjo2 = testjo1.GetStatic<AndroidJavaObject>("currentActivity");
-            //    string value2 = "Null";
-            //    value2 = testjo1.CallStatic<string>("a", testjo2);      
-            //    androidKeyboardSize += "\n测试2 ： " + value2;
-            //    return 0;
-            //}
-    
-            
-            using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-            // using (AndroidJavaObject UnityClass = new AndroidJavaObject("com.unity3d.player.UnityPlayer"))
-            {
-                AndroidJavaObject View = null;
-    
-                try
-                {
-                    if (UnityClass == null)
-                        return 0;
-                    AndroidJavaObject activity = UnityClass.GetStatic<AndroidJavaObject>("currentActivity");
-                    if (activity == null)
-                        return 0;
-                    AndroidJavaObject unityPlayer = activity.Get<AndroidJavaObject>("mUnityPlayer");
-                    if (unityPlayer == null)
-                    {
-                        androidKeyboardSize = string.Format("AndroidJavaObject Get mUnityPlayer is null");
-                    }
-                    else
-                    {
-                        androidKeyboardSize = string.Format("AndroidJavaObject Get mUnityPlayer type : {0}, \n str : {1} \n raw class intptr : {2} \n raw object intptr : {3}",
-                         unityPlayer.GetType(), unityPlayer.ToString(), unityPlayer.GetRawClass().ToString(), unityPlayer.GetRawObject().ToString());
-                    }
-                    View = unityPlayer.Call<AndroidJavaObject>("getView");
-                }
-                catch (Exception e)
-                {
-                    Logger.LogError("try GetUnityPlayerView in Android failed : "+e.ToString());
-                    return 0;
-                }
-    
-                if (View == null)
-                    return 0;
-    
-                using (AndroidJavaObject Rct = new AndroidJavaObject("android.graphics.Rect"))
-                //using (AndroidJavaObject Rct = new AndroidJavaClass("android.graphics.Rect"))  //不可行
-                //using (AndroidJavaClass Rct = new AndroidJavaClass("android.graphics.Rect"))  //不可行
-                {
-                    if (Rct == null)
-                    {
-                        androidKeyboardSize = string.Format("android.graphics.Rect is null");
-                        return 0;
-                    }else
-                    {
-                        androidKeyboardSize = string.Format("android.graphics.Rect ： {0}", Rct.ToString());
-                    }
-                    try
-                    {
-                        View.Call("getWindowVisibleDisplayFrame", Rct);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.LogError("Platform Android GetKeyboardSize failed :"+e.ToString());
-                        return 0;
-                    }
-                    int rect = Screen.height - Rct.Call<int>("height");
-                  androidKeyboardSize = string.Format("result : {0}", rect);
-                    return rect;
-                }       
-            }
-        }
+      
+      ``` c#
+      //用例
+       protected int GetKeyboardSize()
+          {
+              //using (AndroidJavaClass testjo1 = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+              //using (AndroidJavaObject testjo1 = new AndroidJavaObject("com.unity3d.player.UnityPlayer")) 
+              //{            
+              //    int value1 = Int32.MaxValue;
+              //    value1 = testjo1.Get<int>("c");                                                                                         
+              //    androidKeyboardSize = "测试1 ： " + value1;
+      
+              //    AndroidJavaObject testjo2 = testjo1.GetStatic<AndroidJavaObject>("currentActivity");
+              //    string value2 = "Null";
+              //    value2 = testjo1.CallStatic<string>("a", testjo2);      
+              //    androidKeyboardSize += "\n测试2 ： " + value2;
+              //    return 0;
+              //}
+      
+              
+              using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+              // using (AndroidJavaObject UnityClass = new AndroidJavaObject("com.unity3d.player.UnityPlayer"))
+              {
+                  AndroidJavaObject View = null;
+      
+                  try
+                  {
+                      if (UnityClass == null)
+                          return 0;
+                      AndroidJavaObject activity = UnityClass.GetStatic<AndroidJavaObject>("currentActivity");
+                      if (activity == null)
+                          return 0;
+                      AndroidJavaObject unityPlayer = activity.Get<AndroidJavaObject>("mUnityPlayer");
+                      if (unityPlayer == null)
+                      {
+                          androidKeyboardSize = string.Format("AndroidJavaObject Get mUnityPlayer is null");
+                      }
+                      else
+                      {
+                          androidKeyboardSize = string.Format("AndroidJavaObject Get mUnityPlayer type : {0}, \n str : {1} \n raw class intptr : {2} \n raw object intptr : {3}",
+                           unityPlayer.GetType(), unityPlayer.ToString(), unityPlayer.GetRawClass().ToString(), unityPlayer.GetRawObject().ToString());
+                      }
+                      View = unityPlayer.Call<AndroidJavaObject>("getView");
+                  }
+                  catch (Exception e)
+                  {
+                      Logger.LogError("try GetUnityPlayerView in Android failed : "+e.ToString());
+                      return 0;
+                  }
+      
+                  if (View == null)
+                      return 0;
+      
+                  using (AndroidJavaObject Rct = new AndroidJavaObject("android.graphics.Rect"))
+                  //using (AndroidJavaObject Rct = new AndroidJavaClass("android.graphics.Rect"))  //不可行
+                  //using (AndroidJavaClass Rct = new AndroidJavaClass("android.graphics.Rect"))  //不可行
+                  {
+                      if (Rct == null)
+                      {
+                          androidKeyboardSize = string.Format("android.graphics.Rect is null");
+                          return 0;
+                      }else
+                      {
+                          androidKeyboardSize = string.Format("android.graphics.Rect ： {0}", Rct.ToString());
+                      }
+                      try
+                      {
+                          View.Call("getWindowVisibleDisplayFrame", Rct);
+                      }
+                      catch (Exception e)
+                      {
+                          Logger.LogError("Platform Android GetKeyboardSize failed :"+e.ToString());
+                          return 0;
+                      }
+                      int rect = Screen.height - Rct.Call<int>("height");
+                    androidKeyboardSize = string.Format("result : {0}", rect);
+                      return rect;
+                  }       
+              }
+          }
     ```
-  
-
-
+    
+    
 
 
 
@@ -318,6 +319,40 @@ Android 需要为Unity 提供大量功能接口。
   [2] 3.5
   [3] 3.6
   */
+  ```
+
+
+
+
+* UE4 Android JNI
+
+  [UE4：UPL 与 JNI 调用的最佳实践](https://imzlp.com/posts/27289/)
+
+  [JNI Interface Functions and Pointers](https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/design.html)
+
+  ``` text
+  C++ 调用 Java 注意点：
+  
+  ()Ljava/lang/String;        //匹配Java中无参返回String的函数
+  ()V							//匹配Java中无参无返回值的函数
+  
+  java中定义的native函数可以放在任何class中  只要在c++中正确写全package name + class name （"."用"_"替换）
+  
+  System.loadLibrary("library...") 已经在 UE4 的 GameActivity中调用了
+  
+  
+  
+  Java 调用 C++ 注意点：
+  
+  UE4中可以用 宏 JNI_METHOD 放在每个c++实现java native方法的最前面 
+  代替  extern "C" {}  注意这个需要用 #ifdef __cplusplus  #endif 把 extern "C" { 和 } 分别包起来
+  
+  注意每个c++实现java native方法 需要放在 .cpp中 不能放在.h中 ！！！
+  否则会报错：Native function no implementation found
+  
+  
+  java中的native方法名如果带有 "_" 注意在c++定义实现这个 java native
+  需要用“_1”替换
   ```
 
   
