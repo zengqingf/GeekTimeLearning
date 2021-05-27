@@ -79,11 +79,21 @@
 
       [github - DingtalkChatbot](https://github.com/zhuifengshen/DingtalkChatbot)
 
-  13. fastbuild
+  13. fastbuild 
 
       [github - fastbuild](https://github.com/fastbuild/fastbuild)
 
-  14. apple 远程添加设备被下载到本地
+      - [ ] fastbuild源码分析，原理
+
+  14.  
+
+      - [x] apple 远程添加设备被下载到本地
+
+  15. 
+
+      1.0 jenkins工程整理
+
+      jenkins pipeline 自己搭建一次  （union build ==> unity 分布打包）
 
       
 
@@ -699,4 +709,148 @@
 ---
 
 
+
+### Java TODO
+
+- [ ] 32bit和64bit的区别？   
+
+- [ ] 如8位系统，两个整数相加会溢出，如何解决？   （7bit）
+
+- [ ] 进程的五个状态（创建、就绪、阻塞、结束、等待）
+
+- [ ] 进程和线程的区别（线程是最小的进度单元）
+
+- [ ] 进程调度算法？
+
+- [ ] 进程间的通信？（共享内存、管道、消息、信号量、套接字socket）
+
+- [ ] 程序奔溃的解释？程序申请的1G内存，还能用吗？
+
+- [ ] 死循环的程序，为什么操作系统还没有卡死？（时间片轮转等）
+
+- [ ] 内存屏障？
+
+- [ ] 锁、乐观锁（CAS，效率高）、悲观锁
+
+- [ ] Java class文件从加载到结束的过程 （加载、验证、准备、解析、初始化）
+
+- [ ] Java 双亲委托
+
+- [ ] Java JVM，JVM引用（强弱软虚）
+
+- [ ] JVM调优 （GC）
+
+- [ ] GC
+
+- [ ] 内存泄漏，如何检测？
+
+- [ ] Java JIT (just in time)  java是解释型语言和编译型语言 (强类型语言)
+
+- [ ] 设计模式（发布订阅）（如何做到 随机取消订阅，插入订阅，但需要保证订阅者有先后顺序）（发布者维护一个列表，存储订阅者，并给每个订阅者添加先后顺序编号）
+
+- [ ] 数据结构（栈如何扩容）
+
+- [ ] 栈溢出的原因（方法递归过深，并且栈容量有限，65535  固定大小，）
+
+- [ ] hashmap hash的实现 原理
+
+- [ ] hash取模运算 （桶）（对谁取模、如何确定放到哪个桶） （取模即取余）
+
+- [ ] 取模运算的应用（循环队列、hash如何计算）
+
+- [ ] websocket  tcp   （计算机网络 自顶向下的 方法）
+
+- [ ] 多线程（并发和并行的区别）
+
+- [ ] 线程池
+
+- [ ] 算法- 排序 ：拓扑排序（图）
+
+- [ ] 除new创建对象外，还有什么方法可以创建对象
+
+  可以使用java反射
+
+  反射创建对象过程：
+
+  先查找类资源  再使用类加载器创建  
+
+  反射机制：
+
+  反射机制是在运行时，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意个对象，都能够调用它的任意一个方法。在java中，只要给定类的名字，就可以通过反射机制来获得类的所有信息。 这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。
+
+  举例：jdbc   Class.forName("com.mysql.jdbc.Driver.class")  //加载MySQL驱动类
+
+  实现方式：
+
+  1. Class.forName("类的路径")
+
+  2. 类名.class
+
+  3. 对象名.getClass()
+
+  4. 基本类型的包装类，可以调用包装类的Type属性来获取该包装类的Class对象
+
+  反射类：
+
+  	1. Class 表示正在运行的Java应用程序中的类和接口   所有获取对象的信息都需要Class类来实现
+   	2. Field: 提供有关类和接口的属性信息，以及对它的动态访问权限
+   	3. Constructor: 提供关于类的单个构造方法的信息以及它的访问权限
+   	4. Method：提供类或接口中某个方法的信息
+
+  优点：
+
+  	1. 能够运行时动态获取类的实例
+   	2. 与动态编译结合
+
+  缺点：
+
+   	1. 性能较低，需要解析字节码 将内存中的对象进行解析
+
+  优化：
+
+  ​	1. 通过setAccessible(true)关闭JDK的安全检查来提升反射速度；
+
+  ​	2. 多次创建一个类的实例时，有缓存会快很多
+
+  ​	3. ReflflectASM工具类，通过字节码生成的方式加快反射速度
+
+  ​	4. 相对不安全，破坏了封装性（因为通过反射可以获得私有方法和属性）
+
+  反射API
+
+  ​	Class 类：反射的核心类，可以获取类的属性，方法等信息。
+
+  ​	Field 类：Java.lang.reflect 包中的类，表示类的成员变量，可以用来获取和设置类之中的属性值。
+
+  ​	Method 类： Java.lang.reflect 包中的类，表示类的方法，它可以用来获取类中的方法信息或者执行方法。
+
+  ​	Constructor 类： Java.lang.reflect 包中的类，表示类的构造方法。
+
+  反射使用步骤（获取Class对象，调用对象方法）
+
+  ​	获取想要操作的类的 Class 对象，他是反射的核心，通过 Class 对象我们可以任意调用类的方法。
+
+  ​	调用 Class 类中的方法，即反射的使用阶段。
+
+  ​	使用反射 API 来操作这些信息。
+
+  反射动态创建
+
+  ​	使用 Class 对象的 newInstance()方法来创建该 Class 对象对应类的实例，但是这种方法要求该 Class 对象对应的类有默认的空构造器。 
+
+  ​	调用 Constructor 对象的 newInstance()
+
+  ​			Class clazz = Class.forName("reflection.Person");
+
+  ​			Person p = (Person)clazz.newInstance();
+
+  ​	先使用 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 newInstance()方法来创建 Class 对象对应类的实例,
+
+  ​	通过这种方法可以选定构造方法创建实例。
+
+  ​			Constructor c = clazz.getDeclaredConstructor(String.class, String.class, int.class);
+
+  ​			Person p1 = (Person) c.newInstance("张三", "male", 20);
+
+- [ ] 
 

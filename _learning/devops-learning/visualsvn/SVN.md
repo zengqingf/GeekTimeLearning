@@ -365,4 +365,25 @@
   svn info --show-item wc-root
   ```
 
+
+
+
+
+
+---
+
+
+
+### Exception
+
+* Checksum mismatch while updating
+
+  ``` sh
+  #Go to the folder with the file causing problems
+  #Execute command 
+  svn update --set-depth empty #(note: this will delete your files, so make a copy first!)
+  #Execute command 
+  svn update --set-depth infinity
+  ```
+
   

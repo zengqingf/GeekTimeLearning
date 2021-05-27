@@ -452,8 +452,7 @@
   Internationalization  国际化（多语言）
   .uproject / .uplugin  包含插件 / 包含插件中的模块
   Config				  INI文件
-  AssetRegistry.bin
-  资产注册表（游戏中包含的资源及其引用关系）
+  AssetRegistry.bin     资产注册表（游戏中包含的资源及其引用关系）
   ushaderbytecode		  （需要开启共享材质ShaderCode才会有   ProjectSetting -> Packaging -> Share Material Shader Code）
   shadercache			  （需要开启共享材质ShaderCode才会有） 
   添加的Non-Asset文件     lua / .db等数据类文件
@@ -467,13 +466,13 @@
   Shadercache
   外部文件(lua等)
   ```
-
+  
 * Pak打包
 
   ``` text
   收集要打包的资源及外部文件
   cook uasset
-  存储打包的Response文件
+  存储打包的Response文件（PakList*.txt）
   使用UnrealPak执行打包
   
   ResponseFile格式：
@@ -483,8 +482,40 @@
   
   UnrealPak打包命令：
   UnrealPak.exe SAVE_PAK.pak -create=RESPONSE_FILE.txt -compress
+  
+  
+  
+  手动流程：
+  1.需要分析uasset资源的依赖
+  2.对uasset资源进行cook
+  3.添加需要打包的Non-Asset文件
+  4.编辑ResponseFile文件
+  5.执行UnrealPak命令
+  6.对每个平台都执行一遍上述流程
+  
+  
+  
+  pak的打包粒度：（根据不同项目使用）
+  1.整个patch为单个pak
+  2.根据地图为patch打包
+  3.根据资源分类patch打包
+  
+  
+  基础包更新后，先前热更的pak处理方式：
+  1.基础包只包含基础的地图
+  2.其他地图（及其依赖的资源）打成单独pak文件
+  3.更新基础包1.0，并热更其他地图pak
+  4.基础包2.0，如果需要覆盖之前热更的pak，则设置新的pak的order大于原先热更的pak
+  （这样会优先查找基础包2.0里的pak，如果存在，则不会去查找其他pak了）
+  5.比对最新基础包2.0里的资源和之前热更的资源，和当前游戏工程的资源做对比，把差异部分打包下载下来
+  
+  
   ```
-
+  
+  
   
 
-  
+---
+
+
+

@@ -26,6 +26,15 @@
     <ClInclude Include="chapter_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="chapter_3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="chapter_6.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="base_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test_calc_values.inc">

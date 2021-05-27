@@ -60,6 +60,11 @@ vs. class
 */
 
 
+/*
+C++ 中不要再使用 typedef struct{...}xxx 来定义结构体了，这是传统C的做法
+*/
+
+
 //结构体类型定义1
 typedef struct LNodeA {	
 	int data; //数据域

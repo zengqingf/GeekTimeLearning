@@ -153,7 +153,7 @@ struct _List_node
 
 Base   空心箭头 <1----   Derived
 
-<构造由内而外>
+<构造由内而外>   @注意：这里的内和外可以通过画图表示清楚：Derived(外)包含了Base(内) 
 Derived的构造函数首先调用Base的default的构造函数，然后才执行自己
 Derived::Derived() : Base() {};                                   ----->  :Base() 是编译器默认会调用的  如果不需要执行父类其他构造函数 不需要写出来
 

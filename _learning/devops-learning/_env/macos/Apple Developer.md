@@ -36,3 +36,13 @@
   ```
 
   
+
+* iOS超级签名
+
+  [IOS 超级签名实现 (linux 版本)](http://events.jianshu.io/p/ea9896b68a05)
+
+  [iOS ipa超级签名](https://shirojin.github.io/2020/04/04/iOS%E8%B6%85%E7%BA%A7%E7%AD%BE%E5%90%8D/)
+
+  [add-device-and-generate-profile.rb](./reg_uuid/add-device-and-generate-profile.rb)
+
+  [register-device.sh](./reg_uuid/register-device.sh)

@@ -676,7 +676,7 @@
   * 字节填充
 
     ``` c++
-    ![struct_4](struct_4.png)#include <stdio.h>
+    #include <stdio.h>
     #include <string.h>
     int main()
     {
@@ -931,6 +931,128 @@
 
 
 
-* 代码规范
+* 面向对象
 
-  
+  * 继承关系
+
+    [Difference between private, public, and protected inheritance](https://stackoverflow.com/questions/860339/difference-between-private-public-and-protected-inheritance)
+
+    ``` c++
+    class A 
+    {
+        public:
+           int x;
+        protected:
+           int y;
+        private:
+           int z;
+    };
+    
+    class B : public A
+    {
+        // x is public
+        // y is protected
+        // z is not accessible from B
+    };
+    
+    class C : protected A
+    {
+        // x is protected
+        // y is protected
+        // z is not accessible from C
+    };
+    
+    class D : private A    // 'private' is default for classes
+    {
+        // x is private
+        // y is private
+        // z is not accessible from D
+    };
+    ```
+
+  * 多重继承问题（不推荐使用多继承）
+
+    [C++中类的多继承](https://blog.csdn.net/luoweifu/article/details/46959173)
+
+    ``` c++
+    #pragma once
+    
+    #include <iostream>
+    #include <string>
+    
+    using namespace std;
+    
+    class Furniture
+    {
+    public:
+        Furniture(void) : m_weight(0){}
+        Furniture(double weight) : m_weight(weight){}
+        ~Furniture(void){}
+    
+        double GetWeight() const { return m_weight; }
+        void SetWeight(double val) { m_weight = val; }
+    
+    private:
+        double m_weight;
+    };
+    
+    class Bed : public Furniture
+    {
+    public:
+        Bed() : Furniture(), m_second(0) {}
+        Bed(double weight, int second) : Furniture(weight), m_second(second){}
+        void Sleep(int second) 
+        {
+            m_second = second;
+            cout << "休息" << m_second << "秒..."<< endl;
+        }
+    
+    private:
+        int m_second;
+    };
+    
+    class Sofa : public Furniture
+    {
+    public:
+        Sofa() : Furniture() {}
+        Sofa(double weight) : Furniture(weight){}
+    
+        void WatchTV(string  programme)
+        {
+            cout << "正在看" << programme << "节目..." << endl;
+        }
+    };
+    
+    class SleepSofa : public Bed, public Sofa
+    {
+    public:
+        SleepSofa() : Bed(), Sofa() {}
+        SleepSofa(double weight, int second) : Bed(weight, second), Sofa(weight) {}
+    
+        void FoldOut()
+        {
+            cout << "展开沙发当床用." << endl;
+            Sleep(360);
+        }
+    };
+    
+    
+    //构造顺序
+    //构造由内而外
+    //Bed Sofa SleepSofa
+        
+    //调用接口ambiguous歧义
+    //@注意：Bed的父类Furniture 和 Sofa的父类Furniture   为两个不同的对象，被构造了两次，不合理！
+    
+    //解决：使用virtual 继承
+    class Furniture{……};
+    class Bed : virtual public Furniture{……}; // 这里我们使用虚继承
+    class Sofa : virtual public Furniture{……};// 这里我们使用虚继承
+    class SleepSofa : public Bed, public Sofa {……};
+    //Furniture只会被构造一次
+    ```
+
+    
+
+    
+
