@@ -1,5 +1,9 @@
 # Android 功能开发
 
+
+
+### 插件
+
 * Fmod库
 
   [github - QQ变声效果](https://github.com/onestravel/QQVoiceChange)
@@ -7,6 +11,37 @@
 * FFmpeg库
 
   [github - 视频播放](https://github.com/onestravel/FFmpegDemo)
+
+* Volley库
+
+  [Android Volley框架（三）：解决Volley请求服务器返回中文乱码问题](https://blog.csdn.net/lvyoujt/article/details/50667638)
+
+  ``` text
+  解决Volley请求服务器返回中文乱码问题
+  
+  新建继承自 Request<String / JSONObject>
+      @Override
+      protected Response<String> parseNetworkResponse(NetworkResponse response) {
+          String parsed;
+          try {
+              Log.e("###", response.headers.toString());    //如果是乱码 这里可能无法找到 Content-type key值
+              parsed = new String(response.data, "UTF-8");  //根据服务器端文本编码格式来处理
+          } catch (UnsupportedEncodingException e) {
+              parsed = new String(response.data);
+          }
+          return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
+      }
+  ```
+
+  
+
+
+
+---
+
+
+
+### API
 
 * 获取apk签名信息
 
@@ -38,6 +73,52 @@
   [Adnroid文件存储路径getFilesDir()与getExternalFilesDir的区别](https://blog.csdn.net/losefrank/article/details/53464646)
 
   [github - All Android Directory Path](https://gist.github.com/lopspower/76421751b21594c69eb2)
+  
+  [Android系统目录结构](https://www.cnblogs.com/pixy/p/4744501.html)
+  
+  [【Android】解析Android的路径](https://www.cnblogs.com/HDK2016/p/8707866.html)
+  
+  ``` text
+  区分内部存储和外部存储
+  
+  内部存储：
+  	路径：/data/data/应用包名/files
+  	方法：
+  		读：
+  		//判断文件是否存在
+  		File file = context.getFileStreamPath(fileName);
+  		file == null || !file.exists() //判断文件是否存在
+  		
+  		写：
+  		读写：
+  		openFileOutput()    其中context不需要MainActivity（针对Unity主Activity）
+  		例：FileOutputStream fos = /*some context if outside activity.*/openFileOutput("hello.txt", Context.MODE_PRIVATE);
+  
+  外部存储：SDCard
+  	路径：/storage/
+  		公有目录：/storage/emulated/0/.
+  		私有目录：/storage/emulated/0/Android/data/应用包名/
+  	方法：
+  		读：
+  		Environmant.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)  //判断是否有SDKCard并且是否可读写
+  		Environment.getExernalStorageDirectory()
+  		
+  		//判断文件是否存在
+  		Environment.getExernalStorageDirectory().getPath() + filePath
+  		File f = new File(file);
+  		f.exists()
+  		
+  		写：
+  		读写：
+  		
+  	权限：
+  		<!– 在SDCard中创建与删除文件权限 –>
+  		<uses-permission android:name=”android.permission.MOUNT_UNMOUNT_FILESYSTEMS”/>
+  		<!– 往SDCard写入数据权限 –>
+  		<uses-permission android:name=”android.permission.WRITE_EXTERNAL_STORAGE”/>
+  ```
+  
+  
   
 * Logger
 
@@ -131,6 +212,39 @@
 
 
 
+### 组件化
+
+
+
+* link
+
+  [Android组件化开发实践](https://www.jianshu.com/p/d0f5cf304fa4)
+
+  [Android组件化实践项目分享](https://juejin.im/post/5c7f85b3e51d45721073f966)
+
+  [github - 组件化学习](https://github.com/hufeiyang/ComponentLearning)
+
+* 库
+
+  * ARouter 路由
+
+    [github - ARouter](https://github.com/alibaba/ARouter)
+
+    [Android之注解、APT、android-apt 和 annotationProcessor 的区别](https://blog.csdn.net/LVXIANGAN/article/details/88350717)
+
+    ``` text
+    ```
+
+    
+
+
+
+
+
+---
+
+
+
 ### 库
 
 * 支持库
@@ -159,5 +273,94 @@
   The Oldest Android Support Library
   https://dl-ssl.google.com/android/repository/support_r04.zip
   ```
+
+  
+
+
+
+---
+
+
+
+### View
+
+* scrollview
+
+  * 自定义宽高
+
+    [自定义ScrollView最大内容显示高度](https://blog.csdn.net/my_rabbit/article/details/80845660)
+
+    ``` java
+    //需要自定义一个继承自原生 ScrollView的类
+    
+    public class CustomScrollView extends ScrollView {
+    
+        private Context mContext;
+    
+        public CustomScrollView(Context context) {
+            this(context, null);
+        }
+    
+        public CustomScrollView(Context context, AttributeSet attrs) {
+            this(context, attrs, 0);
+        }
+    
+        public CustomScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            this.mContext = context;
+        }
+    
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            try {
+                Display display = ((Activity) mContext).getWindowManager().getDefaultDisplay();
+                DisplayMetrics d = new DisplayMetrics();
+                display.getMetrics(d);
+                // 设置控件最大高度不能超过屏幕高度的一半
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(d.heightPixels / 2, MeasureSpec.AT_MOST);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // 重新计算控件的宽高
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
+    }
+    ```
+
+    ``` xml
+    <com.wiggins.widget.MyScrollView
+     android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="12dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:textSize="12sp" />
+    </LinearLayout>
+    </com.wiggins.widget.MyScrollView>
+    
+    <!--
+    1、去除ScrollView边界阴影
+    1.1 在xml中添加：android:fadingEdge=”none”
+    1.2 代码中添加：scrollView.setHorizontalFadingEdgeEnabled(false);
+    
+    2、去除ScrollView拉到顶部或底部时继续拉动后出现的阴影效果，适用于2.3及以上
+    2.1 在xml中添加：android:overScrollMode=”never”
+    
+    3、当ScrollView子布局不足以铺满全屏的时候其高度就是子布局高度之和，此时如果想让ScrollView铺满全屏时只需要设置以下属性即可
+    3.1 在xml中添加：android:fillViewport=”true”
+    -->
+    ```
+
+    
 
   

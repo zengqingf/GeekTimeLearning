@@ -156,9 +156,16 @@
   <ItemGroup>
     <ClInclude Include="base_1.h" />
     <ClInclude Include="chapter_1.h" />
+    <ClInclude Include="chapter_10.h" />
+    <ClInclude Include="chapter_11.h" />
+    <ClInclude Include="chapter_12.h" />
+    <ClInclude Include="chapter_13.h" />
     <ClInclude Include="chapter_2.h" />
     <ClInclude Include="chapter_3.h" />
     <ClInclude Include="chapter_6.h" />
+    <ClInclude Include="chapter_7.h" />
+    <ClInclude Include="chapter_8.h" />
+    <ClInclude Include="chapter_9.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="test_calc_values.inc" />

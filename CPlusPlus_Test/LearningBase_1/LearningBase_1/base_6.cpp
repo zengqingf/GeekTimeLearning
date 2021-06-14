@@ -3,13 +3,13 @@
 void TestLRValue::Test_1()
 {
 	int a = 0;
-	ProcessValue(a);
+	ProcessValue(a);   //output: LValue
 
 	//move() 只执行类型转换，不会调用move构造函数和move赋值函数
-	ProcessValue(std::move(a));
-
-	ProcessValue(1);
-	ForwardValue(2);
+	ProcessValue(std::move(a));  //output: RValue
+	
+	ProcessValue(1);  //output: RValue
+	ForwardValue(2);  //output: LValue
 }
 
 

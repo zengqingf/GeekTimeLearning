@@ -24,6 +24,14 @@ link: https://blog.csdn.net/silly1195056983/article/details/111995979
 普通的函数和操作符也可以利用右值引用操作符实现转移语义。
 */
 
+/*
+C++ / C中表达式和变量  只能是左值或者右值
+一般定义：
+左值：非临时对象（可以取地址，有名字），可以在多条语句中使用的对象，变量都符合
+右值：临时对象，仅在当前语句中有效
+
+*/
+
 class TestLRValue
 {
 public:
@@ -95,7 +103,7 @@ public:
 	}
 
 
-	//转移构造
+	//转移构造  (C++ 11)
 	/*
 	参数（右值）的符号必须是右值引用符号，即“&&”。
 
@@ -115,7 +123,7 @@ public:
 		str.m_data = nullptr;
 	}
 
-	//转移赋值
+	//转移赋值  (C++ 11)
 	MyString& operator=(MyString&& str) {
 		std::cout << "Move Assignment is called! source: " << str.m_data << std::endl;
 		if (this != &str) {

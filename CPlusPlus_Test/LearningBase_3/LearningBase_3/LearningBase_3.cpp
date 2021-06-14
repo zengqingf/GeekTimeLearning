@@ -3,9 +3,16 @@
 
 #include <iostream>
 
+#include "chapter_12.h"
+
 int main()
 {
     std::cout << "Hello World!\n";
+
+	Chapter_12 c12;
+	c12.TestContainer1();
+	c12.TestContainer2();
+	c12.TestContainer3();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

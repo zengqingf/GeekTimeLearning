@@ -220,3 +220,20 @@
 
   [UE4 资源热更打包工具 HotPatcher](https://imzlp.me/posts/17590/)
 
+
+
+
+
+---
+
+
+
+### Editor开发
+
+* 引擎内置模板
+
+  ``` text
+  /Engine/Binaries/Win64/SlateViewer.exe
+  ```
+
+  

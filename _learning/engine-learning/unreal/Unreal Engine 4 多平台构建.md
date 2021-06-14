@@ -126,7 +126,7 @@
   
   #说明：
   # -archivedirectory="D:\Packages"   //打包路径
-#-clientconfig=Shipping   //打包shipping包，对应的还有Development包，区别比较多
+  #-clientconfig=Shipping   //打包shipping包，对应的还有Development包，区别比较多
   # 1. development下崩溃的提示比较详细，shipping没有任何代码提示，只有fatel error。
   # 2. development下可以调用控制台，而shipping下不可以。
   ```
@@ -385,6 +385,40 @@
   [UE4 Android第三方库导入，JNI调用详解](https://blog.csdn.net/JMcc_/article/details/105512351)
 
   [UE4：UPL 与 JNI 调用的最佳实践](https://imzlp.me/posts/27289/)
+
+
+
+
+
+---
+
+
+
+### 版本自动化
+
+* UE4 自定义宏
+
+  ``` tex
+  c++代码中定义宏 #define XXX=1  或者  #define YYY
+  Build.cs中对于模块的PublicDefinirions.Add()  （AddRange也可以） 以及 Target.cs中对于全局的 GlobalDefinirions.Add() 和 ProjectDefinitions.Add()
+  ```
+
+
+
+* UE4 命令行  (Commandlet)
+
+  ``` tex
+  自定义类实现 ==> UCommandlet.h
+  引擎源码中也给出了一些案例类，如：TextAssetCommandlet.cpp
+  
+  [UE4Editor-Cmd.exe路径] [uproject路径] -run=[Commandlet名字，即XXXCommandlet.h前面的名字XXX] -这条Commandlet的参数
+  
+  
+  ```
+
+  
+
+
 
 
 

@@ -16,6 +16,21 @@
 
   [github - Swifter.Json - Dogwei](https://github.com/Dogwei/Swifter.Json)
 
+  ``` tex
+  .NET Framework 2.0+, .NET Core 2.0+, .NET Standard 2.0+, MONO, MONO AOT, MONO FULL-AOT,
+  Unity, Xamarin.iOS, Xamarin.Android
+  
+  Uncertain：Unity IL2CPP
+  Unsupported: Sliverlight
+  
+  @注意：
+      .NET Core 请使用 Core 版本，其他平台和运行时请使用 Framework 版本或 Standard 版本。
+      因为 Core 版本专为性能优化，Framework 版本和 Standard 版本为兼容性优化。
+      Framework 版本和 Standard 版本可以直接在 AOT 平台上运行。
+  ```
+
+  
+
 * CSharpJson
 
   [github - CSharpJson - NingShenTian](https://github.com/NingShenTian/CsharpJson)
@@ -30,8 +45,6 @@
 
 
 
----
-
 
 
 * ref
@@ -39,6 +52,33 @@
   [Json解析C#的四个库](https://yaojiaxinpc.github.io/3JsonDeal/)
 
   [Json序列化之.NET开源类库Newtonsoft.Json的研究](https://www.cnblogs.com/yunfeifei/p/4086014.html)
+
+  [Performance comparison of Unity NewtonsoftJson, LitJson and SimpleJSON](https://programming.vip/docs/performance-comparison-of-unity-newtonsoftjson-litjson-and-simplejson.html)
+
+  ``` tex
+  @注意：
+  For Unity, SimpleJSON is the smallest size, fastest speed and easiest integration
+  ```
+
+  
+
+
+
+* 性能对比
+
+  |      |      |      |
+  | ---- | ---- | ---- |
+  |      |      |      |
+  |      |      |      |
+  |      |      |      |
+
+  
+
+
+
+---
+
+
 
 
 

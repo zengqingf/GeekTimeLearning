@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
@@ -61,9 +61,9 @@ namespace GameClient
         }
 
         private void FixedUpdate() {
-            Debug.Log("FixedUpdate");
+            Debug.Log("FixedUpdate, delta time : " + Time.deltaTime);
 
-            fixedUpdateCount += 1;
+            fixedUpdateCount += 1;            
         }
         
         private void OnTriggerEnter(Collider other) {
@@ -95,7 +95,7 @@ namespace GameClient
         }
 
         private void Update() {
-            Debug.Log("Update");
+            Debug.Log("Update, delta time : " + Time.deltaTime);
 
             updateCount +=1;
         }

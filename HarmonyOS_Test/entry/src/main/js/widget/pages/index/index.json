@@ -1,0 +1,17 @@
+{
+  "data": {
+    "title": "TitleTitleTitleTitleTitleTitleTitleTitle",
+    "detail": "TextTextTextTextTextTextTextTextTextText",
+    "iconTitle": "Picture"
+  },
+  "actions": {
+    "routerEvent": {
+      "action": "router",
+      "bundleName": "com.mjx.hmos.service.test",
+      "abilityName": "com.mjx.hmos.service.test.widget.widget.WidgetAbility",
+      "params": {
+        "message": "add detail"
+      }
+    }
+  }
+}

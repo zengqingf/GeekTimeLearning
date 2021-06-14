@@ -37,6 +37,29 @@ namespace GameClient
             // Time.timeScale = 0;    
         }
 
+
+        /*
+         Awake : this gameObject is active, this monobehaviour is not enabled
+         OnApplicationPause : False
+        
+         帧1,Start Begin
+         帧1,Start Call Begin
+         帧1,This is Start Coroutine Call Before
+         帧1,Start Call End
+         帧1,Start End
+
+         帧2,This is Start Coroutine Call After yield null
+
+         帧49,This is Start Coroutine Call After
+         帧49,This is Second Start Coroutine Call Before
+
+         帧110,This is Second Start Coroutine Call After
+         帧110,This is Start Coroutine Call Second Start Coroutine Call After
+            
+         OnApplicationPause : True
+             */
+
+
         // Use this for initialization  
         void Start()
         {
@@ -62,6 +85,7 @@ namespace GameClient
             Log.I("This is Start Coroutine Call After");
 
             yield return StartCoroutine(StartCoroutine2());
+            //注意下面日志需要等上面 StartCoroutine2 完全执行完后才进入 ！！！
             Log.I("This is Start Coroutine Call Second Start Coroutine Call After");
 
         }

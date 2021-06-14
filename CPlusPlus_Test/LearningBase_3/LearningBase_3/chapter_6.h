@@ -140,4 +140,4 @@ public:
 
 };
 
-#endif
+#endif  //_CHAPTER_6_H_

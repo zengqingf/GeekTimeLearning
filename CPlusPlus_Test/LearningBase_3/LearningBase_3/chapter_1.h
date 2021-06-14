@@ -76,7 +76,7 @@ std::cout << "c++14 or later" << std::endl;
 #elif __cplusplus >= 201103							//201103 ==> c++11
 std::cout << "c++11 or later" << std::endl;
 #else   //__cplusplus < 201103						//199711 ==> c++98
-# error "c++ is too old"
+#error "c++ is too old"
 #endif  //__cplusplus >= 201402 
 
 

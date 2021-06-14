@@ -185,6 +185,10 @@
   
   13. Unity 4.3源码 查看JNI实现
   
+  14. Unity UGUI源码分析 
+  
+      [UNITY EDITOR V4.3.1F1 源码编译笔记](https://leafnsand.com/post/build_unity_from_source_code)
+      
       
   
 * CSharp
@@ -203,37 +207,45 @@
   
 * Android & Java
   1. 安卓四大组件
-  
+
   2. 安卓性能优化
-  
+
      [Android性能优化盘点 - 内存优化](https://www.jianshu.com/p/fba7b43bdc9c)
-  
+
      [Android内存优化大盘点](https://mp.weixin.qq.com/s/ghupyR4z0yYD-Fsd14rgEg)
-  
+
   3. runOnUiThread
-  
+
   4. Java 和 Cpp
-  
+
   5. Gradle
-  
+
   6. 混淆
-  
+
   7. SDK中间件（混淆、消息协议、现有多平台接口在新框架中重构）
-  
+
   8. Logger 组件重构  目前用的是github上的
-  
+
      ``` text
      orhanobut/logger   
      
       java.util.logging.Logger  vs. log4j
      ```
-  
+
   9. breakpad   极客时间
-  
+
   10. SDK源码开发
-  
+
       ![](.\0005.png)
-  
+
+  * 安卓组件化开发
+
+    ARouter原理分析：https://www.jianshu.com/p/bc4c34c6a06c
+
+    
+
+
+
 * 奔溃闪退收集
 
   * breakpad
@@ -243,19 +255,19 @@
   * link
 
     [如何高效定位Unity安卓开发中的闪退问题](https://blog.uwa4d.com/archives/USparkle_Crash.html)
-  
+
     [Unity il2cpp打包 拷贝符号表](https://support.unity3d.com/hc/en-us/articles/115000177543-Where-I-can-get-the-symbols-file-for-the-libil2cpp-so-library-in-an-Android-IL2CPP-build-to-symbolicate-call-stacks-from-crashes-on-my-production-builds-)
-  
+
   ``` text
   ./arm-linux-androideabi-addr2line -f -C -e XXX/armeabi-v7a/libil2cpp.so 0x2eabfd8 0x2...
   ```
-  
+
   ![](.\0004.png)
+
   
-  
-  
+
   Logcat.bat  从 Android SDK目录下拷贝依赖库 “adb.exe AdbWinApi.dll AdbWinUsbApi.dll fastboot.exe ” 
-  
+
   ``` shell
   @echo off  
    
@@ -272,9 +284,7 @@
    
   %adb% logcat -v time -d >  %year%%month%%day%%hour_ten%%hour_one%%minute%%second%.log &
   ```
-  
-  
-  
+
   
 
 
@@ -470,8 +480,12 @@
   4. blog
 
      [c++知识点](https://www.cnblogs.com/eilearn/category/1210518.html)
-
-
+     
+     [ 如何系统学习C++](https://mp.weixin.qq.com/s/WW_X12bTm94iaCgWBgYtJw)
+     
+     [C++那些事](https://light-city.club/sc/)
+     
+     [learncpp](https://www.learncpp.com/)
 
 
 
@@ -710,15 +724,534 @@
 
 
 
+### Unity TODO
+
+- [ ] FixedUpdate和Update的执行顺序和区别
+
+  Update: 每帧调用一次（非物理对象的移动，简单计时器，输入检测等）
+
+  ​				不是按固定时间调用的，如果某一帧和下一帧的处理时长不同，则Update的调用时间间隔不同
+
+  FixedUpdate: 按固定时间调用，调用时间间隔相同（物理对象，如Rigidbody刚体应该在FixedUpdate中执行，最好使用力来定义对象移动）
+
+  ​						受Edit - Time - Fixed Timestep的值影响
+
+
+
+**Unity优化-官方**：
+
+[Fixing Performance Problems](https://learn.unity.com/tutorial/fixing-performance-problems?uv=5.x)
+
+[Understanding optimization in Unity](https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity.html)
+
+
+
+内存管理：
+
+- [ ] GC的应用场景和触发大量GC的情况
+
+  [Unity游戏的GC(garbage collection)优化](https://blog.csdn.net/znybn1/article/details/76464896)
+
+  ``` tex
+  GC概念：
+  
+   垃圾（Garbage ）是存储无用数据的内存的术语，
+   GC（Garbage Collection）使这些内存可以再次使用的过程   （主要是对堆中的内存进行操作）
+   
+   GC引起的性能问题 一般表现为 帧率过低、帧率波动大、间歇性卡顿；（其他原因也可以引起这些问题）
+   定位上述问题的方法：Unity Profiler 确认是否是GC引起的
+   
+   Unity对自己引擎代码 使用手动内存管理；对开发人员的脚本代码 使用自动内存管理
+   
+   Unity可访问两个内存池，栈和堆（也称为托管堆），栈：短期存储小块数据（栈对象）；堆（堆栈）：长期存储较大数据段（堆对象）
+   栈内存在变量超出作用域时被编译器释放，堆内存需要主动释放（不释放时仍保持被分配状态）
+   
+   垃圾收集器（garbage collector）识别并释放未使用的堆内存，定期运行清理堆
+   
+   
+  栈：工作方式类似于 数据结构栈， 栈内存块以严格的顺序添加和删除元素，创建变量申请内存时从栈顶分配内存空间，当变量超出作用域时，立即回收该变量占用的内存
+  堆：分配和释放并不总是按可预测的顺序，并且需要的内存块大小也不同
+  	检查堆上是否有足够的空间内存
+  	如果空闲内存不足，触发GC尝试释放未使用的堆内存（GC耗时较高）
+  	如果GC后空闲内存仍不足，将向操作系统申请更多的内存以扩大堆大小（耗时较高）
+  	
+  GC过程：
+  （当堆变量超出作用域后，存储该变量的内存并没有立即释放
+  无用的堆内存只在执行GC时被释放）
+  （GC是耗时操作，当堆上的对象越多，代码中引用数越多，GC就越费时）
+  垃圾收集器检索堆上的每个对象
+  垃圾收集器搜索所有当前对象引用，以确定堆上对象是否仍在作用域内
+  不在作用域内的对象被标记为待删除
+  删除被标记的对象，并将其占用内存返回给堆
+  
+  
+  GC触发：
+  堆分配时堆上可用内存不足  （频繁地堆分配和释放会导致GC频繁）
+  GC会不时地自动执行（平台而异）
+  手动强制GC
+  
+  
+  GC问题：
+  GC耗时太长（堆上有大量对象和对象引用要检查，检查过程慢）导致游戏卡顿和运行缓慢
+  GC触发时机不合适，当CPU在游戏性能关键部分已经满负荷，此时触发GC（即使少量）也会导致帧率下降和其他性能问题
+  堆碎片化严重，当从不同大小的内存块回收资源时，堆内存中会出现大量分隔的小空闲块，即使此时内存可用总量大，但是由于不连续的内存块太多，导致GC触发或不得不扩大堆内存（导致的后果：游戏内存大小会远高于实际所需要的大小；GC会被更频繁地触发）
+  
+  
+  
+  堆分配查看：Unity Profiler
+  CPU Usage -> GC alloc （表示当前帧分配信息）
+  
+  
+  减少GC影响:
+  减少GC执行时间（减少堆分配、对象引用数量）
+  减少GC执行频率（减少堆分配、重新分配频率）
+  主动触发GC（加载场景时，以避开游戏运行的性能关键点）
+  
+  
+  
+  策略：
+  使用内存池，缓存池 ---> 减少堆分配和释放的频率，特别在一些关键的性能点上 （更少地触发GC，降低了堆碎片的问题）
+  减少在频繁调用的函数内的创建临时对象；减少类似在Update这种频繁调用方法中分配堆内存
+  模块化，主要的性能点代码需要保证独立性（如战斗城镇代码不要耦合太大）；
+  缓存容器引用并在重复使用的地方使用Clear()方式
+  ---> 减少堆分配（尽量分配在栈上，简单数据结构尽量用struct）和减少对象的引用 （当触发GC时，运行时间更少）
+  主动触发GC（场景加载时）以及 扩展堆大小，使GC在可控并合适的时候触发
+  
+  减少不必要的堆分配：
+  C#的字符串不可变，使用+运算符进行拼接时，会创建一个包含更新值的新字符串，丢弃老的，将产生垃圾
+  	减少不必要的字符串创建，多次使用相同的字符串值，应该创建一次并缓存
+  	减少不必要的字符串操作，如一个经常更新的Text组件，包含一个连接的字符串，可以考虑将他们拆分成两个
+  	运行时构建字符串，应该使用StringBuilder类，可以创建没有堆分配的字符串，并且在连接复杂字符串时减少生成的垃圾量
+  	不需要调试时，立即删除对Debug.Log()的调用，即使没有输出任何内容，对Debug.Log()的调用依然会被执行，调用Debug.Log()创建和处理至少一个字符串
+  	
+  Unity函数调用产生不可预知的垃圾
+  	缓存函数的返回
+  	降低调用函数的频率
+  	重构代码以使用不同的函数
+  	
+      //Mesh.normals 内置函数  
+      void ExampleFunction()
+      {
+          //每次循环，都会生成一个新的数组
+          for (int i = 0; i < myMesh.normals.Length; i++)
+          {
+              Vector3 normal = myMesh.normals[i];
+          }
+  
+          //修改
+          Vector3[] meshNormals = myMesh.normals;
+          for (int i = 0; i < meshNormals.Length; i++)
+          {
+              Vector3 normal = meshNormals[i];
+          }
+      }
+      GameObject.CompareTag 替换 GameObject.tag
+      Input.GetTouch()和Input.touchCount 替换 Input.touches
+      Physics.ShpereCastNonAlloc()替换Physics.SphereCastAll()
+      
+  装箱
+  	值类型被用作引用类型所执行的操作
+  	Object.Equals(int) ---> 当值类型用了
+      String.Format("{0}", int)
+      装箱时，Unity在堆上创建了一个临时System.Object来包装值类型变量，当值类型变量释放时，Object会GC产生垃圾碎片
+      
+  协程
+  	调用StartCoroutine会产生少量垃圾，因为Unity必须创建一些管理协程实例的类
+  	在游戏交互或者性能热点时，限制对StartCoroutine()的调用，如果必须在性能热点中运行的协程，应该提前启动
+  	注意  使用可能包含对StartCoroutine()延迟调用的嵌套协程，需要特别注意
+  	yield本身不会产生堆分配，但是传递给yield的语句可能会产生不必要的堆分配
+  	如果只需等待一帧而不产生堆分配，用yield return null 替换 yield return 0    int会被装箱
+  	yield 中多次使用相同值时 使用了 new ， 应该缓存new的对象
+          WaitForSeconds delay = new WaitForSeconds(1f);
+          while (!isComplete)
+          {
+              yield return delay;
+          }
+      要灵活在协程和其他功能性实现上做切换（代码中可以有多种方法来实现需求和解决问题）
+      主要使用协程来管理时间，可以在一些情况下使用Update()来实现
+      主要用协程来控制游戏中发生的事件顺序，可以创建一种消息系统来允许对象通信
+      
+  5.5之前的Unity foreach会在循环开始并终止时，会分配一个Object在堆上
+  	推荐都使用for 或者 while
+  	
+  函数引用
+  	引用匿名函数还是命名函数，都属于引用类型变量，会产生堆分配
+  	如果将匿名函数转换成闭包（匿名函数可以在其创建时访问范围中的变量）显著增加了内存使用量和堆分配数量
+  	减少使用函数引用和闭包
+  	
+  LINQ和正则
+  	会装箱产生垃圾
+  	
+  代码构建最小化GC的影响
+  	Struct是值类型变量，如果其中包含了引用类型，GC Collector必须检查整个结构体，大量的类似结构体将增加大量的检查工作
+  	public struct ItemData
+  	{
+      	public string name;  //引用类型！
+      	public int cost;
+      	public Vector3 position;
+  	}
+  	//修改，存成单独数组，GC Collector只需要检查字符串数组就行
+  	private string[] itemNames;
+  	private int[] itemCosts;
+  	private Vector3[] itemPositions;
+  	
+  	不必要的对象引用
+  	当垃圾收集器搜索对堆上对象的引用时，它必须检查代码中的每个当前对象引用。 更少的对象引用意味着更少的工作量，即使我们不减少堆上的对象总数。
+  	public class DialogData
+      {
+          private DialogData nextDialog; //指向下一个对象
+          public DialogData GetNextDialog()
+          {
+              return nextDialog;
+          }
+      }
+      //修改
+      public class DialogData
+  	{
+          private int nextDialogID; //使用id 来指代下一个对象
+          public int GetNextDialogID()
+          {
+              return nextDialogID;
+          }
+  	}
+  	
+  强制GC
+  	System.GC.Collect() --->  C#
+  	已知堆内存已被分配但不再使用（例如，如果我们的代码在加载资源时生成垃圾），并且我们知道垃圾收集冻结不会影响播放器（例如，当加载界面还显示时）
+  ```
+
+  ``` c#
+  /*
+  禁用垃圾回收器 通过分配 GarbageCollector.Mode.Disabled 可以完全禁用垃圾回收器。这意味着垃圾回收器线程将永远不会停止您的应用程序来执行收集。此外，调用 System.GC.Collect() 将无效并且不会启动收集。禁用垃圾回收器必须非常小心，因为禁用垃圾回收器后的持续分配将导致内存使用量的持续增加。
+  
+  建议仅为长期的分配禁用垃圾回收器。例如，在游戏中，应该为一个关卡分配所有必需的内存，然后禁用垃圾回收器以避免关卡期间的开销。在关卡结束并释放所有内存之后，可以再次启用垃圾回收器，并可在加载下一关卡之前调用 System.GC.Collect() 来回收内存。
+  */
+  using System;
+  using UnityEngine;
+  using UnityEngine.Scripting;
+  public class GarbageCollectorExample
+  {
+      static void ListenForGCModeChange()
+      {
+          // Listen on garbage collector mode changes.
+          GarbageCollector.GCModeChanged += (GarbageCollector.Mode mode) =>
+          {
+              Debug.Log("GCModeChanged: " + mode);
+          };
+      }
+      static void LogMode()
+      {
+          Debug.Log("GCMode: " + GarbageCollector.GCMode);
+      }
+      static void EnableGC()
+      {
+          GarbageCollector.GCMode = GarbageCollector.Mode.Enabled;
+          // Trigger a collection to free memory.
+          GC.Collect();
+      }
+      static void DisableGC()
+      {
+          GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
+      }
+  }
+  ```
+
+  
+
+- [ ] StringBuilder 原理
+
+  [StringBuilder GC 分析](https://zhuanlan.zhihu.com/p/337219219)
+
+- [ ] 内存泄露  &  内存碎片
+
+  [C++内存泄漏和内存碎片的产生及避免策略](https://blog.csdn.net/zzucsliang/article/details/43876173)
+
+  ``` text
+  常指堆内存泄露
+  堆内存：程序从堆中分配，大小任意的（内存块的大小可以在程序运行期决定），使用完后必须显式释放的内存
+  c++/c层内存泄露的描述：一般用malloc, realloc, new等函数从堆中分配到一块内存，使用完后，程序必须负责相应的调用free或delete释放改内存块，否则这块内存就不能再次使用
+  
+  
+  内存泄露的后果：
+  对游戏来说，发生内存泄露时，随着游戏的运行，内存消耗越来越高，当新内存频繁被分配时，发生内存不足，触发频繁GC，导致系统卡顿
+  
+  
+  内存泄露的避免：
+  保证在每个调用malloc/new等内存申请的操作位置，都有相应的free操作
+  
+  
+  内存碎片：
+  描述系统中所有不可用的空闲内存，不可用的是因为负责分配内存的分配器使这些内存无法使用，空闲内存以小而不连续的方式出现在不同位置
+  
+  如何避免内存碎片的产生：
+  1. 少用动态内存分配的函数（尽量用栈空间）
+  2. 分配内存和释放内存尽量在同一函数中
+  3. 尽量一次性申请较大的内存，2的指数次幂的内存空间，不要反复申请小内存
+  4. 使用内存池来减少使用堆内存引起的内存碎片，一次性申请一块足够大的空间
+  5. 尽可能少地申请空间，尽量少使用堆上的内存空间
+  ```
+
+  
+
+- [ ] 值类型和引用类型
+
+- [ ] 装箱和拆箱
+
+- [ ] 匿名函数（闭包）
+
+- [ ] 如何避免加载大量资源时引起卡顿
+
+- [ ] 多线程（Unity网络编程）
+
+  ``` tex
+  在不使用UnityEngine API的情况下（Debug.Log()也不行），可以使用多线程，提高多核CPU的使用率
+  ```
+
+- [ ] 编辑器扩展  案例
+
+  教程：https://catlikecoding.com/unity/tutorials/editor/
+
+  
+
+  现有工程优化：
+
+  活动配表 --> 扩展编辑器辅助 --> 降低出错
+
+- [ ] lua结合
+
+- [ ] UI开发上的经验
+
+  ComUIList 的 原理
+
+  复用代码和预制体、统一的组件、
+
+- [ ] UGUI优化
+
+  结合分享的文档
+
+  结合具体开发案例，BossHP条 背包界面 
+
+- [ ] Unity新内容 ECS等
+
+- [ ] 内存优化的实例
+
+  GC优化：见上
+
+  资源优化：
+
+  资源加载：
+
+  
+
+- [ ] Shader了解
+
+  渲染管线：
+
+  后处理：
+
+- [ ] 寻路：
+
+  Unity自带的NavMesh
+
+
+
+C#:
+
+- [ ] C#泛型
+
+- [ ] C#值类型和引用类型的概念和场景
+
+- [ ] 协程的概念和应用
+
+  [C#协程](https://phepe.github.io/2019/04/03/Unity3d/Coroutine/)
+
+  ``` text
+  关键字 yield   IEnumerator   
+  
+  概念：
+  主程序运行过程中，开启另一段逻辑处理，协同主程序执行
+  只能单核按帧顺序轮转，不同于多线程的多核并行，不存在线程间的同步和互斥问题
+  
+  
+  基本原理：
+  协程返回值迭代器 为IEnumerator，可以执行一个序列的某个节点位置的指针
+  IEnumerator提供了两个接口 Current返回当前指向元素，MoveNext将指针后移一个单位，成功移动返回true
+  yield声明序列中的下一个值或者一个无意义的值
+  yield return x（x可以是一个具体对象或者数值） MoveNext返回true并且Current被赋值为当前x，能够从当前位置继续往下执行
+  如果 yield break MoveNext会返回false  中断迭代
+  
+  
+  操作方法：
+  开启
+  StartCoroutine(string methodName)。参数是方法名(字符串类型)；此方法可以包含一个参数，形参方法可以有返回值。  不推荐
+  Coroutine = StartCoroutine（IEnumerator method)。参数是方法名(TestMethod()),方法中可以包含多个参数；
+  
+  IEnumrator类型的方法不能含有ref或者out类型的参数，但可以含有被传递的引用；
+  
+  必须有有返回值，且返回值类型为IEnumrator, 
+  返回值使用（yield retuen +表达式或者值，或者 yield break）语句。
+  
+  
+  停止
+  StopCoroutine (string methodName)，只能终止指定的协程,在程序中调用StopCoroutine() 方法只能终止以字符串形式启动的协程。
+  StopCoroutine(Coroutine)，终止StartCoroutine返回的Coroutine
+  StopAllCoroutine()，终止所有协程
+  
+  
+  挂起
+  yield：挂起，程序遇到yield关键字时会被挂起，暂停执行，等待条件满足时从当前位置继续执行
+  yield return 0 or yield return null:程序在下一帧中从当前位置继续执行
+  yield return 1,2,3,......: 程序等待1，2，3…帧之后从当前位置继续执行
+  yield return new WaitForSeconds(n):程序等待n秒后从当前位置继续执行
+  yield new WaitForEndOfFrame():在所有的渲染以及GUI程序执行完成后从当前位置继续执行
+  yield new WaitForFixedUpdate():所有脚本中的FixedUpdate()函数都被执行后从当前位置继续执行
+  yield return WWW:等待一个网络请求完成后从当前位置继续执行
+  yield return StartCoroutine():等待一个协程执行完成后从当前位置继续执行
+  yield break:将会导致协程的执行条件不被满足，不会从当前的位置继续执行程序，而是直接从当前位置跳出函数体，回到函数的根部
+  ```
+
+- [ ] 扩展： 异步编程   async / await    (阻塞和不阻塞)
+
+
+
+- [ ] Mono虚拟机
+
+  ``` text
+  .Net Framework 微软跨平台基础框架，C#是运行在该框架下的编程语言
+  基于通用语言基础架构 (Common Language Infrastructure， CLI)实现的
+  
+  CLI旨在统一 不同高级开发语言在不同平台直接执行方式的差异，描述可执行代码的是一种叫做CIL(Common Intermediate Language)介于高级语言和机器语言间的中间语言
+  
+  不同的高级开发语言统一成CIL通过不同平台CLR(Common Language Runtime)翻译成机器指令，实现统一
+  
+  
+  .Net Framework包含：
+  高级编程语言,比如c#,jscript,j#,VB
+  公共语言规范（CLS）和公共类型系统（CTS）
+  提供高级编程语言使用的各种类库(Framework Class Library)FCL和(Base Class Library)BCL
+  Compiler高级编程语言编译器（高级编程语言->CIL）
+  CLR（Common Language Runtime） IL语言的运行时
+  
+  
+  
+  Mono是基于.Net Framework框架下的跨平台实现
+  主要包括：
+  Runtime interpreter解释器(CLR)
+  Class Libraries(.net framework各种类库)
+  C# Compiler
+  
+  
+  .net c# compiler
+  作用把C#翻译成CIL中间语言
+  早期编译器是csc.exe (c++实现)
+  后期编译器是roslyn  (自举：c#编译器由c#实现)
+  
+  mono c# compiler
+  按照CLI技术规范，能生成满足CIL中间语言，即可以各自实现c#编译器
+  早期 gmcs smcs dmcs
+  后期 mcs
+  
+  
+  CLR 公共语言运行时
+  mono: mono.exe
+  .net framework  是以dll形式存在
+  可以通过Clrver.exe查看当前程序对应的CLR版本
+  
+  
+  unity中的mono
+  Unity中存在两个Mono文件夹
+  /Mono
+  /MonoBleedingEdge 
+  
+  gmcs.exe --> Unity\Editor\Data\Mono\lib\mono\2.0 
+  csc.exe  --> Unity\Editor\Data\Tools/Roslyn
+  
+  ```
+
+  
+
+- [ ] il2cpp的原理
+
+- [ ] IL原理
+
+- [ ] 特性的作用
+
+  Unity编辑器自定义扩展编辑器  结合 ScriptObject 存取编辑器持久化的数据
+
+- [ ] 反射 
+
+  Singleton == > 创建单例类  
+
+  结合特性 做 编辑器枚举类的中文展示等 
+
+  
+
+- [ ] 网络开发
+
+  TCP / UDP
+
+  聊天房间 demo （**继续Socket_2 Demo学习**）
+  
+  https://www.cnblogs.com/dolphinX/p/3462496.html
+
+
+
+---
+
+
+
+### 小游戏的开发 和 类型游戏的基本架构
+
+
+
+
+
+
+
+---
+
+
+
 ### Java TODO
 
 - [ ] 32bit和64bit的区别？   
 
 - [ ] 如8位系统，两个整数相加会溢出，如何解决？   （7bit）
 
+- [ ] 内存中的栈和堆
+
+  
+
 - [ ] 进程的五个状态（创建、就绪、阻塞、结束、等待）
 
-- [ ] 进程和线程的区别（线程是最小的进度单元）
+  ``` tex
+  阻塞：
+  进程执行中，需要获取资源，但是此时该资源无法获取，则进程挂起直到满足可操作的条件再进行操作
+  ```
+
+  
+
+- [ ] 进程和线程的区别（线程是CPU最小的调度单元，进程是最小资源单元）
+
+  ``` tex
+  线程是进程的实际运作单元，进程的基本单元，一个进程可以包含若干个线程，某个程序开始时执行时，进程的第一个线程被默认为该进程的主线程
+  
+  一个进程中可以创建多个线程，多线程之间是并发执行的，一个线程可以终止其他线程或者开启其他线程，每个线程可以共享数据，但都拥有自己独立的堆栈空间和执行顺序
+  
+  进程即正在执行的程序，（把编译好的指令放在特定的一块内存里顺序执行）；
+  单线程程序：整个进程只有一个主线程，所有代码在这个线程内顺序执行
+  多线程程序：一个进程有多个线程同时执行
+  ```
+  
+  ``` tex
+  Unity中的多线程应用
+  
+  
+  ```
+  
+  
+
+
 
 - [ ] 进程调度算法？
 
@@ -740,7 +1273,71 @@
 
 - [ ] JVM调优 （GC）
 
-- [ ] GC
+- [ ] GC （Java对象回收和创建）
+
+  [Java对象创建与回收](https://www.pocketdigi.com/2020-12/java_object_create.html#more)
+
+  ``` tex
+  一、对象创建：
+  
+  Java类的加载过程：加载->验证->准备->解析->初始化
+  new创建对象过程：1.虚拟机判断对应类是否加载完成 2.加载类或者创建对象
+  (当类加载完成时，待创建对象所需的内存大小已经确定了)
+  (为对象分配空间，即把一块确定大小的内存从堆中划分出来)
+  
+  
+  内存划分：
+  	指针碰撞(Bump the Pointer)
+  		前提：垃圾收集器采用标记整理算法，Java堆中的内存是规整的，空闲和使用过的内存分在两边，用一个指针作为分界点，分配内存时把指针向空闲空间移动一段与对象大小相等的距离。
+  	空闲列表(Free List)
+  		垃圾收集器采用标记清除算法，Java堆中的内存不规整，使用过和空闲内存相互交错，虚拟机维护一个记录可用内存块的列表，分配内存时从表中找到一块足够代销的空间给对象，并更新列表
+  		
+  
+  内存分配存在问题：
+  	并发：多线程同时创建对象；同时使用相同的内存地址
+  	虚拟机处理方式：
+  		CAS(compare and swap)
+  			虚拟机采用CAS + 失败重试 保证更新操作的原子性 来对分配内存空间的动作同步处理
+  		本地线程分配缓冲(Thread Local Allocation Buffer, TLAB)
+  			把内存分配的动作按照线程划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存。
+  			XX:+/-UseTLAB 设置虚拟机是否启用TLAB （JVM默认会开启）
+  			XX:TLABSize 设置TLAB大小
+              
+              
+  初始化：（保证了对象的实例字段在Java代码中可以不赋初值就可以直接使用，程序访问的是这些字段数据类型对应的零值）
+  	内存分配完成后，虚拟机需要将分配到内存空间都初始化为零值（不包括对象头）
+  	使用TLAB，上述操作可以提前到TLAB分配时进行
+  	
+  	
+  设置对象头（Object Header）：
+  	初始化之后，虚拟机对对象进行必要设置，即设置对象头中的信息：(对象是哪个类的实例，如何才能找到类的元数据信息，对象Hash码，对象GC的分代年龄等)
+  	HotSpot虚拟机，对象在内存中的存储布局为：对象头（Header）、实例数据（Instance Data）、对齐填充（Padding，提高内存管理效率）
+  		其中对象头分为：
+  		    1.存储对象自身的运行时数据（哈希码、GC分代年龄(只占4bit，年龄最大为15 2^4-1)、锁状态标志、线程持有锁、偏向线程ID、偏向时间戳）
+  		    2.类型指针（Klass Pointer），对象指向它的类元数据的指针，虚拟机通过指针确定这个对象是哪个类的实例
+  		    
+  
+  对象在栈上分配：
+  	对象逃逸分析：分析对象动态作用域，当一个对象在方法中被定义后，它可能被外部方法所引用，例如作为调用参 数传递到其他地方中：
+  	标量替换：前提通过逃逸分析确定对象不会被外部访问，然后将对象进一步分解，JVM不会创建该对象，将对象成员变量分解若干个被（标量替换）的方法所使用的成员变量（在栈帧和寄存器上分配空间）所替换
+  			标量与聚合量：标量不能进一步分解，聚合量可被进一步分解
+  			
+  对象在Eden区分配
+  大对象（需要大量连续内存空间的对象）直接进入老年代：为了避免为大对象分配内存时复制操作而降低效率
+  长期存活的对象将进入老年代
+  对象动态年龄判断
+  老年代空间分配担保机制
+  
+  
+  二、对象内存回收
+  	判断对象是否需要回收
+  	1. 引用计数
+  		给对象添加一个引用计数器，引用计数为0的对象就不能再使用，但因为对象间循环引用的问题，这个方法一般不被采用
+  	2. 可达性分析
+  		将GC Roots对象（线程栈的本地变量、静态变量、本地方法栈的变量）作为起点，从这些节点向下搜索引用对象，找到对象标记为非垃圾对象，其余未标记对象为垃圾对象
+  ```
+
+  
 
 - [ ] 内存泄漏，如何检测？
 
@@ -768,6 +1365,10 @@
 
 - [ ] 除new创建对象外，还有什么方法可以创建对象
 
+  [大白话说Java反射：入门、使用、原理](https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html)
+
+  反射：运行时加载类，获取类的完整构造，并调用相应的方法
+
   可以使用java反射
 
   反射创建对象过程：
@@ -793,18 +1394,18 @@
   反射类：
 
   	1. Class 表示正在运行的Java应用程序中的类和接口   所有获取对象的信息都需要Class类来实现
-   	2. Field: 提供有关类和接口的属性信息，以及对它的动态访问权限
-   	3. Constructor: 提供关于类的单个构造方法的信息以及它的访问权限
-   	4. Method：提供类或接口中某个方法的信息
+   2. Field: 提供有关类和接口的属性信息，以及对它的动态访问权限
+   3. Constructor: 提供关于类的单个构造方法的信息以及它的访问权限
+   4. Method：提供类或接口中某个方法的信息
 
   优点：
 
   	1. 能够运行时动态获取类的实例
-   	2. 与动态编译结合
+   2. 与动态编译结合
 
   缺点：
 
-   	1. 性能较低，需要解析字节码 将内存中的对象进行解析
+   1. 性能较低，需要解析字节码 将内存中的对象进行解析
 
   优化：
 
