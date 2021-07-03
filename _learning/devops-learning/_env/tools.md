@@ -56,4 +56,20 @@
   18.filezilla client
   ```
 
-  
+
+
+
+* win hosts配置
+
+  * typora + picgo + github 上传图片无法显示问题
+
+    ``` tex
+    可能和hosts解析github地址有关
+    C:\Windows\System32\drivers\etc\hosts
+    
+    # GitHub Start 
+    185.199.109.133    raw.githubusercontent.com
+    # GitHub End
+    ```
+
+    

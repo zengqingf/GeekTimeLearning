@@ -1193,6 +1193,8 @@ C#:
   聊天房间 demo （**继续Socket_2 Demo学习**）
   
   https://www.cnblogs.com/dolphinX/p/3462496.html
+  
+  断线重连
 
 
 

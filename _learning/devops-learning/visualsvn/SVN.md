@@ -386,4 +386,20 @@
   svn update --set-depth infinity
   ```
 
+
+* SVN database is locked
+
+  ``` sh
+  sqlite3 .svn/wc.db "select * from work_queue"
+  sqlite3 .svn/wc.db "delete from work_queue"
+  ```
+
+  ``` sh
+  #cd /项目路径/.svn #需要自行找到项目svn所在目录
+  mv wc.db wc.db.locked
+  sqlite3 wc.db.locked
+  sqlite> .backup main wc.db 
+  ```
+
   
+

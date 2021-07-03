@@ -3,16 +3,32 @@
 
 #include <iostream>
 
+#include "chapter_8.h"
 #include "chapter_12.h"
+#include "chapter_13.h"
+#include "chapter_14.h"
+#include "chapter_15.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-	Chapter_12 c12;
-	c12.TestContainer1();
-	c12.TestContainer2();
-	c12.TestContainer3();
+	//Chapter_8 c8;
+	//smart_ptr_sample();
+
+	//Chapter_12 c12;
+	//c12.TestContainer1();
+	//c12.TestContainer2();
+	//c12.TestContainer3();
+
+	//Chapter_13 c13;
+	//c13.TestCase8();
+
+	//Chapter_14 c14;
+	//c14.TestCase6(Chapter_14::Fib);
+
+	Chapter_15 c15;
+	c15.Test5();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

@@ -171,9 +171,9 @@ public:
 		std::vector<int> v = { 5, 2, 1, 13, 14 };
 		std::cout << *std::find_if(begin(v), end(v),	//标准库中的查找算法
 			[](int x)									//匿名lambda表达式，不需要auto赋值
-		{
-			return x >= 5;							// 用做算法的谓词判断条件
-		}											// lambda表达式结束
+			{
+				return x >= 5;							// 用做算法的谓词判断条件
+			}											// lambda表达式结束
 		)
 			<< std::endl;								// 语句执行完，lambda表达式就不存在了
 	}

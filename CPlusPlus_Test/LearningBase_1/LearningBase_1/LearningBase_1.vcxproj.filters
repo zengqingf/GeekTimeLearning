@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LearningBase_1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="complex_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -52,6 +49,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="base_6.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LearningBase_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

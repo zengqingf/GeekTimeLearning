@@ -56,6 +56,15 @@
     <ClInclude Include="chapter_13.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="chapter_14.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter_15.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\json.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test_calc_values.inc">

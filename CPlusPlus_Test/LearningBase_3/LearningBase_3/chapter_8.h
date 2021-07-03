@@ -43,6 +43,50 @@ C++ 中的垃圾回收 不同于Java C# Go等的严格意义上的垃圾回收�
 	在追求性能的环境下，推荐使用unique_ptr 代替 裸指针，速度几乎和裸指针相同，并且没有引用计数成本
 */
 
+
+/*
+注意 如果在头文件中使用这样的方式进行访问 Node的对象的成员变量或者方法  
+会出现“使用了未定义类型” 的错误
+
+e.g.
+class B;
+这样的声明方式只能用于 指针参数和指针变量  e.g.  funcA(B* inB),  B* m_pB;
+不能用于对象的定义  e.g. B m_b   或者  B m_b  m_b.funcB()
+
+因为class B仅仅是声明
+
+如果把访问放到cpp实现文件中的话，可以避免这个问题
+写在头文件一般也只是测试用，会导致过多的代码，也无法实现成 inline函数
+*/
+//class Node;
+
+#define USE_WEAK_PTR 0
+
+//测试shared_ptr的循环引用情况
+class Node final
+{
+public:
+	Node() = default;
+	~Node() {
+		std::cout << "node dtor" << std::endl;
+	}
+
+public:
+	using this_type = Node;
+#if USE_WEAK_PTR
+	//使用weak_ptr 打破循环引用，只观察指针，不会增加引用计数（弱引用）
+	//但在需要时 可以调用成员函数 lock() 获取shared_ptr（强引用）
+	using shared_ptr = std::weak_ptr<this_type>;
+
+#else
+	using shared_ptr = std::shared_ptr<this_type>;
+#endif
+
+public:
+	shared_ptr next;        //指向下一个节点
+};
+
+
 class Chapter_8
 {
 	/*
@@ -100,7 +144,7 @@ public:
 	std::unique_ptr<T>										//返回智能指针
 		my_make_unique(Args&&... args)						//可变参数模板的入口函数
 	{
-		return std:unique_ptr<T>(							//构造智能之指针
+		return std::unique_ptr<T>(							//构造智能之指针
 			new T(std::forward<Args>(args)...));			//完美转发
 	}
 
@@ -154,7 +198,7 @@ public:
 	std::shared_ptr<T>										//返回智能指针
 		my_make_shared(Args&&... args)						//可变参数模板的入口函数
 	{
-		return std:shared_ptr<T>(							//构造智能之指针
+		return std::shared_ptr<T>(							//构造智能之指针
 			new T(std::forward<Args>(args)...));			//完美转发
 	}
 
@@ -175,10 +219,11 @@ public:
 		assert(n2.use_count() == 2);
 	}
 
+#if USE_WEAK_PTR
 	void TestWeakPtrCircularRef()
 	{
-		auto n1 = my_make_shared<NodeFix>();
-		auto n2 = my_make_shared<NodeFix>();
+		auto n1 = my_make_shared<Node>();
+		auto n2 = my_make_shared<Node>();
 		assert(n1.use_count() == 1);
 		assert(n2.use_count() == 1);
 
@@ -191,14 +236,14 @@ public:
 		assert(n1.use_count() == 1);
 		assert(n2.use_count() == 1);
 
-		/*
-		weak_ptr 作用是 弱引用 不一定要持有对象 只是偶尔 看看对象是否存在  对象可以不存在
-		*/
+		
+		//weak_ptr 作用是 弱引用 不一定要持有对象 只是偶尔 看看对象是否存在  对象可以不存在
 		if (!n1->next.expired()) { //判断weak_ptr是否为空 即是否有效
 			auto ptr = n1->next.lock();  //获取shared_ptr  如果weak_ptr不为空，可以获取其关联的强引用shared_ptr
 			assert(ptr == n2);
 		}
 	}
+#endif
 
 
 	//扩展：？
@@ -209,29 +254,93 @@ public:
 };
 
 
-//测试shared_ptr的循环引用情况
-class Node final
+/**************************************** 测试案例 ******************************************/
+
+class A
 {
 public:
-	using this_type = Node;
-	using shared_ptr = std::shared_ptr<this_type>;
-
-public:
-	shared_ptr next;        //指向下一个节点
+	A() { printf("create A();\n"); }
+	~A() { printf("delete A();\n"); }
 };
 
-//使用weak_ptr 打破循环引用，只观察指针，不会增加引用计数（弱引用）
-//但在需要时 可以调用成员函数 lock() 获取shared_ptr（强引用）
-class NodeFix final
+class C;
+class B
 {
 public:
-	using this_type = Node;
-	using shared_ptr = std::weak_ptr<this_type>;
+	B() { printf("create B();\n"); }
+	~B() { printf("delete B();\n"); }
 
-public:
-	shared_ptr next;        //指向下一个节点
+	std::shared_ptr<C> pc;
 };
 
+class C
+{
+public:
+	C() { printf("create C();\n"); }
+	~C() { printf("delete C();\n"); }
 
+	std::shared_ptr<B> pb;
+};
+
+class E;
+class D
+{
+public:
+	D() { printf("create D();\n"); }
+	~D() { printf("delete D();\n"); }
+
+	std::shared_ptr<E> pe;
+};
+
+class E
+{
+public:
+	E() { printf("create E();\n"); }
+	~E() { printf("delete E();\n"); }
+
+	std::weak_ptr<D> pd;
+};
+
+void smart_ptr_sample()
+{
+	std::cout << "base use \n";
+	{
+		auto pa = std::make_shared<A>();
+	}
+
+	std::cout << "\n===================================\n";
+	std::cout << "ref cycle \n";
+	{
+
+		auto pb = std::make_shared<B>();
+		auto pc = std::make_shared<C>();
+
+		pb->pc = pc;
+		pc->pb = pb;
+	}
+
+	std::cout << "\n===================================\n";
+	std::cout << "ref cycle (break one ref)\n";
+	{
+		auto pb = std::make_shared<B>();
+		auto pc = std::make_shared<C>();
+
+		pb->pc = pc;
+		pc->pb = pb;
+		pb->pc = nullptr;
+	}
+
+	std::cout << "\n===================================\n";
+	std::cout << "use weak_ptr\n";
+	{
+		auto pd = std::make_shared<D>();
+		auto pe = std::make_shared<E>();
+
+		pd->pe = pe;
+		pe->pd = pd;
+	}
+}
+
+/**************************************** 测试案例 ******************************************/
 
 #endif  //_CHAPTER_8_H_ 

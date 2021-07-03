@@ -66,7 +66,7 @@ public:
 	void ForwardValue_TR(T&& val) {
 		ProcessValue_T(val);
 	}
-};
+}; 
 
 
 class MyString

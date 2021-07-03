@@ -16,7 +16,8 @@ namespace SocketServer
     {
         static void Main(string[] args)
         {
-
+            TcpServer tcpServer = new TcpServer();
+            tcpServer.Run(2345);
         }
     }
 }
