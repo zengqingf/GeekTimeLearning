@@ -2,6 +2,33 @@
 
 
 
+### 基础
+
+* V1 V2 V3签名
+
+  [android应用签名](https://jakkypan.gitbooks.io/android-develop-art-discovery/content/an-quan-xing/ying-yong-qian-ming.html)
+
+  [android-安全性-应用签名](https://source.android.google.cn/security/apksigning?hl=zh-cn)
+
+  ``` tex
+  V1方案，基于JAR签名的方案
+  V2方案，Android 7.0引入的方案
+  
+  v1 签名不保护 APK 的某些部分，例如 ZIP 元数据。APK 验证程序需要处理大量不可信（尚未经过验证）的数据结构，然后会舍弃不受签名保护的数据。这会导致相当大的受攻击面。此外，APK 验证程序必须解压所有已压缩的条目，而这需要花费更多时间和内存。
+  
+  在验证期间，v2+ 方案会将 APK 文件视为 blob，并对整个文件进行签名检查。对 APK 进行的任何修改（包括对 ZIP 元数据进行的修改）都会使 APK 签名作废。这种形式的 APK 验证不仅速度要快得多，而且能够发现更多种未经授权的修改。
+  
+  新的签名格式向后兼容，因此，使用这种新格式签名的 APK 可在更低版本的 Android 设备上进行安装（会直接忽略添加到 APK 的额外数据），但前提是这些 APK 还带有 v1 签名。
+  ```
+
+
+
+
+
+---
+
+
+
 ### 插件
 
 * Fmod库

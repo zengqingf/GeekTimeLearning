@@ -35,6 +35,10 @@ using namespace std;
 
 int main() {
 
+	Base_2 base_22;
+	base_22.test_char_wchar();
+	return 0;
+
 	//base_6  左值右值测试
 	TestLRValue tlrv_1;
 	tlrv_1.Test_1();
@@ -121,11 +125,12 @@ int main() {
 
 	//base_2 指针和引用测试
 	Base_2 base_2;
-	base_2.test_swap_by_pointer();
-	base_2.test_pass_by_value_pointer();
-	base_2.test_pass_by_reference();
-	base_2.test_pass_by_reference_pointer();
-	base_2.test_pass_by_pointer_pointer();
+	//base_2.test_swap_by_pointer();
+	//base_2.test_pass_by_value_pointer();
+	//base_2.test_pass_by_reference();
+	//base_2.test_pass_by_reference_pointer();
+	//base_2.test_pass_by_pointer_pointer();
+	base_2.test_char_with_const();
 	return 0;
 
 

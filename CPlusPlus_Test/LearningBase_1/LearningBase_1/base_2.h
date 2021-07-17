@@ -63,7 +63,17 @@
 //using namespace std; //不要在头文件中 using namespace  会造成命名空间污染
 
 #include <string>
+
+#include <locale>
+#include <sstream>
+
+#include <vector>
+
+#pragma warning (disable:4996)
+
 using std::string;
+using std::wstring;
+
 class Base_2
 {
 private:
@@ -85,4 +95,12 @@ public:
 
 	string getStr() const;
 	string & getRStr();
+
+	//字符串 字符数组 宽字符等测试
+	void test_char_with_const();
+	std::wostringstream wstm;
+	std::ostringstream stm;
+	wstring char_to_wchar(const string& str);
+	string wchar_to_char(const wstring& wstr);
+	void test_char_wchar();
 };

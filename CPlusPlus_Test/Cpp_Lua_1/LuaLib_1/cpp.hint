@@ -1,0 +1,2 @@
+#define LUALIB1_API __declspec(dllexport)
+#define LUALIB1_API __declspec(dllimport)

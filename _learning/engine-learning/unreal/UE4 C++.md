@@ -118,7 +118,56 @@
   printf("%2X", 0x6); //打印出：6
   ```
 
+
+
+
+* FString to const char* with android ndk 29
+
+  ``` c++
+  	FString test = TEXT("1.0.1.1002");
+  	FString test1("1.0.1.1002");
+  	FString test2("1.0.1.1002");
   
+  	std::string vStr = TCHAR_TO_UTF8(*versionNameStr);
+  	const char* versionName1 = vStr.c_str();
+  
+  	std::string vStr1 = TCHAR_TO_ANSI(*versionNameStr);
+  	const char* versionName2 = vStr1.c_str();
+  
+  	const char* testStr = TCHAR_TO_UTF8(*test);
+  	const char* testStr1 = TCHAR_TO_UTF8(*test1);
+  	const char* testStr2 = TCHAR_TO_ANSI(*test2);
+  
+  	UE_LOG(LogTemp, Log, TEXT("### version name: %s --- %s"), UTF8_TO_TCHAR(versionName1), *versionNameStr);
+  	UE_LOG(LogTemp, Log, TEXT("### version name: %s --- %s"), ANSI_TO_TCHAR(versionName2), *versionNameStr);
+  
+  	UE_LOG(LogTemp, Log, TEXT("### version name: %s --- %s"), UTF8_TO_TCHAR(testStr), *test);
+  	UE_LOG(LogTemp, Log, TEXT("### version name: %s --- %s"), UTF8_TO_TCHAR(testStr1), *test1);
+  	UE_LOG(LogTemp, Log, TEXT("### version name: %s --- %s"), ANSI_TO_TCHAR(testStr2), *test2);
+  
+  /*android上输出：
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1 --- 1.0.1.1002
+  LogTemp: ### version name: 1 --- 1.0.1.1002
+  LogTemp: ### version name: 1 --- 1.0.1.1002
+  
+  windows上输出：
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  LogTemp: ### version name: 1.0.1.1002 --- 1.0.1.1002
+  */
+  ```
+
+  
+
+
+
+
+
+---
 
 
 
@@ -487,9 +536,98 @@
 
 
 
-* 智能指针
+* UE4智能指针
+
+
+
+
+* UE4读写配置 ini
+
+  ``` c++
+  //使用自带配置文件
+  #if PLATFORM_ANDROID
+  	GConfig->GetString(
+  		TEXT("/Script/AndroidRuntimeSettings.AndroidRuntimeSettings"),
+  		TEXT("VersionDisplayName"),
+  		versionName,
+  		GEngineIni   //FPaths::ProjectConfigDir() / "DefaultEngine.ini" also able
+  	);
+  	//also able
+  	//if (JNIEnv* env = FAndroidApplication::GetJavaEnv())
+  	//{
+  	//	static jmethodID Method_GetVersionName = FJavaWrapper::FindMethod(env, FJavaWrapper::GameActivityClassID, "getVersionName", "()Ljava/lang/String;", false);
+  	//	jstring res = (jstring)FJavaWrapper::CallObjectMethod(env, FJavaWrapper::GameActivityThis, Method_GetVersionName);
+  	//	versionName = FStringFromLocalRef(env, res);
+  	//}
+  	//UE_LOG(LogTemp, Log, TEXT("### in version name: %s"), *versionName);
+  
+  #elif PLATFORM_IOS
+  	GConfig->GetString(
+  		TEXT("/Script/IOSRuntimeSettings.IOSRuntimeSettings"),
+  		TEXT("VersionInfo"),
+  		versionName,
+  		GEngineIni
+  	);
+  #endif
+  ```
+
+  ``` c++
+  //自定义新建配置文件
+  //MyActor.h
+  
+  //1.UClass的config配置需要保存的ini文件名
+  UCLASS(config = XXX)
+  class MYPROJECT_API AMyActor : public AActor
+  {
+  	GENERATED_BODY()
+  	
+  public:	
+  	// Sets default values for this actor's properties
+      //2.需要读取的变量 读取的变量的UPROPERTY中添加config
+  	UPROPERTY(config, BlueprintReadWrite)
+  		int32 TempA;
+      
+  //3.在工程目录下创建ini  (如上：DefaultXXX.ini)
+  /*
+  /Script/你的工程名.你的使用类去掉A或者U之类的前缀
+  
+  [/Script/Myproject.MyActor]
+  TempA=123
+  */
+  //运行程序，可以读取到这里面的数值，如果修改的话，需要重启editor
+  ```
+
+  ``` c++
+  //使用配置文件
+  //注意路径：程序在打shipping包后变量读取的路径就变成了 C:\Users\用户名\AppData\Local\MyProject\Saved\Config\WindowsNoEditor
+  	FString platFormName = FPlatformProperties::PlatformName();
+  	FString gameConfigPath = FPaths::GameSavedDir() + TEXT("Config/") + platFormName + TEXT("/TTT.ini");
+  	
+  	if (GConfig)
+  	{
+  		GConfig->SetInt(TEXT("/Script/Myproject.MyActor"),
+  			TEXT("TempA"),
+  			ttt,
+  			gameConfigPath);
+   
+  		GConfig->Flush(true, gameConfigPath);
+  	}
+  ————————————————
+  版权声明：本文为CSDN博主「鸿蒙老道」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+  原文链接：https://blog.csdn.net/maxiaosheng521/article/details/96425767
+  ```
+
+
+
+
+
+* UE4 Http
 
   
+
+  
+
+
 
 
 

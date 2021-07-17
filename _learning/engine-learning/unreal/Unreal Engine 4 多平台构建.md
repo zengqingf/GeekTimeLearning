@@ -41,6 +41,38 @@
      * 分析
 
        *在android手机上能正常运行 在模拟器上不行  可能和so架构或者CPU支持有关系  就不用想代码逻辑方面的原因了  即使看到crash日志可能涉及有闪退堆栈*
+     
+  3. Shipping打包闪退
+
+     ``` tex
+      java.lang.RuntimeException: Unable to create application com.epicgames.ue4.GameApplication: java.lang.NullPointerException: Attempt to invoke interface method 'void b.f.b.c.a.c.a.b(android.content.Context)' on a null object reference
+             at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6737)
+             at android.app.ActivityThread.access$2000(ActivityThread.java:273)
+             at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2020)
+             at android.os.Handler.dispatchMessage(Handler.java:112)
+             at android.os.Looper.loop(Looper.java:216)
+             at android.app.ActivityThread.main(ActivityThread.java:7625)
+             at java.lang.reflect.Method.invoke(Native Method)
+             at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:524)
+             at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+     ```
+
+     ``` tex
+     原因：
+     Working:
+     Build configuration: Shipping
+     Full rebuild
+     
+     Not Working:
+     Build configuration: Shipping
+     Full rebuild
+     For Distribution
+     
+     @注意：
+     但是改为Working后，Shipping签名不生效了，即使按照Shipping打包，Shipping生效，但是签名仍是默认的Android Debug
+     ```
+
+     
 
 * 环境配置
 

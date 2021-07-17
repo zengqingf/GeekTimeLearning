@@ -100,6 +100,32 @@
 
 
 
+---
+
+
+
+### Markdown
+
+* 生成目录
+
+  ``` markdown
+  方法1
+  开头输入 [toc]
+  凡是文章标题带有#（1-6个）的都会被捕获到目录中
+  
+  方法2
+  npm安装doctoc
+  npm i doctoc -g   //install 简写为 i
+  
+  xxx/demo.md
+  cd xxx/
+  doctoc demo.md
+  ```
+
+  
+
+
+
 
 
 ---

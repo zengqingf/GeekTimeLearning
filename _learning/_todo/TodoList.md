@@ -728,13 +728,21 @@
 
 - [ ] FixedUpdate和Update的执行顺序和区别
 
+  ``` tex
   Update: 每帧调用一次（非物理对象的移动，简单计时器，输入检测等）
-
+  
   ​				不是按固定时间调用的，如果某一帧和下一帧的处理时长不同，则Update的调用时间间隔不同
-
+  
   FixedUpdate: 按固定时间调用，调用时间间隔相同（物理对象，如Rigidbody刚体应该在FixedUpdate中执行，最好使用力来定义对象移动）
-
+  
   ​						受Edit - Time - Fixed Timestep的值影响
+  ```
+  
+  
+  
+- [ ] 项目开发经验
+
+  1. 聊天，协议优化（channeltype聊天频道, targetid目标id, msg（消息内容，统一到msg中，处理为超链接））
 
 
 
@@ -1375,85 +1383,83 @@ C#:
 
   反射创建对象过程：
 
+  ``` tex
   先查找类资源  再使用类加载器创建  
+  ```
 
   反射机制：
 
+  ``` tex
   反射机制是在运行时，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意个对象，都能够调用它的任意一个方法。在java中，只要给定类的名字，就可以通过反射机制来获得类的所有信息。 这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。
-
+  
   举例：jdbc   Class.forName("com.mysql.jdbc.Driver.class")  //加载MySQL驱动类
+  ```
 
   实现方式：
 
+  ``` tex
   1. Class.forName("类的路径")
-
   2. 类名.class
-
   3. 对象名.getClass()
-
   4. 基本类型的包装类，可以调用包装类的Type属性来获取该包装类的Class对象
+  ```
 
   反射类：
 
   	1. Class 表示正在运行的Java应用程序中的类和接口   所有获取对象的信息都需要Class类来实现
-   2. Field: 提供有关类和接口的属性信息，以及对它的动态访问权限
-   3. Constructor: 提供关于类的单个构造方法的信息以及它的访问权限
-   4. Method：提供类或接口中某个方法的信息
-
+  	2. Field: 提供有关类和接口的属性信息，以及对它的动态访问权限
+  	3. Constructor: 提供关于类的单个构造方法的信息以及它的访问权限
+  	4. Method：提供类或接口中某个方法的信息
   优点：
 
   	1. 能够运行时动态获取类的实例
-   2. 与动态编译结合
-
+  	2. 与动态编译结合
   缺点：
 
-   1. 性能较低，需要解析字节码 将内存中的对象进行解析
+  ``` tex
+  性能较低，需要解析字节码 将内存中的对象进行解析
+  ```
 
   优化：
 
-  ​	1. 通过setAccessible(true)关闭JDK的安全检查来提升反射速度；
-
-  ​	2. 多次创建一个类的实例时，有缓存会快很多
-
-  ​	3. ReflflectASM工具类，通过字节码生成的方式加快反射速度
-
-  ​	4. 相对不安全，破坏了封装性（因为通过反射可以获得私有方法和属性）
+  ``` tex
+  1. 通过setAccessible(true)关闭JDK的安全检查来提升反射速度；
+  2. 多次创建一个类的实例时，有缓存会快很多
+  3. ReflflectASM工具类，通过字节码生成的方式加快反射速度
+  4. 相对不安全，破坏了封装性（因为通过反射可以获得私有方法和属性）
+  ```
 
   反射API
 
-  ​	Class 类：反射的核心类，可以获取类的属性，方法等信息。
-
-  ​	Field 类：Java.lang.reflect 包中的类，表示类的成员变量，可以用来获取和设置类之中的属性值。
-
-  ​	Method 类： Java.lang.reflect 包中的类，表示类的方法，它可以用来获取类中的方法信息或者执行方法。
-
-  ​	Constructor 类： Java.lang.reflect 包中的类，表示类的构造方法。
+  ``` tex
+  Class 类：反射的核心类，可以获取类的属性，方法等信息。
+  Field 类：Java.lang.reflect 包中的类，表示类的成员变量，可以用来获取和设置类之中的属性值。
+  Method 类： Java.lang.reflect 包中的类，表示类的方法，它可以用来获取类中的方法信息或者执行方法。
+  Constructor 类： Java.lang.reflect 包中的类，表示类的构造方法。
+  ```
 
   反射使用步骤（获取Class对象，调用对象方法）
 
-  ​	获取想要操作的类的 Class 对象，他是反射的核心，通过 Class 对象我们可以任意调用类的方法。
-
-  ​	调用 Class 类中的方法，即反射的使用阶段。
-
-  ​	使用反射 API 来操作这些信息。
+  ``` tex
+  获取想要操作的类的 Class 对象，他是反射的核心，通过 Class 对象我们可以任意调用类的方法。
+  调用 Class 类中的方法，即反射的使用阶段。
+  使用反射 API 来操作这些信息。
+  ```
 
   反射动态创建
 
-  ​	使用 Class 对象的 newInstance()方法来创建该 Class 对象对应类的实例，但是这种方法要求该 Class 对象对应的类有默认的空构造器。 
+  ``` java
+  //使用 Class 对象的 newInstance()方法来创建该 Class 对象对应类的实例，但是这种方法要求该 Class 对象对应的类有默认的空构造器。 
+  //调用 Constructor 对象的 newInstance()
+  Class clazz = Class.forName("reflection.Person");
+  Person p = (Person)clazz.newInstance();
+  //先使用 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 newInstance()方法来创建 Class 对象对应类的实例,
+  //通过这种方法可以选定构造方法创建实例。
+  Constructor c = clazz.getDeclaredConstructor(String.class, String.class, int.class);
+  Person p1 = (Person) c.newInstance("张三", "male", 20);
+  ```
 
-  ​	调用 Constructor 对象的 newInstance()
-
-  ​			Class clazz = Class.forName("reflection.Person");
-
-  ​			Person p = (Person)clazz.newInstance();
-
-  ​	先使用 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 newInstance()方法来创建 Class 对象对应类的实例,
-
-  ​	通过这种方法可以选定构造方法创建实例。
-
-  ​			Constructor c = clazz.getDeclaredConstructor(String.class, String.class, int.class);
-
-  ​			Person p1 = (Person) c.newInstance("张三", "male", 20);
+  
 
 - [ ] 
 
