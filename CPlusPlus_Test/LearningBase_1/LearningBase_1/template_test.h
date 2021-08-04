@@ -125,18 +125,47 @@ cout << complex::real(&c2);
 
 */
 
+#include <iostream>
 
 /*
 <单例>
 ctor放到private中
 */
+
+class TestPrivateDtor
+{
+private:
+	~TestPrivateDtor() {
+		std::cout << "TestPrivateDtor dtor!" << std::endl;
+	}
+
+public:
+	friend void DestructTest(TestPrivateDtor*);
+};
+
+//不能在同一个文件里定义friend method
+//需要加inline修饰
+inline void DestructTest(TestPrivateDtor* ptr)
+{
+	delete ptr;
+	ptr = nullptr;
+}
+
+//饿汉1
 class SingletonA {
 
 public:
 	static SingletonA & getInstance() { return a; }
 	void setup();
 
+	void print() { std::cout << "Singleton A print!" << std::endl; }
+	//~SingletonA() { std::cout << "Singleton A dtor!" << std::endl; }
+
 private:
+
+	//also able
+	~SingletonA() { std::cout << "Singleton A dtor!" << std::endl; }
+
 	SingletonA() {}
 	SingletonA(const SingletonA &rhs) {}
 	SingletonA & operator=(const SingletonA &other) {}
@@ -145,34 +174,51 @@ private:
 
 //SingletonA::getInstance().setup();
 
-//优化  懒汉
+//优化  懒汉1
 class SingletonAA {
 public :
 	static SingletonAA & getInstance();
 	void setup();
 
+	void print() { std::cout << "Singleton AA print!" << std::endl; }
+	//~SingletonAA() { std::cout << "Singleton AA dtor!" << std::endl; }
+
+
 private:
 	SingletonAA() {}
+
+	//also able
+	~SingletonAA() { std::cout << "Singleton AA dtor!" << std::endl; }
+
 	SingletonAA(const SingletonAA &rhs) {}
 	SingletonAA & operator=(const SingletonAA &other) {}
 };
 
+//懒汉 2
+//@注意： instance不会被清理！
 class SingletonB {
 public:
 	static SingletonB * getInstance();
+	void print() { std::cout << "Singleton B print!" << std::endl; }
+
+	//main函数结束：无法执行SingletonB dtor
+	//~SingletonB() { std::cout << "Singleton B dtor!" << std::endl; }
+
 private:
+
+	//main函数结束：无法执行SingletonB dtor
+	~SingletonB() { std::cout << "Singleton B dtor!" << std::endl; }
 
 	SingletonB() {}
 	SingletonB(const SingletonB &rhs) {}
 	SingletonB & operator=(const SingletonB &other) {}
-	~SingletonB() {}
 
 	static SingletonB *instance; //声明（引用性声明）
 };
 
 
 /*
-单例优化清理：
+单例优化清理： 优化SingletonB
 让这个类自己知道在合适的时候把自己删除，或者说把删除自己的操作挂在操作系统中的某个合适的点上，使其在恰当的时候被自己主动运行。
 
 语言特性：
@@ -181,13 +227,18 @@ private:
 class SingletonC 
 {
 public:
-	static SingletonC * getInstance() {}
+	static SingletonC * getInstance();
+	void print() { std::cout << "Singleton C print!" << std::endl; }
+	//~SingletonC() { std::cout << "Singleton C dtor!" << std::endl; }
 
 private:
-	SingletonC() {}
+	SingletonC() { std::cout << "Singleton C ctor!" << std::endl;  }
 	SingletonC(const SingletonC &rhs) {}
+
+	//also able
+	~SingletonC() { std::cout << "Singleton C dtor!" << std::endl; }
+
 	SingletonC & operator=(const SingletonC &other) {}
-	~SingletonC() {}
 
 	static SingletonC *instance;
 
@@ -202,6 +253,64 @@ private:
 		}
 	};
 	static CGarbo garbo_;  //声明（引用性声明）一个静态成员变量，当SingletonC的生命周期结束，garbo_对象也会销毁，会调用其析构函数
+};
+
+class SingletonCC1;
+class SingletonC1
+{
+public:
+	static SingletonC1 * getInstance();
+	void print() { std::cout << "Singleton C1 print!" << std::endl; }
+	//~SingletonC() { std::cout << "Singleton C dtor!" << std::endl; }
+
+protected:
+	SingletonC1() { std::cout << "Singleton C1 ctor!" << std::endl; }
+	SingletonC1(const SingletonC1 &rhs) {}
+	//also able
+	~SingletonC1() { std::cout << "Singleton C1 dtor!" << std::endl; }
+	SingletonC1 & operator=(const SingletonC1 &other) {}
+
+
+private:
+	static SingletonC1 *instance;
+
+	//程序执行结束时，系统会调用SingletonC的静态成员Garbo的析构函数，该析构函数会删除单例的唯一实例。
+	class CGarbo //嵌套类作用：析构时删除SingletonC实例
+	{
+	public:
+		~CGarbo()
+		{
+			if (SingletonC1::instance != nullptr)
+				delete SingletonC1::instance;
+		}
+	};
+	static CGarbo garbo_;  //声明（引用性声明）一个静态成员变量，当SingletonC的生命周期结束，garbo_对象也会销毁，会调用其析构函数
+};
+
+class SingletonCC1 : public SingletonC1
+{
+public:
+	static SingletonCC1 * getInstance();
+
+private:
+	SingletonCC1() { std::cout << "Singleton CC1 ctor!" << std::endl; }
+	SingletonCC1(const SingletonCC1 &rhs) {}
+	//also able
+	~SingletonCC1() { std::cout << "Singleton CC1 dtor!" << std::endl; }
+
+	static SingletonCC1 *instance_;
+
+	//程序执行结束时，系统会调用SingletonC的静态成员Garbo的析构函数，该析构函数会删除单例的唯一实例。
+	class CGarbo //嵌套类作用：析构时删除SingletonC实例
+	{
+	public:
+		~CGarbo()
+		{
+			if (SingletonCC1::instance_ != nullptr)
+				delete SingletonCC1::instance_;
+		}
+	};
+	static CGarbo garbo__;  //声明（引用性声明）一个静态成员变量，当SingletonC的生命周期结束，garbo_对象也会销毁，会调用其析构函数
 };
 
 

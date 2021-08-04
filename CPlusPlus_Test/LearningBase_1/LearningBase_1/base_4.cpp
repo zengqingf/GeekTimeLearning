@@ -21,3 +21,17 @@ void TypeCast_Test_1::Test1()
 	//Derived_C *dc_1 = static_cast<Derived_C *>(db_1); //编译错误
 	Derived_C *dc_2 = dynamic_cast<Derived_C *>(db_1);  //dc_2 == nullptr
 }
+
+void TypeCast_Test_1::Test2()
+{
+	//1.编译器隐式执行的任何类型转换 可以通过static_cast完成
+	double a = 1.999;
+	int b = static_cast<double>(a);//相当于 a = b, 避免编译器告警：大精度转小精度的数据丢失
+								   //static_cast使用位截断处理
+
+	//2. 使用static_cast找回存放在void*指针中的值
+	void *vptr = &a;
+	double *dptr = static_cast<double*>(vptr);
+	std::cout << *dptr << std::endl;
+}
+

@@ -28,7 +28,7 @@ int main()
 	//c14.TestCase6(Chapter_14::Fib);
 
 	Chapter_15 c15;
-	c15.Test5();
+	c15.Test6();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

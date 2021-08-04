@@ -27,6 +27,37 @@ SingletonB* SingletonB::getInstance()
 
 SingletonC* SingletonC::instance = nullptr;//定义（定义性声明）
 SingletonC::CGarbo SingletonC::garbo_; //定义（定义性声明）
+SingletonC* SingletonC::getInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new SingletonC();
+	}
+	return instance;
+}
+
+
+SingletonC1* SingletonC1::instance = nullptr;//定义（定义性声明）
+SingletonC1::CGarbo SingletonC1::garbo_; //定义（定义性声明）
+SingletonC1* SingletonC1::getInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new SingletonC1();
+	}
+	return instance;
+}
+
+SingletonCC1* SingletonCC1::instance_ = nullptr;//定义（定义性声明）
+SingletonCC1::CGarbo SingletonCC1::garbo__; //定义（定义性声明）
+SingletonCC1* SingletonCC1::getInstance()
+{
+	if (instance_ == nullptr)
+	{
+		instance_ = new SingletonCC1();
+	}
+	return instance_;
+}
 
 
 SingletonD* SingletonD::instance_ = nullptr;//定义（定义性声明）

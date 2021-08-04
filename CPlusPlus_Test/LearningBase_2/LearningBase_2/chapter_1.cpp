@@ -1,6 +1,6 @@
 #include "chapter_1.h"
 
-void chapter_1::test_cout_cin()
+void Chapter_1::test_cout_cin()
 {
 	//链式
 	std::cout << "hello" << "world" << std::endl;  //推荐加 endl
@@ -13,7 +13,7 @@ void chapter_1::test_cout_cin()
 	std::cout << v1 << " " << v2 << " " << v1 + v2 << std::endl;
 }
 
-void chapter_1::test_for_while()
+void Chapter_1::test_for_while()
 {
 	int sum = 0, value = 0;
 	//std::cin 即istream 对象作为循环判断条件  其实是检测流的状态  如果流是有效的，即流未遇到错误，则条件为true
@@ -32,7 +32,7 @@ void chapter_1::test_for_while()
 	std::cout << "Sum is " << sum << std::endl;
 }
 
-void chapter_1::test_if_block()
+void Chapter_1::test_if_block()
 {
 	int currVal = 0, val = 0;
 	if (std::cin >> currVal){

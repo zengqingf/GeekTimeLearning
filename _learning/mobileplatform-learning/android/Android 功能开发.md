@@ -23,6 +23,75 @@
 
 
 
+* MultiDex
+
+  [为方法数超过 64K 的应用启用 MultiDex](https://developer.android.com/studio/build/multidex)
+
+  ``` tex
+  示例：UE4 Android Build Gradle构建方法数超标
+  
+  UE4 Plugin APL.xml中加入
+  <buildGradleAdditions>
+      <insert>
+      <![CDATA[
+          android {
+              defaultConfig {
+                  multiDexEnabled true
+              }
+          }
+      ]]>
+      </insert>
+  </buildGradleAdditions>
+  
+  
+  使用MultiDex分包后 ClassNotFoundException
+  问题原因：为 Dalvik 可执行文件分包构建每个 DEX 文件时，构建工具会执行复杂的决策制定来确定 MainDEX 文件中需要的类，以便应用能够成功启动。如果启动期间需要的任何类未在MainDEX 文件中提供，那么您的应用将崩溃并出现错误 java.lang.NoClassDefFoundError。
+  
+  build.gradle
+  android {
+      defaultConfig {
+          multiDexEnabled true
+          multiDexKeepProguard file('gcloudsdk-gcloudcore/multidex-config.pro')
+      }
+  }
+  ```
+
+  
+
+
+
+
+
+* 混淆
+
+  [android打包混淆及语法规则详解](https://blog.csdn.net/P876643136/article/details/90668769)
+
+  ``` tex
+  android {
+      …………
+      buildTypes {
+          release {
+              // 是否进行混淆
+              minifyEnabled true
+              // 混淆文件的位置
+              proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+          }
+          debug {
+              ···
+          }
+      }
+  }
+  
+  遇到过将minifyEnabled false后可以解决 multiDexEnabled true导致的class not found问题 
+  java.lang.RuntimeException: Unable to create application com.epicgames.ue4.GameApplication: java.lang.NullPointerException: Attempt to invoke interface method 'void b.g.b.d.a.c.a.b(android.content.Context)' on a null object reference
+  ```
+
+  
+
+
+
+
+
 
 
 ---

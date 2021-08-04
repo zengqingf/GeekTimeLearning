@@ -60,3 +60,44 @@ private:
 public:
 	void Test1();
 };
+
+
+
+/*
+explicit keyword
+
+1.指定构造函数或转换函数（C++11),推导指引（C++17）为显示，不能进行隐式转换和复制初始化
+2.可以与const表达式一起使用，当且仅当const表达式为true时，函数为显示
+*/
+#include <iostream>
+class TestExplicit_1
+{
+public:
+	int m_x, m_y;
+	TestExplicit_1(int x = 0, int y = 0)
+		:m_x(x), m_y(y) {}
+
+	operator bool() const { return true; }
+
+	static void Print(const TestExplicit_1& te)
+	{
+		std::cout << "(" << te.m_x << ","
+			<< te.m_y << ")" << std::endl;
+	}
+};
+
+class TestExplicit_2
+{
+public:
+	int m_x, m_y;
+	explicit TestExplicit_2(int x = 0, int y = 0)
+		:m_x(x), m_y(y) {}
+
+	explicit operator bool() const { return true; }
+
+	static void Print(const TestExplicit_2& te)
+	{
+		std::cout << "(" << te.m_x << ","
+			<< te.m_y << ")" << std::endl;
+	}
+};

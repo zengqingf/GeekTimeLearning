@@ -48,6 +48,9 @@ class TypeCast_Test_1
 {
 public:
 	void Test1();
+
+	//static_cast : https://zh.cppreference.com/w/cpp/language/static_cast
+	void Test2();
 };
 
 

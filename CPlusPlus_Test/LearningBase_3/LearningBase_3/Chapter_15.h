@@ -18,6 +18,7 @@
 using std::string;
 using std::vector;
 using std::map;
+using std::set;
 /*
 序列化
 
@@ -89,8 +90,46 @@ public:
 		msgpack::sbuffer sbuf;					//输出缓存区
 		msgpack::pack(sbuf, v);					//序列化（传入序列化输出目标和被序列化的对象）
 
-		std::cout << sbuf.size() << std::endl;
+		std::cout << sbuf.size() << std::endl;  //output: 6
+
+		auto handle = msgpack::unpack(				//反序列化  得到一个object_handle
+						sbuf.data(), sbuf.size());  //输入二进制数据
+		auto obj = handle.get();					//get() 得到反序列化对象  object 
 	}
+
+	void Test6()
+	{
+		msgpack::sbuffer sbuf;						   //输出缓冲区
+		msgpack::packer<decltype(sbuf)> packer(sbuf);  //专门的序列化对象 （串联序列化操作）
+		packer.pack(10).pack("mjx").pack(vector<int>{1, 2, 3});
+		for (decltype(sbuf.size()) offset = 0; offset != sbuf.size();) {
+			auto handle = msgpack::unpack(sbuf.data(), sbuf.size(), offset);  //使用偏移量进行反序列化操作
+			auto obj = handle.get();
+		}
+	}
+
+	void Test7()
+	{
+		Msgpack_Obj_Test msgObj1 = { 1, "MJX", {"1993", "1010"} };
+		msgpack::sbuffer sbuf;
+		msgpack::pack(sbuf, msgObj1);
+
+		auto obj = msgpack::unpack(sbuf.data(), sbuf.size()).get();
+
+		Msgpack_Obj_Test msgObj2;
+		obj.convert(msgObj2);					//转换序列化数据
+		
+	}
+};
+
+class Msgpack_Obj_Test					   //自定义类，使用msgpack封装的宏，简化序列化和反序列化的操作
+{
+public:
+	int id;
+	string title;
+	set<string> tags;
+public:
+	MSGPACK_DEFINE(id, title, tags);	  //实现序列化功能的宏
 };
 
 #endif  // _CHAPTER_15_H_

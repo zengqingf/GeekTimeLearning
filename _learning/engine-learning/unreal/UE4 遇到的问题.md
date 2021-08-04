@@ -56,6 +56,7 @@
   ``` text
   需要在模块的*.Build.cs中的 PublicDependencyModuleNames 引入 NavigationSystem
   
+
 （如何确定名称是：NavigationSystem，可以在Unreal Engine API Reference中的 搜索到 UNavigationSystemV1，看文档中 Module: NavigationSystem 即可确定）
   https://docs.unrealengine.com/en-US/API/Runtime/NavigationSystem/UNavigationSystemV1/index.ht19ml![](https://i.loli.net/2021/03/09/WMlnuCSye8ozJpc.jpg)
   ```
@@ -483,3 +484,186 @@
   相当于添加了   [PLUGINNAME]/Public
   ```
 
+
+
+* error C2440: 'return': cannot convert from 'T *' to 'UObject *
+
+  ``` tex
+  问题1：
+  继承自UObject的类中的委托绑定了普通C++类的方法，运行时绑定奔溃，日志如上
+  ```
+
+  ``` c++
+  //问题1示例代码（运行时会奔溃）
+  //在FOnlineServerListCommon.cpp中添加
+  //此时GCloudManager继承自UObject
+  auto gcloudMgr = UTMGameInstance::GetInstance()->GetGCloudManager();
+  if (gcloudMgr != nullptr)
+  {
+  	gcloudMgr->InitializeSDK(SDKType::GAME_DIR_SERVER);
+  	gcloudMgr->OnGCloudDirPullComplete().AddRaw(this, &FOnlineServerListCommon::_GCloudDirPullComplete, inCompletionDelegate);
+  }
+  ```
+
+  
+
+* error C2338 You cannot use UObject method delegates with raw 
+
+  ``` tex
+  问题1：
+  DelegateInstanceImpl.h
+  
+  static_assert(UE4Delegates_Private::IsUObjectPtr((UserClass*)nullptr), "You cannot use UObject method delegates with raw pointers.");
+  ```
+
+  ``` c++
+  //示例代码
+  //GameVersion.cpp  raw c++
+  void AGameVersion::Init(AGCloudTestGameModeBase* parentObj, void(AGCloudTestGameModeBase::*callback)(void))
+  {
+  	auto gcloudMgr = PluginsManager::GetInstance()->GetGCloudManager();
+  	if (gcloudMgr)
+  	{
+  		m_updateFinishHandle = gcloudMgr->OnGCloudUpdateFinish().AddUObject(parentObj, callback);
+  	}
+  }
+  
+  //用工程默认生成的继承自AGameModeBase的类，不能将它的指针绑定给非UObject类/对象
+  //GCloudTestGameModeBase.cpp  :  public AGameModeBase  	 ue4 c++
+  void AGCloudTestGameModeBase::BeginPlay()
+  {
+  	m_gameVersion->SetCurrWorld(GetWorld());
+      //编译不通过，无法将一个持久的UObject对象绑定到
+  	m_gameVersion->Init(this, &AGCloudTestGameModeBase::_afterGameUpdate);
+      
+      //只能用这种方式绑定，但是会影响逻辑
+  	auto gcloudMgr = PluginsManager::GetInstance()->GetGCloudManager();
+  	if (gcloudMgr)
+  	{
+  		gcloudMgr->OnGCloudUpdateFinish().AddUObject(this, &AGCloudTestGameModeBase::_afterGameUpdate);
+  	}
+  }
+  
+  //解决：
+  //创建继承自AGameMode的类，可以编译通过 ！
+  //GCloudGameMode.cpp  : public AGameMode    ue4 c++
+  void AGCloudGameMode::StartPlay()
+  {
+  	m_gameVersion->SetCurrWorld(GetWorld());
+  	m_gameVersion->Init(this, &AGCloudGameMode::_afterGameUpdate);
+  }
+  ```
+
+  
+
+* Error: Unhandled Exception: EXCEPTION_ACCESS_VIOLATION 0xf95f1160 （每次奔溃地址不同...）
+
+  ``` tex
+  问题：运行并停止时，由于在GameMode / GameModeBase / GameInstance 的 生命周期函数中
+  如 BeginPlay()  EndPlay(...)  StartPlay()  Init() Shutdown()  中delete 自定义对象，
+  但是没有添加生命周期函数对应的Super::EndPlay() Super::Shutdown()等，导致执行自定义对象析构时奔溃
+  ```
+
+  ``` c++
+  //示例代码一： 异常情况
+  
+  //UGCloudGameInstance.cpp  ： public UGameInstance
+  void UUGCloudGameInstance::Shutdown()
+  {
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 1"));
+  	PluginsManager::GetInstance()->UninitPlugins();
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 2"));
+  }
+  
+  //PluginsManager.cpp
+  void PluginsManager::UninitPlugins()
+  {
+  	UE_LOG(LogTemp, Log, TEXT("### plugin mgr uninit start"));
+  	SAFE_DELETE_PTR(mGCloudManager);
+  	UE_LOG(LogTemp, Log, TEXT("### plugin mgr uninit end"));
+  }
+  
+  //FGCloudManager.cpp 
+  FGCloudManager::~FGCloudManager()
+  {
+  	UE_LOG(LogTemp, Log, TEXT("### gcloud mgr dtor start"));
+  	Uninit();
+  	UE_LOG(LogTemp, Log, TEXT("### gcloud mgr dtor end"));   //-----> crash
+  }
+  ```
+
+  ``` c++
+  //示例代码二： 正常情况1
+  
+  void UUGCloudGameInstance::Init()
+  {
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins init 1"));
+  	testGCloudMgr = new FGCloudManager();
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins init 2"));
+  }
+  
+  //UGCloudGameInstance.cpp  ： public UGameInstance
+  void UUGCloudGameInstance::Shutdown()
+  {
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 1"));
+  	SAFE_DELETE_PTR(testGCloudMgr);
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 2"));
+  }
+  ```
+
+  ``` c++
+  //示例代码三： 正常情况2   解决方法
+  
+  void UUGCloudGameInstance::Init()
+  {
+      //添加
+  	Super::Init();
+  
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins init 1"));
+  	PluginsManager::GetInstance()->InitPlugins();
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins init 2"));
+  }
+  
+  void UUGCloudGameInstance::Shutdown()
+  {
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 1"));
+  	PluginsManager::GetInstance()->UninitPlugins();
+  	UE_LOG(LogTemp, Warning, TEXT("### gcloud game ins shutdown 2"));
+  
+      //添加
+  	Super::Shutdown();
+  }
+  ```
+
+
+
+* 网上野指针问题：UObject被自动GC
+
+  ``` tex
+  问题1：
+  Plugin—1 中
+  static UMyObject* m_obj = nullptr;
+  Plugin-1 蓝图中
+  m_obj = NewObject<UMyObject>();
+  
+  运行中，该对象被析构，导致野指针，奔溃
+  
+  建议：不要将UObject对象绑定为static, 不要去限制UObject的生命周期
+  ```
+
+  ``` c++
+  //一个不推荐方法：将UObject对象设置为不自动析构
+  //C++类
+  //ctor
+  UObject* m_obj = NewObject<UMyObject>();
+  m_obj->AddToRoot();
+  
+  //dtor
+  m_obj->RemoveFromRoot();
+  
+  //如果继承UObject类中有一个UObject* A变量，可以用宏UPROPERTY标记变量，可以让GC来追踪UObject的引用数
+  ```
+
+  
+
+  

@@ -29,11 +29,75 @@
 
 #include "base_6.h"
 
+#include "template_test.h"
+
 complex global_c(1, 2);//《全局 stack对象》
 
 using namespace std;
 
+
 int main() {
+
+	//base_2.h  check null before delte ptr
+	Base_2 *b2ptr_1 = new Base_2();
+	Base_2 *b2ptr_2 = new Base_2();
+	Base_2::test_ptr_need_check_null(b2ptr_1, b2ptr_2);
+	return 0;
+
+	/*  临时注释 start  */
+
+	//base_1.h  explicit测试
+	//不加explicit
+	TestExplicit_1::Print(1);  //隐式转型
+	TestExplicit_1 te1_1 = 2;  //赋值初始化--->使用 TestExplicit_1::TestExplicit_1(int x, int y = 0)
+	TestExplicit_1::Print(te1_1);
+	TestExplicit_1 te1_2(3);   //直接初始化--->使用 TestExplicit_1::TestExplicit_1(int x, int y = 0)
+	TestExplicit_1::Print(te1_2);
+	//添加explicit
+	//TestExplicit_2::Print(3);  compile error 隐式转型 不使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
+	//TestExplicit_2 te2_1 = 3; compile error  赋值初始化 不使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
+	TestExplicit_2 te2_1 = (TestExplicit_2)4;  //显示转型，进行static_cast
+	TestExplicit_2::Print(TestExplicit_2(4));
+	TestExplicit_2 te2_2(5);   //直接初始化 使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
+	TestExplicit_2::Print(te2_2);
+	return 0;
+
+	//templeate_test.h 单例继承测试
+	SingletonCC1::getInstance()->print();
+
+	return 0;
+
+	//templeate_test.h 单例Private dtor测试
+
+	//编译器会报错！
+	//TestPrivateDtor t1;
+
+	//编译ok
+	TestPrivateDtor* t2 = nullptr;
+	
+	TestPrivateDtor* t3 = new TestPrivateDtor();
+	//t3需要delete
+	//但是如果是private dtor，编译失败
+	//delete t3;
+	//t3 = nullptr;
+	
+	//添加了friend dtor
+	DestructTest(t3);
+
+	SingletonC::getInstance()->print();
+	SingletonC::getInstance()->print();
+
+	SingletonA::getInstance().print();
+	SingletonA::getInstance().print();
+
+	SingletonAA::getInstance().print();
+	SingletonAA::getInstance().print();
+
+	SingletonB::getInstance()->print();
+	SingletonB::getInstance()->print();
+
+	return 0;
+
 
 	Base_2 base_22;
 	base_22.test_char_wchar();
@@ -134,33 +198,27 @@ int main() {
 	return 0;
 
 
-	/**测试继承和组合结合关系下的构造和析构的执行情况**/   //多加几个*****  不然会报错 错误 C1075 “{”: 未找到匹配令牌
+	//测试继承和组合结合关系下的构造和析构的执行情况   //多加几个*****  不然会报错 错误 C1075 “{”: 未找到匹配令牌
 	OOP_Derived_1 oopd1;
-	/***
+	//输出结果
+	//OOP Base 1 ctor
+	//OOP Derived 1 Part ctor
+	//OOP Derived 1 ctor
+	//OOP Derived 1 dtor
+	//OOP Derived 1 Part dtor
+	//OOP Base 1 dtor
 	
-	输出结果
-	OOP Base 1 ctor
-	OOP Derived 1 Part ctor
-	OOP Derived 1 ctor
-	OOP Derived 1 dtor
-	OOP Derived 1 Part dtor
-	OOP Base 1 dtor
-	
-	***/
 	
 	OOP_Derived_2 oopd2;
-	/***
-	构造顺序：最里面的先调用
-	OOP Base 2 Part ctor
-	OOP Base 2 ctor
-	OOP Derived 2 ctor
+	//构造顺序：最里面的先调用
+	//OOP Base 2 Part ctor
+	//OOP Base 2 ctor
+	//OOP Derived 2 ctor
 
-	析构顺序：最外面的先调用 
-	OOP Derived 2 dtor
-	OOP Base 2 dtor
-	OOP Base 2 Part dtor
-
-	***/
+	//析构顺序：最外面的先调用 
+	//OOP Derived 2 dtor
+	//OOP Base 2 dtor
+	//OOP Base 2 Part dtor
 
 	return 0;
 
@@ -213,6 +271,8 @@ int main() {
 	der.get("");
 
 	return 0;
+	
+	/* 临时注释 end */
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

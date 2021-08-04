@@ -20,25 +20,22 @@ link:
   #-H - name of adb server host [default=localhost]
   adb -H 192.168.*.*** devices
   adb -H 192.168.*.*** shell
-  
-#notice: 互相连接的两台设备 adb版本号也要互相匹配
-  ```
-
+  # notice: 互相连接的两台设备 adb版本号也要互相匹配
 
 
 
 * adb安装卸载
 
-  ``` shell
-  #指定设备安装
-  adb devices
-  adb -s (deviceid) install xxx.apk
-  
-  #安装获取进度
-  adb push apk.apk /data/local/tmp
-  adb shell pm install -r /data/local/tmp/apk.apk
-  adb shell rm /data/local/tmp/apk.apk
-  ```
+    ``` shell
+    #指定设备安装
+    adb devices
+    adb -s (deviceid) install xxx.apk
+    
+    #安装获取进度
+    adb push apk.apk /data/local/tmp
+    adb shell pm install -r /data/local/tmp/apk.apk
+    adb shell rm /data/local/tmp/apk.apk
+    ```
 
   ``` shell
   #安装获取进度
@@ -62,10 +59,12 @@ link:
   echo ***删除临时文件***
   ```
 
-
+  
 
 * adb connect wifi
 
+  [ADB over Wi-Fi](https://help.famoco.com/developers/dev-env/adb-over-wifi/)
+  
   ``` text
   Connect the device and the computer to the same Wi-Fi network
   
@@ -79,7 +78,7 @@ link:
   
   You can disconnect the USB cable from the device and check with adb devices that the device is still detected.
   ```
-
+  
   
 
 
@@ -136,4 +135,34 @@ link:
   设备管理器 - 通用串行总线控制器 - USB Root Hub属性 - 电源管理 - 取消勾选 允许计算机关闭这个设备以节约电源
   ```
 
+
+
+* 问题：adb device offline with ADB wireless
+
+  ``` tex
+  adb devices
+  List of devices attached
+  192.168.1.2:5555        offline
+  ```
+
+  ``` tex
+  Settings -> Developer options -> Revoke USB debugging authorizations (clear the list of authorized PCs).
+  
+  Set USB Debugging OFF.
+  
+  In Terminal write : adb kill-server
+  
+  Then : adb start-server
+  
+  Then : adb connect xx.xx.xx.xx:5555 (the devices ip), it should say unable to connect.
+  
+  Now turn ON USB debugging again and type the adb connect xx.xx.xx.xx:5555 again.
+  
+  It should now ask for authorization and you are back online without needing to connect cable to USB, only wifi used.
+  ```
+
+  ``` shell
+  ```
+  
+  
 

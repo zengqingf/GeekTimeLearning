@@ -80,6 +80,108 @@
 
 
 
+
+
+* NULL、0、nullptr
+
+  [NULL、0、nullptr](http://www.cppblog.com/airtrack/archive/2012/09/16/190828.aspx)
+
+  ``` c
+  //在C语言中，用NULL表示空指针
+  int *i = NULL;
+  foo_t *f = NULL;
+  
+  //通常定义如下：
+  #define NULL((void *)0)
+  //NULL是一个void *的指针，会隐式转换成对应的其他类型
+  ```
+
+  ``` c++
+  //在C++中，由于是强类型语言，void *不能转换成其他的指针类型
+  //编译器通常将NULL定义如下：
+  #ifdef __cplusplus
+  #define NULL 0
+  #else
+  #define NULL((void *)0)
+  #endif
+  
+  //C++中，用0表示空指针，即如上定义
+  //在C++11之前，通常用0而不是NULL来表示空指针
+  ```
+
+  ``` c++
+  //foo.h
+  void bar(sometype1 a, sometype2 *b);
+  //a.cpp
+  bar(a, b);
+  //b.cpp
+  bar(a, 0);
+  
+  //foo.h ---1
+  //重载bar()
+  void bar(sometype1 a, sometype2 *b);
+  void bar(sometype1 a, int i);
+  //为了满足b.cpp的bar()能正常调用
+  bar(a, static_cast<sometype2 *>(0));
+  
+  //如果一开始在b.cpp中
+  bar(a, NULL);
+  //那么在重载方法新增时，下意识会认为调用的是 void bar(sometype1 a, sometype2 *b); 导致后续运行结果不正确
+  
+  //如果是使用0来表示空指针，那就会够“明显”，因为0是空指针，它更是一个整形常量。
+  
+  //C++11添加了nullptr作为空指针，可以有效避免上述问题
+  ```
+  [NULL、0、nullptr](https://www.cnblogs.com/silentNight/p/5507991.html)
+
+  ``` c++
+  //C++11前自定义nullptr
+  const                                     //---解释1
+  class nullptr_t
+  {
+  public:
+      template<class T>
+      inline operator T*() const			 //---解释2
+          { return 0; }
+  
+      template<class C, class T>
+      inline operator T C::*() const		 //---解释3
+          { return 0; }
+   
+  private:
+      void operator&() const;				 
+  } nullptr = {};							 // = {} 初始化变量  （c++11后）
+  
+  //解释1
+  //类前加const，修饰类{}后面定义的对象
+  const 
+  class A
+  {
+  public:
+      int i;
+  }a, b;
+  
+  //等价于
+  class A
+  {
+  public:
+      int i;
+  };
+  const A a1;
+  const A a2;
+  
+  //解释2
+  //重载 类型转换运算符 类似重载operator = , 但是类型转换运算符 没有返回值
+  //解释3 
+  //重载 内部类的类型转换
+  ```
+
+  
+
+
+
+
+
 * forward declaration of class 类的前向声明
 
   ``` text
@@ -112,12 +214,11 @@
   类似的报错信息：
   Syntax error missing ; before *
   ```
-  
-  
 
-* 数组
 
-  
+
+
+
 
 * static_cast     vs.     dynamic_cast      vs.     reinterpret_cast     vs.    const_cast 
 
@@ -609,6 +710,51 @@
 
   [结构体指针](https://www.cnblogs.com/noticeable/p/8576100.html)
 
+  [C++动态分配和撤销内存以及结构体类型作为函数参数](https://www.jb51.net/article/72282.htm)
+
+  * 指向结构体的指针
+
+    ``` c++
+    #include<iostream>//预处理
+    #include<string> 
+    using namespace std;//命名空间 
+    struct Student
+    {
+      int num;//学号 
+      string name;//姓名 
+      char sex;//性别 
+    };
+    int main()//主函数 
+    {
+      Student * point;//定义结构体指针变量 
+      point=new Student;//用new运算符开辟一个存放Student型数据的空间 
+      point->num=10001;//赋值 
+      point->name="yan xiao lin"; //赋值 
+      point->sex='M';//赋值 
+      cout<<point->num<<endl;//输出学号 
+      cout<<point->name<<endl;//输出姓名 
+      cout<<point->sex<<endl;//输出性别 
+      delete point;//撤销空间 
+      return 0; //函数返回值为0；
+    }
+    ```
+
+    ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/20210802185639.png)
+
+    ``` tex
+    在动态分配/撤销空间时，往往将这两个运算符和结构体结合使用，是很有效的。可以看到：
+    要访问用new所开辟的结构体空间，无法直接通过变量名进行，只能通过指针p进行访问。如果要建立一个动态链表，必须从第一个结点开始，逐个地开辟结点并输入各结点数据，通过指针建立起前后相链的关
+    ```
+
+    ``` tex
+    struct 作为函数参数
+    1. 用结构体变量名作参数。效率低，需要拷贝
+    2. 用指向结构体变量的指针作实参，将结构体变量的地址传给形参。
+    3. 用结构体变量的引用变量作函数参数。
+    ```
+
+  
+
   * 结构体存储和填充
 
     结构体填充是编译器用来对齐内存偏移数据的步骤
@@ -923,6 +1069,63 @@
 * link
 
   [C++ 引用的本质](https://blog.csdn.net/K346K346/article/details/46805159)
+
+
+
+
+
+---
+
+
+
+* std
+
+  * string
+
+    ``` c++
+    //清空string并释放内存空间
+    #include <iostream>
+    #include <string>
+     
+    int main()
+    {
+    	std::string s;
+    	std::cout << "Default-constructed capacity is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+    	for (int i = 0; i < 42; i++)
+    		s.append(" 42 ");
+    	std::cout << "Capacity after a couple of appends is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+    	s.clear();
+    	std::cout << "Capacity after clear() is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+        
+    	s.shrink_to_fit();
+    	std::cout << "Capacity after shrink_to_fit() is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+        
+    	for (int i = 0; i < 42; i++)
+    		s.append(" 42 ");
+    	std::cout << "Capacity after a couple of appends is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+        
+    	string().swap(s);
+    	std::cout << "Capacity after swap() is " << s.capacity()
+    		<< " and size is " << s.size() << '\n';
+    }
+    
+    /*
+    output:
+    Default-constructed capacity is 15 and size is 0
+    Capacity after a couple of appends is 235 and size is 168
+    Capacity after clear() is 235 and size is 0
+    Capacity after shrink_to_fit() is 15 and size is 0
+    Capacity after a couple of appends is 235 and size is 168
+    Capacity after swap() is 15 and size is 0
+    */
+    ```
+
+    
 
 
 

@@ -65,6 +65,951 @@
     <ClInclude Include="thirdparty\json.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\fusion.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\msgpack_variant.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\msgpack_variant_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\optional.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\string_ref.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\boost\string_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\array.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\array_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\array_unsigned_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\chrono.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\forward_list.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\reference_wrapper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\shared_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\timespec.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\unique_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\unordered_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp11\unordered_set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp17\byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp17\carray_byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp17\optional.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp17\string_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\cpp17\vector_byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\tr1\unordered_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\tr1\unordered_set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\adaptor_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\adaptor_base_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\array_ref.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\array_ref_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\bool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\carray.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\char_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\check_container_size.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\check_container_size_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\complex.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\define.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\define_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\deque.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\ext.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\ext_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\fixint.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\fixint_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\float.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\int.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\int_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\list.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\msgpack_tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\nil.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\nil_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\pair.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\raw.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\size_equal_only.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\size_equal_only_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\string.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\v4raw.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\v4raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\vector.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\vector_bool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\vector_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\vector_unsigned_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\adaptor\wstring.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\fusion.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\msgpack_variant.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\msgpack_variant_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\optional.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\string_ref.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\boost\string_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\array.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\array_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\array_unsigned_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\chrono.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\forward_list.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\reference_wrapper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\shared_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\timespec.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\unique_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\unordered_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp11\unordered_set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp17\byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp17\carray_byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp17\optional.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp17\string_view.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\cpp17\vector_byte.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_define_array.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_define_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_msgpack_tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp03_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_convert_helper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_define_array.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_define_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_msgpack_tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\detail\cpp11_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\tr1\unordered_map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\tr1\unordered_set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\adaptor_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\adaptor_base_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\array_ref.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\array_ref_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\bool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\carray.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\char_ptr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\check_container_size.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\check_container_size_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\complex.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\define.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\define_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\deque.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\ext.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\ext_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\fixint.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\fixint_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\float.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\int.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\int_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\list.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\map.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\msgpack_tuple.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\nil.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\nil_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\pair.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\raw.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\set.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\size_equal_only.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\size_equal_only_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\string.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\v4raw.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\v4raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\vector.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\vector_bool.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\vector_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\vector_unsigned_char.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\adaptor\wstring.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\detail\cpp03_zone.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\detail\cpp03_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\detail\cpp11_zone.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\detail\cpp11_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\cpp_config.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\cpp_config_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\fbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\fbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\iterator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\iterator_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\meta.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\meta_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\object.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\object_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\object_fwd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\object_fwd_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\pack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\pack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\parse_return.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\sbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\sbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\unpack_exception.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\versioning.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\vrefbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\vrefbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\zbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\zbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\zone.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v1\zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\boost\msgpack_variant_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp03_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp03_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp03_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp11_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp11_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\detail\cpp11_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\adaptor_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\adaptor_base_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\array_ref_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\check_container_size_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\define_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\ext_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\fixint_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\int_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\nil_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\size_equal_only_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\adaptor\v4raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\detail\cpp03_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\detail\cpp11_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\cpp_config_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\create_object_visitor.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\create_object_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\fbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\iterator_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\meta_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\null_visitor.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\null_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\object.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\object_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\object_fwd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\object_fwd_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\pack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\parse.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\parse_return.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\sbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\vrefbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\x3_parse.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\x3_parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\x3_unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\x3_unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\zbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v2\zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\boost\msgpack_variant_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp03_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp03_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp03_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp11_define_array_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp11_define_map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\detail\cpp11_msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\adaptor_base.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\adaptor_base_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\array_ref_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\check_container_size_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\define_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\ext_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\fixint_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\int_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\map_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\msgpack_tuple_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\nil_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\size_equal_only_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\adaptor\v4raw_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\detail\cpp03_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\detail\cpp11_zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\cpp_config_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\create_object_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\fbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\iterator_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\meta_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\null_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\object_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\object_fwd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\object_fwd_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\pack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\parse.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\parse_return.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\sbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\vrefbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\x3_parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\x3_unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\x3_unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\zbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\v3\zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\cpp_config.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\cpp_config_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\create_object_visitor.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\create_object_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\fbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\fbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\gcc_atomic.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\iterator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\iterator_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\meta.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\meta_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\null_visitor.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\null_visitor_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\object.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\object_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\object_fwd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\object_fwd_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\pack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\pack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\parse.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\parse_return.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\sbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\sbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\sysdep.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\type.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\unpack_define.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\unpack_exception.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\version_master.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\versioning.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\vrefbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\vrefbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\x3_parse.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\x3_parse_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\x3_unpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\x3_unpack_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\zbuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\zbuffer_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\zone.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack\zone_decl.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\msgpack-c-cpp_master\include\msgpack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test_calc_values.inc">

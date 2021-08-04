@@ -219,3 +219,20 @@ void Base_2::test_char_wchar()
 		std::cout << s << '\n';
 	}
 }
+
+void Base_2::test_ptr_need_check_null(Base_2 *b2ptr_1, Base_2 *b2ptr_2)
+{
+	if (nullptr != b2ptr_1)
+	{
+		//delete指针前是否需要判空
+		if (nullptr != b2ptr_2)
+		{
+			//需要提前释放掉内存，否则下一步会导致内存泄露
+			delete b2ptr_2;
+		}
+		b2ptr_2 = b2ptr_1;
+
+		delete b2ptr_1;
+		b2ptr_1 = nullptr;
+	}
+}

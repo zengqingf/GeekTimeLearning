@@ -619,15 +619,102 @@
 
 
 
-
-
 * UE4 Http
 
   
 
+* UE4 Android Permission
+
+  ``` tex
+  4.25源码：
+  模块：UE_4.25\Engine\Plugins\Runtime\AndroidPermission
+  ```
+  
+  ``` c++
+  //AndroidPermissionFunctionLibrary.h
+  //用到的Android端库：
+  #if PLATFORM_ANDROID && USE_ANDROID_JNI
+  	JNIEnv* env = FAndroidApplication::GetJavaEnv();
+  	_PermissionHelperClass = FAndroidApplication::FindJavaClassGlobalRef("com/google/vr/sdk/samples/permission/PermissionHelper");
+  	_CheckPermissionMethodId = env->GetStaticMethodID(_PermissionHelperClass, "checkPermission", "(Ljava/lang/String;)Z");
+  	_AcquirePermissionMethodId = env->GetStaticMethodID(_PermissionHelperClass, "acquirePermissions", "([Ljava/lang/String;)V");
+  #endif
+  
+  //Permission Callback
+  //AndroidPermissionCallbackProxy.cpp
+  ```
+  
+  ```c++
+  //使用示例：
+  //UARCoreAndroidPermissionHandler.cpp
+  bool UARCoreAndroidPermissionHandler::CheckRuntimePermission(const FString& RuntimePermission)
+  {
+  	return UAndroidPermissionFunctionLibrary::CheckPermission(RuntimePermission);
+  }
+  
+  void UARCoreAndroidPermissionHandler::RequestRuntimePermissions(const TArray<FString>& RuntimePermissions)
+  {
+  	UAndroidPermissionCallbackProxy::GetInstance()->OnPermissionsGrantedDynamicDelegate.AddDynamic(this, &UARCoreAndroidPermissionHandler::OnPermissionsGranted);
+  	UAndroidPermissionFunctionLibrary::AcquirePermissions(RuntimePermissions);
+  }
+  
+  void UARCoreAndroidPermissionHandler::OnPermissionsGranted(const TArray<FString> &Permissions, const TArray<bool>& Granted)
+  {
+  	UAndroidPermissionCallbackProxy::GetInstance()->OnPermissionsGrantedDynamicDelegate.RemoveDynamic(this, &UARCoreAndroidPermissionHandler::OnPermissionsGranted);
+      //TODO
+  	FGoogleARCoreDevice::GetInstance()->HandleRuntimePermissionsGranted(Permissions, Granted);
+  }
+
+
+
+
+
+---
+
+
+
+### UE4 C++注意点
+
+* **Editor中Play和Stop，无法触发类的析构**
+
+  ``` c++
+  //自定义一个继承自GameInstance的类
+  UCLASS()
+  class HITBOXMAKERBLUEPRINT_API UTMGameInstance : public UGameInstance
+  {
+  	GENERATED_BODY()
+          
+     	virtual void Init() override;
+      //在生命周期中处理类的初始化和反初始化
+  	virtual void Shutdown() override;
+  }
+  ```
+
   
 
 
+
+* NewObject单例不自动销毁，避免UObject被销毁导致的野指针清空
+
+  ``` c++
+  static UAndroidPermissionCallbackProxy *pProxy = NULL;
+  
+  UAndroidPermissionCallbackProxy *UAndroidPermissionCallbackProxy::GetInstance()
+  {
+      //挂载到Root上
+  	if (!pProxy) {
+  		pProxy = NewObject<UAndroidPermissionCallbackProxy>();
+  		pProxy->AddToRoot();
+  
+  	}
+  	UE_LOG(LogAndroidPermission, Log, TEXT("UAndroidPermissionCallbackProxy::GetInstance"));
+  	return pProxy;
+  }
+  //取消挂载
+  pProxy->RemoveFromRoot();
+  ```
+
+  
 
 
 
@@ -644,6 +731,15 @@
   [UE4官方 - 代码规范](https://docs.unrealengine.com/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/index.html)
 
   [UE4 项目的设计规范和代码标准](https://imzlp.com/posts/25915/)
+
+
+* 规范表-1
+
+  ```c++
+  //使用nullptr == xxx 判空
+  //避免写成 nullptr != xxx 以及 xxx = nullptr
+  if(nullptr == XXX) {}
+  ```
 
   
 

@@ -1,6 +1,7 @@
 #pragma once
 
 /*
+https://www.cnblogs.com/noticeable/p/8576100.html
 结构体：
 
 结构是由基本数据类型构成的、并用一个标识符来命名的各种变量的组合。结构中可以使用不同的数据类型。

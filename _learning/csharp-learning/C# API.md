@@ -80,3 +80,52 @@
   ```
 
   
+
+### 
+
+---
+
+
+
+
+
+## C#运行原理
+
+* C#简介
+
+  ```
+  C# 是微软推出的一种基于 .NET 框架的、面向对象的高级编程语言
+
+* IL简介
+
+  ``` tex
+  中间语言 （CIL，Common Intermediate Language，也叫 MSIL）
+  CIL 也是一个高级语言
+  而运行 CIL 的虚拟机叫 CLR（Common Language Runtime）
+  
+  .Net framework (C#、CIL、CLR + 微软提供的一套基础类库)
+  ```
+
+* 虚拟机区分
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/20210717105506.jpg)
+
+* .Net Framework vs. Mono
+
+  ``` tex
+  Mono 是跨平台的 .Net Framework 的实现
+  将 CLR 在所有支持的平台上重新实现了一遍，将 .Net Framework 提供的基础类库也重新实现了一遍
+  (Compile Time 的工作实际上可以直接用微软已有的成果，只要将 Runtime 的 CLR 在其他平台实现，这个工作量不仅大，而且需要保证兼容)
+  ```
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/20210717105812.png)
+
+* mono应用
+
+  ``` tex
+  Unity3D 内嵌了一个 Mono 虚拟机
+  Unity3D 是通过 Mono 虚拟机，运行 C# 通过编译器编译后生成的 IL 代码
+  也是通过mono实现游戏跨平台
+  ```
+
+  

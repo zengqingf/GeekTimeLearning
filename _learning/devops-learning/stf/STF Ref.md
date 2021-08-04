@@ -382,15 +382,15 @@
     #修改最大支持包大小
     #docker环境
     
-    #进入容器内部修改 (root)
-    docker exec -it -u root stf容器ID /bin/bash
+    #进入容器内部修改  #必须要root用户 (-u root) 否则不能修改
+    docker exec -it -u root stf容器ID /bin/bash  
     #安装vim
     apt-get update
     apt-get install vim
     #保存修改后的镜像
     #离开镜像bash
     exit
-    docker commit 容器ID 新容器名 (格式：devicefarmer/stf_vim_changed)
+    docker commit 容器ID 新容器名 (格式：devicefarmer/stf) ###覆盖原先的！！！
     
     ################################################################################################################
     
@@ -524,7 +524,7 @@
   
   ``` text
   推荐使用  ATXServer2
-基于ATXServer2搭建移动设备管理平台
+  基于ATXServer2搭建移动设备管理平台
   基于python3
   还支持IOS
   https://github.com/openatx/atxserver2

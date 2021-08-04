@@ -16,4 +16,4 @@ if [ x"$stf_contain_id" == x"" ]; then
 	echo "stf没有启动"
 	exit 1
 fi
-docker exec -it ${stf_contain_id} /bin/sh -c "stf provider --name `hostname` --min-port 7400 --max-port 7700 --connect-sub tcp://$IP:7114 --connect-push tcp://$IP:7116 --group-timeout 900 --public-ip $IP --storage-url http://$IP:7100/ --adb-host ${TargetIP} --adb-port 5037 --vnc-initial-size 600x800 --mute-master never --allow-remote"
+docker exec -it ${stf_contain_id} /bin/sh -c "stf provider --name `hostname` --min-port 7400 --max-port 7700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip $IP --storage-url http://$IP:7100/ --adb-host ${TargetIP} --adb-port 5037 --vnc-initial-size 600x800 --mute-master never --allow-remote"

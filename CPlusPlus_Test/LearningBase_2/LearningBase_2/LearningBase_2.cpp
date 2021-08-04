@@ -10,7 +10,7 @@ int main()
     std::cout << "Hello World!\n";
 
 	//cptr 1
-	chapter_1 c_1;
+	Chapter_1 c_1;
 	//c_1.test_cout_cin();
 	//c_1.test_for_while();
 	//c_1.test_if_block();
