@@ -283,10 +283,40 @@
   C++不建议使用C风格的强制类型转换 Type b = (Type)a
   ```
 
+  ``` c++
+  //使用static_cast进行float double int等基本数据类型转换
   
-
+  //int64 to double
+  int64_t a = 1234;
+  double d = static_cast<double>(a);
+  double f = a;
+  
+  //尽量不要使用隐式类型转换 或者 C风格的强制类型转换 !!!
+  /*
+  Implicit casts are a common source of compiler warnings, meaning you may be adding noise to the build (either now, or later when better warning flags are added).
+  
+  The next maintenance programmer behind you will see an implicit cast, and needs to know if it was intentional behavior or a mistake/bug. Having that static_cast makes your intent immediately obvious.
+  
+  static_cast and the other C++-style casts are easy for grep to handle.
+  */
+  
+  //double to usigned int
+  double db1 = 7.9992;
+  unsigned int uint = (unsigned int)db1;
+  // output uint = 7
+  
+  unsigned int uint2 = static_cast<unsigned int>(db1 + 0.5);
+  // output uint = 8
+  ```
+  
+  
+  
+  
+  
+  
+  
   [c++ - converting a base class pointer to a derived class pointer](https://stackoverflow.com/questions/18873871/c-converting-a-base-class-pointer-to-a-derived-class-pointer)
-
+  
   ``` c++
   #include <iostream>
   using namespace std;
@@ -321,9 +351,9 @@
   Base *b = new Derived<int>(1);
   Derived<int> *d = static_cast<Derived<int> *>(b);
   ```
-
   
-
+  
+  
   
 
 

@@ -30,7 +30,7 @@ DATETIME=`date '+%Y%m%d-%H%M%S'`
 PROFILE_FILENAME="TM-V2-Profile-${DATETIME}.mobileprovision"
 UDID_FILENAME="${PROFILE_FILENAME}.UUID"
 
-CONFIG_FILE="./BuildTools/config.json"
+#CONFIG_FILE="./BuildTools/config.json"
 
 echo "#####################################"
 
@@ -39,6 +39,28 @@ echo profile filename $PROFILE_FILENAME, udidfilename: $UDID
 
 ruby ./add-device-and-generate-profile.rb $PROFILE_NAME $PROFILE_UDID $PROFILE_FILENAME $UDID_FILENAME
 
+echo 0
+
+SVN_KEY_PATH="../../sec/"
+PROVISION_PATH="../../sec/key/ios/a8_debug_dev.mobileprovision"
+if [ -f ${UDID_FILENAME} ] && [ -f ${PROFILE_FILENAME} ]; then
+    if [ ! -d ${SVN_KEY_PATH} ]; then
+        echo svn checkout "svn://192.168.2.177/sdk/sec" to ${SVN_KEY_PATH}
+        svn co "svn://192.168.2.177/sdk/sec" ${SVN_KEY_PATH}
+    else
+        svn revert ${SVN_KEY_PATH}
+        svn up ${SVN_KEY_PATH}
+    fi
+    UUID=`cat ${UDID_FILENAME}`
+    echo uuid: ${UUID}
+    cp ${PROFILE_FILENAME} ${PROVISION_PATH}
+    svn commit ${SVN_KEY_PATH} -m "device(): add device for ${PROFILE_NAME}"
+else
+    echo missing ${PROFILE_FILENAME} and ${UDID_FILENAME}
+    exit 1;
+fi
+
+exit 0
 if [ -f ${UDID_FILENAME} ] && [ -f ${PROFILE_FILENAME} ]; then
 
     open ${PROFILE_FILENAME}

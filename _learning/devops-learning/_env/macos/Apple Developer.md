@@ -135,3 +135,136 @@
 
   
 
+* 通过Safari获取iOS设备UDID
+
+  [通过Safari浏览器获取iOS设备UDID(设备唯一标识符)](http://www.skyfox.org/safari-ios-device-udid.html)
+
+  [github - iOS-UDID-Safari](https://github.com/shaojiankui/iOS-UDID-Safari)
+
+  
+
+  [iPhone XS doesn't have UDID](https://stackoverflow.com/questions/52473290/iphone-xs-doesnt-have-udid/52997294#52997294)
+
+  [在线工具1](https://www.pgyer.com/tools/udid)
+
+  [在线工具2](https://get.udid.io)
+
+  [How to Find Your iPhone or iPad's UDID](https://deciphertools.com/blog/2014_11_19_how_to_find_your_iphone_udid/)
+
+  ```  shell
+  system_profiler SPUSBDataType -detailLevel mini | \
+  grep -e iPhone -e Serial | \
+  sed -En 'N;s/iPhone/&/p'
+  
+  
+  #output:
+  2018-10-25 12:57:06.527 system_profiler[23461:6234239] SPUSBDevice: 
+  IOCreatePlugInInterfaceForService failed 0xe0003a3e
+          iPhone:
+            Serial Number: 3aeac....4145
+            
+  alias fudid="system_profiler SPUSBDataType -detailLevel mini | grep -e iPhone -e Serial | sed -En 'N;s/iPhone/&/p'"
+  ```
+  
+  
+
+* macOs设置开机任务
+
+  [macos设置开机启动任务](https://0clickjacking0.github.io/2020/05/20/macos%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/)
+
+  [manpagez: man pages & more man launchd.plist(5)](https://www.manpagez.com/man/5/launchd.plist/)
+
+  ``` tex
+  方法一：
+  系统偏好-帐户-登录项
+  
+  方法二：
+  launchctl
+  
+  plist存储目录：
+  ~/Library/LaunchAgents 由用户自己定义的任务项
+  /Library/LaunchAgents 由管理员为用户定义的任务项
+  /Library/LaunchDaemons 由管理员定义的守护进程任务项
+  /System/Library/LaunchAgents 由Mac OS X为用户定义的任务项
+  /System/Library/LaunchDaemons 由Mac OS X定义的守护进程任务项
+  
+  常见目录：
+  /Library/LaunchDaemons –>只要系统启动了，哪怕用户不登陆系统也会被执行
+  /Library/LaunchAgents –>当用户登陆系统后才会被执行
+  ```
+
+  ``` xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC -//Apple Computer//DTD PLIST 1.0//EN
+  http://www.apple.com/DTDs/PropertyList-1.0.dtd >
+  <plist version="1.0">
+  <dict>
+      <key>Label</key>
+      <string>com.example.exampled</string>
+      <key>ProgramArguments</key>
+      <array>
+           <string>exampled</string>
+      </array>
+      <key>KeepAlive</key>
+      <true/>
+      <key>RunAtLoad</key>
+      <true/>
+  </dict>
+  </plist>
+  ```
+
+  ``` shell
+  #plist键值对说明：
+  
+  #Label（必须）
+  #该项服务的名称，且文件名必须和Label一致，比如上述的plist文件，文件名就叫com.example.exampled.plist
+  
+  #ProgramArguments：指定可执行文件路径及其参数，比如执行ls -a，对应到该配置中，应该写作：
+  <key>ProgramArguments</key>
+  <array>
+       <string>ls</string>         
+       <string>-a</string>
+  </array>
+  
+  #RunAtLoad (可选)：标识launchd在加载完该项服务之后立即启动路径指定的可执行文件。默认值为 false,设置为 true 即可实现开机运行脚本文件。
+  
+  #StartCalendarInterval (可选)
+  #该关键字可以用来设置定时执行可执行程序，可使用 Month, Day, Hour, Minute, Second等子关键字，它可以指定脚本在多少月，天，小时，分钟，秒，星期几等时间上执行，若缺少某个关键字则表示任意该时间点，类似于 Unix 的 Crontab 计划任务的设置方式，比如在该例子中设置为每小时的20分的时候执行该命令。
+  
+  #KeepAlive（可选）是否保持持续运行
+  
+  #所有key关键字详细使用说明可以在Mac OS X终端下使用命令man launchd.plist查询
+  ```
+
+  ``` shell
+  #检查语法错误
+  plutil local.localhost.startup.plist
+  # 加载启动任务
+  launchctl load ~/Library/LaunchAgents/example.plist
+  # 加载任务, -w选项会在下次登录/重新启动时重新启动。
+  launchctl load -w ~/Library/LaunchAgents/example.plist
+  #停止
+  sudo launchctl stop <path>
+  #开始
+  sudo launchctl start <path>
+  #kill
+  sudo launchctl kill <path>
+  #卸载
+  # 停止并卸载任务。下次登录/重新启动时，任务仍将重新启动。
+  launchctl unload ~/Library/LaunchAgents/example.plist
+  # 该任务将不会在下次登录/重新启动时重新启动。
+  launchctl unload -w ~/Library/LaunchAgents/example.plist
+  #查看状态
+  launchctl list
+  sudo launchctl list（有时候一些需要用sudo才能执行的服务就需要用sudo才能查看）
+  #输出具有以下含义：
+  #第一个数字是进程的PID，如果它正在运行，如果它不运行，它显示一个’ - ‘。
+  #第二个数字是进程的退出代码（如果它已经完成）。如果是负数，则是杀死信号的数量。
+  #第三列是进程名称。
+  
+  #@注意：执行launchctl命令加sudo与不加结果是完全不同的。
+  ```
+
+  
+
+  

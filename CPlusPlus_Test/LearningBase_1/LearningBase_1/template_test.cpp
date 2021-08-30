@@ -15,6 +15,8 @@ SingletonAA& SingletonAA::getInstance()
 	return a;
 }
 
+SingletonA3* SingletonA3::instance = nullptr; //定义（定义性声明）
+
 SingletonB* SingletonB::instance = nullptr;    //定义 （定义性声明）
 SingletonB* SingletonB::getInstance()
 {

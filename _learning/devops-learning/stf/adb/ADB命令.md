@@ -21,6 +21,26 @@ link:
   adb -H 192.168.*.*** devices
   adb -H 192.168.*.*** shell
   # notice: 互相连接的两台设备 adb版本号也要互相匹配
+  ```
+  
+  ``` powershell
+  @echo off
+  REM 更改当前目录为批处理本身的目录
+  cd /d %~dp0
+  
+  REM adb version > 1.0.32   otherwise use adb -a -P 5037 fork-server server
+  
+  for /F "tokens=5 delims= " %%a in ('netstat -aon ^| findstr 5037 ^| findstr LISTENING') do ( 
+  	echo port occupied : %%a
+  	taskkill /pid %%a /f /t
+  )
+  adb devices
+  adb kill-server
+  adb nodaemon server -a -P 5037
+  pause
+  ```
+  
+  
 
 
 
@@ -147,22 +167,46 @@ link:
 
   ``` tex
   Settings -> Developer options -> Revoke USB debugging authorizations (clear the list of authorized PCs).
-  
   Set USB Debugging OFF.
-  
   In Terminal write : adb kill-server
-  
   Then : adb start-server
-  
   Then : adb connect xx.xx.xx.xx:5555 (the devices ip), it should say unable to connect.
-  
   Now turn ON USB debugging again and type the adb connect xx.xx.xx.xx:5555 again.
-  
   It should now ask for authorization and you are back online without needing to connect cable to USB, only wifi used.
   ```
-
+  
   ``` shell
+  #安卓设备和pc连接到可以ping通的网络环境下
+  #安卓设备ip查看： 设置-关于本机-状态信息-ip地址（获取内网ip 192.168.x.x）
+  adb shell
+  setprop service.adb.tcp.port 5555
+  stop adb
+  start adb
+  exit
+  adb connect 192.168.x.x:5555
   ```
   
   
 
+* 问题：unable to connect to 192.168.x.x:5555: cannot connect to 192.168.x.x:5555: 由于连接方在一段时间后没有正确答复或连接 的主机没有反应，连接尝试失败。 (10060)
+
+  ``` tex
+  设备wifi和电脑不在同一个网段
+  
+  可以电脑ping一下设备wifi的ip
+  ```
+
+  
+
+* 问题：unable to connect to 192.168.x.x:5555: cannot connect to 192.168.x.x:5555: 由于目标计算机积极拒绝，无法连接。 (10061)
+
+  ``` shell
+  adb -s 设备id usb   #切换到USB模式
+  adb kill-server
+  adb -s 设备id tcpip 5555  #切换到wifi无线调试模式
+  adb -s 设备id connect 192.168.x.x:5555
+  
+  #adb -s 设备id disconnect 192.168.x.x:5555  断开连接
+  ```
+
+  

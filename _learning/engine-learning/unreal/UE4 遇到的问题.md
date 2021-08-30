@@ -486,6 +486,43 @@
 
 
 
+* get modified time of Directory
+
+  ``` c++
+  //just enable in windows
+  //android上获取到为0
+  
+  //IPlatformFile& platformFile = FPlatformFileManager::Get().GetPlatformFile();
+  //uint64 dirTimestamp = platformFile.GetTimeStamp(FilenameOrDirectory).GetTicks();
+  //uint64 dirTimestamp = platformFile.GetTimeStamp(FilenameOrDirectory).ToUnixTimestamp();
+  
+  /*
+   FFileManagerGeneric fm;
+   FDateTime mod = fm.GetTimeStamp(tchardirectory);
+  */
+  ```
+
+  
+
+* ue4 缺少“”的预编译清单 PrecompileForTargets = PrecompileTargetsType.Any
+
+  ``` tex
+  在主模块的Build.cs中添加依赖：
+  PrivateDependencyModuleNames.AddRange(new string[]
+  {
+       "FileUtilities",
+  });
+  
+  Windows可以编译通过，安卓编译不通过
+  
+  可能分析1：
+  FileUtilities中没有Public以及没有实现 IModuleInterface的模块类
+  ```
+
+  
+
+
+
 * error C2440: 'return': cannot convert from 'T *' to 'UObject *
 
   ``` tex
@@ -665,5 +702,13 @@
   ```
 
   
+
+  
+
+* pure virtual function being called while application was running (gisrunning == 1) error
+
+  ``` tex
+  @注意：Windows系统级弹窗，暂未定位
+  ```
 
   

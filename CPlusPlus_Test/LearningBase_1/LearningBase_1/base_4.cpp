@@ -33,5 +33,15 @@ void TypeCast_Test_1::Test2()
 	void *vptr = &a;
 	double *dptr = static_cast<double*>(vptr);
 	std::cout << *dptr << std::endl;
+
+	//3. 基类和派生类之间（指针或引用）的转换，不做运行时类型检查
+	//不同于dynamic_cast,static_cast仅仅是依靠类型转换语句中提供的信息来进行转换，
+	//而dynamic_cast则会遍历整个类继承体系进行类型检查,因此dynamic_cast在执行效率上比static_cast要差一些
+	Base_A *b_a = new Base_A();
+	Derived_B *d_b = static_cast<Derived_B*>(b_a);
+	d_b->Test2();  //error !
+	Base_A *b_a1 = new Derived_B();
+	Derived_B *d_b1 = static_cast<Derived_B*>(b_a1);
+	d_b1->Test2(); //ok
 }
 

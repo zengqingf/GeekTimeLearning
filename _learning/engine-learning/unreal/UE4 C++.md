@@ -161,6 +161,80 @@
   */
   ```
 
+
+
+* FString to const char* with android ndk 29  **@注意：问题修复**
+
+  ``` c++
+  //问题环境：
+  //PluginManager.cpp
+  FString versionName;
+  FString PluginsManager::GetVersionName()
+  {
+      versionName = "111";
+      return versionName;
+  }
+  
+  //FGCloudManager.cpp
+  {
+  	FString versionNameStr = PluginsManager::GetInstance()->GetVersionName();   //返回的是 （FString）versionName的拷贝
+      																			//versionNameStr为临时变量了！！！
+      const char* versionName = TCHAR_TO_UTF8(*versionNameStr);
+      m_gsdkInfo.AppVersion = versionName;										
+  }//离开作用域时 versionNameStr为空，  char* 指向空
+  {
+      UE_LOG(LogTemp, Log, TEXT("%s"). UTF8_TO_TCHAR(m_gsdkInfo.AppVersion));   //输出为空！！！
+  }
+  
+  
+  //修复： 返回单例中的引用，而不是拷贝！！！
+  //PluginManager.cpp
+  FString versionName;
+  const FString& PluginsManager::GetVersionName()
+  {
+      versionName = "111";
+      return versionName;
+  }
+  ```
+
+  ``` c++
+  //注意：像转换函数（函数内返回的内容根据传入参数会改变）返回带指针的对象时，需要考虑返回拷贝而不是引用
+  //因为可能多个地方使用，尤其注意，不要在这样的函数中使用static，会出现多个地方使用时，数据被改动
+  
+  FString HotfixState2Desc(TM_HotfixState state)
+  {
+      FString desc;
+      if(state==1)
+      {
+          desc = "1";
+      }else if(state == 2)
+      {
+          desc = "2";
+      }
+      return desc;
+  }
+  ```
+
+  
+
+
+
+
+
+
+* float to FString 四舍五入（保留小数）
+
+  ``` c++
+  float num = 0.85469;
+  //保留两位小数，注意除以 100.0 为了隐式转换成 float
+  FString numStr = FString::SanitizeFloat((int)(num * 100 + 0.5) / 100.0);
+  
+  num = 0.85549; //numStr 0.855
+  num = 0.85559; //numStr 0.856
+  //保留三位
+  FString numStr = FString::SanitizeFloat((int)(num * 1000 + 0.5) / 1000.0);
+  ```
+
   
 
 
@@ -619,9 +693,140 @@
 
 
 
-* UE4 Http
+* UE4 路径读写文件
+
+  [UE4文件系统](https://dhbloo.github.io/2020/09/07/UE4-FileSystem/#iplatformfile)
+
+  ``` c++
+  {
+      FString fs = LoadFileInPluginsPath(TEXT("ThirdParty/TMSDKBridge/PlatformRes/All"), TEXT("maple/dir_region_info.json"));
+  	if (!fs.IsEmpty())
+  	{
+  		TSharedRef<TJsonReader<>> freader = TJsonReaderFactory<>::Create(fs);
+  		TSharedPtr<FJsonObject> fobjPtr;
+  		bool succ = FJsonSerializer::Deserialize(freader, fobjPtr);
+  		if (succ)
+  		{
+  			m_regionId = fobjPtr->GetIntegerField(TEXT("regionId"));
+  			m_subareaId = fobjPtr->GetIntegerField(TEXT("subareaId"));
+  			UE_LOG(LogTemp, Log, TEXT("read file json: regionId: %d. subareaId: %d"),
+  				m_regionId, m_subareaId);
+  		}
+  	}
+  	else
+  	{
+  		//test log
+  		UE_LOG(LogTemp, Error, TEXT("load file is empty: %s"), FPlatformProcess::BaseDir());
+  		//only for ue4 windows and editor
+  		UE_LOG(LogTemp, Error, TEXT("load file is empty: %s"), *(FPaths::ProjectPluginsDir()));
+  		UE_LOG(LogTemp, Error, TEXT("load file is empty: %s"), *(FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir())));
+  	}
+  }
+  
+  
+  FString LoadFileInPluginsPath(const FString& fileRelativePathRoot, const FString& infileRelativeName)
+  {
+  	FString pluginRoot = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir());
+  	FString readFilePath;
+  	FString fstream;
+      /*相对路径：是相对于沙盒（Dev: /storage/emulated/0/UE4Game）
+      或者应用内部路径（/data/user/0/包名/files）
+      */
+  #if PLATFORM_WINDOWS
+  	readFilePath = FPaths::Combine(pluginRoot, fileRelativePathRoot, infileRelativeName);
+  #elif PLATFORM_ANDROID
+  	readFilePath = infileRelativeName;
+  #elif PLATFORM_IOS
+  	readFilePath = infileRelativeName;
+  #endif
+  	UE_LOG(LogTemp, Log, TEXT("### read file: %s..."), *readFilePath);
+  	if (FFileManagerGeneric::Get().FileExists(*readFilePath))
+  	{
+  		bool succ = FFileHelper::LoadFileToString(fstream, *readFilePath);
+  		if (!succ)
+  		{
+  			UE_LOG(LogTemp, Error, TEXT("### read file: %s is failed"), *readFilePath);
+  		}
+  	}
+  	else
+  	{
+  		UE_LOG(LogTemp, Error, TEXT("### not found file: %s"), *readFilePath);
+  	}
+  	return fstream;
+  }
+  
+  
+  FString TxtStream;//文本流
+  //写入文本
+  FFileHelper::SaveStringToFile(TxtStream, *TxtPath);
+  //对文本逐字符处理 存入OutArray
+  TCHAR *TxtData = TxtStream.GetCharArray().GetData();
+  for (int i = 0; i < TxtStream.Len(); i++){}
+  ```
+
+  ``` c++
+  //[Android]FPaths::ConvertRelativePathToFull didn't work
+  /*
+  You shouldn't try to read or write to GetFileBasePath() directly since anything here is possibly inside another file wrapper. You should read and write native files to GExternalFilePath instead. If you really need to get this, though, you can do it like so:
+  */
+  const FString& GetFileBasePath_TM()
+  {
+  	extern FString GFilePathBase;
+  	static FString BasePath = GFilePathBase + FString(TEXT("/UE4Game/")) + FApp::GetProjectName() + FString("/");
+  	return BasePath;
+  }
+  
+  FString AndroidRelativeToAbsolutePath_TM(FString RelPath)
+  {
+  	if (RelPath.StartsWith(TEXT("../"), ESearchCase::CaseSensitive))
+  	{
+  		do {
+  			RelPath.RightChopInline(3, false);
+  		} while (RelPath.StartsWith(TEXT("../"), ESearchCase::CaseSensitive));
+  
+  		return GetFileBasePath_TM() / RelPath;
+  	}
+  	return RelPath;
+  }
+  
+  
+  //@注意：  例如获取多平台的Save目录，方法并不一致
+  /*
+  FPaths::ProjectSavedDir();
+  FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir());
+  IFileManager::Get().ConvertToAbsolutePathForExternalAppForRead(*FPaths::ProjectSavedDir());
+  */
+  /* android输出的 均为 ../../../工程名/Saved/  即Android端不支持 需要使用其他路径获取方式
+  	extern FString GFilePathBase;
+  	static FString BasePath = GFilePathBase + FString(TEXT("/UE4Game/")) + FApp::GetProjectName() + FString("/");
+  	FString saveRootDir = AndroidRelativeToAbsolutePath_TM(FPaths::ProjectSavedDir());
+  */
+  /* ios 通过ConvertToAbsolutePathForExternalAppForWrite输出为： /var/mobile/Containers/Data/Application/E5F4B8E6-6A55-4757-AD34-CDC0739A9A99/Documents/TMSDKSample_425/Saved/*/
+  ```
 
   
+
+  * Android FileManager.GetTimeStamp(Filename) 
+
+    ``` tex
+    测试环境：UE4.25
+    获取时间戳为默认值 FDateTime 0001.01.01-00.00.00
+    ```
+
+    
+
+    
+
+
+
+* UE4 Http
+
+  * 上传文件
+  * 请求验证
+
+
+
+
 
 * UE4 Android Permission
 
@@ -664,6 +869,61 @@
       //TODO
   	FGoogleARCoreDevice::GetInstance()->HandleRuntimePermissionsGranted(Permissions, Granted);
   }
+
+
+
+* UE4 Log
+
+  * Shipping模式下开启Log
+
+    [Debug Shipping Builds In Unreal Engine 4.23](https://blog.jamie.holdings/2019/09/15/debug-shipping-builds-in-unreal-engine-4-23/)
+
+    [UE4 Quick Tip: Logging in Shipping Builds](https://stefanperales.com/blog/ue4-quick-tip-logging-in-shipping-builds/)
+
+    ``` tex
+    You must first have a source build of the engine on your PC. It will not work at all without it. Get it, compile it in Development Editor mode (with all the utility programs) before continuing.
+    
+    Once you have done that, you put that line of code, plus some other options, into the yourproject.Target.cs file in the source folder of your project.
+    ```
+
+    ``` c#
+    //在4.25.4 EngineInstalled环境下不支持 ？？？
+    public class GameTarget : TargetRules
+    {
+    	public GameTarget(TargetInfo Target) : base(Target)
+    	{
+    		Type = TargetType.Game;
+    
+    		// enable logs and debugging for Shipping builds
+    		if (Configuration == UnrealTargetConfiguration.Shipping)
+    		{
+    			BuildEnvironment = TargetBuildEnvironment.Unique;
+    			bUseChecksInShipping = true;
+    			bUseLoggingInShipping = true;
+    		}
+    
+    		ExtraModuleNames.AddRange( new string[] { "Game" } );
+    	}
+    }
+    ```
+
+    ``` tex
+    By default, packaged games using the Shipping configuration will not log anything at all. This is great for security. However, when your play testers and live player's run into issues, it can be very difficult to troubleshoot without logs.
+    
+    With a small change, it is possible to enable logging in your shipping builds. Surprisingly, this one required a little but of research and trial and error.
+    
+    In your {projectname}.Target.cs file, in the contrsuctor, add the following line: bUseLoggingInShipping = true;
+    
+    By itself this will cause your builds to fail. You also need to set one of two other flags depending on whether or not you're using a source build of UE4 or one installed from the Epic Games Launcher.
+    
+    If using a source build add: BuildEnvironment = TargetBuildEnvironment.Unique
+    If using an installed version, add: bOverrideBuildEnvironment = true;
+    
+    You should also consider keeping logging disabled in shipping and handling uncaught errors different. For example, gracefully falling back to your main menu and displaying an error message to the user.
+    ```
+
+
+
 
 
 

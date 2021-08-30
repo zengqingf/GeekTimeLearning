@@ -6,9 +6,9 @@ import java.util.Comparator;
 public class ArraySort {
 
     /*
-    * Ã°ÅİÅÅĞòµÄÌØµãÊÇ£¬Ã¿Ò»ÂÖÑ­»·ºó£¬×î´óµÄÒ»¸öÊı±»½»»»µ½Ä©Î²£¬Òò´Ë£¬ÏÂÒ»ÂÖÑ­»·¾Í¿ÉÒÔ¡°ÅÙ³ı¡±×îºóµÄÊı£¬Ã¿Ò»ÂÖÑ­»·¶¼±ÈÉÏÒ»ÂÖÑ­»·µÄ½áÊøÎ»ÖÃ¿¿Ç°Ò»Î»¡£
+    * å†’æ³¡æ’åºçš„ç‰¹ç‚¹æ˜¯ï¼Œæ¯ä¸€è½®å¾ªç¯åï¼Œæœ€å¤§çš„ä¸€ä¸ªæ•°è¢«äº¤æ¢åˆ°æœ«å°¾ï¼Œå› æ­¤ï¼Œä¸‹ä¸€è½®å¾ªç¯å°±å¯ä»¥â€œåˆ¨é™¤â€æœ€åçš„æ•°ï¼Œæ¯ä¸€è½®å¾ªç¯éƒ½æ¯”ä¸Šä¸€è½®å¾ªç¯çš„ç»“æŸä½ç½®é å‰ä¸€ä½ã€‚
 
-      ±ØĞë×¢Òâ£¬¶ÔÊı×éÅÅĞòÊµ¼ÊÉÏĞŞ¸ÄÁËÊı×é±¾Éí¡£
+      å¿…é¡»æ³¨æ„ï¼Œå¯¹æ•°ç»„æ’åºå®é™…ä¸Šä¿®æ”¹äº†æ•°ç»„æœ¬èº«ã€‚
     * */
     public static void bubbleSort() {
         int[] ns = {28, 12, 89, 73, 65, 18, 96, 50, 8, 36};
@@ -18,7 +18,7 @@ public class ArraySort {
             boolean flag = true;
             for (int j = 0; j < ns.length - i - 1; j++) {
                 if (ns[j] > ns[j + 1]) {
-                    // ½»»»ns[j]ºÍns[j+1]:
+                    // äº¤æ¢ns[j]å’Œns[j+1]:
                     int tmp = ns[j];
                     ns[j] = ns[j + 1];
                     ns[j + 1] = tmp;
@@ -29,39 +29,39 @@ public class ArraySort {
                 break;
         }
 
-        // ÅÅĞòºó:
+        // æ’åºå:
         System.out.println(Arrays.toString(ns));
     }
 
-    //±ØĞë×¢Òâ£¬¶ÔÊı×éÅÅĞòÊµ¼ÊÉÏĞŞ¸ÄÁËÊı×é±¾Éí¡£
+    //å¿…é¡»æ³¨æ„ï¼Œå¯¹æ•°ç»„æ’åºå®é™…ä¸Šä¿®æ”¹äº†æ•°ç»„æœ¬èº«ã€‚
     /*
-     * Àı£º
+     * ä¾‹ï¼š
      * int[] ns = { 9, 3, 6, 5 };
      *
      * Array.sort(ns);
      *
-     * ±äÎª {3, 5, 6, 9}
+     * å˜ä¸º {3, 5, 6, 9}
      *
-     * Àı£º
+     * ä¾‹ï¼š
      * String[] ns = { "banana", "apple", "pear" };
      *
      * Array.sort(ns);
      *
-     * ±äÎª {"apple" , "banana", "pear"}
+     * å˜ä¸º {"apple" , "banana", "pear"}
      * */
 
 
-    //½µĞòÅÅĞò
+    //é™åºæ’åº
     public static void descendingBubbleSort() {
         int[] ns = { 28, 12, 89, 73, 65, 18, 96, 50, 8, 36 };
-        // ÅÅĞòÇ°:
+        // æ’åºå‰:
         System.out.println(Arrays.toString(ns));
 
         for (int i = 0; i < ns.length - 1; i++) {
             boolean flag = true;
             for (int j = 0; j < ns.length - i - 1; j++) {
                 if (ns[j] < ns[j + 1]) {
-                    // ½»»»ns[j]ºÍns[j+1]:
+                    // äº¤æ¢ns[j]å’Œns[j+1]:
                     int tmp = ns[j];
                     ns[j] = ns[j + 1];
                     ns[j + 1] = tmp;
@@ -72,15 +72,15 @@ public class ArraySort {
                 break;
         }
 
-        // ÅÅĞòºó:
+        // æ’åºå:
         System.out.println(Arrays.toString(ns));
     }
 
-    //ÄÚÖÃArray.sortÀ©Õ¹
+    //å†…ç½®Array.sortæ‰©å±•
     public static void test_array_sort() {
-        //½µĞò
+        //é™åº
         Integer[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
-        //¶¨ÒåÒ»¸ö×Ô¶¨ÒåÀàMyComparatorµÄ¶ÔÏó
+        //å®šä¹‰ä¸€ä¸ªè‡ªå®šä¹‰ç±»MyComparatorçš„å¯¹è±¡
         Comparator cmp = new MyComparator();
         Arrays.sort(a,cmp);
         for(int arr:a) {
@@ -89,13 +89,13 @@ public class ArraySort {
     }
 }
 
-//ÄÚÖÃArray.sortÀ©Õ¹
-//ÊµÏÖComparator½Ó¿Ú
+//å†…ç½®Array.sortæ‰©å±•
+//å®ç°Comparatoræ¥å£
 class MyComparator implements Comparator<Integer> {
     @Override
     public int compare(Integer o1, Integer o2) {
-    		        /*Èç¹ûo1Ğ¡ÓÚo2£¬ÎÒÃÇ¾Í·µ»ØÕıÖµ£¬Èç¹ûo1´óÓÚo2ÎÒÃÇ¾Í·µ»Ø¸ºÖµ£¬
-    		         ÕâÑùµßµ¹Ò»ÏÂ£¬¾Í¿ÉÒÔÊµÏÖ½µĞòÅÅĞòÁË,·´Ö®¼´¿É×Ô¶¨ÒåÉıĞòÅÅĞòÁË*/
+    		        /*å¦‚æœo1å°äºo2ï¼Œæˆ‘ä»¬å°±è¿”å›æ­£å€¼ï¼Œå¦‚æœo1å¤§äºo2æˆ‘ä»¬å°±è¿”å›è´Ÿå€¼ï¼Œ
+    		         è¿™æ ·é¢ å€’ä¸€ä¸‹ï¼Œå°±å¯ä»¥å®ç°é™åºæ’åºäº†,åä¹‹å³å¯è‡ªå®šä¹‰å‡åºæ’åºäº†*/
         return o2-o1;
     }
 }

@@ -29,6 +29,18 @@ MessagePack  轻量级数据交换格式库   msgpack-c
 https://github.com/msgpack/msgpack-c/tree/cpp_master
 
 */
+
+//自定义类，使用msgpack封装的宏，简化序列化和反序列化的操作
+class Msgpack_Obj_Test final					   
+{
+public:
+	int id;
+	string title;
+	set<string> tags;
+public:
+	MSGPACK_DEFINE(id, title, tags);	  //实现序列化功能的宏
+};
+
 class Chapter_15
 {
 	using json_t = nlohmann::json;
@@ -114,22 +126,37 @@ public:
 		msgpack::sbuffer sbuf;
 		msgpack::pack(sbuf, msgObj1);
 
-		auto obj = msgpack::unpack(sbuf.data(), sbuf.size()).get();
+		//@注意：
+		//这句在运行时会报错：出现std::bad_cast错误
+		//auto obj = msgpack::unpack(sbuf.data(), sbuf.size()).get();
+		auto handle = msgpack::unpack(sbuf.data(), sbuf.size());
+		auto obj = handle.get();
 
 		Msgpack_Obj_Test msgObj2;
 		obj.convert(msgObj2);					//转换序列化数据
 		
-	}
-};
+		assert(msgObj2.id == msgObj1.id);
+		assert(msgObj2.tags.size() == 2);
+		std::cout << msgObj2.title << std::endl;
 
-class Msgpack_Obj_Test					   //自定义类，使用msgpack封装的宏，简化序列化和反序列化的操作
-{
-public:
-	int id;
-	string title;
-	set<string> tags;
-public:
-	MSGPACK_DEFINE(id, title, tags);	  //实现序列化功能的宏
+		//注意检查数据完整性
+		std::string txt = "";                // 空数据
+		try                                  // try保护代码
+		{
+			auto handle = msgpack::unpack(   // 反序列化
+				txt.data(), txt.size());
+		}
+		catch (std::exception& e)            // 捕获异常
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+
+
+	void Test8()
+	{
+		//TODO ProtoBuffer
+	}
 };
 
 #endif  // _CHAPTER_15_H_

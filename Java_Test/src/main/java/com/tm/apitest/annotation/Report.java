@@ -4,11 +4,11 @@ import java.lang.annotation.*;
 
 
 /*
-* Ôª×¢½â  @Inherited  ¶¨Òå ×ÓÀàÊÇ·ñ¿ÉÒÔ¼Ì³Ğ¸¸Àà¶¨ÒåµÄ  Annotation
+* å…ƒæ³¨è§£  @Inherited  å®šä¹‰ å­ç±»æ˜¯å¦å¯ä»¥ç»§æ‰¿çˆ¶ç±»å®šä¹‰çš„  Annotation
 *
-* ½öÕë¶Ô@Target(ElementType.TYPE)ÀàĞÍµÄannotationÓĞĞ§£¬²¢ÇÒ½öÕë¶ÔclassµÄ¼Ì³Ğ£¬¶ÔinterfaceµÄ¼Ì³ĞÎŞĞ§
+* ä»…é’ˆå¯¹@Target(ElementType.TYPE)ç±»å‹çš„annotationæœ‰æ•ˆï¼Œå¹¶ä¸”ä»…é’ˆå¯¹classçš„ç»§æ‰¿ï¼Œå¯¹interfaceçš„ç»§æ‰¿æ— æ•ˆ
 *
-*   Ê¹ÓÃ³¡¾°
+*   ä½¿ç”¨åœºæ™¯
 *   @Report(type=1)
     public class Person {
     }

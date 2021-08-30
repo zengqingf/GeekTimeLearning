@@ -50,4 +50,17 @@
   5.控制面板 -> 小图标 -> 管理 -> 任务计划程序
   ```
   
+
+
+
+* 查找指定目录下的文件夹
+
+  ``` powershell
+  @echo off
+  set /p folder=请输入文件夹关键字
+  for /f "delims=" %%a in ('dir /ad /b /s D:\Report') do (
+  echo %%a | find "%folder%" >nul &&(start "" "%%~a" & exit)
+  )
+  ```
+
   

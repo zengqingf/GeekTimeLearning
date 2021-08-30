@@ -38,6 +38,11 @@ using namespace std;
 
 int main() {
 
+	//base_4.h type cast
+	Base_4
+	return 0;
+
+
 	//base_2.h  check null before delte ptr
 	Base_2 *b2ptr_1 = new Base_2();
 	Base_2 *b2ptr_2 = new Base_2();

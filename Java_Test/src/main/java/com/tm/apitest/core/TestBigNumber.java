@@ -6,11 +6,11 @@ public class TestBigNumber {
 
     /* BigInteger
     *
-    *BigIntegerÓÃÓÚ±íÊ¾ÈÎÒâ´óÐ¡µÄÕûÊý£»
-BigIntegerÊÇ²»±äÀà£¬²¢ÇÒ¼Ì³Ð×ÔNumber£»
-½«BigInteger×ª»»³É»ù±¾ÀàÐÍÊ±¿ÉÊ¹ÓÃlongValueExact()µÈ·½·¨±£Ö¤½á¹û×¼È·¡£
+    *BigIntegerç”¨äºŽè¡¨ç¤ºä»»æ„å¤§å°çš„æ•´æ•°ï¼›
+BigIntegeræ˜¯ä¸å˜ç±»ï¼Œå¹¶ä¸”ç»§æ‰¿è‡ªNumberï¼›
+å°†BigIntegerè½¬æ¢æˆåŸºæœ¬ç±»åž‹æ—¶å¯ä½¿ç”¨longValueExact()ç­‰æ–¹æ³•ä¿è¯ç»“æžœå‡†ç¡®ã€‚
 *
-* BigIntegerµÄÖµ·¶Î§³¬¹ýfloat    ±íÊ¾Îª Infinity
+* BigIntegerçš„å€¼èŒƒå›´è¶…è¿‡float    è¡¨ç¤ºä¸º Infinity
     *
     * */
 
@@ -18,8 +18,8 @@ BigIntegerÊÇ²»±äÀà£¬²¢ÇÒ¼Ì³Ð×ÔNumber£»
 
     /* BigDecimal
     *
-    *  ×ÜÊÇÊ¹ÓÃcompareTo()±È½ÏÁ½¸öBigDecimalµÄÖµ£¬²»ÒªÊ¹ÓÃequals()
-    *  ÒòÎª£ºÊ¹ÓÃequals()·½·¨²»µ«ÒªÇóÁ½¸öBigDecimalµÄÖµÏàµÈ£¬»¹ÒªÇóËüÃÇµÄscale()ÏàµÈ
+    *  æ€»æ˜¯ä½¿ç”¨compareTo()æ¯”è¾ƒä¸¤ä¸ªBigDecimalçš„å€¼ï¼Œä¸è¦ä½¿ç”¨equals()
+    *  å› ä¸ºï¼šä½¿ç”¨equals()æ–¹æ³•ä¸ä½†è¦æ±‚ä¸¤ä¸ªBigDecimalçš„å€¼ç›¸ç­‰ï¼Œè¿˜è¦æ±‚å®ƒä»¬çš„scale()ç›¸ç­‰
     *
     * BigDecimal ==>  BigInteger + scale
      *

@@ -30,6 +30,9 @@ class Derived_B : public Base_A
 {
 public:
 	char *m_szName[100];
+
+	void Test1() override {}
+	void Test2() {}
 };
 
 class Derived_C : public Base_A

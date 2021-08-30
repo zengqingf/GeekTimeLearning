@@ -4,11 +4,11 @@ require "spaceship"
 
 
 if ARGV.length != 4 then
-  puts "sample: ruby add-device-and-generate-profile.rb TM_徐智利 00008020-001154940A08002E ProfileName.mobileprovision UUID.txt"
+  puts "sample: ruby add-device-and-generate-profile.rb TM_xxx 00008020-001154940A08002E ProfileName.mobileprovision UUID.txt"
     exit 1
 end
 
-profilename="TM-V2-Dev-Provisioning-Profile"
+profilename="TM-V1-Dev-Provisioning-Profile"
 
 profile_name=ARGV[0]
 puts "[rb] profile name " + profile_name
@@ -23,7 +23,7 @@ puts "[rb] profile file uuid filename " + profile_fileuuidfilename
 
 
 puts "[rb] start login"
-Spaceship::Portal.login("tengmu.apple.v2@gmail.com", "Tengmu123456")
+Spaceship::Portal.login("tengmu.apple.v1@gmail.com", "Tengmu123456")
 
 puts "[rb] select team " + Spaceship::Portal.select_team
 

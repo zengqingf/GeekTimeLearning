@@ -194,6 +194,40 @@ private:
 	SingletonAA & operator=(const SingletonAA &other) {}
 };
 
+
+//懒汉 --- 同时返回出去 引用 而非 指针
+class SingletonA3 {
+public:
+	static SingletonA3& getInstance()
+	{
+		if (nullptr == instance) {
+			instance = new SingletonA3();
+		}
+		return *instance;
+	}
+
+private:
+	SingletonA3() {}
+	static SingletonA3* instance;
+};
+
+
+//C++ 11
+//线程安全
+//懒汉 --- 局部静态变量 初始化仅进行一次  多线程环境下也是这样
+class SingletonA4 {
+public:
+	static SingletonA4& getInstance()
+	{
+		static SingletonA4 *instance = new SingletonA4();
+		return *instance;
+	}
+
+private:
+	//私有构造，保证单例唯一
+	SingletonA4() {}
+};
+
 //懒汉 2
 //@注意： instance不会被清理！
 class SingletonB {

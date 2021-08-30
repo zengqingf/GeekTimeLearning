@@ -346,6 +346,34 @@
   
   ```
 
+
+
+
+
+
+* svn macos setup
+
+  ``` shell
+  启动（@注意：/svn/repositories为svn仓库根目录，包含文件 conf/  db/ hooks/ locks ...）
+  svnserve -d -r /Volumes/TM147Book/svn/repositories --log-file /Volumes/TM147Book/svn/server.log
+  
+  #ps aux | grep svn
+  #kill -9 PID
+  ```
+
+  ``` tex
+  问题：
+  Q: “svnserve: Can‘t bind server socket: Address already in use“
+  A: svn的端口冲突导致
+  	ps -aux | grep svn
+  	kill -9 pid
+  	#重启版本库
+  	svnserve -d -r /Volumes/TM147Book/svn/repositories --log-file /Volumes/TM147Book/svn/server.log
+  
+      #另一种方法：将另一个版本库指定别的端口，（@注意：使防火墙放开指定的svn的端口，不影响svn使用）
+      svnserve -d -r  /Volumes/TM147Book/svn/repositories2 --listen-port XXXX
+  ```
+
   
 
 
@@ -401,5 +429,13 @@
   sqlite> .backup main wc.db 
   ```
 
-  
+* SVN 目录权限被禁，但是之前有更新到一个版本，出现报错
 
+  ``` shell
+  # 假设 Plugins下现在没权限，但是本地有更新过一个旧版本内容，本次更新报错：
+  # Failed to run the WC DB work queue associated with "E:\xxx\Plugins" work item ...  can't move "E:\yyy\" to "E:\zzz\"...
+  svn update ./NextGenGame/Plugins/ --set-depth empty --force
+  svn update ./NextGenGame/Plugins/ --set-depth infinity --force
+  ```
+
+  

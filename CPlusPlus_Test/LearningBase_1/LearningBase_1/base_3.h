@@ -19,7 +19,7 @@ https://www.cnblogs.com/noticeable/p/8576100.html
 
 <---------------------------------------------------------
 vs. class
-结构体和类的区别
+结构体和类的区别（唯一区别）
 （1）class 中默认的成员访问权限是 private 的，而 struct 中则是 public 的。　　
 （2）从 class 继承默认是 private 继承，而从 struct 继承默认是 public 继承。  (struct也支持继承)
 

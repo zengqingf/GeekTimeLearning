@@ -4,31 +4,31 @@ import java.lang.annotation.*;
 
 
 /*
-* Ôª×¢½â  @Target   ¶¨Òå Annotation ÄÜ¹»±»Ó¦ÓÃÓÚ Ô´ÂëµÄÄÄĞ©Î»ÖÃ
+* å…ƒæ³¨è§£  @Target   å®šä¹‰ Annotation èƒ½å¤Ÿè¢«åº”ç”¨äº æºç çš„å“ªäº›ä½ç½®
 *
-*   Àà»ò½Ó¿Ú£ºElementType.TYPE£»
-    ×Ö¶Î£ºElementType.FIELD£»
-    ·½·¨£ºElementType.METHOD£»
-    ¹¹Ôì·½·¨£ºElementType.CONSTRUCTOR£»
-    ·½·¨²ÎÊı£ºElementType.PARAMETER
+*   ç±»æˆ–æ¥å£ï¼šElementType.TYPEï¼›
+    å­—æ®µï¼šElementType.FIELDï¼›
+    æ–¹æ³•ï¼šElementType.METHODï¼›
+    æ„é€ æ–¹æ³•ï¼šElementType.CONSTRUCTORï¼›
+    æ–¹æ³•å‚æ•°ï¼šElementType.PARAMETER
 
 *   @Target({
     ElementType.METHOD,
     ElementType.FIELD
-    })   Ìí¼Ó{} ĞÎ³É×¢½âÊı×é  ¼´Ô­ÀíÊÇ£º@Target¶¨ÒåµÄvalueÊÇElementType[]Êı×é£¬Ö»ÓĞÒ»¸öÔªËØÊ±£¬¿ÉÒÔÊ¡ÂÔÊı×éµÄĞ´·¨
+    })   æ·»åŠ {} å½¢æˆæ³¨è§£æ•°ç»„  å³åŸç†æ˜¯ï¼š@Targetå®šä¹‰çš„valueæ˜¯ElementType[]æ•°ç»„ï¼Œåªæœ‰ä¸€ä¸ªå…ƒç´ æ—¶ï¼Œå¯ä»¥çœç•¥æ•°ç»„çš„å†™æ³•
 *
 *
-* Ôª×¢½â   @Retention  ¶¨Òå Annotation µÄÉúÃüÖÜÆÚ
+* å…ƒæ³¨è§£   @Retention  å®šä¹‰ Annotation çš„ç”Ÿå‘½å‘¨æœŸ
 *
-*   ½ö±àÒëÆÚ£ºRetentionPolicy.SOURCE£»
-    ½öclassÎÄ¼ş£ºRetentionPolicy.CLASS£»
-    ÔËĞĞÆÚ£ºRetentionPolicy.RUNTIME
+*   ä»…ç¼–è¯‘æœŸï¼šRetentionPolicy.SOURCEï¼›
+    ä»…classæ–‡ä»¶ï¼šRetentionPolicy.CLASSï¼›
+    è¿è¡ŒæœŸï¼šRetentionPolicy.RUNTIME
 
 *
 *
-* Ôª×¢½â  @Repeatable  ¶¨Òå Annotation ÊÇ·ñ¿ÉÖØ¸´
+* å…ƒæ³¨è§£  @Repeatable  å®šä¹‰ Annotation æ˜¯å¦å¯é‡å¤
 *
-* ×¢Òâ£º¸´Êı Annotation µÄ Ôª×¢½âÒªºÍµ¥Êı Anonation ÀàĞÍÒ»Ñù  µ±È» @Repeatable Õâ¸ö²»ÓÃ¼Óµ½¸´ÊıÄÇÀï
+* æ³¨æ„ï¼šå¤æ•° Annotation çš„ å…ƒæ³¨è§£è¦å’Œå•æ•° Anonation ç±»å‹ä¸€æ ·  å½“ç„¶ @Repeatable è¿™ä¸ªä¸ç”¨åŠ åˆ°å¤æ•°é‚£é‡Œ
 *
 * */
 @Target(ElementType.FIELD)
