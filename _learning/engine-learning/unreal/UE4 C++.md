@@ -974,6 +974,35 @@
   pProxy->RemoveFromRoot();
   ```
 
+
+
+
+
+
+---
+
+
+
+### UE4 C++ with blueprint
+
+* 代码修改一个蓝图的Class Defaults
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/20210902082514.jpg)
+
+  ``` c++
+  void ModifyFieldValue(Blueprint* Blueprint, FName FiledName)
+  {
+      FBoolProperty* Op = FindFProperty<FBoolProperty>(Blueprint->SkeletonGeneratedClass, FiledName);
+      if (nullptr == Op)
+      {
+          UE_LOG(LogTemp, Error, TEXT("Can't found bool property %s"), *FiledName.ToString());
+          return;
+      }
+  
+      Op->SetPropertyValue_InContainer(Blueprint->GeneratedClass->ClassDefaultObject, true);
+  }
+  ```
+
   
 
 

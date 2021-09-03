@@ -1,0 +1,1 @@
+/Users/tenmove/_ExtendTools/STF/_svn/STF/stf/bin/stf provider --name tmMacMini190.local --min-port 7400 --max-port 7700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 200 --public-ip 192.168.2.190 --storage-url http://192.168.2.190:7100/ --adb-host 192.168.2.190 --adb-port 5037 --vnc-initial-size 600x800 --allow-remote

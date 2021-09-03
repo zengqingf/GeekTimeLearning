@@ -7,6 +7,8 @@
 #include "FactoryMethod_1.h"
 #include "AbstractFactory_1.h"
 
+#include "Builder_1.h"
+
 /*
 ref:
 https://refactoringguru.cn/design-patterns
@@ -17,7 +19,9 @@ int main()
     std::cout << "Hello World!\n";
 
 	//Creator_FactoryMethod::TestFactoryMethod_1();
-	Creator_AbstractFactory::TestAbstractFactory_1();
+	//Creator_AbstractFactory::TestAbstractFactory_1();
+
+	TestBuilder1::Test1();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

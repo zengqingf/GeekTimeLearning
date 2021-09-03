@@ -1,0 +1,36 @@
+Running from: /Users/hegu/jenkins_2.222.4/jenkins.war
+webroot: $user.home/.jenkins
+2020-06-03 10:35:16.393+0000 [id=1]	INFO	org.eclipse.jetty.util.log.Log#initialized: Logging initialized @405ms to org.eclipse.jetty.util.log.JavaUtilLog
+2020-06-03 10:35:16.523+0000 [id=1]	INFO	winstone.Logger#logInternal: Beginning extraction from war file
+2020-06-03 10:35:16.554+0000 [id=1]	WARNING	o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+2020-06-03 10:35:16.616+0000 [id=1]	INFO	org.eclipse.jetty.server.Server#doStart: jetty-9.4.27.v20200227; built: 2020-02-27T18:37:21.340Z; git: a304fd9f351f337e7c0e2a7c28878dd536149c6c; jvm 1.8.0_131-b11
+2020-06-03 10:35:16.948+0000 [id=1]	INFO	o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2020-06-03 10:35:17.007+0000 [id=1]	INFO	o.e.j.s.s.DefaultSessionIdManager#doStart: DefaultSessionIdManager workerName=node0
+2020-06-03 10:35:17.007+0000 [id=1]	INFO	o.e.j.s.s.DefaultSessionIdManager#doStart: No SessionScavenger set, using defaults
+2020-06-03 10:35:17.015+0000 [id=1]	INFO	o.e.j.server.session.HouseKeeper#startScavenging: node0 Scavenging every 660000ms
+2020-06-03 10:35:17.439+0000 [id=1]	INFO	hudson.WebAppMain#contextInitialized: Jenkins home directory: /Users/hegu/.jenkins found at: $user.home/.jenkins
+2020-06-03 10:35:24.122+0000 [id=1]	INFO	o.e.j.s.handler.ContextHandler#doStart: Started w.@79defdc{Jenkins v2.222.4,/,file:///Users/hegu/.jenkins/war/,AVAILABLE}{/Users/hegu/.jenkins/war}
+2020-06-03 10:35:24.157+0000 [id=1]	INFO	o.e.j.server.AbstractConnector#doStart: Started ServerConnector@6fb554cc{HTTP/1.1, (http/1.1)}{0.0.0.0:8888}
+2020-06-03 10:35:24.157+0000 [id=1]	INFO	org.eclipse.jetty.server.Server#doStart: Started @8170ms
+2020-06-03 10:35:24.159+0000 [id=22]	INFO	winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+2020-06-03 10:35:25.431+0000 [id=29]	INFO	jenkins.InitReactorRunner$1#onAttained: Started initialization
+2020-06-03 10:35:25.691+0000 [id=32]	INFO	jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+2020-06-03 10:35:33.273+0000 [id=28]	INFO	jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+2020-06-03 10:35:33.295+0000 [id=33]	INFO	jenkins.InitReactorRunner$1#onAttained: Started all plugins
+2020-06-03 10:35:35.862+0000 [id=14]	INFO	h.ExtensionFinder$GuiceFinder$FaultTolerantScope$1#error: Failed to instantiate optional component hudson.plugins.build_timeout.operations.AbortAndRestartOperation$DescriptorImpl; skipping
+2020-06-03 10:35:36.071+0000 [id=30]	INFO	jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+2020-06-03 10:35:36.182+0000 [id=27]	INFO	jenkins.InitReactorRunner$1#onAttained: System config loaded
+2020-06-03 10:35:36.183+0000 [id=27]	INFO	jenkins.InitReactorRunner$1#onAttained: System config adapted
+2020-06-03 10:35:36.183+0000 [id=27]	INFO	jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+2020-06-03 10:35:36.184+0000 [id=29]	INFO	jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+2020-06-03 10:35:36.222+0000 [id=52]	INFO	hudson.model.AsyncPeriodicWork#lambda$doRun$0: Started Download metadata
+2020-06-03 10:35:36.229+0000 [id=52]	INFO	hudson.model.AsyncPeriodicWork#lambda$doRun$0: Finished Download metadata. 5 ms
+2020-06-03 10:35:36.769+0000 [id=28]	INFO	o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@4e94ee2f: display name [Root WebApplicationContext]; startup date [Wed Jun 03 18:35:36 CST 2020]; root of context hierarchy
+2020-06-03 10:35:36.770+0000 [id=28]	INFO	o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@4e94ee2f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4f3068e2
+2020-06-03 10:35:36.786+0000 [id=28]	INFO	o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4f3068e2: defining beans [authenticationManager]; root of factory hierarchy
+2020-06-03 10:35:37.047+0000 [id=28]	INFO	o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@16f3ad87: display name [Root WebApplicationContext]; startup date [Wed Jun 03 18:35:37 CST 2020]; root of context hierarchy
+2020-06-03 10:35:37.047+0000 [id=28]	INFO	o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@16f3ad87]: org.springframework.beans.factory.support.DefaultListableBeanFactory@3e1064d
+2020-06-03 10:35:37.047+0000 [id=28]	INFO	o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3e1064d: defining beans [filter,legacy]; root of factory hierarchy
+2020-06-03 10:35:37.114+0000 [id=33]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
+2020-06-03 10:35:37.164+0000 [id=21]	INFO	hudson.WebAppMain$3#run: Jenkins is fully up and running
+2020-06-03 10:36:11.540+0000 [id=23]	INFO	winstone.Logger#logInternal: JVM is terminating. Shutting down Jetty

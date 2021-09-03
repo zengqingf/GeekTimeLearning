@@ -64,3 +64,50 @@
 
    
 
+6. 换行符替换为空格
+
+   ``` shell
+   '''
+   China
+   America
+   France
+   German
+   '''
+   
+   #sed
+   cat country.txt | sed ':label;N;s/\n/ /;b label'
+   
+   #tr
+   cat country.txt | tr "\n" " "
+   
+   #output: China America France German
+   #两个命令输出一致，但是sed命令的输出结尾有换行符，而tr命令的输出结尾没有换行符
+   ```
+
+
+
+7. 字符串替换
+
+   ``` shell
+   ${parameter/pattern/string}
+   
+   a=/data/wxnacy/data/log/log.txt
+   echo ${a/data/User}           		# 将第一个 data 替换为 User
+   #output: /User/wxnacy/data/log/log.txt
+   
+   echo ${a//data/User}           		# 将全部 data 替换为 User
+   #output: /User/wxnacy/User/log/log.txt
+   
+   echo ${a/#\/data/\/User}            # 匹配开头 /data 替换为 /User（/ 需要转义）
+   #output: /User/wxnacy/data/log/log.txt
+   
+   echo ${a/%log.txt/User}           	# 匹配结尾 log.txt 替换为 User
+   #output: /data/wxnacy/data/log/User
+   
+   
+   
+   $ echo $a | sed -e "s/data/User/g"
+   #output: /User/wxnacy/User/log/log.txt
+   ```
+
+   

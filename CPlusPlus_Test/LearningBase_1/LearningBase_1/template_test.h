@@ -282,6 +282,7 @@ private:
 	public:
 		~CGarbo()
 		{
+			//内部类可以不加 SingletonC 直接访问 instance 这个外部类的静态对象
 			if (SingletonC::instance != nullptr)
 				delete SingletonC::instance;
 		}

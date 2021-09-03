@@ -39,8 +39,6 @@ using namespace std;
 int main() {
 
 	//base_4.h type cast
-	Base_4
-	return 0;
 
 
 	//base_2.h  check null before delte ptr

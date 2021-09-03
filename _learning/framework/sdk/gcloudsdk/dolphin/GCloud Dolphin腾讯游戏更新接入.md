@@ -24,6 +24,8 @@
 
    形式：整包更新后下载当前整包版本对应的最新资源版本
 
+   要使用原始资源打包.zip格式上传到Dolphin管理端
+
    ​	**游戏资源版本不支持差异更新**
 
    * 全量更新
@@ -37,7 +39,7 @@
      GCloud游戏资源更新机制是**只更新新增和变更的资源文件**
 
      上传时需要指定基线版本
-
+   
      ``` tex
      文件格式：仅支持 zip 文件，最大不超过 4 GB
      
@@ -47,8 +49,22 @@
      ```
 
    * 资源修复
-
-     进行资源修复时，需要把本地的资源版本号设置为老版本号（版本号不能为空），比资源版本线上需要修复到的版本号低。
+   
+     进行资源修复时，需要把本地的资源版本号设置为老版本号**（版本号不能为空）**，比资源版本线上需要修复到的版本号低。
+     
+   * Dolphin资源更新目录文件说明
+   
+     ``` tex
+     289837993_1833_1.0.0.6_20200521094440_508688952_cures.ifs.res   资源目录文件用于资源更新检查本地资源
+     apollo_reslist.flist    										资源目录文件 在资源修复功能 检查修复标记
+     apollo_reslist.flist.diff   									当初始化设置了生成差异文件列表时生成的文件
+     apollo_uuid_define.json 										记录uuid
+     filelist.json   												服务器json文件 记录版本信息
+     filelistcheck.res   											在散资源修复功能 记录apk内散资源目录信息
+     first_source.ifs.res    										在首包解压优化方案 资源更新的目录文件
+     ```
+   
+     
 
 
 
@@ -100,6 +116,41 @@
    	散资源修复
    ```
 
+   ``` tex
+   @注意：由于如果使用首包压缩后解压方案---需要考虑多方面因素：1.启动耗时 2.google obb方案操作
+   推荐首包不解压方案---即首包不使用IFS---
+   ```
+   
+   ``` tex
+   首包解压优化操作步骤：
+   	步骤1：生成first_source.ifs
+   	"Packager.exe" <new|add> [option] "IFSFileName" "Local Path"
+   	"Packager.exe" new -zip=zlib -skip=.svn -skip=skip.txt -diroff "E:\IIPS_Packager_test\test.ifs" "E:\IIPS_Packager_test\Data"
+   	重命名为first_source.ifs  
+   	
+   
+   	步骤2:生成.res文件和filelist.json文件: 准备好首包的ifs文件，执行下面的命令：
+   		Windows：Packager.exe backup -createalways first_source.ifs 
+           参数：xxx.ifs: 资源用ifs工具生成的ifs文件。
+           结果：生成一个first_source.res文件，需要项目重命名成first_source.ifs.res文件
+           
+           手动创建一个文件 filelist.json： 配置文件，指定用哪个res文件。内容如下：
+           {
+               "filelist" : 
+               [
+                 {
+                    "filename" : "first_source.ifs",
+                    "url" : "http://defulturl"
+                 }
+               ]
+           }
+   	
+   	步骤3：启动更新前，将xxx.ifs.res和filelist.json拷贝到设置的更新目录（android为/sdcard/Android/data/packageName/files目录下，目录为项目组自行设置的更新目录
+   	
+   	步骤4：切记一定要在拷贝ok后，在启动下载更新。
+   		  游戏执行资源更新以后，新版本增加的资源就会在更新目录下载完并解压为原始文件，游戏需要从更新目录加载资源。
+   ```
+   
    
 
 
@@ -116,7 +167,7 @@
 
       ``` tex
       版本号说明：
-      更新时，需要游戏当前的版本号（资源或程序），初始化时传入。
+      更新时，需要游戏当前的版本号（版本号针对 资源 和 程序），初始化时传入。
       这里的版本号与更新控制台创建的版本号对应。比如游戏第一个程序版本，在控制台上创建第一个版本，版本号为0.0.0.1，0.0.0.1程序版本运行时初始化更新，这里就要传入0.0.0.1。当在控制台上创建0.0.0.2版本后，0.0.0.1版本就可以获取到0.0.0.2的更新，更新之后就变成了0.0.0.2版本，这时再运行时初始化更新，这里就需要传入0.0.0.2
       ```
 
@@ -209,8 +260,18 @@
 
       **@注意：在创建 安卓程序 版本后（iOS不需要），需要创建一个全量的资源版本，否则客户端更新失败，可以上传一个空的zip文件，空zip文件请按empty.zip/a.txt 组织。其中，a.txt为空文件。**
 
-    * 支持平台
+      * 本地上传
 
+        上传包大小不超过2G
+
+      * 审核版本
+
+        适合提交苹果商店审核类场景
+    
+        
+    
+    * 支持平台
+    
       只支持Android，不支持iOS
 
       iOS特殊处理
@@ -222,12 +283,39 @@
       //通过页面创建版本时，将appstore对应的下载地址填写在版本创建的用户自定义字符串部分；
       //发布新版本后，会回调OnDolphinVersionInfo，调用CancelUpdate退出更新，再自行跳转到appstore下载更新。
       ```
-
-      
-
     
-
-
+    
+    
+  
+  * 资源更新
+  
+    * 资源上传到后台
+  
+      * 全量资源上传
+  
+        针对UE4引擎，上传完整资源包，资源包后缀为zip，资源包目录结构：
+  
+        ---XXX.zip
+  
+        ​	---Paks
+  
+        ​		---xxx.pak
+  
+        上传后XXX.zip会自动改名  ProjectID_ChannelID_ResVersion_Time_TimeStamp_cures.zip
+  
+      * 增量资源上传
+  
+        ``` tex
+        1.1.0.0		 1.3.0.0（线上最高版本）
+        A				A
+        B				B
+        C				C+
+        				D
+        				
+        客户端只更新C+和D文件，上传增量包只需要包含C+和D文件3
+        ```
+  
+        
 
 
 

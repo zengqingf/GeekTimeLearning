@@ -1,0 +1,62 @@
+{
+        "OPPO": {
+                "version": "",
+                "url": ""
+        },
+        "VIVO": {
+                "version": "",
+                "url": ""
+        },
+        "HuaWei": {
+                "version": "",
+                "url": ""
+        },
+        "KuPai": {
+                "version": "",
+                "url": ""
+        },
+        "MeiZu": {
+                "version": "",
+                "url": ""
+        },
+        "JinLi": {
+                "version": "",
+                "url": ""
+        },
+        "XiaoMi": {
+                "version": "",
+                "url": ""
+        },
+        "BaiDu": {
+                "version": "",
+                "url": ""
+        },
+        "SanXing": {
+                "version": "",
+                "url": ""
+        },
+        "MGOther": {
+                "version": "",
+                "url": ""
+        },
+		"MGOtherHC": {
+				"version": "",
+				"url": ""
+		},
+		"MGOther915": {
+				"version": "",
+				"url": ""
+		},		
+        "MG": {
+                "version": "",
+                "url": ""
+        },
+        "SN79": {
+                "version": "",
+                "url": ""
+        },
+        "MGYingYB": {
+                "version": "",
+                "url": ""
+        }
+}
