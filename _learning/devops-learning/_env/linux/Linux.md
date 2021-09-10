@@ -1,4 +1,20 @@
-# Linux环境配置
+# Linux
+
+
+
+* ref
+
+  [Linux Tools Quick Tutorial](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html#)
+
+  [Linux命令大全](https://man.linuxde.net/)
+
+  [鸟哥linux](http://cn.linux.vbird.org/linux_basic/linux_basic.php)
+
+
+
+
+
+## Linux环境配置
 
 ### linux镜像
 
@@ -66,8 +82,6 @@
   nautilus 直接打开Home
   nautilus . 打开当前文件夹
   nautilus /var/www/aaa/ 打开此文件夹
-  
-  
   ```
 
 

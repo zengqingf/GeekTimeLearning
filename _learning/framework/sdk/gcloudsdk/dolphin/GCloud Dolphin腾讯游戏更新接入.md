@@ -66,8 +66,6 @@
    
      
 
-
-
 3. 首包解压
 
    ``` tex
@@ -286,25 +284,24 @@
     
     
     
-  
   * 资源更新
-  
+
     * 资源上传到后台
-  
+
       * 全量资源上传
-  
+
         针对UE4引擎，上传完整资源包，资源包后缀为zip，资源包目录结构：
-  
+
         ---XXX.zip
-  
+
         ​	---Paks
-  
+
         ​		---xxx.pak
-  
+
         上传后XXX.zip会自动改名  ProjectID_ChannelID_ResVersion_Time_TimeStamp_cures.zip
-  
+
       * 增量资源上传
-  
+
         ``` tex
         1.1.0.0		 1.3.0.0（线上最高版本）
         A				A
@@ -314,8 +311,142 @@
         				
         客户端只更新C+和D文件，上传增量包只需要包含C+和D文件3
         ```
-  
+
+      
+      
+      
+    * 首包资源使用和制作（资源修复和跨版本资源修正都需要）
+    
+      ``` tex
+      原理: 程序会先解析filelist.json这个文件，找到filename所对应的value，比如first_source.ifs，那么接下来程序会去找first_source.ifs.res作为此次更新的目录文件。所以制作这两个文件的时候命名一定要准确。这边的filename：first_source.ifs跟放在app内部的首包ifs是没有必要关系的。
+      ```
+    
+      ``` tex
+      原始资源：
+      原始的资源文件（压缩处理之前的原始文件）可以放到之前首包解压png文件放置的目录（也就是Unity: Assets/StreamingAssets），游戏后面可以从这个目录读取原始文件。2019.9月份的版本会支持ifs读取文件的功能，升级到这个版本可以直接把ifs放到放到首包中，命名为first_source.png。
+      ```
+    
+      ``` tex
+      游戏启动时操作：
+      游戏启动的时候，在执行更新动作之前需要把这两个文件：xxx.ifs.res和filelist.json拷贝到设置的更新目录（android为/sdcard/Android/data/packageName/files目录下，目录为项目组自行设置的更新目录，由继承这边一个路径接口传入，具体在实现的时候注意一下路径，传到相同路径即可，IOS也一样），也就是和后面更新时设置的目录保持一致，因为后面更新需要读这两个文件，然后更具xxx.ifs.res这个目录文件和服务器最新文件对比。
+      ```
+    
+      ``` tex
+      游戏执行更新以后，新版本增加的资源就会在更新目录下载完并解压为原始文件，游戏需要从更新目录加载资源。
+      ```
+    
+      ``` tex
+      首包散资源（原始资源）：
+      1.按照上述方案制作出来，有一个首包ifs，一个.res 文件，一个 .json 文件，这个时候把res 文件， .json 文件塞到首包里 
+      2.将首包ifs的原始文件直接放到首包内，而不是用ifs文件。
+      3.资源修复使用散资源修复策略
+      ```
+    
+      **工具使用**
+    
+      * 制作首包ifs（不一定用到）
+    
+        ``` shell
+        "Packager.exe" <new|add> [option] "IFSFileName" "Local Path"
+        "Packager.exe" new -zip=zlib -skip=.svn -skip=skip.txt -diroff "E:\IIPS_Packager_test\test.ifs" "E:\IIPS_Packager_test\Data"
         
+        '''
+        第一个参数new|add     New:创建新的IFS文件；add在已有IFS文件中添加文件，不存在时自动创建。
+        第二个参数[option]    -zip=<zlib/bzip2> 指定文件的压缩算法
+        
+        -skip=<pattern> 以扩展名过滤文件；过滤特定的文件
+        -diroff 打包时不包含路径的目录(Data)
+        -createalways 若生成包已存在则覆盖该包
+        -showprogress 显示进度
+        -include=.xxx 只打入指定后缀名的文件
+        
+        第三个参数“IFSFileName”    生成资源的输出文件的绝对路径，首尾带双引号
+        第四个参数“Local Path”    当前版本的资源目录的绝对路径，首尾带双引号
+        '''
+        ```
+    
+      * 首包解压优化
+    
+        * 准备首包ifs，生成.res 和 filelist.json
+    
+        ``` shell
+        # windows
+        Packager.exe backup -createalways first_source.ifs
+        '''
+        参数：xxx.ifs: 资源用ifs工具生成的ifs文件。
+        结果：生成一个first_source.res文件，需要项目重命名成first_source.ifs.res文件
+        Mac:./nifs backup first_source.ifs first_source.ifs.res
+        参数：xxx.ifs: 资源用ifs工具生成的ifs文件。
+        结果：生成一个first_source.ifs.res
+        手动创建一个文件 filelist.json： 配置文件，指定用哪个res文件。内容如下：
+        {
+            "filelist" : 
+            [
+              {
+                 "filename" : "first_source.ifs",
+                 "url" : "http://defulturl"
+              }
+            ]
+        }
+        '''
+        
+        # macos
+        # MAC-64位工具使用命令说明
+        # create IFS:
+        ./nifs create ifs_dir test.ifs compress
+        eg:./nifs create /root/resource /root/first_source.ifs compress
+        ./nifs create ifs_dir test.ifs nocompress
+        如果上面的命令出现错误可以使用这个命令./nifs create ifs_dir test.ifs compress use_lzma
+        # create res：
+        ./nifs backup  *.ifs *.ifs.res filelist.json
+        eg：./nifs backup  /root/test.ifs  /root/first_source.ifs.res /root/filelist.json
+        ```
+    
+      
+    
+    * 资源修复
+    
+      * 散资源修复（原始资源修复）
+    
+        ``` tex
+        散资源修复是针对首包解压中散资源这种情况下实现的资源修复功能。 
+        同ifs的资源修复优化方案一样，目前散资源也支持资源修复优化，之前文件信息读取的是app内部的ifs信息，散资源是没有ifs的，
+        所以需要读取app内部的.res文件（用首包生成），（内部读取有困难）为了读取方便，
+        再进行资源修复之前需要把内部的res文件拷贝到外面首包解压文件的路径，并改名为"filelistcheck.res" ,资源修复会以这个目录信息修复文件。 
+        具体操作：
+        更新类型设置UpdateInitType_SourceCheckAndSync_Optimize_Full_Scatter。 除了需要按照首包解压的优化方案的方式制作first_source.ifs.res+filelist.json文件之外 ，散资源修复还需要再加一个文件，把first_source.ifs.res这个文件重命名filelistcheck.res 这个是散资源的资源目录文件，然后把first_source.ifs.res、filelistcheck.res和filelist.json 这三个文件都加上.png的后缀名，放到首包中，游戏启动时拷贝这三个文件到设置的更新目录（更新目录为游戏项目组设置的目录）即可。
+        ```
+    
+    * 跨程序版本首包资源修正
+    
+      * 解决问题
+    
+        ``` tex
+        app更新之后，一般的做法有删除外部所有资源，把res+json拷贝出去或者直接首包解压，然后再触发资源更新，下载除首包以外的资源；或者直接拷贝res+json到外部，直接进行资源更新。 两者做法不一样，结果是一样的，那就是会触发下载除首包以外的资源。
+        
+        实际情况下游戏在sdcard可能存在大量资源是不需要更新，已经是最新版本了，属于以前历史下载下来的，这种情况删掉外部资源就会导致部分已有的资源重复下载了。
+        ```
+    
+      * 功能内容
+    
+        ``` tex
+        1.支持将首包res修正到sdcard的res，整体以sdcard的res为主做添加和修改操作。
+        
+        2.支持输入相对文件路径列表对sdcard上的res修复指定文件的md5（不支持添加）
+        
+        3.首包修正后直接进行资源更新，下载真正差异资源，（不删除冗余资源）再一次更新res内容，保证res与服务器一致。
+        ```
+    
+      * 接入使用
+    
+        ``` tex
+        首包修正 MergeFilelistType::MergeAppResIntoSDCARDRes
+        使用该功能时，用户需要将首包资源res复制到SDcard目录下，并命名为filelistcheck.res
+        ```
+    
+        
+    
+      
 
 
 

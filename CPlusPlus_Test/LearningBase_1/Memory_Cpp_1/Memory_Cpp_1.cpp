@@ -3,29 +3,17 @@
 
 #include <iostream>
 
+#include "cpp_memory_primitives_1.h"
+
 #include "pre_class_allocator_1.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-	//测试pre-class allocator 1
-	{
-		std::cout << sizeof(Screen) << std::endl;  
-		size_t const N = 100;
-		Screen* p[N];
-		for (int i = 0; i < N; ++i)
-		{
-			p[i] = new Screen(i);
-		}
+	TestCppMemoryPrimitives::Test5();
 
-		//输出前10个pointers 比较间隔
-		for (int i = 0; i < 10; ++i)
-			std::cout << p[i] << std::endl;
-
-		for (int i = 0; i < N; ++i)
-			delete p[i];
-	}
+	TestPreClassAllocator::Test2();
 
 	std::cin.get();
 }

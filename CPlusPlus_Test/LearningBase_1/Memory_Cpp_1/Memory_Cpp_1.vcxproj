@@ -151,11 +151,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp_memory_primitives_1.cpp" />
     <ClCompile Include="Memory_Cpp_1.cpp" />
     <ClCompile Include="pre_class_allocator_1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cpp_memory_primitives_1.h" />
     <ClInclude Include="pre_class_allocator_1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearningBase_1\LearningBase_1.vcxproj">
+      <Project>{2303d597-df98-4f80-944e-fd471cc6d72d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

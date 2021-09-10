@@ -209,6 +209,108 @@
 
   
 
+* 分享功能
+
+  [github - Share2](https://github.com/baishixian/Share2)
+
+  **以下代码在android 新版本上可能不支持  因为file provider**
+
+  ``` tex
+  Android安装7.0兼容说明
+  Android7.0强制启用了被称作 StrictMode的策略，带来的影响就是你的App对外无法暴露file://类型的URI了。 如果你使用Intent携带这样的URI去打开外部App(比如：通过url安装apk)，那么会抛出FileUriExposedException异常。
+  
+  摘自腾讯GCloud Dolphin
+  manifest修改 --- AndroidManifest.xml添加FileProvider
+  <!-- 7.0 fileShare for targeSdkVersion>=24 注意:
+      1. authorities这里格式为应用包名packageName+".ApolloFileprovider" 
+      2. resource属性：这里需要定义apollo_file_paths.xml文件放到工程res/xml下面-->
+  <provider
+      android:name="android.support.v4.content.FileProvider"
+      android:authorities="包名.ApolloFileprovider"
+      android:exported="false"
+      android:grantUriPermissions="true" >
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/apollo_file_paths" />
+  </provider>
+  
+  path文件添加 --- res/xml目录下添加apollo_file_paths.xml
+  <?xml version="1.0" encoding="utf-8"?>  
+  <paths>  
+      <external-path path="." name="external_storage_root" />
+      <files-path path="." name="file_patch_root" />
+      <cache-path path="." name="cache_patch_root" />
+  </paths>  
+  ```
+
+  ``` c#
+  using UnityEngine;
+  using System.Collections;
+  using System.IO;
+  
+  public class NativeShareScript : MonoBehaviour {
+      public GameObject CanvasShareObj;
+  
+      private bool isProcessing = false;
+      private bool isFocus = false;
+  
+      public void ShareBtnPress()
+      {
+          if (!isProcessing)
+          {
+              CanvasShareObj.SetActive(true);
+              StartCoroutine(ShareScreenshot());
+          }
+      }
+  
+      IEnumerator ShareScreenshot()
+      {
+          isProcessing = true;
+  
+          yield return new WaitForEndOfFrame();
+  
+          Application.CaptureScreenshot("screenshot.png", 2);
+          string destination = Path.Combine(Application.persistentDataPath, "screenshot.png");
+  
+          yield return new WaitForSecondsRealtime(0.3f);
+  
+          if (!Application.isEditor)
+          {
+              AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+              AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+              intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
+              AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
+              AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + destination);
+              intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"),
+                  uriObject);
+              intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"),
+                  "Can you beat my score?");
+              intentObject.Call<AndroidJavaObject>("setType", "image/jpeg");
+              AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+              AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
+              AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser",
+                  intentObject, "Share your new score");
+              currentActivity.Call("startActivity", chooser);
+  
+              yield return new WaitForSecondsRealtime(1);
+          }
+  
+          yield return new WaitUntil(() => isFocus);
+          CanvasShareObj.SetActive(false);
+          isProcessing = false;
+      }
+  
+      private void OnApplicationFocus(bool focus)
+      {
+          isFocus = focus;
+      }
+  }
+  ```
+
+  
+
+
+
 
 
 
@@ -499,6 +601,21 @@
 
 ### View
 
+* 全面屏和刘海屏
+
+  ``` xml
+  AndroidManifest.xml
+  
+  <!--放在Application和展示Activity（包括MainActivity，更新界面等）下-->
+  <meta-data android:name="android.min_aspect" android:value="1.0"/>
+  <meta-data android:name="android.max_aspect" android:value="2.4"/>		 <!--全面屏分辨率支持比例-->
+  
+  <meta-data android:name="notch.config" android:value="portrait|landscape"/>
+  <meta-data android:name="android.notch_support" android:value="true"/>   <!--默认支持，即设置中把当前应用的全面屏支持开关打开-->
+  ```
+
+  
+
 * scrollview
 
   * 自定义宽高
@@ -576,6 +693,11 @@
     -->
     ```
 
-    
+
+  
+
+  
+
+  
 
   

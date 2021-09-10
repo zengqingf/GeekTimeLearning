@@ -2,6 +2,10 @@
 
 ### lua基础
 
+[Lua 5.1 参考手册](https://www.codingnow.com/2000/download/lua_manual.html)
+
+[Lua 5.3 参考手册](https://cloudwu.github.io/lua53doc/manual.html)
+
 [Lua图解-lua堆栈](./Lua图解)
 
 [Lua和C++交互详细总结](https://www.cnblogs.com/sevenyuan/p/4511808.html)

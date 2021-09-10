@@ -6,6 +6,10 @@
 
 
 
+* plantuml
+
+  UML画图
+
 
 
 
@@ -18,7 +22,7 @@
   配置路径： “File”—“Preferences”—“User Snippets”
 
   ```  json
-{
+  {
   	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
   	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
   	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
@@ -54,7 +58,7 @@
   ```
   
   ``` json
-{
+  {
   	// Place your snippets for shellscript here. Each snippet is defined under a snippet name and has a prefix, body and 
   	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
   	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
@@ -89,4 +93,25 @@
   ```
   
   
+
+
+
+---
+
+
+
+### 配置
+
+* windows
+
+  ``` tex
+  系统命令识别不到：无法将"xx"项识别为cmdlet...
+  
+  解决方案：vscode快捷方式 -> 兼容性 -> 以管理员身份运行
+  设置后需要关闭所有打开的vscode窗口后重启
+  ```
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202109081106648.jpg)
+
+
 

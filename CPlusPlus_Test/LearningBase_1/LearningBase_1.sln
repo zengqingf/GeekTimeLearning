@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearningBase_1", "LearningBase_1\LearningBase_1.vcxproj", "{2303D597-DF98-4F80-944E-FD471CC6D72D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Effective_Cpp_1", "Effective_Cpp_1\Effective_Cpp_1.vcxproj", "{15B17335-8A9A-48B2-8F0F-24A8F5CB18E6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2303D597-DF98-4F80-944E-FD471CC6D72D} = {2303D597-DF98-4F80-944E-FD471CC6D72D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Memory_Cpp_1", "Memory_Cpp_1\Memory_Cpp_1.vcxproj", "{9972164B-029D-4FDD-8DD0-C20369A617C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2303D597-DF98-4F80-944E-FD471CC6D72D} = {2303D597-DF98-4F80-944E-FD471CC6D72D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

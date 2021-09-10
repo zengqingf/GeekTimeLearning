@@ -21,9 +21,15 @@
     <ClCompile Include="pre_class_allocator_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="cpp_memory_primitives_1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pre_class_allocator_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp_memory_primitives_1.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,6 +21,49 @@
   const的值是在编译期间确定的，因此只能在声明时通过常量表达式指定其值。而static readonly是在运行时计算出其值的，所以还可以通过静态构造函数来赋值
   ```
 
+  ``` c#
+  using System;
+  class P
+  {
+      static readonly int A=B*10;
+      static readonly int B=10;
+      public static void Main(string[] args)
+      {
+          Console.WriteLine("A is {0},B is {1} ",A,B);
+      }
+  }
+  //output: A is 0,B is 10
+  
+  class P
+  {
+      const int A=B*10;
+      const int B=10;
+      public static void Main(string[] args)
+      {
+          Console.WriteLine("A is {0},B is {1} ",A,B);
+      }
+  }
+  //output: A is 100,B is 10;
+  ```
+  
+  
+
+
+
+* StringBuilderCache
+
+  ``` c#
+  StringBuilder sb = StringBuilderCache.Acquire();
+  sb.Append("xxx");
+  StringBuilder.GetStringAndRelease(sb);					//性能更优
+  
+  vs.
+      
+  StringBuilder sb = new StringBuilder();
+  sb.Append("xxx");
+  sb.ToString();
+  ```
+
   
 
 
@@ -81,7 +124,7 @@
 
   
 
-### 
+
 
 ---
 
