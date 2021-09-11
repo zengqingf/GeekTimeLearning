@@ -13,7 +13,11 @@ int main()
 
 	TestCppMemoryPrimitives::Test5();
 
+	TestPreClassAllocator::Test1();
 	TestPreClassAllocator::Test2();
+
+	TestPreClassAllocator::OverrideClassNewDelete::Test2();
+	TestPreClassAllocator::OverridePlacementNew::Test3();
 
 	std::cin.get();
 }

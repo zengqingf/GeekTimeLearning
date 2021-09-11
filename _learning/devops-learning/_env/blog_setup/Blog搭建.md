@@ -106,6 +106,14 @@
 
 ### Markdown
 
+ref: 
+
+[markdown-intro](https://mazhuang.org/markdown-intro/)
+
+[Learning-Markdown (Markdown 入门参考)](http://xianbai.me/learn-md/index.html)
+
+
+
 * 生成目录
 
   ``` markdown

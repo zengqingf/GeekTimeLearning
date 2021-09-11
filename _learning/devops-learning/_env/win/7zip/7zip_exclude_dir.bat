@@ -9,6 +9,6 @@ set curdate=%date:~0,4%-%date:~5,2%-%date:~8,2%
 set p8=F:\_Dev\projects\conf_a_eight
 
 ::过滤多个文件夹， .svn | Binaries
-"%zip7%" a -tzip "%save%\%curdate%.zip" "%p8%" -mx0 -xr!.svn -xr!Binaries -xr!_Output -xr!DerivedDataCache -xr!Intermediate -xr!Saved -xr!Resources
+"%zip7%" a -tzip "%save%\%curdate%.zip" "%p8%" -mx0 -xr!.svn -xr!Binaries -xr!_Output -xr!DerivedDataCache -xr!Intermediate -xr!Saved -xr!Resources -xr!.vs =xr!.idea
 
 pause
