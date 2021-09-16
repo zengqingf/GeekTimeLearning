@@ -101,3 +101,98 @@ public:
 			<< te.m_y << ")" << std::endl;
 	}
 };
+
+
+/*
+测试指针被外部类引用，生命周期结束释放后仍被外部引用着，导致闪退
+
+现象分析：
+1.对象指针被delete后，调用这个对象的非静态方法，可以调用，
+	但是对象内部的变量都被回收了（且不为默认值）
+2.如果对象的类有父类，则其他类的对象中缓存了从外部传入的子类中获得的父类指针，
+	外部子类对象被销毁后，可以调用纯父类方法，但是不能调用子类重写的方法
+*/
+
+/*
+ref:https://www.zhihu.com/question/389546003
+虚表：
+	
+一、函数调用方式：
+	1.静态绑定：
+	类不含虚表时，编译器在编译期间把函数地址确定好，运行期间直接去调用相应地址的函数
+
+		C++中数据和操作的封装仅针对开发而言，编译器编译后还是面向过程，
+		编译器会给成员函数一个额外的类指针参数，运行期间传入对象实际的指针
+		类的数据（成员变量）和操作（成员函数）其实还是分离的
+		
+	2.动态绑定（延迟绑定）
+		
+		如果不使用虚表（virtual关键字），由于类的数据（成员变量）和操作（成员函数）其实是分离的，
+		从对象的内存分布看，只有成员变量，看不到成员函数，
+		因为调用哪个函数在编译期间已经确定了，同时编译期间只能识别父类的函数（可能会被子类重写的）
+
+虚表时连续的内存块
+
+面向对象中多态的实现：
+	
+*/
+
+#include <vector>
+class ITA
+{
+public:
+	ITA() {}
+	virtual ~ITA() {}
+	virtual void Deal() = 0;
+	void ITAA() {
+		std::cout << "ITAA()" << std::endl;
+	}
+};
+
+class TA : public ITA
+{
+public:
+	TA() : a(0){}
+	TA(int i) :a(i) {}
+	~TA() {
+		std::cout << "TA dtor call..." << std::endl;
+	}
+
+	static void* operator new(size_t);
+	static void* operator new(size_t, void*);
+	static void operator delete(void *);
+
+	void Deal() override
+	{
+		std::cout << "Del TestA(): " << a << std::endl; 
+	}
+	int a = 0;
+};
+
+class TB
+{
+public:
+	TB() {}
+	~TB() {}
+
+	void StoreTA(TA* a)
+	{
+		mTAs.push_back(a);
+	}
+
+	void ReleaseTA()
+	{
+		for (ITA* ta : mTAs) {
+			if (nullptr != ta) {
+				std::cout << "ta not nullptr" << std::endl;
+				ta->Deal();
+				//ta->ITAA();
+				std::cout << "ta address: " << ta << std::endl;
+			}
+		}
+		mTAs.clear();
+	}
+
+private :
+	std::vector<ITA*> mTAs;
+};

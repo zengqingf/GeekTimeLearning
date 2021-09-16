@@ -1,0 +1,9 @@
+-Id:\programs\MinGW\lib\gcc\mingw32\9.2.0\include\c++
+-Id:\programs\MinGW\lib\gcc\mingw32\9.2.0\include\c++\mingw32
+-Id:\programs\MinGW\lib\gcc\mingw32\9.2.0\include\c++\backward
+-Id:\programs\MinGW\lib\gcc\mingw32\9.2.0\include
+-Id:\programs\MinGW\include
+-Id:\programs\MinGW\lib\gcc\mingw32\9.2.0\include-fixed
+-IE:\ws\mjx\base_learning\GeekTimeLearning\CPlusPlus_Test\_CodeLiteWS_CPP\GNU_Test_Cpp_1
+-target
+i686-pc-windows-gnu

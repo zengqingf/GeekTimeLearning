@@ -38,6 +38,21 @@ using namespace std;
 
 int main() {
 
+	//base_1.h 测试指针外部存储导致野指针问题
+	TA* testA = new TA();
+	std::cout << "testA address 1: " << testA << std::endl;
+	TB testB;
+	testB.StoreTA(testA);
+	delete testA;
+	std::cout << "testA address 2: " << testA << std::endl;
+
+	TA* teatA2 = new(testA)TA;
+	teatA2->Deal();
+	//! testA->Deal(); error:
+	//testA = nullptr;
+	testB.ReleaseTA();
+
+	return 0;
 	//base_4.h type cast
 
 

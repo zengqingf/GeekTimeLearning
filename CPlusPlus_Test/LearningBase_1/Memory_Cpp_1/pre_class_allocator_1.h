@@ -113,7 +113,7 @@ namespace TestPreClassAllocator
 #define DECLARE_POOL_ALLOC() \
 public:\
 	void* operator new(size_t size) { return uniAlloc.Allocate(size); }\
-	void operator delete(void* p) { uniAlloc.deallocate(p, 0);}\
+	void operator delete(void* p) { uniAlloc.Deallocate(p, 0);}\
 protected:\
 	static UniAllocator uniAlloc;\
 
@@ -130,7 +130,7 @@ UniAllocator class_name::uniAlloc;\
 			Goo(const complex<double>& x) : C(x) {}
 		};
 
-	}
+	}// TestUniAllocator
 
 	namespace OverrideClassNewDelete
 	{

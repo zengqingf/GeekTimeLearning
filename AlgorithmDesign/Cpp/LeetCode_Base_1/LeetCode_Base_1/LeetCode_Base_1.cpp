@@ -1,24 +1,23 @@
-// Memory_Cpp_1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// LeetCode_Base_1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
 #include <iostream>
 
-#include "cpp_memory_primitives_1.h"
-
-#include "pre_class_allocator_1.h"
+#include "SumOfTwoNum_1.cpp"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-	TestCppMemoryPrimitives::Test7();
+	Solution sol;
+	//vector<int> nums{ 2,7,11,15 };	 //9
+	vector<int> nums{ 0,4,3,0 };		 //0
+	//vector<int> nums{ -3,4,3,90 };	 //0
 
-	TestPreClassAllocator::Test1();
-	TestPreClassAllocator::Test2();
-
-	TestPreClassAllocator::OverrideClassNewDelete::Test2();
-	TestPreClassAllocator::OverridePlacementNew::Test3();
-
+	std::cout << "solution res: " << std::endl;
+	for (int i : sol.SumTwoNum(nums, 0)) {
+		std::cout << i << std::endl;
+	}
 	std::cin.get();
 }
 

@@ -218,3 +218,30 @@ void TestCppMemoryPrimitives::Test6()
 	}
 	*/
 }
+
+
+//new handler
+/*
+当operator new分配内存失败，会抛出std::bad_alloc exception, 部分旧编译器会返回0
+使用 std::nothrow 可以让编译器默认返回0 而不是异常
+
+抛出异常前会不止一次调用一个可以自定义的handler
+
+handler的主要目的：
+	1. 让更多的memory可用
+	2. 调用abort() 或 exit()
+*/
+
+void noMoreMemory()
+{
+	std::cerr << "out of memory";
+	abort();
+}
+void TestCppMemoryPrimitives::Test7()
+{
+	// A* na = new(std::nothrow)A;
+
+	std::set_new_handler(noMoreMemory);
+	int* p = new int[100000000];			//vs中无法定义 数组的总大小不得超过 0x7fffffff 字节
+	assert(p);
+}

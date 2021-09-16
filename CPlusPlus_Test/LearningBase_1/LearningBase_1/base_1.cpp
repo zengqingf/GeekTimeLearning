@@ -25,3 +25,21 @@ void TestFunc_1::Test1()
 	//编译错误
 	//std::cout << _func(1) << std::endl;
 }
+
+void * TA::operator new(size_t size)
+{
+	TA* ptr = (TA*)malloc(size);
+	std::cout << "TA operator new call..." << size << std::endl;
+	return ptr;
+}
+
+void * TA::operator new(size_t, void * start)
+{
+	return start;
+}
+
+void TA::operator delete(void * p)
+{
+	free(p);
+	std::cout << "TA operator delete call..." << std::endl;
+}

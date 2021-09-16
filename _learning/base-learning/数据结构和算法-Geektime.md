@@ -1,5 +1,17 @@
 # 数据结构和算法-Geektime
 
+* ref
+
+  [在线编程-面试](http://collabedit.com/)
+
+  [主定理 - Master Theorem](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms))
+
+  ![](_pic/CommonAlgorithms_1.jpg)
+
+
+
+
+
 ### 一、数组
 
 1. 概念

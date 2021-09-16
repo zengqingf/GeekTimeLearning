@@ -4,6 +4,7 @@
 #define _CPP_MEMORY_PRIMITIVES_1_H_
 
 #include <iostream>
+#include <cassert>
 using std::cout;
 using std::endl;
 
@@ -31,6 +32,8 @@ namespace TestCppMemoryPrimitives
 	void Test5();
 
 	void Test6();
+
+	void Test7();
 	
 }	//namespace TestCppMemoryPrimitives
 
