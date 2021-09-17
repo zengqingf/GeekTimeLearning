@@ -2,6 +2,18 @@
 
 
 
+* ref
+
+  [Python 入门指南](http://www.pythondoc.com/pythontutorial3/index.html)
+
+
+
+
+
+---
+
+
+
 ### **问题**
 
 * ModuleNotFoundError: No module named 'XXX' 
@@ -118,7 +130,17 @@
         find . {-atime/-ctime/-mtime/-amin/-cmin/-mmin} [-/+]num
         ```
 
-  
+  * zip
+
+    * zipfile
+
+      ``` python
+      import zipfile
+      with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
+          zip_ref.extractall(directory_to_extract_to)
+      ```
+
+      
 
 * 字符串
 

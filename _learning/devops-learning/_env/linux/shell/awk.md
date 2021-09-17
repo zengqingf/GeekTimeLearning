@@ -1,5 +1,13 @@
 # awk使用
 
+* ref
+
+  [AWK 简明教程](https://coolshell.cn/articles/9070.html)
+
+  [awk从放弃到入门](https://www.zsythink.net/archives/tag/awk)
+
+  
+
 * printf + awk
 
   [printf使用](./echo.md)

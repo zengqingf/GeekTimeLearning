@@ -99,14 +99,18 @@
 
 * Unity
 
+  ref:
+
+  ​	[Unity3D - 技术人生 (luzexi.com)](http://luzexi.com/tag/Unity3D/)
+
   1. Unity接口源码 如AndroidJavaClass AndroidJavaObject 内部实现
 
   2. 类似dll的插件导入
 
   3. Android runOnUiThread实现
-
+  
   4. SDK插件化 
-
+  
      ``` text
      SDK功能整理出来  插件化  快速集成 
      - 一些自己的插件功能，做成方便集成到项目里的模块
@@ -115,9 +119,9 @@
   5. 优化
 
      [UWA 优化规则](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI3MzA2MzE5Nw==&action=getalbum&album_id=1521119040851771393&、scene=173&from_msgid=2668921564&from_itemidx=1&count=3#wechat_redirect)
-
+  
      ![](.\0007.jpg)
-
+  
      ``` text
      杜哥文档，动静分离、合批
      Editor 检查文本 图片 射线等的工具
@@ -138,16 +142,16 @@
      
      
      ```
-
+  
   6. lua使用
-
+  
      ``` text
      ilruntime   适合小项目
      xlua  比较完善
      ```
-
+  
   7. 小地图和大地图  功能
-
+  
      ``` 
      位置映射
      深度搜索 DFS  广度优先  最短路径  a星
@@ -163,9 +167,9 @@
   7. 通用组件 
 
   8. UI辅助Editor
-
+  
   9. 做功能时，一些代码注意点
-
+  
      ``` text
      if流程走不到 需要有反馈 客户端信息
      如 按钮点了没反应
@@ -176,7 +180,7 @@
      ```
 
   10. H5 战斗逻辑  状态机
-
+  
   11. 帧同步
 
       ``` text
@@ -190,10 +194,14 @@
       [UNITY EDITOR V4.3.1F1 源码编译笔记](https://leafnsand.com/post/build_unity_from_source_code)
 
   15. Unity 游戏案例架构分析
-
+  
       [Unity3D手游开发实践《腾讯桌球》客户端开发经验总结](https://www.gameres.com/654759.html)
-
+  
       控制反转：[strangeioc](http://strangeioc.github.io/strangeioc/TheBigStrangeHowTo.html)
+
+
+
+
 
 
 
@@ -736,12 +744,10 @@
 
   ``` tex
   Update: 每帧调用一次（非物理对象的移动，简单计时器，输入检测等）
-  
-  ​				不是按固定时间调用的，如果某一帧和下一帧的处理时长不同，则Update的调用时间间隔不同
+  	​不是按固定时间调用的，如果某一帧和下一帧的处理时长不同，则Update的调用时间间隔不同
   
   FixedUpdate: 按固定时间调用，调用时间间隔相同（物理对象，如Rigidbody刚体应该在FixedUpdate中执行，最好使用力来定义对象移动）
-  
-  ​						受Edit - Time - Fixed Timestep的值影响
+  	​受Edit - Time - Fixed Timestep的值影响
   ```
   
   

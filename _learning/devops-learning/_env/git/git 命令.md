@@ -4,7 +4,15 @@ link:
 
 [常用 Git 命令清单](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
 
+[Pro Git（中文版）](https://git.oschina.net/progit/)
 
+[Git Community Book 中文版](http://gitbook.liuhui998.com/index.html)
+
+[Git 教學](http://gogojimmy.net/2012/01/17/how-to-use-git-1-git-basic/)
+
+[猴子都能懂得git](https://backlog.com/git-tutorial/cn/)
+
+[git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
 
 
 

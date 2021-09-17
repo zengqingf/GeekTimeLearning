@@ -54,6 +54,9 @@
   #从命令行引用传值
   printf "%s %s %s %s\n" Are you happy today
   #Are you happy today分别被%s->Are %s->you %s->happy %s->today引用，终端输出的结果即为Are you happy today
+  printf "%s %s %s\n" 1 2 3 4 5 6
+  #output: 1 2 3
+  #		 4 5 6
   
   
   #格式化输出
@@ -83,5 +86,5 @@
   '''
   # %d：接受整数值并将它转换为有符号的十进制符号表示法。精度指定显示的最小数字位数。如果值转换后可以用更少的位数来表示，将使用前导零扩展。缺省精度是 1。
   ```
-
+  
   

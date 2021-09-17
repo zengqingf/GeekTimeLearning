@@ -10,3 +10,22 @@
 
   
 
+
+
+---
+
+
+
+### with svn
+
+* svn触发jenkins自动构建
+
+  ``` tex
+  ref: https://blog.51cto.com/techsnail/2142599
+  1.Jenkins主动轮询SVN仓库；
+  2.在SVN客户端(如TortoiseSVN)创建客户端hooks来触发构建；
+  3.在SVN服务器端，创建仓库hooks来触发构建。
+  ```
+
+  
+

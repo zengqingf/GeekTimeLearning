@@ -112,3 +112,27 @@
   ``` text
   在对应module的src/main/下新建文件夹 jniLibs ，将so按cpu架构目录分别放入（armeabi-v7a / x86 ...）
   ```
+
+
+
+* 导出jar并混淆
+
+  [Android Studio导出Jar包并混淆](http://notes.stay4it.com/2016/02/26/export-jar-and-proguard/)
+
+  ``` groovy
+  task makeJar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
+      // 未混淆的jar
+      injars 'build/intermediates/bundles/release/    classes.jar'
+      // 混淆后的jar路径
+      outjars 'build/http.jar'
+      // 具体需要keep住的类
+      configuration 'proguard-rules.pro'
+  }
+  
+  //在termial中输入 ./gradlew makeJar就能将classes.jar复制倒http.jar
+  
+  //如果module中同时也依赖其它libs，那需要在proguard中声明那些libs。比如：#-libraryjars libs\gson-2.2.2.jar，大部分都跟apk混淆类似的，只不过是局限于某个module而已。
+  
+  ```
+
+  

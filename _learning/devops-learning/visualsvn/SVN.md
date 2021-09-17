@@ -17,11 +17,62 @@
 
   
 
+* SVN钩子
 
+  [SVN 钩子](https://www.iteye.com/blog/elf8848-654129)
+
+  ``` powershell
+  #允许用户修改Subversion日志的钩子脚本 (windows)
+  #版本库生成后，hooks目录下就存在一些钩子脚本的模板，如pre-revprop-change.tmpl
+  #默认的钩子模板使用的是linux下的脚本语言，不能在Windows下运行。所以我们必须重写，这里介绍用批处理文件来写钩子脚本的方法。最简单的允许修改日志的pre-revprop-change.bat连一行都不需要，直接把pre-revprop-change.bat的内容清空就行了，因为按照Subversion的约定，钩子脚本返回0就是允许修改任何属性。
+  
+  SET REPOS="%1"
+  SET REV="%2"
+  SET USER="%3"
+  SET PROPNAME="%4"
+  SET ACTION="%5"
+  IF %ACTION% == "M" (IF %PROPNAME% == "svn:log" (EXIT 0))
+  ECHO "Changing revision properties %PROPNAME% is prohibited" >&2
+  EXIT 1
+  #利用Subversion的一个程序svnlook，脚本中可以访问的信息就不仅仅只有传递进来的5个参数了，从而可以实现更多的功能。比如判断修改日志的用户是不是以前进行提交的那个作者，如果不是就不允许修改。
+  
+  #只允许用户修改自己的svn日志的钩子脚本：
+  for /f "usebackq" %%k in (`svnlook author %1 -r%2`) do @set var=%%k
+  if "%3" == "%var%" goto test
+  if "%3" == "li" goto test
+  exit 1
+  :test
+  if "%4" == "svn:log" exit 0
+  echo Property '%4' cannot be changed >&2
+  exit 1
+  
+  #实现每人可以修改自己的log日志，而管理员li可以任意修改。这个例子是从网上摘抄来的，因为手头上缺少svnlook，所以没有进行测试。
+  
+  #Subversion提交强制写日志(windows)
+  #在每次提交的时候写明提交的目的是一个很好的习惯，Subversion默认没有提供，但是可以通过钩子实现：
+  #pre-commit.bat放到版本库的hooks目录下即可，当你不写日志提交的话就会报告错误。
+  #pre-commit.bat：
+  @echo off
+  set SVN_BINDIR=d:\Subversion\bin    REM自定义修改这里
+  setlocal
+  set REPOS=%1
+  set TXN=%2
+  rem check that logmessage contains at least 10 characters
+  %SVN_BINDIR%\svnlook log "%REPOS%" -t "%TXN%" | findstr ".........." > nul
+  if %errorlevel% gtr 0 goto err
+  exit 0
+  :err
+  echo Empty log message not allowed. Commit aborted! 1>&2
+  exit 1
+  ```
+
+  
 
 
 
 ---
+
+
 
 ### VisualSVN Server
 
