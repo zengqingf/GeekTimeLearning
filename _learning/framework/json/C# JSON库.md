@@ -8,6 +8,8 @@
 
   [github - Newtonsoft.Json - JamesNK](https://github.com/JamesNK/Newtonsoft.Json)
 
+  [Json.NET](https://www.newtonsoft.com/json)
+
 * LitJSON
 
   [github - litjson - LitJSON](https://github.com/LitJSON/litjson)
@@ -38,6 +40,8 @@
 * MiniJSON
 
   [github - minijson - darktable](https://gist.github.com/darktable/1411710)
+
+  [GitHub - Jackyjjc/MiniJSON.cs: A proper git repo for MiniJSON.cs by darktable (https://gist.github.com/darktable/1411710)](https://github.com/Jackyjjc/MiniJSON.cs)
 
 * MojoJson
 

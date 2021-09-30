@@ -220,42 +220,47 @@
      
   
 * Android & Java
+  
+  [Android Face](https://www.bookstack.cn/books/android_interview)
+  
+  [Android Face2](https://www.kancloud.cn/alex_wsc/android/401651)
+  
   1. 安卓四大组件
-
+  
   2. 安卓性能优化
-
+  
      [Android性能优化盘点 - 内存优化](https://www.jianshu.com/p/fba7b43bdc9c)
-
+  
      [Android内存优化大盘点](https://mp.weixin.qq.com/s/ghupyR4z0yYD-Fsd14rgEg)
-
+  
   3. runOnUiThread
-
+  
   4. Java 和 Cpp
-
+  
   5. Gradle
-
+  
   6. 混淆
-
+  
   7. SDK中间件（混淆、消息协议、现有多平台接口在新框架中重构）
-
+  
   8. Logger 组件重构  目前用的是github上的
-
+  
      ``` text
      orhanobut/logger   
      
       java.util.logging.Logger  vs. log4j
      ```
-
+  
   9. breakpad   极客时间
-
+  
   10. SDK源码开发
-
+  
       ![](.\0005.png)
-
+  
   * 安卓组件化开发
-
+  
     ARouter原理分析：https://www.jianshu.com/p/bc4c34c6a06c
-
+  
     
 
 
@@ -560,43 +565,6 @@
 
 
 
----
-
-
-
-### 基础
-
-* 进制转换
-
-  ``` text
-  二进制（B） - 十进制（D）  (101011)B => 1 * 2^0 + 1 * 2^1 + ...
-  八进制（O） - 十进制      (53)O => 3 * 8^0 + 5 * 8^1
-  十六进制（H） - 十进制    (2B)H => B * 16 + 2 * 16^1
-  
-  
-  
-  十进制 - 二进制（除2取余）
-  十进制 - 八进制（除8取余）、（先十 - 二，再二 - 八）
-  十进制 - 十六进制 （除16取余）
-  
-  
-  
-  二进制 - 八进制(取3舍1)  (11010111.0100111)B => {0}11 010 111 . 010 011 1{00} => (327.234)O
-  					 (1100011100)B => {00}1 100 011 100 => (1434)O
-  二进制 - 十六进制
-  
-  八进制 - 十六进制  (327)O => 011 010 111 => {0} 1101 0111 => (D7)H
-  十六进制 - 八进制
-  
-  十六进制 - 十进制 
-  
-  包含小数的进制转换  （ABC.8C）H => 10 * 16^2 + 11 * 16^1 + 12 * 16^0 _ 8 * 16^-1 + 12 * 16^-2
-  
-  byte a = 0x65 => 0110 0101 => 5 * 16^0 + 6 * 16 ^1 = 101
-  ```
-
-  
-
 
 
 ---
@@ -740,18 +708,6 @@
 
 ### Unity TODO
 
-- [ ] FixedUpdate和Update的执行顺序和区别
-
-  ``` tex
-  Update: 每帧调用一次（非物理对象的移动，简单计时器，输入检测等）
-  	​不是按固定时间调用的，如果某一帧和下一帧的处理时长不同，则Update的调用时间间隔不同
-  
-  FixedUpdate: 按固定时间调用，调用时间间隔相同（物理对象，如Rigidbody刚体应该在FixedUpdate中执行，最好使用力来定义对象移动）
-  	​受Edit - Time - Fixed Timestep的值影响
-  ```
-  
-  
-  
 - [ ] 项目开发经验
 
   1. 聊天，协议优化（channeltype聊天频道, targetid目标id, msg（消息内容，统一到msg中，处理为超链接））

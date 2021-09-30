@@ -151,12 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="base_1.cpp" />
-    <ClCompile Include="base_2.cpp" />
-    <ClCompile Include="base_3.cpp" />
-    <ClCompile Include="base_4.cpp" />
-    <ClCompile Include="base_5.cpp" />
-    <ClCompile Include="base_6.cpp" />
     <ClCompile Include="complex_test.cpp" />
     <ClCompile Include="LearningBase_1.cpp" />
     <ClCompile Include="oop_test.cpp" />
@@ -166,15 +160,10 @@
     <ClCompile Include="template_test_2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base_1.h" />
-    <ClInclude Include="base_2.h" />
-    <ClInclude Include="base_3.h" />
-    <ClInclude Include="base_4.h" />
-    <ClInclude Include="base_5.h" />
-    <ClInclude Include="base_6.h" />
     <ClInclude Include="complex.h" />
     <ClInclude Include="complex_test.h" />
     <ClInclude Include="oop_test.h" />
+    <ClInclude Include="oop_test_2.h" />
     <ClInclude Include="template_test.h" />
     <ClInclude Include="template_test_2.h" />
   </ItemGroup>

@@ -1,5 +1,7 @@
 # C# API
 
+
+
 ## 关键字
 
 
@@ -122,7 +124,38 @@
   result: X:\xxx\xxx (.exe文件所在的目录)
   ```
 
+
+
+
+
+
+---
+
+
+
+### C#示例
+
+* md5
+
+  ``` c#
+  private string MD5Create(string STR) //STR为待加密的string
+  {
+  string pwd = "";
+  //pwd为加密结果
+  MD5 md5 = MD5.Create();
+  byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(STR));
+  //这里的UTF8是编码方式，你可以采用你喜欢的方式进行，比如UNcode等等
+  for (int i = 0; i < s.Length; i++)
+  {
+  pwd = pwd + s[i].ToString();
+  }
+  return pwd;
+  }
+  ```
+
   
+
+
 
 
 
@@ -171,4 +204,161 @@
   也是通过mono实现游戏跨平台
   ```
 
+
+
+
+
+
+---
+
+
+
+### C#反射(Reflection)
+
+* ref
+
+  [C#反射(Reflection)详解](https://www.cnblogs.com/wangshenhe/p/3256657.html)
+
+  [[C#反射]C#中的反射解析及使用.](https://www.cnblogs.com/wang-meng/p/5440515.html)
+
+* 概念
+
+  ``` tex
+  反射：
+  .Net获取运行时（CLR）类型信息的方式，.Net应用程序由“程序集(Assembly)” "模块(Module)" "类型(Class)"组成
+  反射作为一种编程方式，可以在运行期间获取上述程序组成部分，提供了更灵活的代码设计方向（可以在程序预留接口中新增插件，可以不事先指定处理格式（通过读配置动态调整）等等）
   
+  如：Assembly类可以获得正在运行的装配件信息，也可以动态的加载装配件，以及在装配件中查找类型信息，并创建该类型的实例。
+  Type类可以获得对象的类型信息，此信息包含对象的所有要素：方法、构造器、属性等等，通过Type类可以得到这些要素的信息，并且调用之。
+  MethodInfo包含方法的信息，通过这个类可以得到方法的名称、参数、返回值等，并且可以调用之。
+  诸如此类，还有FieldInfo、EventInfo等等，这些类都包含在System.Reflection命名空间下。
+  
+  
+  反射作用：
+  1、可以使用反射动态地创建类型的实例，将类型绑定到现有对象，或从现有对象中获取类型
+  2、应用程序需要在运行时从某个特定的程序集中载入一个特定的类型，以便实现某个任务时可以用到反射。
+  3、反射主要应用与类库，这些类库需要知道一个类型的定义，以便提供更多的功能。
+  
+  
+  装配件：
+  	命名空间类似于Java的包，但是Java包需要按照目录结构来放置，命名空间没有这个限制
+  装配件是.Net应用程序执行的最小单位，（.dll、.ext都是装配件）
+  命名空间可以存在多个装配件中，装配件中可以由多个命名空间
+  
+  
+  类型               作用 
+  Assembly        通过此类可以加载操纵一个程序集，并获取程序集内部信息 
+  EventInfo        该类保存给定的事件信息 
+  FieldInfo         该类保存给定的字段信息 
+  MethodInfo      该类保存给定的方法信息 
+  MemberInfo     该类是一个基类，它定义了EventInfo、FieldInfo、MethodInfo、PropertyInfo的多个公用行为 
+  Module            该类可以使你能访问多个程序集中的给定模块 
+  ParameterInfo 该类保存给定的参数信息　　　　　　 
+  PropertyInfo    该类保存给定的属性信息
+  ```
+
+* API
+
+  ``` c#
+  //获取反射类型
+  Type t = Type.GetType("System.String");
+  Assembly.GetType(...);
+  System.Object.GetType(...);
+  
+  //根据类型创建对象
+  Type t = ...
+  SrcType st = (SrcType)Activator.CreateInstance(t);
+  
+  //获取类型中的方法
+      //获取类型信息
+      Type  t  =  Type.GetType("TestSpace.TestClass");
+      //构造器的参数
+      object[]  constuctParms  =  new  object[]{"timmy"};
+      //根据类型创建对象
+      object  dObj  =  Activator.CreateInstance(t,constuctParms);
+      //获取方法的信息
+      MethodInfo  method  =  t.GetMethod("GetValue");
+      //调用方法的一些标志位，这里的含义是Public并且是实例方法，这也是默认的值
+      BindingFlags  flag  =  BindingFlags.Public  |  BindingFlags.Instance;
+      //GetValue方法的参数
+      object[]  parameters  =  new  object[]{"Hello"};
+      //调用方法，用一个object接收返回值
+      object  returnValue  =  method.Invoke(dObj,flag,Type.DefaultBinder,parameters,null);
+  
+  
+  //动态创建委托
+      TestClass  obj  =  new  TestClass();
+      //获取类型，实际上这里也可以直接用typeof来获取类型
+      Type  t  =  Type.GetType(“TestSpace.TestClass”);
+      //创建代理，传入类型、创建代理的对象以及方法名称
+      TestDelegate  method  =  (TestDelegate)Delegate.CreateDelegate(t,obj,”GetValue”);
+      String  returnValue  =  method(“hello”);
+  ```
+
+  
+
+* 示例
+
+  ``` c#
+  //初版本Unity集成多渠道SDK
+  private static SDKInterface _createInstanceByClassName(string name)
+  {
+     Assembly ass = Assembly.GetAssembly(typeof(SDKInterface));
+     return ass.CreateInstance(name) as SDKInterface;
+  }
+  
+  private static SDKInterface _getSDKInstance()
+      {
+  #if UNITY_EDITOR
+  		return new SDKInterfaceDefault();
+  #endif
+  
+  #if UNITY_ANDROID
+          switch (Global.Settings.sdkChannel)
+          {
+              case SDKChannel.XY:
+                  return _createInstanceByClassName("SDKInterfaceAndroid_XY");
+              case SDKChannel.MG:
+                  return _createInstanceByClassName("SDKInterfaceAndroid_MG");
+              case SDKChannel.NONE:
+              case SDKChannel.COUNT:
+  				return _createInstanceByClassName("SDKInterfaceAndroid");
+          }
+  #elif UNITY_IOS || UNITY_IPHONE
+          switch (Global.Settings.sdkChannel)
+          {
+              case SDKChannel.XY:
+                  return _createInstanceByClassName("SDKInterfaceIOS_XY");
+              case SDKChannel.AISI:
+  				return _createInstanceByClassName("SDKInterfaceIOS_As");
+  			case SDKChannel.NONE:
+  				return _createInstanceByClassName("SDKInterfaceIOS");
+          }
+  #endif
+          return new SDKInterfaceDefault();
+  }
+  
+  public static SDKInterface instance {
+  	get {
+  		if (_instance == null) {
+              _instance = _getSDKInstance();
+  		}
+  		return _instance;
+  	}
+  }
+  ```
+
+  
+
+
+
+
+
+---
+
+
+
+
+
+### C#闭包
+

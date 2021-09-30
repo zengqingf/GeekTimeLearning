@@ -106,6 +106,10 @@
   # android api （需要用-i参数指定一个系统进程来安装，如下com.android.settings是一个系统应用）
   pm install -r -d -i com.android.settings /sdcard/Download/demo.apk
   
+  
+  #uninstall
+  pm uninstall packagename
+  
   # android 9.0及以上
   # 源码：android9.0在应用安装流程中，首先进行了进程的识别，如果当前是shell进程，直接安装失败。
   ```
@@ -309,9 +313,17 @@
 
   
 
+* 本地通知
+
+  [Android Notification 详解](https://www.cnblogs.com/travellife/p/Android-Notification-xiang-jie.html)
+
+  [Android Notification 详解（一）——基本操作](https://www.cnblogs.com/travellife/p/Android-Notification-xiang-jie-yiji-ben-cao-zuo.html)
 
 
 
+* 设备保持常亮（唤醒）
+
+  [使设备保持唤醒状态 ](https://developer.android.com/training/scheduling/wakelock.html)
 
 
 
@@ -523,6 +535,12 @@
 
 
 
+* 动态权限
+
+  [聊一聊Android 6.0的运行时权限](https://droidyue.com/blog/2016/01/17/understanding-marshmallow-runtime-permission/index.html)
+
+
+
 
 
 ---
@@ -602,6 +620,8 @@
 ### View
 
 * 全面屏和刘海屏
+
+  [android 兼容所有刘海屏的方案大全](https://blog.csdn.net/DJY1992/article/details/80689632)
 
   ``` xml
   AndroidManifest.xml
@@ -694,10 +714,46 @@
     ```
 
 
-  
 
-  
 
+
+* 软键盘
+
+  * 软键盘挡住输入框问题
+
+    [Android 软键盘盖住输入框的问题](https://www.cnblogs.com/androidez/archive/2013/04/09/3011399.html)
+
+    ``` tex
+    方法一：在你的activity中的oncreate中setContentView之前写上这个代码getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+    
+    方法二：在项目的AndroidManifest.xml文件中界面对应的<activity>里加入android:windowSoftInputMode="stateVisible|adjustResize"，这样会让屏幕整体上移。如果加上的是android:windowSoftInputMode="adjustPan"这样键盘就会覆盖屏幕。
+    
+    方法三：把顶级的layout替换成ScrollView，或者说在顶级的Layout上面再加一层ScrollView的封装。这样就会把软键盘和输入框一起滚动了，软键盘会一直处于底部。
+    ```
+
+    
+
+* 硬件加速
+
+  ``` tex
+  android manifest中配置
+  <applicationandroid:hardwareAccelerated="true" ...>				整个应用程序都启用
+  或者
+  <application android:hardwareAccelerated="true">   
+   <activity .../>   <activity android:hardwareAccelerated="false" />
+  </application>
   
+  windows级别
+  getWindow().setFlags(   
+  WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,   WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+  
+  view级别
+  myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);		禁用硬件加速，但是不能在view中开启硬件加速
+  
+  
+  判断是否开启硬件加速
+  View.isHardwareAccelerated() 
+  Canvas.isHardwareAccelerated()
+  ```
 
   

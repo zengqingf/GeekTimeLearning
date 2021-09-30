@@ -153,6 +153,9 @@
   <ItemGroup>
     <ClCompile Include="Effective_Modern_Cpp_1.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="item_1.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

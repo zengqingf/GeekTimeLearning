@@ -76,6 +76,15 @@
 
 ### VisualSVN Server
 
+* license过期
+
+  ``` tex
+  https://www.visualsvn.com/server/licensing/evaluation/
+  用新邮箱申请45天使用权
+  ```
+
+  
+
 * 添加用户
 
   ``` text

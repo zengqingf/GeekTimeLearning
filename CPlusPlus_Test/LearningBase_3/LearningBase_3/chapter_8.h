@@ -60,7 +60,7 @@ class B;
 */
 //class Node;
 
-#define USE_WEAK_PTR 0
+#define USE_WEAK_PTR 1
 
 //测试shared_ptr的循环引用情况
 class Node final
@@ -145,7 +145,7 @@ public:
 		my_make_unique(Args&&... args)						//可变参数模板的入口函数
 	{
 		return std::unique_ptr<T>(							//构造智能之指针
-			new T(std::forward<Args>(args)...));			//完美转发
+			new T(std::forward<Args>(args)...) );			//完美转发
 	}
 
 
@@ -215,7 +215,9 @@ public:
 		n2->next = n1;
 
 		//引用计数无法减少到0，无法销毁，造成内存泄露
-		assert(n1.use_count() == 2);
+		std::cout << "test circular ref of sharedPtr" << std::endl;
+		std::cout << "n1 use count: " << n1.use_count() << " n2 use count: " << n2.use_count() << std::endl;
+		assert(n1.use_count() == 2);  //n1 use count == 1!
 		assert(n2.use_count() == 2);
 	}
 

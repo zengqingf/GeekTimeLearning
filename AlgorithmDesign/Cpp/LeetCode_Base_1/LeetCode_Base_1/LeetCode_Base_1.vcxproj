@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LeetCode_Base_1.cpp" />
+    <ClCompile Include="ReverseList_1.cpp" />
     <ClCompile Include="SumOfTwoNum_1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

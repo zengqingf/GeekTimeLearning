@@ -209,4 +209,24 @@ link:
   #adb -s 设备id disconnect 192.168.x.x:5555  断开连接
   ```
 
+
+
+
+---
+
+
+
+### With Engine
+
+* Unity
+
+  ``` shell
+  #只输出Unity日志
+  adb logcat -s Unity 
   
+  #输出日志到文件
+  adb logcat -d > log.txt
+  ```
+
+  
+

@@ -5,25 +5,58 @@
 
 #include "FactoryMethod_1.h"
 #include "AbstractFactory_1.h"
-
 #include "Builder_1.h"
 #include "Singleton_1.h"
+#include "Factory_2.h"
+#include "Prototype_1.h"
+
+#include "Principle_1.h"
+
+#include "Adapter_1.h"
 
 /*
 ref:
 https://refactoringguru.cn/design-patterns
 */
 
+
 int main()
 {
-	std::cout << "Hello World!\n";
-
+	std::cout << "Hello Cpp World !\n";
+	
+	//创建型
 	//Creator_FactoryMethod::TestFactoryMethod_1();
 	//Creator_AbstractFactory::TestAbstractFactory_1();
 
+	//BuilderExample_1::Test1();
 	//TestBuilder1::Test1();
 
-	SingletonExample_1::Test2();
+	//SingletonExample_1::Test2();
+	//MultitonExample_1::Test1();
+
+	//FactoryExample_1::Test1();
+	//FactoryExample_3::Test1();
+	//FactoryExample_4::Point2D* p2D = new FactoryExample_4::Point2D;
+	//FactoryExample_4::Test1(p2D);
+	//delete p2D;
+	//FactoryExample_4::Test2();
+
+	//PrototypeExample_1::Test3();
+	//PrototypeExample_2::Test1();
+
+
+	//设计原则
+	//SRP_Example_1::Test1();
+	//OCP_Example_1::Test1();
+	//DIP_Example_1::Test1();
+	//DIP_Example_1::Test2();
+
+
+	//结构型
+	//Adapter_Exampler_1::Test1();
+	Adapter_Exampler_1::Test2();
+
+	return 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

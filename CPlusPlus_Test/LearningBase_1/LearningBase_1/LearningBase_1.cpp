@@ -15,21 +15,11 @@
 
 #include "string_test.h"
 
-#include "base_1.h"
+#include "template_test_2.h"
+#include "template_test.h"
 
 #include "oop_test.h"
-
-#include "base_2.h"
-
-#include "base_4.h"
-
-#include "base_5.h"
-
-#include "template_test_2.h"
-
-#include "base_6.h"
-
-#include "template_test.h"
+#include "oop_test_2.h"
 
 complex global_c(1, 2);//《全局 stack对象》
 
@@ -37,62 +27,30 @@ using namespace std;
 
 
 int main() {
+	std::cout << "Hello World!\n";
 
-	//base_1.h 测试指针外部存储导致野指针问题
-	TA* testA = new TA();
-	std::cout << "testA address 1: " << testA << std::endl;
-	TB testB;
-	testB.StoreTA(testA);
-	delete testA;
-	std::cout << "testA address 2: " << testA << std::endl;
+	//template_test_2.h 可变参数模板测试
+	//Template_VariableParam_1::Test1();
+	//Template_VariableParam_1::Test2();
+	//Template_VariableParam_1::Test3();
 
-	TA* teatA2 = new(testA)TA;
-	teatA2->Deal();
-	//! testA->Deal(); error:
-	//testA = nullptr;
-	testB.ReleaseTA();
+	//Template_VariableParam_2::Test1();
+	//Template_VariableParam_2::Test2();
 
-	return 0;
-	//base_4.h type cast
-
-
-	//base_2.h  check null before delte ptr
-	Base_2 *b2ptr_1 = new Base_2();
-	Base_2 *b2ptr_2 = new Base_2();
-	Base_2::test_ptr_need_check_null(b2ptr_1, b2ptr_2);
+	//Template_VariableParam_3::Test1();
 	return 0;
 
-	/*  临时注释 start  */
-
-	//base_1.h  explicit测试
-	//不加explicit
-	TestExplicit_1::Print(1);  //隐式转型
-	TestExplicit_1 te1_1 = 2;  //赋值初始化--->使用 TestExplicit_1::TestExplicit_1(int x, int y = 0)
-	TestExplicit_1::Print(te1_1);
-	TestExplicit_1 te1_2(3);   //直接初始化--->使用 TestExplicit_1::TestExplicit_1(int x, int y = 0)
-	TestExplicit_1::Print(te1_2);
-	//添加explicit
-	//TestExplicit_2::Print(3);  compile error 隐式转型 不使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
-	//TestExplicit_2 te2_1 = 3; compile error  赋值初始化 不使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
-	TestExplicit_2 te2_1 = (TestExplicit_2)4;  //显示转型，进行static_cast
-	TestExplicit_2::Print(TestExplicit_2(4));
-	TestExplicit_2 te2_2(5);   //直接初始化 使用TestExplicit_2::TestExplicit_2(int x, int y = 0)
-	TestExplicit_2::Print(te2_2);
-	return 0;
 
 	//templeate_test.h 单例继承测试
 	SingletonCC1::getInstance()->print();
-
 	return 0;
 
-	//templeate_test.h 单例Private dtor测试
 
+	//templeate_test.h 单例Private dtor测试
 	//编译器会报错！
 	//TestPrivateDtor t1;
-
 	//编译ok
 	TestPrivateDtor* t2 = nullptr;
-	
 	TestPrivateDtor* t3 = new TestPrivateDtor();
 	//t3需要delete
 	//但是如果是private dtor，编译失败
@@ -113,108 +71,20 @@ int main() {
 
 	SingletonB::getInstance()->print();
 	SingletonB::getInstance()->print();
-
 	return 0;
 
-
-	Base_2 base_22;
-	base_22.test_char_wchar();
-	return 0;
-
-	//base_6  左值右值测试
-	TestLRValue tlrv_1;
-	tlrv_1.Test_1();
-
-	return 0;
 
 	//template_test_2  模板测试
 	TestTemplate_1 tt_1;
 	int tt_1_a = 1, tt_1_b = 2;
 	int result = tt_1.Add(tt_1_a, tt_1_b);  //可以省略Add<int>
-
-
-	return 0;
-
-	//base_5 智能指针测试
-	//1. 栈中创建对象
-	TestObject *ptr1;
-	{
-		TestObject test1;
-		ptr1 = &test1;
-	}
-	ptr1->TestFunc();  //test已经被销毁了
-
-	//2. 在堆中创建对象
-	{
-		TestObject* ptr2 = new TestObject();
-		ptr2->TestFunc();  //创建的对象 离开作用域 也不会被销毁  需要找合适的时机来销毁
-	}
-
-	//3.自定义智能指针测试
-	{
-		TestObject* ptr2 = new TestObject();
-		TestSmartPointer<TestObject> smartPtr1 = ptr2;
-		smartPtr1->TestFunc();
-		{
-			TestSmartPointer<TestObject> smartPtr2 = smartPtr1;
-			{
-				TestSmartPointer<TestObject> smartPtr3 = smartPtr2;
-			}
-			cout << "SmartPtr3 leave action scope" << endl;
-		}
-		cout << "SmartPtr2 leave action scope" << endl;
-	}
-	cout << "SmartPtr1 leave action scope" << endl;
-
 	return 0;
 
 
-	//base_4 类型转换测试
-	std::vector<BaseOfBase*> vpbb;
-	Base_CC<int>            bi;
-	Derived_CC<int>         di;
-	Base_CC<std::string>    bs;
-	Derived_CC<std::string> ds;
-
-	bi.val = 1;
-	di.val = 2;
-	bs.val = "foo";
-	ds.val = "bar";
-
-	vpbb.push_back(&bi);
-	vpbb.push_back(&di);
-	vpbb.push_back(&bs);
-	vpbb.push_back(&ds);
-
-	for (auto const & pbb : vpbb)
-		pbb->do_something();
-
+	//oop_test_2.h 测试菱形继承和解决方案之虚继承
+	//OOP_TEST_2_1::Test1();
+	OOP_TEST_2_1::Test2();
 	return 0;
-
-
-	Base_BB<Derived_BB> *b = new Derived_BB();
-	std::cout << b->method<bool>() << std::endl;
-	return 0;	
-
-	//int *p_1 = new int();
-	//cout << *p_1 << endl; // 输出0 默认构造函数
-	//int *q_1 = new int;
-	//cout << *q_1 << endl; //输出一个很大的数
-	//delete p_1;
-	//delete q_1;
-	//return 0;
-
-
-	//base_2 指针和引用测试
-	Base_2 base_2;
-	//base_2.test_swap_by_pointer();
-	//base_2.test_pass_by_value_pointer();
-	//base_2.test_pass_by_reference();
-	//base_2.test_pass_by_reference_pointer();
-	//base_2.test_pass_by_pointer_pointer();
-	base_2.test_char_with_const();
-	return 0;
-
 
 	//测试继承和组合结合关系下的构造和析构的执行情况   //多加几个*****  不然会报错 错误 C1075 “{”: 未找到匹配令牌
 	OOP_Derived_1 oopd1;
@@ -226,7 +96,6 @@ int main() {
 	//OOP Derived 1 Part dtor
 	//OOP Base 1 dtor
 	
-	
 	OOP_Derived_2 oopd2;
 	//构造顺序：最里面的先调用
 	//OOP Base 2 Part ctor
@@ -237,22 +106,12 @@ int main() {
 	//OOP Derived 2 dtor
 	//OOP Base 2 dtor
 	//OOP Base 2 Part dtor
-
 	return 0;
-
-
-	std::cout << "Hello World!\n";
-	int i = 8;
-	cout << "i=" << i << endl;
-
-	//for c
-	printf("i = %d \n", i);
 
 
 	const complex c1(2, 1);
 	cout << c1.real();  //real() 需要const 声明
 	cout << c1.imag();
-
 
 	complex c2(2, 1);   //c2 所占用的空间 来自于 stack    《临时 stack对象》
 	complex c3;
@@ -263,11 +122,7 @@ int main() {
 	delete p;                     //动态获得的对象，从heap获取，离开作用域时，需要手动delete  否则会内存泄露 （memory leak）
 								  //原因：如果不进行delete, 当作用域结束时, p所指的heap object 仍然存在，但是指针p的生命周期结束了，作用域外无法访问到p，没机会再delete p
 
-
 	static complex c4(2, 1);   //《静态 stack对象》
-
-
-
 
 	//new 操作 ==> 编译后的实现
 	complex *pc;
@@ -276,21 +131,12 @@ int main() {
 	pc->complex::complex(1, 2);					  //构造函数 (构造函数可以这么调用)
 	cout << pc->imag() << endl;
 
-
 	String *ps = new String("Hello");
 	//delete ps;
 	//delete操作 ==> 编译后的实现              
 	ps->~String();								//调用析构函数
 	operator delete(ps);                        //operator delete 是一个函数名称：  内部调用 free(ps)
-
-
-	Derived der;
-	der.get("", 0);
-	der.get("");
-
 	return 0;
-	
-	/* 临时注释 end */
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

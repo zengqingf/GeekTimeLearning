@@ -1,7 +1,12 @@
 #include "Builder_1.h"
 
-using std::string;
-using std::ostream;
+
+void BuilderExample_1::Test1()
+{
+	auto builder = HtmlElement::build("ul");
+	builder->addChild("li", "hello")->addChild("li", "world");
+	std::cout << builder->str() << std::endl;
+}
 
 PersonBuilder Person::Create(std::string name)
 {

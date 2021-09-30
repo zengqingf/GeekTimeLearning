@@ -32,8 +32,13 @@ C++:
 识别：可以通过构建方法来识别，创建具体类的对象，但以抽象类型或接口的形式返回这些对象
 */
 
-#include <string>
+
 #include <iostream>
+#include <string>
+//#include <stdio.h>
+
+#ifndef FACTORY_METHOD_1
+#define FACTORY_METHOD_1
 
 namespace Creator_FactoryMethod
 {
@@ -58,7 +63,29 @@ namespace Creator_FactoryMethod
 			return "{Result of the ConcreteProduct2}";
 		}
 	};
-
+	
+//@notice: this is use chinese in file which enciding in utf-8, compile error !!!
+///	/*@注意：为了避免忘记delete new的对象，使用wrapper包装以下返回值*/
+/// 模拟简单的智能指针
+	class ProductWrapper
+	{
+	public:
+		explicit ProductWrapper(Product* ptr = nullptr) : m_ptr(ptr) {
+			if (nullptr == m_ptr)
+			{
+				throw "product wrapper create concrete product failed...";
+			}
+		}
+		~ProductWrapper()
+		{
+			puts("call product wrapper dtor");
+			//std::cout << "call product wrapper dtor" << std::endl;
+			delete m_ptr;
+		}
+		Product& GetProduct() const { return *m_ptr; }
+	private:
+		Product* m_ptr = nullptr;
+	};
 
 	class Creator {
 	public:
@@ -66,11 +93,14 @@ namespace Creator_FactoryMethod
 		virtual Product* FactoryMethod() const = 0;
 
 		std::string SomeOperation() const {
-			Product* product = this->FactoryMethod();
+			//Product* product = this->FactoryMethod();
+			////use product
+			//std::string result = "Creator: the same creator's code has just worked with " + product->Operation();
+			//delete product;
 
-			//use product
-			std::string result = "Creator: the same creator's code has just worked with " + product->Operation();
-			delete product;
+			//改善后的代码
+			ProductWrapper pWrapper(this->FactoryMethod());
+			std::string result = "Creator: the same creator's code has just worked with " + pWrapper.GetProduct().Operation();
 
 			return result;
 		}
@@ -97,6 +127,28 @@ namespace Creator_FactoryMethod
 	void ClientCode(const Creator& creator);
 
 	void TestFactoryMethod_1();
+
+
+	class CreatorWrapper
+	{
+	public:
+		explicit CreatorWrapper(Creator* ptr = nullptr) : m_ptr(ptr) {
+			if (nullptr == m_ptr)
+			{
+				throw "creator wrapper create concrete creator failed...";
+			}
+		}
+		~CreatorWrapper()
+		{
+			puts("call creator wrapper dtor");
+			//std::cout << "call creator wrapper dtor" << std::endl;
+			delete m_ptr;
+		}
+		Creator& GetCreator() const { return *m_ptr; }
+	private:
+		Creator* m_ptr = nullptr;
+	};
+
 
 
 	/*--------------------------------------------------------------------------*/
@@ -129,3 +181,5 @@ namespace Creator_FactoryMethod
 
 	/*--------------------------------------------------------------------------*/
 }
+
+#endif //FACTORY_METHOD_1

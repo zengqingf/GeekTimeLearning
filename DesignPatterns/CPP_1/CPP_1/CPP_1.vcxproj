@@ -155,11 +155,17 @@
     <ClCompile Include="Builder_1.cpp" />
     <ClCompile Include="CPP_1.cpp" />
     <ClCompile Include="FactoryMethod_1.cpp" />
+    <ClCompile Include="Singleton_1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactory_1.h" />
+    <ClInclude Include="Adapter_1.h" />
     <ClInclude Include="Builder_1.h" />
     <ClInclude Include="FactoryMethod_1.h" />
+    <ClInclude Include="Factory_2.h" />
+    <ClInclude Include="Principle_1.h" />
+    <ClInclude Include="Principle_2.h" />
+    <ClInclude Include="Prototype_1.h" />
     <ClInclude Include="Singleton_1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

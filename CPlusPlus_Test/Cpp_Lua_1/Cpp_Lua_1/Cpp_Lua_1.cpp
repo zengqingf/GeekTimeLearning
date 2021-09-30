@@ -10,8 +10,8 @@ int main()
 {
     std::cout << "Hello World!\n";
 
-	//TestLua_1 tl_1;
-	//tl_1.Test2();
+	TestLua_1 tl_1;
+	tl_1.Test2();
 
 	TestLua_2();
 }

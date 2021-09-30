@@ -724,3 +724,15 @@
   ```
 
   
+
+* error: 关于C2039，XXX不是XXX的成员的奇怪报错
+
+  ``` tex
+  有时候不是函数的问题，是编码的问题，把中文注释全去掉就行了
+  或者修改类文件编码：UTF-8 to UTF-8 with BOM
+  或者加中文注释用 /// 强制注释掉
+  
+  示例见：E:\ws\mjx\base_learning\GeekTimeLearning\DesignPatterns\CPP_1\CPP_1\FactoryMethod_1.h  67行
+  ```
+
+  

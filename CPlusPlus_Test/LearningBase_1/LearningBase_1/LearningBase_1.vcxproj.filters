@@ -24,31 +24,13 @@
     <ClCompile Include="string_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base_1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="template_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="oop_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="base_2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base_3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base_4.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base_5.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="template_test_2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="base_6.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LearningBase_1.cpp">
@@ -62,31 +44,16 @@
     <ClInclude Include="complex.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base_1.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="template_test.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="oop_test.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base_2.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base_3.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base_4.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="base_5.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="template_test_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base_6.h">
+    <ClInclude Include="oop_test_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

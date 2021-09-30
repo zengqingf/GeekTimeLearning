@@ -27,6 +27,9 @@
     <ClCompile Include="Builder_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Singleton_1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FactoryMethod_1.h">
@@ -39,6 +42,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Singleton_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory_2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Principle_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Principle_2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter_1.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

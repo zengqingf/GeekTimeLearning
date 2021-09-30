@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 
+#include "test_big_little_endian.h"
+
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -60,11 +62,11 @@ int main()
 
 	if (p1)
 	{
-		printf("指针p不为空");
+		printf("指针p不为空\n");
 	}
 	if (!p1)
 	{
-		printf("指针p为空");
+		printf("指针p为空\n");
 	}
 
 
@@ -95,6 +97,31 @@ int main()
 
 	getchar();
 
+
+	/*测试大端小端*/
+	int ival = 0x12345678;
+	float fval = (float)ival;
+	int *pval = &ival;
+	show_int(ival);
+	show_float(fval);
+	show_pointer(pval);
+	/*
+	output:
+	006FF80C 78			小端
+	006FF80D 56
+	006FF80E 34
+	006FF80F 12
+
+	006FF80C b4			小端
+	006FF80D a2
+	006FF80E 91
+	006FF80F 4d
+
+	006FF80C f8			小端
+	006FF80D f8
+	006FF80E 6f
+	006FF80F 00
+	*/
 	return 0;
 }
 
