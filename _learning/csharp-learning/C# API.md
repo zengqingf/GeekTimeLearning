@@ -68,6 +68,40 @@
 
   
 
+* this 用法
+
+  ``` c#
+  /*
+  1. 限定被相似的名称隐藏的成员  this.name = name;
+  2. 将对象作为参数传递到其他方法  
+  3. 声明索引器 
+  4. 扩展对象方法
+  */
+  
+  //声明索引器
+  public NameValueCollection Attr = new NameValueCollection(); 
+  public string this[string key]
+  {
+    set { Attr[key] = value;}
+    get { return Attr[key];}
+  }
+  
+  //扩展对象方法
+  public class Person
+  {
+    public string Sex{get;set;}
+  }
+  
+  {
+    public static string GetSex(this Person p)
+    {
+      return p.Sex;
+    }
+  }
+  ```
+
+
+
 
 
 ---
@@ -126,9 +160,29 @@
 
 
 
+* Directory & File
 
-
-* this 用法
+  ``` c#
+  				static public void CopyFolder( string sourceFolder, string destFolder )
+          {
+              if (!Directory.Exists( destFolder ))
+                  Directory.CreateDirectory( destFolder );
+              string[] files = Directory.GetFiles( sourceFolder );
+              foreach (string file in files)
+              {
+                  string name = Path.GetFileName( file );
+                  string dest = Path.Combine( destFolder, name );
+                  File.Copy( file, dest );
+              }
+              string[] folders = Directory.GetDirectories( sourceFolder );
+              foreach (string folder in folders)
+              {
+                  string name = Path.GetFileName( folder );
+                  string dest = Path.Combine( destFolder, name );
+                  CopyFolder( folder, dest );
+              }
+          }
+  ```
 
   
 

@@ -320,6 +320,12 @@
 
 
 
+* 字体花屏或乱码
+
+  [参考](https://www.cnblogs.com/yaukey/p/unity_ugui_font_texture_uv_wrong.html)
+
+  [案例代码](./scripts/tools/fix_font_problems/DynamicFontTextureRebuildTracker.cs)
+
 
 
 ---
@@ -361,3 +367,21 @@
 * 陀螺仪
 
   [实现案例](./scripts/gyroscope)
+
+
+
+
+
+---
+
+
+
+### 游戏框架
+
+* Assetbundle & xlua
+
+  [KSFramework](https://github.com/mr-kelly/KSFramework)
+
+* GameFramework
+
+  [GameFramework](https://gameframework.cn/)
