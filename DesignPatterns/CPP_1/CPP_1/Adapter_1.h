@@ -31,7 +31,7 @@ To get the interface you want from the interface you have.
 #include <functional>
 #include <memory>
 
-namespace Adapter_Exampler_1
+namespace Adapter_Example_1
 {
 	struct Point {
 		int32_t m_x;

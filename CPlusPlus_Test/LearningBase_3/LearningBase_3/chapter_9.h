@@ -98,7 +98,7 @@ private:
 	抛出异常时，建议封装一个中间层函数 来调用
 	*/
 	[[noreturn]]							 //标签属性
-	void _raise(const char* msg)				 //封装throw  没有返回值
+	void _raise(const char* msg)			 //封装throw  没有返回值
 	{
 		throw MyException(msg);              //抛出异常 也可以有更多的逻辑
 	}

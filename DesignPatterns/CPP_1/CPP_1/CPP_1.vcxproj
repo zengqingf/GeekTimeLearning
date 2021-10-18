@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractFactory_1.h" />
     <ClInclude Include="Adapter_1.h" />
+    <ClInclude Include="Bridge_Example_1.h" />
     <ClInclude Include="Builder_1.h" />
     <ClInclude Include="FactoryMethod_1.h" />
     <ClInclude Include="Factory_2.h" />

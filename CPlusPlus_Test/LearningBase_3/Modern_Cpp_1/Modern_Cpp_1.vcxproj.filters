@@ -23,5 +23,8 @@
     <ClInclude Include="chapter_01.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="chapter_02.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

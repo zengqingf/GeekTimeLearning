@@ -12,13 +12,17 @@ msvc 编译：    cl /std:c++17 /EHsc /W3 文件名
 
 
 #include "chapter_01.h"
+#include "chapter_02.h"
 
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-	Cpp_Res_Manager_1::Test3();
+	//Cpp_Res_Manager_1::Test3();
+	
+	Smart_Ptr_1::Test1();
+	//Smart_Ptr_1::Test2();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

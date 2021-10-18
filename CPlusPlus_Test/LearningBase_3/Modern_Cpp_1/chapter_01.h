@@ -85,6 +85,9 @@ namespace Cpp_Res_Manager_1
 
 	class shape { 
 	public:
+		shape() {
+			puts("base shape default ctor");
+		}
 		virtual ~shape() {
 			puts("shape dtor");
 		}
@@ -94,14 +97,28 @@ namespace Cpp_Res_Manager_1
 	};
 	class circle : public shape { 
 	public:
+		circle() {
+			puts("circle default ctor");
+		}
 		~circle() {
 			puts("circle dtor");
 		}
 	};
 	//如果{}中放了/**/ 会编译不过
-	class triangle : public shape { };  
+	class triangle : public shape { 
+	public:
+		triangle() {
+			puts("triangle default ctor");
+		}
+		~triangle(){
+			puts("triangle dtor");
+		}
+	};  
 	class rectangle : public shape { 
 	public:
+		rectangle() {
+			puts("rectangle default ctor");
+		}
 		~rectangle() {
 			puts("rectangle dtor");
 		}

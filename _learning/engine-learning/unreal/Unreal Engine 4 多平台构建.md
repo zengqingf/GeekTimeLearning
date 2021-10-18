@@ -114,6 +114,64 @@
 
 
 
+
+
+---
+
+
+
+### Win64
+
+* 路径过长导致exe执行不了
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110151011638.jpg)
+
+  
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110151011947.jpg)
+
+  **问题定位：exe图标不能正常显示**
+
+
+
+* UE4 Win64 dll打包依赖不到
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110151013480.jpg)
+
+  ``` c#
+  		if (Target.Platform == UnrealTargetPlatform.Win64)
+  		{
+              //有问题的写法
+              /*
+  			string Win64ThirdPartyDir = Path.GetFullPath(Path.Combine(ModuleDirectory, "x64"));
+  #if UE_4_24_OR_LATER
+              PublicSystemLibraryPaths.Add(Win64ThirdPartyDir);       
+  #else
+              PublicLibraryPaths.Add(Win64ThirdPartyDir);
+  #endif
+              */
+  
+              // Add the import library
+              PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "GCloudVoice.lib"));
+              // Delay-load the DLL, so we can load it from the right place first
+              // 延迟加载DLL，这样我们就可以首先从正确的位置加载它
+              PublicDelayLoadDLLs.Add("GCloudVoice.dll");
+              PublicDelayLoadDLLs.Add("pthreadVC2.dll");
+              // Ensure that the DLL is staged along with the executable
+              // 确保DLL与可执行文件一起暂存
+              RuntimeDependencies.Add("$(PluginDir)/Binaries/Win64/GCloudVoice.dll");
+              RuntimeDependencies.Add("$(PluginDir)/Binaries/Win64/pthreadVC2.dll");
+  		}
+  ```
+
+  
+
+  
+
+
+
+
+
 ---
 
 

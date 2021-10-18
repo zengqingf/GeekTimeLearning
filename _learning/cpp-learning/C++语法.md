@@ -456,7 +456,7 @@
 
 
 
-* static  vs.  const  vs.  static const
+* static  vs.  const  vs.  static const  vs. constexpr
 
   * static
 
@@ -488,6 +488,35 @@
     变量默认初始化		（静态存储区）
     */
     ```
+    
+    
+
+  * const
+
+    ``` tex
+    ref: https://blog.csdn.net/zzhongcy/article/details/108340872
+    const 可以修饰变量、函数
+    作用：通过编译器来保证对象的常量性，强制编译器将所有可能违背const对象的常量性的操作视为error
+    c++采用物理常量性（区分于逻辑常量性，物理常量性保证每个bit都不可改变）
+    	struct A {
+    		int *ptr;
+    	};
+    	int k = 5, r = 6;
+    	const A a = {&k};
+    	a.ptr = &r;  //! error
+    	*a.ptr = 7;  // no error   实际上改变了逻辑常量性，A的表现已经发生改变
+    	
+    const语义保证了物理常量性，但通过mutable可以支持一部分逻辑常量性
+    const变量必须在初始化时就对其赋值
+    
+    
+    ```
+
+    
+
+  * constexpr
+
+
 
 
 

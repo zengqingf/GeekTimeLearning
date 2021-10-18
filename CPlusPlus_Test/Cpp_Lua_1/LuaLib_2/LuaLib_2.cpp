@@ -11,15 +11,22 @@
 当一个C/C++函数把返回值压入Lua栈以后，该栈会自动被清空。
 */
 
+
+//lua调用c++需要先调用这个中间函数（‘胶水’函数），将实参从lua栈中取出，然后再调用目标函数
+//胶水函数需要编译前就确定下来，不同的目标函数需要不同的中间函数
 static int averageFunc(lua_State *L)
 {
+	//从lua栈中取数据
 	int n = lua_gettop(L);
+
+	//可以抽出来作为单独的目标函数
 	double sum = 0;
 	int i;
 	/* 循环求参数之和 */
 	for (i = 1; i <= n; i++)
 		sum += lua_tonumber(L, i);
 
+	//返回结果压入lua栈，lua端读取
 	lua_pushnumber(L, sum / n);     //压入平均值  
 	lua_pushnumber(L, sum);         //压入和  
 
@@ -62,7 +69,7 @@ LUALIB2_API int luaopen_LuaLib_2(lua_State *L)
 	lua_newtable(L);  //这个不能省
 	luaL_setfuncs(L, libFunc, 0);  //luaL_setfuncs 这个函数可以注册c函数到lua,另外还可以设置闭包函数使用的变量upvalue. 
 
-	lua_pushnumber(L, 100);
+	lua_pushnumber(L, 100);						//upvalue 非局部变量，不在局部作用域内定义的一个变量，但又不是一个全局变量，主要用于嵌套函数和匿名函数
 	lua_pushstring(L, "this is upvalue");
 
 	//第三个参数 nup 如果非零, 则所有通过luaL_setfuncs注册的函数都共享 nup个 upvalues. 

@@ -11,9 +11,10 @@ int main()
     std::cout << "Hello World!\n";
 
 	TestLua_1 tl_1;
-	tl_1.Test2();
+	tl_1.Test1();
+	//tl_1.Test2();
 
-	TestLua_2();
+	//TestLua_2();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

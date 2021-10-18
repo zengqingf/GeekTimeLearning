@@ -2,6 +2,92 @@
 
 
 
+---
+
+### UE4 C++基础
+
+* 文件名.generated.h
+
+  ``` tex
+  #include "文件名.generated.h" 文件会在UE4编译时生成；注意文件名不是类名
+  目录：<UE4Project>/Intermediate/Build/Win64/UnrealEditor/Inc/<UE4Project>
+  ```
+
+* class 项目模块宏 类名
+
+  ``` tex
+  class 项目模块宏 类名: public AActor
+  UE4中项目模块宏格式   项目名全大写_API
+  ```
+
+* 类相关的宏
+
+  ``` c++
+  UCLASS()									//表明属于UE的类
+  class AMyActor : public AActor
+  {
+  	GENERATED_BODY()						//在编译时会生成多行UE代码模板
+  }
+  ```
+
+  ``` c++
+  /*
+  宏：UPROPERTY() 
+  用于修饰成员变量，只能用于UE的Class中，即UCLASS()宏修饰的类
+  和普通C++变量的区别：生命周期和对蓝图的访问权限不同，蓝图可以访问UPROPERTY()的属性
+  
+  宏参数：
+  BlueprintReadWrite：蓝图可读可写，类似于GetXXX() / SetXXX()
+  EditAnywhere：在任意地方可以编辑该属性，如Level中的Actor，继承自该类的子类蓝图等；但是只添加这个参数，蓝图等还是无法访问
+  Category = "XXX" ：修改蓝图中和Details（即property windows）中的当前属性分类组
+  
+  	参数定义位置：EpicGames/UEXXX/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h
+  	参数添加方式：UPROPERTY(EditAnywhere, BlueprintReadWrite) 用逗号分割
+  	
+  访问修饰：
+  UPROPERTY()可以由public protected private修饰
+  当private修饰时，不能同时使用BlueprintReadWrite（会编译错误）
+  */
+  ```
+
+  ``` c++
+  /*
+  UFUNCTION()
+  用于修饰函数（成员或静态），只能用于UE的Class中，即UCLASS()宏修饰的类
+  只有UFUNCTION修饰的函数才能被蓝图访问（调用，重写，实现）
+  
+  宏参数：
+  BlueprintCallable：蓝图可以调用该函数
+  					《《同时注意不受代码中public, protected，private限制，继承C++蓝图中以及关卡蓝图中都可以访问成员函数》》
+  BlueprintImplementableEvent:表示蓝图重写该函数但C++不能提供实现
+  					由蓝图继承类实现具体逻辑（蓝图中会添加 Event 前缀）
+  					《《不能使用private访问权限； C++中不能提供实现，会编译报Link错》》
+  BlueprintNativeEvent:表示蓝图可以重写该函数并且C++可以提供默认实现
+  					蓝图也可以调用父类方法，调用默认实现
+  					《《C++默认实现，即在C++中定义被修饰方法名加上 _Implementation 的方法, 调用该方法时同时也会调用该默认实现，
+  					蓝图中也可以重写该默认实现（蓝图中会添加 Event 前缀），当子类蓝图重写后，C++中的默认实现不会生效，
+  					需要子类蓝图和默认实现都能调用，子类蓝图中需要调用Parent:被修饰方法名》》
+  */
+  ```
+
+  
+
+* 基础include文件
+
+  ``` c++
+  #include "CoreMinimal.h" //包含了UE C++中需要的头文件，如FString等
+  ```
+
+
+
+
+
+
+
+---
+
+
+
 * sprintf_s vs snprintf
 
   sprintf 用于将输出存到字符缓冲中

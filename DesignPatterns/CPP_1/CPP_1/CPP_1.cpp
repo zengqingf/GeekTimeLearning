@@ -54,7 +54,7 @@ int main()
 
 	//结构型
 	//Adapter_Exampler_1::Test1();
-	Adapter_Exampler_1::Test2();
+	Adapter_Example_1::Test2();
 
 	return 0;
 }
