@@ -735,4 +735,76 @@
   示例见：E:\ws\mjx\base_learning\GeekTimeLearning\DesignPatterns\CPP_1\CPP_1\FactoryMethod_1.h  67行
   ```
 
+
+
+
+* error: android crash, Maximum number of UObjects (XXXXXX) exceeded, make sure you update MaxObjectsInGame/MaxObjectsInEditor in project settings.
+
+  ``` tex
+  修改AndroidEngine.ini
+  引擎目录：XX\EpicGames\UE_4.25\Engine\Config\Android\AndroidEngine.ini
+  项目Saved目录：XX\Saved\Temp\Android\Engine\Config\Android\AndroidEngine.ini
+  
+  修改引擎目录的配置即可
+  
+  [/Script/Engine.GarbageCollectionSettings]
+  gc.MaxObjectsInGame=XXXXXXX (UE4.25.4默认为131072，修改为1310720)
+  
+  @注意：
+  在工程编辑器中的ProjectSetting中修改后，打android包不生效
+  ```
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110221106990.jpg)
+
+
+
+
+
+* error: ue4 missing type specifier - int assumed c++ does not support default-int, 'StaticStruct': is not a member of 'XXX'
+
+  ``` c++
+  //MyFile.h
+  #pragma once
+  
+   #include "CoreMinimal.h"
+   #include "Kismet/BlueprintFunctionLibrary.h"
+   
+   /**
+    *
+    */
+   USTRUCT(BlueprintType)
+   struct MYPROJECT_API FTest
+   {
+       GENERATED_BODY();
+   
+       UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test")
+       FString name;
+   };
+  
+  //Need add "MyFile.generated.h" to the last header you include
+  ```
+
+  ``` tex
+  其他原因
+  示例：
+  BaseTown.h
+  //#include "BeTownPlayerMain.h"
+  
+  "BeTownPlayerMain.h"
+  //#include "BeTownPlayer.h"
+  
+  "BeTownPlayer.h"
+  //#include "Battle/Town/BaseTown.h"
+  
+  
+  ```
+
+
+
+* android: “No target name was specified on the command-line”
+
+  ``` tex
+  project name 设置成 test 可能会遇到上述打安卓包报错
+  ```
+
   

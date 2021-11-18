@@ -98,7 +98,17 @@
 
   
 
+* 打印基本数据类型
 
+  ``` c++
+  hhd，hhx，hhu，     	 这几个都是输出8位的，
+  hd， hx， hu，      	 这几个都是输出16位数据的，
+  d，  lx， ld， lu， 	这几个都是输出32位的，
+  lld，ll， llu，llx，	这几个都是输出64位的，
+  其中 %llu 64位无符号， %llx 64位16进制数
+  ```
+
+  
 
 
 
@@ -228,8 +238,6 @@
   unsigned int uint2 = static_cast<unsigned int>(db1 + 0.5);
   // output uint = 8
   ```
-  
-  
   
   
   

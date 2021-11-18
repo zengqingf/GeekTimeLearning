@@ -29,3 +29,19 @@
 
   
 
+
+
+
+
+---
+
+
+
+### Windows Slave搭建
+
+* 配置从节点
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110221620254.jpg)
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110221623646.jpg)
+

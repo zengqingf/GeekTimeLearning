@@ -27,12 +27,46 @@
   
   
   方法2
-  VS导入一个库文件的方法
+  VS导入一个库文件的方法  (在目标文件中加入xxx.lib库文件，提供链接支持）
   #pragma comment(lib, “xxx.lib”)
   #pragma comment(lib, “绝对路径/xxx.lib”)
   ===>
   #pragma仅仅影响编译时的link，运行时只需要保证exe目录下（或者系统目录下或者PATH变量中都有lib对应的dll）exe即能运行
   ```
+
+
+
+**基于2019**
+
+* 配置c++动态引用dll
+
+  ``` tex
+  1. 配置头文件引用目录（用于编译）
+  	解决方案管理器->项目->属性页->
+  	配置属性(先确定是否应用到所有配置（debug,release等）和平台（win32,x64,android等）) ->
+  	C/C++ -> 常规 -> 附加包含目录 -> 编辑（添加头文件目录，
+  									@注意：需要保证引用头文件自身#include的相对路径，如#include为ace/XXX.h，则选择目录为ace的根目录）
+  
+  2. 配置xxx.lib库文件（用于链接）
+  	解决方案管理器->项目->属性页->
+  	配置属性(先确定是否应用到所有配置（debug,release等）和平台（win32,x64,android等）) ->
+  	链接器（Linker）-> 输入 -> 附加依赖项 -> 编辑（添加 XXX.lib）
+  	
+  	链接器（Linker）-> 常规 -> 附加库目录 -> 编辑（添加 XXX.lib的目录）
+  	
+  3. 添加运行时动态连接库 xxx.dll（运行时）
+  	解决方案管理器->项目->属性页->
+  	配置属性(先确定是否应用到所有配置（debug,release等）和平台（win32,x64,android等）) ->
+  	配置属性 -> 生成事件 -> 生成后事件 -> 命令行
+  	（xcopy /y /d "..\..\XXXXXXLibraryXXXXXX\$(IntDir)xxx.dll" "$(OutDir)"）
+  	(如果 DLL 和客户端项目在其他目录中，请更改 DLL 的相对路径以进行匹配。)
+  ```
+
+  
+
+
+
+
 
 
 

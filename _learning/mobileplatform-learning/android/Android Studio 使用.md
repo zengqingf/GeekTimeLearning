@@ -610,6 +610,57 @@
   }
   ```
 
+
+
+
+* 解决androidx 和 support库共存导致编译出错的问题
+
+  ``` groovy
+  /*
+  ref: https://marspring.xyz/2021/03/31/UE-4-18%E5%8D%87%E7%BA%A7Androidx/
+  
+  背景：UE4.27打Android包，编译报错：
+  		由于4.27引入google插件，同时引入了<import androidx.core.content.FileProvider;import androidx.core.app.NotificationManagerCompat;> 
+  		导致下面报错：
+          import android.support.v4.app.ActivityCompat;   //error:找不到ActivityCompat
+          import android.support.v4.content.ContextCompat;//error:找不到content
+  
+  同一个项目中不能同时有androidx、support库，否则编译出错，有两种方案，要么升级，要么降级，综合评估了下，为了快速出demo，先将游戏support库升级到androidx，降级需要插件测改动的代码比较多。
+  
+  如果游戏所依赖的插件都是gradle 或者aar那好办，只需要打开android.useAndroidX=true 和android.enableJettifier=true即可，
+  但由于Unreal 引擎的特殊性，有部分代码是在编译的时候通过编译工具动态生成的，这部分代码模板引入的库是support库。
+  */
+  
+  
+  			allprojects {
+              def mappings = [
+              'android.support.annotation': 'androidx.annotation',
+              'android.arch.lifecycle': 'androidx.lifecycle',
+              'android.support.v4.content.FileProvider':'androidx.core.content.FileProvider',
+              'android.support.v4.app.NotificationManagerCompat':'androidx.core.app.NotificationManagerCompat',
+              'android.support.v4.app.NotificationCompat': 'androidx.core.app.NotificationCompat',
+              'android.support.v4.app.ActivityCompat': 'androidx.core.app.ActivityCompat',
+              'android.support.v4.content.ContextCompat': 'androidx.core.content.ContextCompat',
+              'android.support.v13.app.FragmentCompat': 'androidx.legacy.app.FragmentCompat',
+              'android.arch.lifecycle.Lifecycle': 'androidx.lifecycle.Lifecycle',
+              'android.arch.lifecycle.LifecycleObserver': 'androidx.lifecycle.LifecycleObserver',
+              'android.arch.lifecycle.OnLifecycleEvent': 'androidx.lifecycle.OnLifecycleEvent',
+              'android.arch.lifecycle.ProcessLifecycleOwner': 'androidx.lifecycle.ProcessLifecycleOwner',
+              ]
+  
+              beforeEvaluate { project ->
+              project.rootProject.projectDir.traverse(type: groovy.io.FileType.FILES, nameFilter: ~/.*\.java$/) { f ->
+              mappings.each { entry ->
+              if (f.getText('UTF-8').contains(entry.key)) {
+              println "Updating ${entry.key} to ${entry.value} in file ${f}"
+              ant.replace(file: f, token: entry.key, value: entry.value)
+              }
+              }
+              }
+              }
+              }
+  ```
+
   
 
 

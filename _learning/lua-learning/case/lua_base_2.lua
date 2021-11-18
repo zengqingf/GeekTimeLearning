@@ -11,9 +11,6 @@
     #LUA_PATH
     export LUA_PATH="~/lua/?.lua;;"     --文件路径以 ";" 号分隔，最后的 2 个 ";;" 表示新加的路径后面加上原来的默认路径。
 
-
-
-
 ]]
 do
     require("MyModule")
@@ -30,6 +27,24 @@ do
     local x = MyModule.new{content = "bye"}
     print(x.size, x.content)                 --34   bye
 end
+
+
+--[[
+    Lua Require函数
+    
+    1. require会搜索目录加载文件
+    require使用的路径和普通我们看到的路径还有些区别，我们一般见到的路径都是一个目录列表。require的路径是一个模式列表，每一个模式指明一种由虚文件名
+    （require的参数）转成实文件名的方法。更明确地说，每一个模式是一个包含可选的问号的文件名。匹配的时候Lua会首先将问号用虚文件名替换，然后看是否有
+    这样的文件存在。如果不存在继续用同样的方法用第二个模式匹配
+
+    2. require会判断是否文件已经加载避免重复加载同一文件。由于上述特征，require在Lua中是加载库的更好的函数。
+    require会避免重复加载同一个文件两次。Lua保留一张所有已经加载的文件的列表（使用table保存）。如果一个加载的文件在表中存在require简单的返回；
+    表中保留加载的文件的虚名，而不是实文件名。所以如果你使用不同的虚文件名require同一个文件两次，将会加载两次该文件。比如require "foo"和require "foo.lua"，
+    路径为"?;?.lua"将会加载foo.lua两次。我们也可以通过全局变量_LOADED访问文件名列表，这样我们就可以判断文件是否被加载过；同样我们也可以使用一点小技巧让
+    require加载一个文件两次。比如，require "foo"之后_LOADED["foo"]将不为nil，我们可以将其赋值为nil，require "foo.lua"将会再次加载该文件。
+
+    小结:require加载一个Lua文件，不论加载多少次，都是同一个对象
+]]
 
 
 

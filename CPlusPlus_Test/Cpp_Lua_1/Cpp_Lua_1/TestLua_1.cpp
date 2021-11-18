@@ -156,3 +156,25 @@ void TestLua_1::Test2()
 	//关闭state
 	lua_close(L);
 }
+
+void TestLua_1::Test3()
+{
+	lua_State* L = luaL_newstate();
+	int bRet = luaL_loadfile(L, "LuaDemo/test_enum.lua");
+	if (bRet)								//注意：true表示出错！
+	{
+		std::cout << "load lua file failed: " << bRet << std::endl;
+		return;
+	}
+	bRet = lua_pcall(L, 0, 0, 0);
+	if (bRet)								//注意：true表示出错！
+	{
+		std::cout << "call lua file failed" << std::endl;
+		return;
+	}
+	//读取table
+	lua_getglobal(L, "AllTextures");
+	lua_geti(L, -1, 1);
+	std::string str = lua_tostring(L, -1);
+	std::cout << "enum table: enum value = " << str.c_str() << std::endl;
+}

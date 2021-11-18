@@ -124,5 +124,50 @@
 
 
 
-* 
+* 设置分辨率
+
+  ``` tex
+  File -> Editor Preference -> play -> Play in New Window中设置
+  在如下目录下添加GameUserSettings.ini文件：
+  $EXPORT_FOLDER%\WindowsNoEditor\$GAME_NAME$\Saved\Config\WindowsNoEditor
+  GameUserSettings.ini:
+  [/Script/Engine.GameUserSettings]
+  bUseVSync=False
+  ResolutionSizeX=1280
+  ResolutionSizeY=1024
+  LastUserConfirmedResolutionSizeX=1280
+  LastUserConfirmedResolutionSizeY=1024
+  WindowPosX=-1
+  WindowPosY=-1
+  bUseDesktopResolutionForFullscreen=False
+  FullscreenMode=2
+  LastConfirmedFullscreenMode=2
+  Version=5
+  
+  bUseDesktopResolutionForFullscreen：表示是否要全屏时使用桌面的分辨率
+  FullscreenMode：
+  0-真全屏
+  1-假全屏，全屏无边框
+  2-非全屏
+  
+  导出exe文件也会在project\Saved\StagedBuilds\WindowsNoEditor中生成，
+  也可以在这个目录下的$GAME_NAME$\Saved\Config\WindowsNoEditor中放入GameUserSettings.ini
+  ```
+
+  ``` c++
+  //代码设置分辨率
+  void AMyGameMode::BeginPlay()
+  {
+   if(GEngine)
+   {
+       UGameUserSettings* MyGameSettings = GEngine->GetGameUserSettings();
+       MyGameSettings->SetScreenResolution(FIntPoint(1024,768));
+       MyGameSettings->SetFullscreenMode(EWindowMode::Fullscreen);
+       MyGameSettings->SetVSyncEnabled(true);
+       MyGameSettings->ApplySettings();
+   }
+  }
+  ```
+
+  
 

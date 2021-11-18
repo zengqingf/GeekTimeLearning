@@ -346,7 +346,9 @@
      >
      > [UE4 - blog6](https://blog.csdn.net/qq_36409711/category_6964420.html)
      >
-     > [UE4 - blog7](https://dawnarc.com/tags/ue4/)
+     > [UE4 - blog7 玄冬wong](https://dawnarc.com/tags/ue4/)
+     >
+     > [UE4 - blog8 执手画眉wan](https://blog.csdn.net/l346242498/category_6684929.html)
      
   4. ue4 packing & 热更新资源
   
@@ -499,13 +501,34 @@
   4. blog
 
      [c++知识点](https://www.cnblogs.com/eilearn/category/1210518.html)
-     
+
      [ 如何系统学习C++](https://mp.weixin.qq.com/s/WW_X12bTm94iaCgWBgYtJw)
-     
+
      [C++那些事](https://light-city.club/sc/)
-     
+
      [learncpp](https://www.learncpp.com/)
 
+  5. c++设计模式
+
+     ``` c++
+     /*单例模式：日志系统，资源管理器，线程池，内存池等
+     
+     工厂模式：对创建对象的封装，符合开闭原则。工厂模式在许多项目中大量使用，因为它将对象的构造过程封装，使创建对象的接口统一且简洁，另一方面符合开闭原则，易于扩展。开源项目NVDLA的compiler中各类node的建立，LLVM中的pass，都有工厂模式的用例。
+     
+     适配器模式：STL中的容器适配器stack和queue，是对象适配器的绝佳用例。项目开发中也常常使用。
+     
+     观察者模式：频繁使用，观察者模式建立了一种一对多的联动，一个对象改变时将自动通知其他对象，其他对象将作出反应。这是不是很常见？消息更新、广播机制、消息传递、链式触发（高级啊）……
+     
+     职责链模式：将一个请求的发送者和接收者解耦，让多个对象都有机会处理请求。将接收请求的对象连接成一条链，并且沿着这条链传递请求，直到有一个对象能够处理它为止。采用职责链模式不仅可以方便扩展（当增加一个接受者时，只需要在链上的适当位置插入对应的处理方法即可），而且可以替换掉代码中可能存在的switch-case或者if-else。在工具的设计、具有层级关系或权限关系的任务处理场景中可以应用职责链模式。
+     
+     策略模式：常常与工厂模式搭配，封装不同的算法（策略），再结合C++多态机制，策略模式在实际开发过程中应用十分广泛。
+     
+     代理模式：C++智能指针、引用计数等*/
+     ```
+
+     
+
+     
 
 
 
@@ -514,7 +537,7 @@
   吃鸡demo  关卡编辑器 
 
   事件系统 （网络 (EventRouter) / UI(UIEvent (UIEventSystem)  vs.  UIEventNew (UIEventManager)) / 战斗(BeEvent vs. BeEventHandleNew) ...）
-  
+
   ``` c#
   //UIEventHandleNew 中会添加以下代码 
   if(m_stackLevel > Global.TriggerSingleEventStackLevelLimit)
@@ -525,17 +548,17 @@
                   }
               }
   ```
+
   
-  
-  
+
   吃鸡demo 查传送带 是 根据场景格子 添加到机制格子里
+
   
-  
-  
+
   战斗文档整理导出
+
   
-  
-  
+
 * 设计模式
 
 * 数据结构

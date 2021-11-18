@@ -416,9 +416,46 @@
   Cook是一种转换的过程
   ```
 
-  
 
 
+
+
+
+* Pak Chunk
+
+  [资源分块](https://docs.unrealengine.com/4.27/zh-CN/SharingAndReleasing/Patching/GeneralPatching/ChunkingExample/)
+
+  ``` tex
+  UE编辑器有两种操作方式：
+  1.新建/Miscellaneous/Data Asset
+  2.ProjectSettings/Game/AssetManager  添加 Primary Asset Rules  设置优先级Priority和Chunk ID
+  ```
+
+  * 方式1
+
+    ``` tex
+    pak输出目录：Saved\StagedBuilds\Android_ASTC\NextGenActionGame\Content\Paks
+    ```
+
+    ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111021447955.png)
+
+    ![pak_chunk_02](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111021447136.png)
+
+    ![pak_chunk_03](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111021447144.png)
+
+    ![pak_chunk_04](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111021447153.png)
+
+    
+
+  * 方式2
+
+
+
+
+
+* Shader PSO制作
+
+  [编译PSO](https://docs.unrealengine.com/4.27/zh-CN/SharingAndReleasing/PSOCaching/BuildingPSOCache/)
 
 
 

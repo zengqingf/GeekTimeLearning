@@ -1010,6 +1010,316 @@
 
 
 
+* UE4 获取屏幕长宽，视口缩放，设置Widget位置，世界坐标转屏幕坐标
+
+  ``` c++
+  //viewport size
+  FString screenXY = GEngine->GameViewport->Viewport->GetSizeXY().ToString();
+  FVector2D Result = FVector2D(0, 0);
+  if ( GEngine && GEngine->GameViewport )
+  {
+      GEngine->GameViewport->GetViewportSize( /*out*/Result );
+  }
+  
+  //viewport center
+  FVector2D centerPos = FVector2D(screenXY.X/2, screenXY.Y/2);
+  
+  //viewport scale
+  float scale = UWidgetLayoutLibrary::GetViewportScale(this);
+  FVector2D vec2D;
+  vec2D = screenXY.X / 2 / scale;
+  vec2D = screenXY.Y / 2 / scale;
+  
+  //widget translation
+  //设置Widget位置1 （绝对坐标）
+  UWidget::SetRenderTranslation(vec2D);
+  ```
+
+  ``` c++
+  //判断一个点是否在屏幕范围内：https://blog.csdn.net/l346242498/article/details/100575120
+  ////世界坐标转屏幕坐标1
+  bool AMyActor::IsInScrrenViewport(const FVector& WorldPosition)
+  {
+  	APlayerController *Player = UGameplayStatics::GetPlayerController(this, 0);
+  	ULocalPlayer* const LP = Player ? Player->GetLocalPlayer() : nullptr;
+  	if (LP && LP->ViewportClient)
+  	{
+  		// get the projection data
+  		FSceneViewProjectionData ProjectionData;
+  		if (LP->GetProjectionData(LP->ViewportClient->Viewport, eSSP_FULL, /*out*/ ProjectionData))
+  		{
+  			FMatrix const ViewProjectionMatrix = ProjectionData.ComputeViewProjectionMatrix();
+  			FVector2D ScreenPosition;
+  			bool bResult = FSceneView::ProjectWorldToScreen(WorldPosition, ProjectionData.GetConstrainedViewRect(), ViewProjectionMatrix, ScreenPosition);
+  			if (bResult && ScreenPosition.X > ProjectionData.GetViewRect().Min.X && ScreenPosition.X < ProjectionData.GetViewRect().Max.X
+  				&& ScreenPosition.Y > ProjectionData.GetViewRect().Min.Y && ProjectionData.GetViewRect().Y < LensPadding.Max.Y)
+  			{
+  				return true;
+  			}
+  		}
+  	}
+  	return false;
+  }
+  
+  //获取视口长宽：viewport size
+  screenPos.X /= projectionData.GetConstrainedViewRect().Width();
+  screenPos.Y /= projectionData.GetConstrainedViewRect().Height();
+  UE_LOG(LogTemp, Log, TEXT("### transform position: screen width: %d, height: %d"),
+  		projectionData.GetConstrainedViewRect().Width(),
+  		projectionData.GetConstrainedViewRect().Height());
+  
+  
+  //世界坐标转屏幕坐标2
+  FVector2D screenPos2;
+  UGameplayStatics::ProjectWorldToScreen(playerCtrl,worldPos, /*out*/screenPos2, false);
+  FVector2D screenPos3;
+  UGameplayStatics::ProjectWorldToScreen(playerCtrl,worldPos, /*out*/screenPos3, true);
+  UE_LOG(LogTemp, Log, TEXT("### 2 transform position: screen pos, x: %f, y: %f"),screenPos2.X,screenPos2.Y);
+  UE_LOG(LogTemp, Log, TEXT("### 3 transform position: screen pos, x: %f, y: %f"),screenPos3.X,screenPos3.Y);
+  //同一场景下结果相同
+  ```
+
+  ``` c++
+  //设置Widget位置2
+  UPROPERTY(meta = (BindWidget))
+  class UImage* ImageHpGuang;
+  UPROPERTY(meta = (BindWidget))
+  class UProgressBar* ProgressBarMainActorHpBar;
+  UCanvasPanelSlot* canvasSlotGuang = UWidgetLayoutLibrary::SlotAsCanvasSlot(Cast<UWidget>(ImageHpGuang));
+  UCanvasPanelSlot* canvasSlotHpBar = UWidgetLayoutLibrary::SlotAsCanvasSlot(ProgressBarMainActorHpBar);
+  canvasSlotGuang->SetPosition(FVector2D((canvasSlotHpBar->GetSize().X) * hpPercent - 11, 0.9f));
+  
+  //设置、获取相对坐标
+  Cast<UCanvasPanelSlot>( MyBtn->Slot)->SetPosition(FVector2D(X, Y));
+  //ImgIcon is a UImage widget.
+  if (UCanvasPanelSlot* Slot = Cast<UCanvasPanelSlot>(ImgIcon->Slot))
+  {
+      FVector2D Pos = Slot->GetPosition();
+  }
+  
+  //设置、获取绝对坐标
+  #include <Engine/UserInterfaceSettings.h>
+  ImgIcon->GetCachedGeometry().GetAbsolutePosition();
+  void UWidget::SetRenderTranslation(FVector2D Translation)   //设置widget绝对坐标
+  void UUserWidget::SetPositionInViewport(FVector2D Position, bool bRemoveDPIScale )  //设置user widget（内嵌umg）绝对坐标
+  ```
+
+  ``` c++
+  //获取HUD
+  AMyHUD * hud = Cast<AMyHUD>(UGameplayStatics::GetPlayerController(this, 0)->GetHUD());
+  ```
+
+  
+
+* UE4获取屏幕点击
+
+  ``` c++
+  //ref:https://blog.csdn.net/J_Wayne/article/details/107786787
+  
+  APlayerController* playerCtrl = Cast<APlayerController>(controller);
+  if(playerCtrl) {
+      playerCtrl->bShowMouseCursor = true;
+  }
+  FHitResult hit;
+  if(playerCtrl) {
+  	playerCtrl->GetHitResultUnderCursor(ECC_Visibility, false, hit);
+  }
+  if(hit.bBlockingHit) {
+      //TODO
+  }
+  /*
+  只要是继承于ACharacter或APawn类的，都可以把Controller转换成APlayerController来用GetHitResultUnderCursor这个函数，本质上其实是射线检测GetWorld()->LineTraceSingleByChannel，只是做了很多安全判断，比如保证获得玩家屏幕，保证点击的不是UI。
+  通过Hit传引用进去，传结果出来。Hit.bBlockingHit代表检测到了物体
+  */
+  
+  
+  //射线检测
+  if(GetHUD() != NULL && GetHUD()->GetHitBoxAtCoordinates(ScreenPosition, true))  //判断是否点击到UI
+  {
+      return false;
+  }
+  FVector WorldOrigin;
+  FVector WorldDirection;
+  //屏幕坐标转世界坐标
+  if(UGameplayStatics::DeprojectScreenToWorld(this, ScreenPosition, WorldOrigin, WorldDirection) == true)
+  {
+      return GetWorld()->LineTraceSingleByChannel(HitResult, WorldOrigin, WorldOrigin + HitResultTraceDistance, TraceChannel, CollisionQueryParams);
+  }
+  /*
+  官方：GetHitResultUnderCursor
+  */
+  ```
+
+  
+
+
+
+* UE4 TMap, TArray 不支持多层嵌套
+
+  ``` c++
+  //不支持
+  UPROPERTY（）
+  TMap<int64, TArray<int64>>
+   
+  //这种可以用结构体转换
+  USTRUCT(BlueprintType)			//@注意：必须加BlueprintType ！！！
+  struct FMyArray
+  {
+  	GENERATED_BODY()
+   
+      UPROPERTY(EditAnywhere, BlueprintReadOnly) //或者 BlueprintReadWrite
+  	TArray<int64> myArray;
+  };
+  
+  //使用
+  UPROPERTY（）
+  TMap<int64, FMyArray>
+  ```
+
+
+
+* UE4 Time
+
+  ``` c++
+  FDateTime Time = FDateTime::Now();
+  //获取时间戳
+  int64 Timestamp = Time.ToUnixTimestamp();
+  UE_LOG(LogTemp, Warning, TEXT("%d"), Timestamp);
+  
+  //unix timestamp <=> datetime
+  FDateTime Time = FDateTime::FromUnixTimestamp(int64 UnixTime);
+  int64 Timestamp = Time.ToUnixTimestamp();
+  
+  int year = Time.GetYear();
+  int month = Time.GetMonth();
+  int day = Time.GetDay();
+  int hour = Time.GetHour();
+  int minute = Time.GetMinute();
+  int second = Time.GetSecond();
+  
+  //获取CPU时钟
+  //微妙格式
+  uint64 cycle = FPlatformTime::Cycles64();
+  uint32 cycle = FPlatformTime::Cycles();
+  //秒格式
+  double now = FPlatformTime::Seconds();
+  
+  //frame deltatime
+  float DeltaTime = FApp::GetDeltaTime();
+  ```
+
+  
+
+
+
+* UE4 常用宏
+
+  [UE4入门-常见的宏-UFUNCTION](https://blog.csdn.net/u012793104/article/details/78487893)
+
+  * UFUNCTION 函数说明符
+
+    ``` tex
+    BlueprintAuthorityOnly
+    如果在具有网络权限的计算机（服务器，专用服务器或单人游戏）上运行，此功能只能从Blueprint代码执行,如无网络权限，则该函数将不会从蓝图代码中执行
+    
+    BlueprintCosmetic
+    此函数为修饰函数而且无法运行在专属服务器上
+    
+    BlueprintGetter 修饰自定义的Getter函数专用
+    该函数将用作Blueprint暴露属性的访问器。这个说明符意味着BlueprintPure和BlueprintCallable
+    
+    BlueprintSetter 修饰自定义的Setter函数专用
+    此函数将用作Blueprint暴露属性的增变器。这个说明符意味着BlueprintCallable
+    
+    BlueprintInternalUseOnly
+    表示该函数不应该暴露给最终用户
+    
+    
+    
+    ######  常用  ######
+    
+    UFUNCTION(BlueprintCallable, Category="这是分组标签1|这是分组页签2")
+    void BlueprintCallableFunc();
+    该函数可以在蓝图或关卡蓝图图表或UnLua中执行（即蓝图中可以搜索到并创建和调用）
+    
+    UFUNCTION(BlueprintImplementableEvent, Meta=(DisplayName="蓝图中Functions页签下Override Function的展示名字"))
+    float BlueprintImplementableEventFunc(float infloat);
+    此函数可以在蓝图或关卡蓝图图表或UnLua内进行重载
+    (不能修饰private级别的函数，函数在C++代码中不需要实现定义)
+    
+    
+    UFUNCTION(BlueprintNativeEvent, Meta=(DisplayName="Blueprint Native Event Func"))
+    FString BlueprintNativeEventFunc(AActor* inActor);
+    FString AActorTest::BlueprintNativeEventFunc_Implementation(AActor* inActor)
+    {
+    	return inActor->GetName();
+    }
+    此函数将由蓝图进行重载，但同时也包含native类的执行。提供一个名称为[FunctionName]_Implementation的函数本体而非[FunctionName];自动生成的代码将包含转换程序,此程序在需要时会调用实施方式
+    
+    
+    UFUNCTION(BlueprintPure)
+    AActor* BlueprintPureFunc();
+    AActor* AActorTest::BlueprintPureFunc()
+    {
+    	return this;
+    }
+    该函数不会以任何方式影响拥有对象，并且可以在蓝图或级别蓝图图表中执行
+    
+    
+    
+    CallInEditor
+    该函数可以在编辑器中通过详细信息面板中的按钮在选定实例中调用
+    
+    Category = TopCategory|SubCategory|Etc
+    指定函数在编辑器中的显示分类层级，| 是分层级的符号 (蓝图窗口是树状层级)
+    ```
+
+  * UFUNCTION 元数据说明符
+
+    ``` tex
+    
+    UFUNCTION(BlueprintCallable, meta = (DeprecatedFunction, DeprecationMessage = "This is Deprecation Message"), Category = "Snowing|BlueprintFunc")
+        void DeprecatedFunctionFunction();
+    任何对此函数的蓝图引用都会导致编译警告, 告诉用户该函数已被弃用。可以使用 DeprecationMessage 元数据说明符来添加到弃警告消息 (例如, 提供有关替换已弃用的函数的说明)
+    添加这个标记后，在4.18.0引擎中(可能以及后续版本)，蓝图无法查找到被标记的函数
+    
+    DeprecationMessage=”MessageText”
+    如果该函数已被弃用，则在尝试编译使用该函数的Blueprint时，此消息将被添加到标准弃用警告中
+    
+    
+    UFUNCTION(BlueprintPure, meta = (DisplayName=”Blueprint Node Name”))
+    FString OtherBlueprintPureFuncName();
+    蓝图中此节点的名称将替换为此处提供的值，而不是代码生成的名称（在蓝图中搜索被修饰函数也用这里提供的值）
+    ```
+
+  
+
+  [UE4入门-常见的宏-USTRUCT](https://blog.csdn.net/u012793104/article/details/78594119)
+
+  * USTRUCT
+
+    **USTRUCT宏收缩与指定某些设置和属性**； @注意，只有USTRUCT的UPROPERTY变量才被考虑到复制；只有PROPERTY宏标记的USTRUCT才能被计入垃圾回收
+
+    （当在虚幻引擎中声明一个USTRUCT时，可以添加一个属于虚幻引擎的struct trait系统的NetSerialize方法，如果定义了这个方法，在属性复制和RPC之间，引擎会在struct序列化和反序列化的时候调用它）
+
+    ``` tex
+    USTRUCT(Atomic)		表示这个结构应该总是作为一个单元序列化
+    struct Person {}
+    
+    USTRUCT(BlueprintType)  将此结构公开为蓝图中变量的类型
+    struct Person {}
+    
+    USTRUCT(Immutable)	  在Object.h中只是合法的，正在被弃用
+    struct Person {}
+    
+    USTRUCT(NoExport)    没有自动生成的代码将被创建为这个类，头只是用来提供解析元数据的
+    struct Person {}
+    ```
+
+  [UE4入门-常见的宏-UCLASS](https://blog.csdn.net/u012793104/article/details/78547655)
+
+  [UE4入门-常见的宏-UPROPERTY](https://blog.csdn.net/u012793104/article/details/78480085)
+
 
 
 
@@ -1087,6 +1397,42 @@
   
       Op->SetPropertyValue_InContainer(Blueprint->GeneratedClass->ClassDefaultObject, true);
   }
+  ```
+
+
+
+
+
+
+* 代码修改导致蓝图编辑器环境改变
+
+  ``` c++
+  // Copyright Epic Games, Inc. All Rights Reserved.
+  #include "TableIDInput.h"
+  
+  #include "IntProperty_TableIDCustomization.h"
+  #include "TableIDCustomization.h"
+  
+  #define LOCTEXT_NAMESPACE "FTableIDInputModule"
+  
+  void FTableIDInputModule::StartupModule()
+  {
+  	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+  	PropertyModule.RegisterCustomPropertyTypeLayout("TableID", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&FTableIDCustomization::MakeInstance));
+  	//PropertyModule.RegisterCustomPropertyTypeLayout("IntProperty", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&FIntPropertyTableIDCustomization::MakeInstance));
+      //@注意：会导致蓝图中如 TextBlock的size不可修改
+  }
+  
+  void FTableIDInputModule::ShutdownModule()
+  {
+  	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+  	PropertyModule.UnregisterCustomPropertyTypeLayout("TableID");
+  	//PropertyModule.UnregisterCustomPropertyTypeLayout("IntProperty");
+  }
+  
+  #undef LOCTEXT_NAMESPACE
+  	
+  IMPLEMENT_MODULE(FTableIDInputModule, TableIDInput)
   ```
 
   

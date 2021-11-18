@@ -87,6 +87,7 @@ do
     -- 虚变量  表现为："_" 下划线
     -- 用于存储丢弃不需要的数值
     -- 用一些不太会用到的名字命名一个回收箱变量，然后把不需要的值都丢到里面去，这种做法被称作虚拟变量法。
+        --当一个方法返回多个值时，有些返回值有时候用不到，要是声明很多变量来一一接收，显然 不太合适（不是不能）。Lua 提供了一个虚变量(dummy variable)，以单个下划线('_')来命 名，用它来丢弃不需要的数值，仅仅起到占位的作用。
     do
         print(string.find("example", "am"))   -- output 3 4
 
@@ -148,12 +149,42 @@ do
     -- not 非
     print(not(1 and 2)) -- output: false
 
-    ---实现三目运算
+    --[[实现三目运算
+        使用 and or 模拟三目运算符（通过and or的短路求值特性，只有在需要时才去评估第二个操作数）
+
+        ref:    https://blog.csdn.net/coffeecato/article/details/77546887
+    ]]
     local isSucc = false
     print(isSucc and "succ" or "failed")
 
+    --[[ a > b and a or b
+    
+        b = true
+            a = true
+                a and b –> true
+                b or c –> b
+            a = false
+                a and b –> false
+                b or c –> c
+        b = false
+            a = true
+                a and b –> false
+                b or c –> c
+            a = false
+                a and b –> false
+                b or c –> c
 
-    -- 获取长度
+        当b = false时，Lua模拟的a and b or c始终返回c并不能还原三目运算符的原貌。
+
+        使用 (a and {b} or {c})[1] 替换   用table包装b和c能保证b和c都为true 但是用table包装由性能损耗  
+    ]]
+
+
+    --[[
+      # 获取长度 :  获取一个数值键值（@注意：键值从1开始！！！）的表(table)的长度；
+                    当获取的table中存在nil时，获取长度无意义
+                    只能获取完全数值表的长度，并且从1开始计数
+    ]]
     do
         local tab = {}
         tab[1] = "a"
@@ -163,6 +194,33 @@ do
         tab[5] = nil                   --任何一个nil 值都有可能被当成数组的结束
         tab[6] = "f"
         print("tab len is " .. #tab)   --> 4
+
+
+        --如果table中存在nil，则#获取长度不正确
+        local t1 = {"a", "b", nil, "c", nil}
+        print(#t1)  --==>  2   not   4  or 3 or 5
+        local t11 = {"a", "b", nil, "c", "nil"}
+        print(#t11) --==>  5   not 2                    @注意：这里竟然是长度5
+        local t111 = {"a", "b", "nil", "c", nil}
+        print(#t111) --==>  4   not 5
+
+        --完全数值表
+        local t2 = {
+            [0] = "0",
+            [1] = "1",
+            [2] = "2",
+            [3] = "3"
+        }
+        print(#t2)  --==>  3  not 4
+
+        --非完全数值表
+        local t3 = {
+            [1] = "1",
+            a = "1",
+            b = "2",
+            c = "3"
+        }
+        print(#t3)  --==> 1 not  4
     end
 
 end -- do end block
@@ -181,6 +239,31 @@ do
     do
         print("while loop, N:".. N)
         N = N+1
+    end
+
+
+    --- lua不支持 continue ： 原因：https://www.luafaq.org/#T1.26
+    --[[
+        lua中repeat until ~~  c++ do while, 但是机制上有区别：
+            在Lua的until的条件表达式中，表达式中的变量可以是repeat until代码块内声明的局部变量，
+            但在C++中，while的条件表达式中的变量不允许出现do while内部声明的临时变量，必须是do while外部声明的变量。
+    
+        local a = 1 --outer
+        repeat
+            if f() then
+                continue
+            end
+            local a = 1  --inner
+        until a == 0     --如果存在continue 跳过内部变量a的定义时，until使用a会产生歧义
+    ]]
+    --continue 替代方法
+    for i = 1, 10 do
+        repeat                  --repeat until 这一块相当于 continue的作用
+            if i == 5 then
+                break       
+            end
+            print("lua continue test: ".. i)
+        until true              
     end
 
     --- for的三个表达式在循环开始前一次性求值，以后不再进行求值。比如上面的f(x)只会在循环开始前执行一次，其结果用在后面的循环中。
@@ -321,8 +404,41 @@ do
             print(ele)
         end
     end
-    
 
+    do
+        print("----------------------------------------------------")
+        --创建迭代器：(一定要注意迭代器只是一个生成器，他自己本身不带循环)
+        local function list_iter(t)
+            local i=0
+            --local n=table.getn(t)
+            local n = #t
+            return function()
+                i=i+1
+                if i<=n then 
+                    return t[i] 
+                end
+            end
+        end
+        --这里的list_iter是一个工厂，每次调用都会产生一个新的闭包该闭包内部包括了upvalue(t,i,n)
+        --因此每调用一次该函数产生的闭包那么该闭包就会根据记录上一次的状态，以及返回list的下一个
+        --使用迭代器,while中使用：
+        local t={10, 20, 90}
+        local iter = list_iter(t)   --调用迭代器产生一个闭包
+        while true do
+            local element=iter()
+            if element==nil then 
+                break 
+            else
+                print(element)
+            end
+        end
+        --使用迭代器,泛型for使用：
+        local t = {10, 0, 29}
+        for element in list_iter(t) do --这里的list_iter()工厂函数只会被调用一次产生一个闭包函数，后面的每一次迭代都是用该闭包函数，而不是工厂函数
+            print(element)
+        end
+        print("----------------------------------------------------")
+    end
 
     --#endregion  迭代器
 
@@ -436,10 +552,29 @@ do
     -- myprint 函数作为参数传递
     add(2,5,myprint)
 
+    print("----------------------------------------------------")
 
     --- 多返回值
     local s, e = string.find("www.baidu.com", "baidu")
     print(s, e)
+
+    --[[
+代码一把函数的结果存放在临时变量里再作为参数传给其它函数，代码二直接将函数返回值作为参数传给其它函数。
+看上去，代码二比代码一简短了一些，少用了个变量名。
+可是，如果myfunc返回多个值的话，代码二将不能正确运行，因为myfunc的所有返回值均会传递给table.insert。和其它语言完全不一样。
+lua返回的不是像其它语言那样的是一种复合类型的值，而真真正正的是多个值，以一种超乎直觉的方式存在着。
+    ]]
+    local function myFunc()
+        return 1, 2, 3
+    end
+    local t = {}
+    local item = myFunc()
+    table.insert(t, item)
+    item = nil
+    local t2 = {}
+    --!table.insert(t, myFunc())       --wrong number of arguments to 'insert'
+    print("----------------------------------------------------")
+
 
     ---可变参数
     local function add(...)
@@ -534,7 +669,10 @@ do
         work = function(self, msg)
             -- 函数体
             self.age = self.age + 1
-            print(self.age .. msg)
+            print(self.age .. msg)             --[[
+                                                        --print("### base frame: " .. self.test1) --无法访问base class local variable
+                                                        print("### base frame: " .. self.test2) --可以访问base class self variable
+                                                    ]]
         end
     }
 
@@ -544,6 +682,45 @@ do
 
     -- 调用2
     Lewis:work("上班2")
+
+    print("----------------------------------------------------")
+    -- Lua中的self ref: https://zhuanlan.zhihu.com/p/115159195
+    do
+        local t = {a = 1, b = 2}
+        function t:Add()
+            return (self.a + self.b)
+        end
+        print(t:Add())
+    end
+
+    do
+        local t = {a = 1, b = 2}
+        function t:Add()
+            return (self.a + self.b)
+        end
+        function t.Sub(self)
+            return (self.a - self.b)
+        end
+        print(t.Add(t))
+        print(t:Sub())
+    end
+
+    do
+        local tA = {a = 1, b = 2}
+        function tA.Add(self)
+            return (self.a + self.b)
+        end
+        print(tA.Add(tA))
+    end
+
+    do
+        local tB = {a = 1, b = 2}
+        function tB:Add()
+            return (self.a + self.b)
+        end
+        print(tB:Add())
+    end
+    print("----------------------------------------------------")
 
 end -- do end block
 print("################ class end ###############")
@@ -578,118 +755,6 @@ do
 
 end -- do end block
 print("################ nil test end ###############")
-
-
---[[
-string
-    使用\[\[\]\] 多行字符串
-    对数字字符串进行算术操作，lua会尝试将字符串转成一个数字
-]]
-print("################ string start ###############")
-do
-
-    local html = [[
-    <html>
-    <head></head>
-    <body>
-        <a href="http://www.baidu.com/">baidu</a>
-    </body>
-    </html>
-    ]]
-
-    print("2" + 3)
-    print("2" + "4")
-    print("2 + 4")
-    print("-2e2" + "4")
-    --! print("error" + 1)  --会报错
-    --字符串拼接用 ..
-    print("error" .. 1)
-    -- 字符串长度
-    local strLen = "www.google.com"
-    print(#strLen)
-    print(#"www.google.com")
-
-
-    --内置字符串函数
-    print(string.gsub("aaaa", "a", "z", 3))    --> zzza 3
-    print(string.find("hello world", "wo", 1)) --> 7    8
-    print(string.reverse("lua")) --> aul
-    print(string.format("the value is : %d", 4))
-    print(string.char(97, 98, 99, 100))  -->  abcd
-    print(string.byte("ABCD", 4))        -->  68  D
-    print(string.byte("ABCD"))           -->  65  A
-    print(string.len("abc"))             --> 3
-    print(string.rep("abcd", 2))         --> abcdabcd
-    do 
-        for word in string.gmatch("hello lua world", "%a+")
-        do
-            print(word)
-        end
-    end
-    --如果 pattern 中单个匹配模式没有用小括号包含的话，最后会返回完整匹配的字符串  这样会导致只输出一个
-    --如果 pattern中 每个匹配模式用小括号包含的话，最后会按照多返回值的方式
-    print(string.format("%d, %q", string.match("I have 2 questions for you.", "(%d+) (%a+)")))
-
-    -- 字符串匹配细节：https://www.runoob.com/lua/lua-strings.html
-    do
-        local s = "Deadline is 08/10/2021, tm"
-        local date = "%d%d/%d%d/%d%d%d%d"
-        print(string.sub(s, string.find(s, date)))    --> 08/10/2021    //string.sub(s, start, end)  end默认为-1 即最后一个字符
-    end
-
-    -- %s 与空白字符配对          %a 与任何字母配对
-    -- %S 与任何非空白字符配对     %A 非字母的字符
-    print(string.gsub("hello, up-down!", "%A", "."))     --> hello..up.down.   4 (表示替换4次，用.替换非字母字符)
-
-    -- 示例
-    do 
-        local function numToCN(num)
-            local size = #tostring(num)
-            local CN = ""
-            local StrCN = {"一","二","三","四","五","六","七","八","九"}
-            for i = 1 , size do
-                local index = tonumber(string.sub(tostring(num), i , i))
-                local tempStrCN = ""
-                if index == 0
-                then
-                    tempStrCN = "零"
-                else
-                    tempStrCN = StrCN[index]
-                end
-                CN = CN .. tempStrCN
-            end
-            return CN
-        end
-        print(numToCN(10103796))
-
-        local function StrSplit(inputstr, sep)
-            if sep == nil then
-            sep = "%s"
-            end
-            local t={}
-            local i=1
-            for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-            t[i] = str
-            i = i + 1
-            end
-            return t
-        end
-        local a = "23245023496830,汉字。。。。"
-        local b = ":"
-        b = StrSplit(a,",")
-        print(b[1])
-
-        local function trim(s)
-            return (string.gsub(s, "^%s*(.-)%s*$", "%1")) 
-        end
-        local string1 = "   Baidu        "
-        local string2 = trim(string1)
-        print(string2)
-
-    end
-
-end -- do end block
-print("################ string end ###############")
 
 
 --[[
@@ -810,7 +875,7 @@ do
         }
         table.sort(test2,function(a,b) return a.id<b.id end )
         for i in pairs(test2) do
-        print(test2[1].id,test2[i].name)         -- 输出结果正常
+        print(test2[i].id,test2[i].name)         -- 输出结果正常
         end
 
         local t2 ={2,3,5,52,6,74,4}
@@ -854,7 +919,9 @@ do
     end
 
 
-    -- 数组
+    --[[
+    数组
+    ]]
     do
         local array = {"lua", "tutorial"}
         for i=0, #array

@@ -178,6 +178,7 @@
   <ItemGroup>
     <None Include="LuaDemo\my_avg_1.lua" />
     <None Include="LuaDemo\test_1.lua" />
+    <None Include="LuaDemo\test_enum.lua" />
     <None Include="Lua\binaries\Win64\Lua.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

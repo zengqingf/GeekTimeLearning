@@ -525,13 +525,106 @@
   假如onTouch方法返回false，会接着触发onTouchEvent，反之onTouchEvent方法不会被调用。
   内置诸如click事件的实现等等都基于onTouchEvent，假如onTouch返回true，这些事件将不会被触发。
   */
+  
+  
+  //return value
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch(motionEvent.getAction()) {
+        case  MotionEvent.ACTION_DOWN:
+        nativeTouchScreenPos(motionEvent.getRawX(), motionEvent.getRawY());
+        Log.debug("on Screen Touch");
+        break;
+        }
+        //注意返回值
+        //true：view继续响应Touch操作；
+        //false：view不再响应Touch操作，故此处若为false，只能显示起始位置，不能显示实时位置和结束位置
+        return true;
+        }
+  ```
+  
+  ![](api/android_screen_coord_1.jpg)
+  
+  ![android_screen_coord_2](api/android_screen_coord_2.jpg)
+  
+  ![android_screen_coord_3](api/android_screen_coord_3.jpg)
+
+
+
+* 屏幕点击
+
+  ``` java
+  //获取四指点击（多指）
+  	@Override
+        public boolean onTouchEvent(MotionEvent event)
+        {
+        switch(event.getAction()) {
+        //case MotionEvent.ACTION_DOWN:
+        //nativeTouchScreenPos(event.getRawX(), event.getRawY());
+  		  case MotionEvent.ACTION_DOWN:
+  		  case MotionEvent.ACTION_POINTER_DOWN:
+  			  isTouchBegin = true;
+  			  bTriggerMultiTouchEvent = false;
+  			  break;
+  		  case MotionEvent.ACTION_UP:
+  		  case MotionEvent.ACTION_POINTER_UP:
+  		  case MotionEvent.ACTION_CANCEL:
+  		  case MotionEvent.ACTION_OUTSIDE:
+  		  	  isTouchBegin = false;
+  		  	  break;
+  	  }
+  	  int pointerCount = event.getPointerCount();
+  	  if(pointerCount >= multiPointerCount) {
+          if(isTouchBegin) {
+              if(!bTriggerMultiTouchEvent) {
+                  nativeMultiTouchEvent();
+                  bTriggerMultiTouchEvent = true;
+              }
+          }
+  	  }
+        return true;
+        }
+        public native void nativeMultiTouchEvent();
+  	  private boolean isTouchBegin = false;
+        private int multiPointerCount = 4;
+        private boolean bTriggerMultiTouchEvent = false;
+        public void setMultiPointerCount(int count){		//设置手指数目
+  	  multiPointerCount = count;
+  	  }
   ```
 
-  ![](api/android_screen_coord_1.jpg)
+  ``` tex
+  ref: https://developer.android.com/reference/android/view/MotionEvent.html
+  ref: [Android触摸事件--MotionEvent](https://www.jianshu.com/p/7c40dece7b22)
+  
+  ACTION_DOWN vs. ACTION_POINTER_DOWN
+  ACTION_UP vs. ACTION_POINTER_UP
+  
+  ACTION_DOWN is for the first finger that touches the screen. This starts the gesture. The pointer data for this finger is always at index 0 in the MotionEvent.
+  ACTION_POINTER_DOWN is for extra fingers that enter the screen beyond the first. The pointer data for this finger is at the index returned by getActionIndex().
+  ACTION_POINTER_UP is sent when a finger leaves the screen but at least one finger is still touching it. The last data sample about the finger that went up is at the index returned by getActionIndex().
+  ACTION_UP is sent when the last finger leaves the screen. The last data sample about the finger that went up is at index 0. This ends the gesture.
+  ACTION_CANCEL means the entire gesture was aborted for some reason. This ends the gesture.
+  
+  ACTION_DOWN: 第一个手指按下时
+  ACTION_MOVE:按住一点在屏幕上移动
+  ACTION_UP：最后一个手指抬起时
+  ACTION_CANCEL:当前的手势被取消了，并且再也不会接收到后续的触摸事件，这时我们就像ACTION_UP一样对待他以结束该手势操作，但是却不执行我们在ACTION_UP时需要执行的动作。
+  要理解这个类型，就必须要了解ViewGroup分发事件的机制。一般来说，如果一个子视图接收了父视图分发给它的ACTION_DOWN事件，那么与ACTION_DOWN事件相关的事件流就都要分发给这个子视图，但是如果父视图希望拦截其中的一些事件，不再继续转发事件给这个子视图的话，那么就需要给子视图一个ACTION_CANCEL事件。这在后续文章中源码分析部分也有体现。
+  ACTION_OUTSIDE: 表示用户触碰超出了正常的UI边界.
+  ACTION_POINTER_DOWN:代表用户又使用一个手指触摸到屏幕上，也就是说，在已经有一个触摸点的情况下，又新出现了一个触摸点。
+  ACTION_POINTER_UP::代表用户的一个手指离开了触摸屏，但是还有其他手指还在触摸屏上。也就是说，在多个触摸点存在的情况下，其中一个触摸点消失了。它与ACTION_UP的区别就是，它是在多个触摸点中的一个触摸点消失时（此时，还有触摸点存在，也就是说用户还有手指触摸屏幕）产生，而ACTION_UP可以说是最后一个触摸点消失时产生。会在多指触摸和Pointers章节详解。
+  
+  多点触碰事件流：
+  先产生一个ACTION_DOWN事件，代表用户的第一个手指接触到了屏幕。
+  再产生一个 ACTION_POINTER_DOWN 事件，代表用户的第二个手指接触到了屏幕。
+  很多的 ACTION_MOVE 事件，但是在这些MotionEvent对象中，都保存着两个触摸点滑动的信息，相关的代码我们会在文章的最后进行演示。
+  一个 ACTION_POINTER_UP 事件，代表用户的一个手指离开了屏幕。
+  如果用户剩下的手指还在滑动时，就会产生很多ACTION_MOVE事件。
+  一个 ACTION_UP 事件，代表用户的最后一个手指离开了屏幕
+  ```
 
-  ![android_screen_coord_2](api/android_screen_coord_2.jpg)
-
-  ![android_screen_coord_3](api/android_screen_coord_3.jpg)
+  
 
 
 

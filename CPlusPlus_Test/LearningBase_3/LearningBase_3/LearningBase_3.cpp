@@ -13,17 +13,17 @@ int main()
 {
     std::cout << "Hello World!\n";
 
-	Chapter_8 c8;
+	//Chapter_8 c8;
 	//smart_ptr_sample();
-	c8.TestSharedPtrCircularRef();
+	//c8.TestSharedPtrCircularRef();
 
 	//Chapter_12 c12;
 	//c12.TestContainer1();
 	//c12.TestContainer2();
 	//c12.TestContainer3();
 
-	//Chapter_13 c13;
-	//c13.TestCase8();
+	Chapter_13 c13;
+	c13.TestCase5();
 
 	//Chapter_14 c14;
 	//c14.TestCase6(Chapter_14::Fib);

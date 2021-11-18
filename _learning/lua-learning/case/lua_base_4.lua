@@ -139,7 +139,7 @@ do
     print(status)
 
 --ref: https://www.runoob.com/lua/lua-debug.html
-    function myFunc2()
+    local function myFunc2()
         print(debug.traceback("stack trace"))
         print(debug.getinfo(1))
         print("stack trace end")

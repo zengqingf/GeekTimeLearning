@@ -16,6 +16,208 @@
 
 
 
+
+
+* 命令行执行lua中文乱码
+
+  ``` tex
+  1. lua文件编码格式改为GBK  不推荐
+  2. 命令行先输入 chcp 65001 将当前命令窗口临时改为UTF-8编码
+  ```
+
+  
+
+
+
+---
+
+
+
+### lua语法
+
+* self vs. local
+
+  ``` tex
+  * 尽量使用local variables
+  * 可以定义全局可用的函数，将它们放在同一份global.lua中
+  * 需要共享数据或在共享模块中时，使用self variables
+  ```
+
+  ``` lua
+  -- ue4 umg unlua
+  -- TabItemEntry_C.lua
+  function TabItemEntry_C:OnListItemObjectSet(itemObj)
+      if itemObj == nil then
+          return
+      end
+      self.mTabData = itemObj
+      self.TextMailTabName:SetText(self.mTabData.Name)
+  end
+  
+  function TabItemEntry_C:BP_OnItemSelectionChanged(bIsSelected)
+      if bIsSelected and self.mTabData ~= nil then
+          if self.mTabData.OnInfoTabSelect ~= nil then
+              self.mTabData.OnInfoTabSelect:Broadcast(self.mTabData.Id)
+          end
+      end
+  end
+  --使用self变量存储，保证只在当前创建结构中使用
+  --如果使用local变量存储，则会在TabItemEntry_C.lua中共享
+  ```
+
+  
+
+* : vs. .
+
+  ``` tex
+  冒号调用语法糖，调用便利，同时减少一条指令调用
+  ```
+  
+  ``` lua
+  -- Lua中的self ref: https://zhuanlan.zhihu.com/p/115159195
+      do
+          local t = {a = 1, b = 2}
+          function t:Add()
+              return (self.a + self.b)
+          end
+          print(t:Add())
+      end
+  
+      do
+          local t = {a = 1, b = 2}
+          function t:Add()
+              return (self.a + self.b)
+          end
+          function t.Sub(self)
+              return (self.a - self.b)
+          end
+          print(t.Add(t))
+          print(t:Sub())
+      end
+  
+      do
+          local tA = {a = 1, b = 2}
+          function tA.Add(self)
+              return (self.a + self.b)
+          end
+          print(tA.Add(tA))
+      end
+  
+      do
+          local tB = {a = 1, b = 2}
+          function tB:Add()
+              return (self.a + self.b)
+          end
+          print(tB:Add())
+      end
+  ```
+  
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111171635037.png)
+  
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111171636338.png)
+  
+  ![lua_._call_02](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111171635156.png)
+  
+  ![lua_;_call_01](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111171635167.png)
+  
+  ![lua_;_call_02](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111171635177.png)
+
+
+
+* 中英文截取
+
+  ``` tex
+  根据UTF-8字符编码
+  字符编码的发展史：ASCII->Unicode->UTF-8
+  
+  1.ASCII：ASCII码可以表示所有的英语字符(字母、数字、标点符号等)。ASCII码是7位编码(0-127)，但由于计算机基本处理单位为字节(1字节=8位)，所以一个ASCII字符占一个字节。
+  
+  2.Unicode：因为一个ASCII字符只能表示256个字符，显然是存在着局限的(如不能用来表示中文)。而且不同的语言有不同的字符，为了让世界上所有的字符都有一个唯一的编码值(如果一个编码值对应多个字符，就会出现歧义)，就出现了Unicode码。Unicode码可以容纳100多万个符号，每个符号的编码都不一样。但是Unicode码的缺点是效率不高，比如UCS-4(Unicode的标准之一)规定用4个字节存储一个符号，那么每个英文字母前都必然有三个字节是0，原本只需1个字节现在却用了4个字节，这对存储和传输来说都很耗资源。
+  
+  3.UTF-8：为了提高Unicode的编码效率，于是就出现了UTF-8编码。UTF-8可以根据不同的符号自动选择编码的长短。
+  		在UTF-8中，一个英文占1个字节，一个中文占3个字节。
+  		变长字符，字符长度有规律
+  ```
+  
+  ``` lua
+  -- lua中的string都是针对单字节字符编码的；对于utf-8中，lua能处理单字节的英文字符，不能处理多字节的中文字符
+  
+  --[[
+  UTF8的编码规则：
+  1.字符的第一个字节范围：(0-127)、(194-244)
+  2.字符的第二个字节及以后范围(针对多字节编码，如汉字)：(128-191)
+  3.(192，193和245-255)不会出现在UTF8编码中
+  ]]
+  
+  --lua的string.sub接口会将中文字符当成3个字符来处理
+  --lua5.3是支持UTF-8编码格式的, 但是string.sub()函数本身并未对汉字处理,无法实现中文的正确截取
+  ```
+  
+  ``` tex
+  utf-8变长编码：
+  一字节：0*******
+  两字节：110*****，10******
+  三字节：1110****，10******，10******
+  四字节：11110***，10******，10******，10******
+  五字节：111110**，10******，10******，10******，10******
+  六字节：1111110*，10******，10******，10******，10******，10******
+  
+  判断utf-8字符的byte长度，获取字符首个byte，就能判断出该字符由几个byte表示
+  ```
+  
+  
+
+
+
+* 闭包
+
+  [Lua闭包使用](https://www.cnblogs.com/JensenCat/p/5112420.html)
+
+  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111172103228.jpg)
+
+  ``` lua
+  function func3()
+        local num3 = 44
+        function func4()
+             return num3
+        end
+        return func4
+  end
+  
+  local func = func3();
+  print(func())
+  
+  --[[
+  解释：
+  1.在外部无法获取到func3内部的局部变量，但是func3内部的局部方法func4却可以获取到，因此返回一个func4的引用 ，这样在外部通过这个func4就可以获取到func3的内部变量。
+  2.虽然是绕了一个圈子，但是在方法外部却通过这样一个手段获取到了内部的值。而这个方法内的局部方法func4就叫做闭包，按照很多书上的概念，这个方法搭建了方法内部与方法外部的桥梁，使得在外部也可以任意的获取到方法内部的资源。
+  3.但是闭包会造成变量在内存中持久占用，因此会有一定的性能问题，最好不要轻易使用，即便使用也要在恰当的实际进行释放。
+  ]]
+  ```
+
+  ``` lua
+  --cocos lua
+  local testUI = testUI or {}
+  local testUI:onBtnClick(sender,event)
+      --可获取的参数有:隐藏的self,btn,event
+  end
+  function testUI:initButton()
+       local btn = UIButton:create()
+      --重点来了
+      btn:addListenHandler(
+         function(event)
+             --使用闭包把self,btn都传进去了....
+             self:onBtnClick(btn,event)				--按钮获取到自身，可以改变自身
+         end
+      )
+  end
+  return testUI
+  ```
+
+  
+
+
+
 ---
 
 

@@ -112,6 +112,22 @@ public:
 	//排序
 	//排序算法对迭代器要求较高，通常是随机访问迭代器
 	//最好用于 顺序容器 array / vector 
+
+	//比较a和b，如果是想升序，那么就定义当a<b的时候返回true；如果是想降序，那么就定义当a > b的时候返回true
+	struct {
+		bool operator()(int a, int b) const
+		{
+			return a > b;		//从大到小
+		}
+	}customGreater;
+
+	struct {
+		bool operator()(int a, int b) const
+		{
+			return a < b;		//从小到大
+		}
+	}customLess;
+
 	void TestCase5()
 	{
 		vector<int> v { 5, 6, 4, 3, 2, 6, 7, 9, 3 };
@@ -134,6 +150,7 @@ public:
 
 		//sort() 快排，不稳定排序， 全部元素排序
 		std::sort(begin(v), end(v));
+		std::sort(v.begin(), v.end(), customGreater);		//加入自定义排序规则
 		_print_foreach_vector(v, print);
 
 		//选出前几名（TopN）

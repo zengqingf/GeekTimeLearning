@@ -1,7 +1,11 @@
 --[[
     类和面向对象
 
-    . 与 : 的区别在于使用 : 定义的函数隐含 self 参数，使用 : 调用函数会自动传入 table 至 self 参数
+    . 与 : 的区别在于
+    使用 : 定义的函数隐含 self 参数，
+    使用 : 调用函数会自动传入 table 至 self 参数，相当于c++中的this指针，指向当前对象
+
+    在lua中模拟面向对象编程中，可以用 . 来表示类方法，而 ： 可以用来表示成员方法。
 ]]
 
 do
@@ -103,4 +107,62 @@ do
     -- 创建对象
     local myrectangle = Rectangle:new(nil,10,20)
     myrectangle:printArea()
+end
+
+do
+    --[[
+    等价：
+    function class:func() end
+    function class.func(self) end
+    ]]
+
+    --[[
+        function class:ctor()
+            self:test(1,2,3)
+        end
+
+        function class:test(a, b, c)
+            print(a, b, c)
+        end
+
+        output:  1 2 3
+    ]]
+
+    --[[
+        function class:ctor()
+            self:test(1,2,3)
+        end
+
+        function class.test(a, b, c)
+            print(a, b, c)
+        end
+
+        output:  userdata 1 2      使用:调用方法时，默认传递self为第一个参数，但是函数声明时使用. 不会有默认隐式self去接收传递进来的self, 3被舍弃
+    ]]
+
+    --[[
+        function class:ctor()
+            self.test(1,2,3)
+        end
+
+        function class.test(a, b, c)
+            print(a, b, c)
+        end
+
+        output: 1 2 3
+    ]]
+
+    --[[
+        function class:ctor()
+            self.test(1,2,3)
+        end
+
+        function class:test(a, b, c)
+            print(self)
+            print(a,b,c)
+        end
+
+        output: 1               使用.调用方法时，不会传递self, 只传递1 2 3，  但是函数声明使用: 默认第一位有一个self去接收，即上述test()可以接收4个参数 self a b c
+                2 3 nil         c没有接收到参数
+    ]]
 end
