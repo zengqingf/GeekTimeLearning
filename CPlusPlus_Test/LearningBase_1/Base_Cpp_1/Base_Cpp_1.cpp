@@ -8,11 +8,24 @@
 #include "base_4.h"
 #include "base_5.h"
 #include "base_6.h"
+#include "base_7.h"
 
+#include <math.h>
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+	//base_7.h 测试运算符结合次序和运算顺序的关系
+	//TestOperator_1 to_1;
+	//to_1.Test1();
+
+	//base_7.h 测试数学计算
+	TestMath_1 tm_1;
+	//tm_1.Test1();
+	tm_1.Test2();
+	return 0;
+
 
 	//base_1.h 测试指针外部存储导致野指针问题
 	TA* testA = new TA();

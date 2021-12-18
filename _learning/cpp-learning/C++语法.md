@@ -1065,9 +1065,9 @@
 
 
 
-* std
+* stl
 
-  * string
+  * std::string
 
     ``` c++
     //清空string并释放内存空间
@@ -1112,9 +1112,30 @@
     */
     ```
 
+  
+  
+  
+  * std::stack
+  
+    ``` c++
+    //using top with empty stack
+    {
+        //...
+    	stack<TownPathNode*> nodeStack = FindTownPathNode(areaID, position);
+        //如果FindTownPathNode返回的是 stack<TownPathNode*> size() == 0
+        //直接调用nodeStack.top()会导致crash
+    	if(nodeStack.empty())
+    	{
+    		return nodeQueue;
+    	}
+        TownPathNode* topNode = nodeStack.top();
+        //...
+    }
+    ```
+  
     
-
-
+  
+    
 
 
 

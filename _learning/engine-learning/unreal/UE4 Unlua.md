@@ -43,7 +43,36 @@
 
   
 
+* 蓝图 + UnLua 开发 UserWidget
 
+  ``` tex
+  为ListView创建Item(Entry)对象，并创建ItemData(Item)数据
+  
+  ItemData(Item)数据对象继承 蓝图的UObject，添加界面用变量和事件
+  事件可以分发ItemData的变化给外部监听对象，
+  	也可以ItemData关联的Item(Entry)的改变（Selected，InnerBtnClick等）分发给外部监听对象
+  ```
+
+  ``` lua
+  --unlua中调用蓝图接口
+  --蓝图接口 Tarray GetList()
+  --lua中需要 遍历Tarray时，Tarray所包含的函数可以在蓝图编辑窗口将方法引线拖出可用函数
+  --[[
+  	Tarray的遍历需要使用 arrayList:Get(i)
+  ]]
+  ```
+  
+  
+
+
+
+---
+
+
+
+### UE4 & UnLua内存管理
+
+* 
 
 
 
@@ -71,6 +100,35 @@
           ^
   C:/build_env/a8/android_ndk/android-ndk-r21b/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include\sys/types.h(72,9): error: unknown type name 'uint64_t'
   typedef uint64_t ino64_t;
+  ```
+
+  
+
+* require 时序问题
+
+  ``` lua
+  --Global.lua
+  --DataManager模块
+  DataManagerModuleMgr	= require "DataManager/DataManagerModule"
+  --界面基类
+  FrameBase 				= require "UI/Base/FrameBase"
+  
+  --DataManagerModule.lua
+  TeamDataMgr = require "DataManager/TeamDataManager"
+  
+  --TeamDataManager.lua
+  --TODO 移除，仅测试
+  TeamMF = require("UI/Frame/TeamFrame/Main/TeamMainFrame")
+  
+  --TeamMainFrame.lua
+  require('Base/extern')
+  local TeamMainFrame = class("TeamMainFrame", FrameBase)
+  function TeamMainFrame:Ctor()
+      self.Super.Ctor(self)
+  end
+  
+  --error: 导致 TeamMainFrame.lua中获取不到FrameBase作为Super
+  --因为Global.lua中 DataMgr模块require先于FrameBase  继承DataMgr的TeamDataMgr中require了TeamMainFrame,导致引入的TeamMainFrame未继承FrameBase
   ```
 
   

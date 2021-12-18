@@ -269,6 +269,17 @@ public:
 	Chapter_10 c10;
 	c10.Print()
 	*/
+
+
+
+	//std::function 的默认值
+	//用 " {} " 表示
+	public:
+		void func(const std::function<void()>& f = {}) {
+			if (f) {
+				f();
+			}
+		}
 };
 
 

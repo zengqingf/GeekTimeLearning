@@ -24,7 +24,7 @@ local TestEnumType = {
 
 function GameEnumTest.OnInitOK()
     TestEnumType = GameEnumTest.CreateEnumTable(TestEnumType, -1)   --后面的参数为-1时，下面的打印结果为0123456，为0时打印结果为1234567
-    print(TestEnumType.XiaZhu_None,
+    print(TestEnumType.None,
         TestEnumType.First,
         TestEnumType.Seconed,
         TestEnumType.Fourth,

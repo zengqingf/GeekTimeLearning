@@ -46,16 +46,19 @@ link:
 
 * adb安装卸载
 
-    ``` shell
-    #指定设备安装
-    adb devices
-    adb -s (deviceid) install xxx.apk
-    
-    #安装获取进度
-    adb push apk.apk /data/local/tmp
-    adb shell pm install -r /data/local/tmp/apk.apk
-    adb shell rm /data/local/tmp/apk.apk
-    ```
+  ``` shell
+  #指定设备安装
+  adb devices
+  adb -s (deviceid) install xxx.apk
+  
+  #安装获取进度
+  adb push apk.apk /data/local/tmp
+  #push apk到指定目录 sdcard/Download/
+  adb push apk.apk /sdcard/Download/       
+  
+  adb shell pm install -r /data/local/tmp/apk.apk
+  adb shell rm /data/local/tmp/apk.apk
+  ```
 
   ``` shell
   #安装获取进度

@@ -22,6 +22,11 @@ do
     local tmp1, tmp2 = math.modf(8 / 3)
     print(tmp1, tmp2)       --tmp1是整数部分,tmp2是小数部分
 
+    local line = math.modf(10 / 3)      --取整数
+    local mod = math.fmod(10, 3)        --取余数
+    print(line)                 -->3
+    print(mod)                  -->1
+
     print(string.format("%.0f", 2.2 * 100))  --output: 220
     print(string.format("%.2f", 3.1415926))  --output: 3.14
     

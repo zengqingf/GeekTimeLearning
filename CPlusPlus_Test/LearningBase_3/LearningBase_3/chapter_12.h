@@ -16,6 +16,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <stack>
+
 #if __cplusplus >= 201703
 #include <multiset>
 #include <multimap>
@@ -222,6 +224,187 @@ public:
 	等价： !(x < y) && !(x > y)  基于次序关系，对象不一定相同
 	相等： 两个对象相同
 	*/
+
+
+
+
+	/*
+	insert vs emplace vs operator[] in c++ map
+	https://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map
+
+	The operator[] is a find-or-add operator
+		它将尝试在映射中找到具有给定键的元素，
+		如果元素存在，它将返回对存储值的引用。
+		如果没有，它将创建一个用默认初始化插入的新元素，并返回对它的引用。
+
+	The insert function (in the single element flavor) 
+		takes a value_type (std::pair<const Key,Value>), 
+		它使用键(第一个成员)并尝试插入它。
+		因为std::map不允许重复，所以如果存在一个现有的元素，它就不会插入任何东西。
+
+	*/
+	void TestContainer4()
+	{
+		std::map<int, int> m{ {5, 0} };
+		std::cout << "test 1 map insert or [], " << m[5] << std::endl; //output : 0
+		m[5] = 10;
+		std::cout << "test 2 map insert or [], " << m[5] << std::endl; //output : 10
+		m.insert(std::make_pair(5, 15));
+		//make_pair == m.insert(std::pair<int, int>(5, 15));
+		std::cout << "test 3 map insert or [], " << m[5] << std::endl; //output : 10
+	}
+
+	void reportStackSize(const std::stack<int>& s)
+	{
+		std::cout << s.size() << " elements on stack\n";
+	}
+
+	void reportStackTop(const std::stack<int>& s)
+	{
+		std::cout << "Top element: " << s.top() << '\n';
+	}
+
+	void TestContainer5()
+	{
+		std::stack<int> s;
+		s.push(1);
+		s.push(2);
+		s.push(4);
+
+		reportStackSize(s);
+		reportStackTop(s);
+
+		reportStackSize(s);
+		s.pop();
+
+		reportStackSize(s);
+		reportStackTop(s);
+
+		s.pop();
+
+		reportStackSize(s);
+		reportStackTop(s);
+
+		s.pop();
+
+		reportStackSize(s);
+
+		//@注意：
+		//如果stack size 为0时 不能直接进行top()
+		//reportStackTop(s);
+		if (s.size() > 0)
+		{
+			std::cout << "Top element: " << s.top() << '\n';
+		}
+	}
+
+	/*
+	map中
+
+	operator[] vs. insert vs. emplace
+	ref: https://stackoverflow.com/questions/17172080/insert-vs-emplace-vs-operator-in-c-map
+		http://blog.guorongfei.com/2016/03/16/cppx-stdlib-empalce/
+
+	operator[]: find-or-add operator 
+		m[k]=v
+		1.尝试找给定键的元素，若元素存在，则返回元素值的引用，若不存在，则创建并插入一个默认初始化的元素，并返回其引用
+		2.需要一个能够构造默认初始化值，对于不支持默认可构造或者可赋值的，不能使用operator[]
+		3.若类型是默认可构造和可赋值的，并且需要一个对象的默认初始化以及复制到该对象
+		4.operator[]会覆盖存在键的值
+
+	insert(): value_type（std::pair<const key, value>）
+			K t; V u;
+			std::map<K,V> m;   // std::map<K,V>::value_type is std::pair<const K,V>
+
+		1. 使用pair的first作为key插入，由于std::map不支持重复key，所以如果存在key，就不会执行插入
+		2. insert() 参数有不同的方式
+		3. 外部创建value_type并复制到map中
+		4. 会产生临时对象
+		5. 如果make_pair<> 模板推导参数不一致但接近（如map为<const int,int>, make_pair(10, 10)） 
+			会创建一个正确类型的临时对象拷贝初始化，然后拷贝到map中，过程中会有两份副本
+
+	emplace(): 
+		1.c++11 通过可变模板和完美转发，可以通过emplace(就地创建，in place)将元素添加到容器中，
+			不同的容器emplace()基本上功能相同，通过转发而不是复制，将元素存到容器中的对象的构造函数
+		”变参模板”使得 emplace 可以接受任意参数，这样就可以适用于任意对象的构建。
+		”完美转发”使得接收下来的参数 能够原样的传递给对象的构造函数，
+			这带来另一个方便性就是即使是构造函数声明为 explicit 它还是可以正常工作，因为它不存在临时变量和隐式转换。
+		2.避免不必要的临时对象的产生，在map中，the std::pair<const K, V> is not created and passed to emplace,
+			but rather references to the t and u object are passed to emplace that forwards them to 
+				the constructor of the value_type subobject inside the data structure.
+		3.不会覆盖已存在的键值
+	*/
+	void TestContainer6()
+	{
+		std::map<int, int> m1{ {1, 2}, {2, 4}, {3, 6}, {4, 8}, {5, 10} };
+		m1[5] = 15;
+		std::cout << m1[5] << std::endl;			//15
+
+		m1[6] = 12;
+		std::cout << m1[6] << std::endl;
+		m1.insert(std::make_pair(7, 14));
+		std::cout << m1[7] << std::endl;
+
+		m1.insert(std::make_pair(5, 20));		
+		std::cout << m1[5] << std::endl;			//15
+//是模板方法 
+/*
+template <typename T, typename U>
+std::pair<T,U> make_pair(T const & t, U const & u );
+*/
+		m1.insert(std::make_pair<const int, int>(5, 21));
+		std::cout << m1[5] << std::endl;			//15
+
+		m1.insert(std::make_pair<const int, int>(5, 21));
+		std::cout << m1[5] << std::endl;			//15
+
+		m1.insert(std::pair<const int, int>(5, 25));
+		std::cout << m1[5] << std::endl;			//15
+		m1.insert(std::map<int, int>::value_type(5, 30));		//使用value_type可以避免插入错误的类型
+		std::cout << m1[5] << std::endl;			//15
+
+
+		m1.emplace(5, 35);
+		m1.emplace(10, 50);
+
+		map<string, std::complex<double>> scp;
+		scp.emplace("hello", 1, 2);  // 无法区分哪个参数用来构造 key 哪些用来构造 value
+									 // string s("hello", 1), complex<double> cpx(2) ???
+									 // string s("hello"), complex<double> cpx(1, 2) ???
+
+		// map 虽然避免了临时变量的构造，但是却需要构建两个 tuple
+		//std::map<string, complex<double>> scp;
+		//scp.emplace(piecewise_construct,
+		//	forward_as_tuple("hello"),
+		//	forward_as_tuple(1, 2));
+
+		// 使用insert更直观，临时对象如果是基础类型，可以使用insert
+		//scp.insert({"world", {1, 2}});
+	}
+
+	struct Foo {
+		Foo(int n, double x);
+	};
+	struct Bar {
+		Bar(int a) {}
+		explicit Bar(int a, double b) {}
+	};
+	void TestContainer7()
+	{
+		std::vector<Foo> av;
+		//av.emplace(42, 3.1416);        // 没有临时变量产生
+		//av.insert(Foo(42, 3.1416));    // 需要产生一个临时变量
+		//av.insert({ 42, 3.1416 });     // 需要产生一个临时变量
+
+		std::vector<Bar> bv;
+		bv.push_back(1);			 // 隐式转换生成临时变量
+		bv.push_back(Bar(1));		 // 显示构造临时变量
+		bv.emplace_back(1);			 // 没有临时变量
+
+		//bv.push_back({1, 2.0});   // 无法进行隐式转换
+		bv.push_back(Bar(1, 2.0));  // 显示构造临时变量
+		bv.emplace_back(1, 2.0);    // 没有临时变量
+	}
 };
 
 //自定义比较运算

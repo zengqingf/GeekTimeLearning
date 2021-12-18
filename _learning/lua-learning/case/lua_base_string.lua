@@ -631,10 +631,61 @@ do
         print("----------------------------------------------------")
     end
 
-    --[[
+    --[=[
         string.find()
-    ]]
+        
+
+        ref:    https://www.cnblogs.com/meamin9/p/4502461.html
+        string.find(s, pattern[, init[, plain]]
+        1.在字符串s中匹配pattern，如果匹配成功返回第一个匹配到的子串的起始索引和结束索引，
+        如果pattern中有分组，分组匹配的内容也会接着两个索引值之后返回。如果匹配失败返回nil。
+        2.可选数值参数init表示从s中的哪个索引位置开始匹配，缺省值是1，可以为负索引。
+        3.可选布尔值参数plain为true时，pattern作为普通字符串匹配，所有正则中的元字符都只被作为普通字符解析。（这个参数并不是匹配字符串的结束索引）
+
+    ]=]
     do
+
+        -- string.find(s, pattern [, init [, plain]] )
+        -- s: 源字符串
+        -- pattern: 待搜索模式串
+        -- init: 可选， 起始位置
+
+        --[[
+            pattern说明
+            .   任意字符 
+            %a   字母 
+            %c   控制字符 
+            %d   数字 
+            %l   小写字母 
+            %p   标点字符 
+            %s   空白符 
+            %u   大写字母 
+            %w   字母和数字 
+            %x   十六进制数字 
+            %z   代表 0的字符 
+            特殊字符如下：
+            (). % + - * ? [] ^ $ 
+
+            () 分组
+            %   也作为以上特殊字符的转义字符
+            +   匹配前一字符 1 次或多次，最长匹配
+            *   匹配前一字符 0 次或多次，最长匹配
+            -   匹配前一字符 0 次或多次，最短匹配
+            ?   匹配前一字符 0 次或 1次 
+        ]]
+
+        local start1,last1 = string.find("hello this world .","wor")
+        -- 返回起始位置和截止位置
+        print("start1=",start1)
+        print("last1=",last1)
+
+        -- 注意： lua 里面数组或者字符串的字符， 其下标索引是从 1 开始， 不是 0
+        local start2,last2 = string.find("hello this 21 world .","[0-9]+")
+        print("start2=",start2)
+        print("last2=",last2)
+
+
+
         print("----------------------------------------------------")
         print(string.find("abcde", "bc"))  --output: 2, 3
         local a = string.find("abcde", 'bc')                --只获取第一返回值
@@ -660,8 +711,109 @@ do
         local pair = " name = Anna " -- “name”前后、“=”前后、“Anna”前后都有空格
         print(string.find(pair, "(%a+)%s*=%s*(%a+)"))       --output: 2     12    name    Anna
         print("----------------------------------------------------")
+
+
+
+
+        print("-----------------------string find test----------------------")
+        local link = '<link type="4" type2="0" target_id="1001" map_id="2001">与丽亚好好谈谈</>'
+        local _,_,_,targetId = string.find(link, '(target_id)=("%d+")')
+        --[[
+            lua "1001" ~= tostring(1001)
+        ]]
+        print(targetId)
+        print(string.gsub(targetId, '"', ''))
+        print(tonumber(targetId))
+        print(tostring(targetId))
+        print(type(targetId))
+        local tId = tonumber(targetId)
+        print(tId)
+        print(targetId == tostring(1001))
+        --print(string.gsub(link,"[target_id='%w']","##"))
+        print(os.time())
+
+
+        local taskInfo = '<tag color="#ffff50">收集经验药水，并使用一个。</><tag color="#48ffc2" size="20">([step1]/1)</>\
+        <tag color="#ffff50">收集疲劳药水，并使用两个。</><tag color="#48ffc2" size="20">([step2]/2)</>'
+        local stepArr = {[1] = 1, [2] = 1}
+        local index = 1
+        local ts = taskInfo
+        for s in string.gmatch(ts, '%[step(%d+)%]') do
+            print(s)
+            ts = string.gsub(ts, '%[step'..s..'%]', tostring(stepArr[index]))
+            index = index + 1
+        end
+        print(ts)
+        print("-----------------------string find test--------------------")
+
+        print("-----------------------string find test2--------------------")
+        print(string.find('Hanazawa Kana', 'na'))           --3       4
+        print(string.find('Hanazawa Kana', '[%a]+'))        --1       8
+        print(string.find('2015-5-12 13:53', '(%d+)-(%d+)-(%d+)'))  --1       9       2015    5       12
+        print(string.find('2015-5-12 13:53', '(%d+)-(%d+)-(%d+)', 1, true))     --nil
+        print(string.find('%a1234567890%a', '%a', 3, true))     --13      14            从第三个索引开始查找  匹配到的时最后那个 %a   13和14序号
+        print("-----------------------string find test2--------------------")
     end
 
+
+    --[[
+        string.match
+        所有用到match的地方都可以用find来实现。match是find的一个简化版
+
+        ref:    https://www.cnblogs.com/meamin9/p/4502461.html
+        string.match(s, pattern[, init])
+        在字符串s中匹配pattern，如果匹配失败返回nil。否则，当pattern中没有分组时，返回第一个匹配到的子串；
+        当pattern中有分组时，返回第一个匹配到子串的分组，多个分组就返回多个。
+        可选参数init表示匹配字符串的起始索引，缺省为1，可以为负索引。
+
+
+        string.gmatch(s, pattern)
+        返回一个迭代器。每当迭代器调用时，返回下一个匹配到的子串，如果pattern中有分组，返回的是子串对应的分组。gmatch也可以用find和循环来实现。
+
+    ]]
+    do
+        print("-----------------------string match test--------------------")
+        print(string.match('2015-5-12 13:53', '%d+-%d+-%d+'))               --2015-5-12
+        print(string.match('2015-5-12 13:53', '(%d+)-(%d+)-(%d+)'))         --2015    5       12
+        print(string.match('2015-5-12 13:53', '((%d+)-(%d+)-(%d+))'))       --2015-5-12       2015    5       12
+        print("-----------------------string match test--------------------")
+
+
+        print("-----------------------string gmatch test--------------------")
+        for s in string.gmatch('2015-5-12 22:20', '%d+') do         
+            print(s)            
+        end
+        --[[
+            2015
+            5
+            12
+            22
+            20
+        ]]
+
+        for s in  string.gmatch('Hanazawa Kana', 'a(%a)a') do           --匹配形如 'a字母a' 中间的字母
+            print(s)
+        end
+        --[[
+            n
+            w
+            n
+
+例子中，处于两个a字母中间的单个字母还有‘z’，但循环并没有输出。
+原因是在'ana'匹配成功之后，接下来匹配是从'z'开始的，z没有被匹配到。正确的模式pattern应该不要捕获'a(%a)a'的后面的a，
+用python的正则可以写成'a(\w)(?=a)',他不会消耗掉后面的a。
+但是lua不支持(?=...)。（python中\w表示单词字符[a-zA-Z0-9_]，记不清就把这类元字符列出来 如 %a写成[a-zA-Z] 。）
+        ]]
+
+        for k, v in string.gmatch('a=214,b=233', '(%w+)=(%w+)') do
+            print(k, v)
+        end
+        --[[
+            a       214
+            b       233
+        ]]
+        print("-----------------------string gmatch test--------------------")
+    end
 
 
 
@@ -753,6 +905,16 @@ do
             如果参数repl是一个函数，那么每一次匹配的子串都将作为整个函数的参数，取function(匹配子串)来替换所匹配出来的子串，
             当匹配不成功时，函数会使用整个字符串来作为函数的参数。如果函数的返回值是一个数字或者是字符串，那么会直接拿来替换，
             如果它返回false或者nil，替换动作将不会发生，如果返回其他的值将会报错。
+
+
+            ref: https://www.cnblogs.com/meamin9/p/4502461.html
+            string.gsub(s, pattern, repl[, n])
+            替换字符串函数！这个功能应该是字符串处理中实用性最强的一个。
+            把字符串中用模式pattern匹配到的所有子串替换为repl指代的子串，返回替换后的字符串和替换的次数。
+            可选数值参数n表示最多可替换的次数。
+            参数repl可以是正则表达式，也可以是函数。当repl是函数时，函数的参数是模式pattern捕获的子串，
+            和match类似，有分组返回分组，无分组返回整个子串。函数最后应该返回一个字符串。
+            如果repl是正则表达式，可以用分组序号引用匹配到的分组。
         ]]
 
 
@@ -765,50 +927,26 @@ do
             print(ch)
         end)
         --print(string.byte(str))
+
+
+
+        print("-----------------------string gsub test--------------------")
+        print(string.gsub('Hanazawa Kana', 'na', 'nya'))            --Hanyazawa Kanya 2
+        print(string.gsub('Hanazawa Kana', 'na', function(s) return string.sub(s,1,1)..'y'..string.sub(s,2,2) end)) --Hanyazawa Kanya 2
+        print(string.gsub('Hanazawa Kana', '(n)(a)', function(a,b) return a..'y'..b end))  --Hanyazawa Kanya 2
+        print(string.gsub('Hanazawa Kana', '(n)(a)', '%1y%2'))      --Hanyazawa Kanya 2
+        print("-----------------------string gsub test--------------------")
     end
 
-    do
-        -- string.find(s, pattern [, init [, plain]] )
-        -- s: 源字符串
-        -- pattern: 待搜索模式串
-        -- init: 可选， 起始位置
-
-        --[[
-            pattern说明
-            .   任意字符 
-            %a   字母 
-            %c   控制字符 
-            %d   数字 
-            %l   小写字母 
-            %p   标点字符 
-            %s   空白符 
-            %u   大写字母 
-            %w   字母和数字 
-            %x   十六进制数字 
-            %z   代表 0的字符 
-            特殊字符如下：
-            (). % + - * ? [] ^ $ 
-
-            () 分组
-            %   也作为以上特殊字符的转义字符
-            +   匹配前一字符 1 次或多次，最长匹配
-            *   匹配前一字符 0 次或多次，最长匹配
-            -   匹配前一字符 0 次或多次，最短匹配
-            ?   匹配前一字符 0 次或 1次 
-        ]]
-
-        local start1,last1 = string.find("hello this world .","wor")
-        -- 返回起始位置和截止位置
-        print("start1=",start1)
-        print("last1=",last1)
-
-        -- 注意： lua 里面数组或者字符串的字符， 其下标索引是从 1 开始， 不是 0
-        local start2,last2 = string.find("hello this 21 world .","[0-9]+")
-        print("start2=",start2)
-        print("last2=",last2)
-    end
 
 end -- do end block
 
+
+
+--[[
+    lua正则
+正则表达式由元字符按照规则(语法)组成。lua中的特殊字符是%.^$+-*?,一共12个。它们和一般字符按规则构成了lua的正则表达式。
+
+]]
 
 print("################ string end ###############")

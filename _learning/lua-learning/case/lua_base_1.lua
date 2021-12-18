@@ -322,6 +322,13 @@ do
         do
             print(key, value)
         end
+
+        
+        --倒序遍历
+        for i = #array, 1, -1 do
+            print("### table remove " .. array[i])
+            table.remove(array, i)
+        end
     end
 
     local function square(iteratorMaxCount,currentNumber)
@@ -821,6 +828,26 @@ do
         print(fruits[5])
         table.remove(fruits)  -- 移除最后一个元素
         print(fruits[5])
+
+        --[[
+            原型：table.move(a1,f,e,t[,a2])
+            函数作用: 把表a1中从下标f到e的value移动到表a2中，位置为a2下标从t开始
+            函数参数: 表a1，a1下标开始位置f，a1下标结束位置e，t选择移动到的开始位置(如果没有a2，默认a1的下标)
+        ]]
+        local tbl = {"a","b","c"} 
+        local newtbl = {1,2,3,5}
+
+        table.move(tbl, 2, 3, 2, newtbl)
+        print(table.concat(tbl,",")) -------> a,b,c
+        print(table.concat(newtbl,",")) -------> 1,b,c,5
+        table.move(tbl,2,3,2)
+        print(table.concat(tbl,",")) -------> a,b,c
+        table.move(tbl, 1, #tbl, 2)
+        print(table.concat(tbl,",")) -------> a,a,b,c
+        table.move(tbl, 1, #tbl, #newtbl + 1, newtbl)
+        print(table.concat(tbl,",")) -------> a,a,b,c
+        print(table.concat(newtbl,",")) -------> 1,b,c,5,a,a,b,c
+
 
         --排序
         for k, v in ipairs(fruits) 

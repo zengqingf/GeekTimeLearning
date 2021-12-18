@@ -35,9 +35,9 @@
 
   UMG窗口，选择分辨率Apple iPhone 5s，并且调整分辨率到640 * 1136，放入一张640*1136的Image，发现Image小于屏幕区域
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111120951913.png)
+  ![](UE4 UI开发.assets/202111120951913.png)
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111120951529.png)
+  ![](UE4 UI开发.assets/202111120951529.png)
 
   ``` tex
   调整DPI（Project Settings中User Interface->DPI Scaling）
@@ -52,7 +52,7 @@
 
 * RichTextBlock 富文本实现
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111181158658.png)
+  ![](UE4 UI开发.assets/202111181158658.png)
   
   ``` tex
   新建杂项（Miscellaneous）-> Data Table
@@ -89,7 +89,15 @@
 
 
 
+* [UserWidget] - SizeBox
 
+  ``` tex
+  注意特点：
+  Single Child 只支持一个child
+  Fixed Size	可以固定大小 常用于容器内单一Item(Entry)的根节点
+  ```
+
+  
 
 
 
@@ -99,7 +107,32 @@
 
 ### 3D UI
 
+* 问题
 
+  * Cylinder collision (widget component) is incorrect for widget interaction component
+
+    ``` c++
+    //获取Cylinder WidgetComponent的点击结果
+     if (auto WidgetComp = Cast<UWidgetComponent>(HitResult.GetComponent()))
+     {
+          auto cylinderHitLocation = WidgetComp->GetCylinderHitLocation(HitResult.Location, GetForwardVector());
+          // do something using CylinderHitLocation.Key;
+     }
+    ```
+
+
+
+
+* 相机
+
+  * 移动相机
+
+    ``` tex
+    一、创建一个Arrow组件来标记要移动的位置（Arrow的用法之一就是用来标注坐标）。
+    二、使用TimeLine时间轴结合插值Lerp来移动相机
+    ```
+
+    
 
 
 
@@ -119,18 +152,31 @@
   Visibility（ESlateVisibility）
   
   Visible					Visible and hit-testable (can interact with cursor). Default value.
+  						可见，可点击
   
   Collapsed				Not visible and takes up no space in the layout (obviously not hit-testable).
+  						不可见，不占用布局空间
   
   Hidden					Not visible but occupies layout space (obviously not hit-testable).
+  						不可见，占用布局空间
   
   HitTestInvisible		Visible but not hit-testable (cannot interact with cursor) and
   						children in the hierarchy (if any) are also not hit-testable.
+  						可见，当前和所有Child的Widget均不可点击
   						
   SelfHitTestInvisible	Visible but not hit-testable (cannot interact with cursor) and 
   						doesn't affect hit-testing on children (if any).
+  						可见，当前Widget不可点击，Child Widget可点击
+  						
+  						
+  很多 Widget 默认属性是 Visible,需要手动设置成 HitTestInvisible 和 SelfHitTestInvisible。
+  如果大量 Widget 设置成 Visible，那么引擎在点击响应时的效率就会大大下降，这也会增加游戏线程的开销。
+  
+  Collapsed 不占用布局空间（Layout Space），因此在隐藏后不会进行 Prepass 的计算，性能优于 Hidden。
+  可以使用	 Widget Reflector 	帮助检查是否有错误设置的 Visibility 属性。
+  
   ```
-
+  
   ``` lua
   --屏蔽点击事件向下传递至3D场景
   function FrameViewBase:OnMouseButtonDown(Geometry, MouseEvent)
@@ -141,7 +187,7 @@
       return UE4.UWidgetBlueprintLibrary.Handled()
   end
   ```
-
+  
   
 
 
@@ -201,7 +247,14 @@
           //确定部件层级：无
   ```
 
+  ``` tex
+  Overlay作用1：
+  	动态挂载时，用Overlay作为挂载的根节点，可以设置Overlay的大小，使挂载对象使用填充方式挂载，如图所示
+  ```
   
+  ![umg_canvaspanel_vs_overlay_02](_pic/umg_canvaspanel_vs_overlay_01.png)
+  
+  ![umg_canvaspanel_vs_overlay_02](_pic/umg_canvaspanel_vs_overlay_02.png)
 
 
 
@@ -209,7 +262,7 @@
 
 * 合批
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202111121005173.png)
+  ![](UE4 UI开发.assets/202111121005173.png)
 
   ``` tex
   开启Canvas Panel支持合批的开关
@@ -217,6 +270,27 @@
   
   使用相同Zorder的Canvas作为容器，然后设置相同ZOrder的批次合并
   ```
+
+
+
+
+* 拼界面
+
+  ``` tex
+  1. 窗口元素尽量扁平化
+  	(不要过多的使用容器套娃),套用越多,函数调用递归性越强,执行代码越多,查找Vtable也越多.有可能会造成CPU缓存缺失.
+  	窗口小部件树越小，函数调用越少
+  	窗口小部件树越扁平，递归越少
+  
+  
+  ```
+
+
+
+
+* UE4 Widget UI优化
+
+  ref: [Unreal Engine 4 中的 UI 优化技巧](https://gameinstitute.qq.com/community/detail/113852)
 
   
 
@@ -292,9 +366,11 @@
   }
   ```
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110141610389.jpg)
+  ![](UE4 UI开发.assets/202110141610389.jpg)
 
-  ![UE4_Actor_Overlay_2](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110141610498.jpg)
+  ![UE4_Actor_Overlay_2](UE4 UI开发.assets/202110141610498.jpg)
+
+  
 
 * mouse or touch with actor
 
@@ -342,6 +418,9 @@
   }
   ```
 
-  ![](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110141611738.jpg)
+  ![](UE4 UI开发.assets/202110141611738.jpg)
 
-  ![UE4_Actor_Touch_MouseClick_2](https://raw.githubusercontent.com/MJX1010/PicGoRepo/main/img/202110141611740.jpg)
+  ![UE4_Actor_Touch_MouseClick_2](UE4 UI开发.assets/202110141611740.jpg)
+
+
+
