@@ -187,4 +187,123 @@ do
     local a2 = {[i + 0] = s, [i + 1] = s..s, [i + 2] = s..s..s}
     print(opnames[s])           --> sub
     print(a2[22])               --> ---
+
+end
+
+do
+    --[[
+        lua 实现数组array、列表list
+        使用整型作为索引的表，不需要预先声明表的大小
+
+        lua中可以用任意数字作为第一个元素的索引，默认是以 1 开始的
+
+        对于 不存在空洞 hole 的列表 可以称为 序列sequence
+
+        使用 # 获取 表对应序列的长度
+        使用 # 也可以获取字符串所包含的字节数
+
+        对于存在空洞的表，#取长度不可靠，获取到nil会中断
+
+        a = {10, 20, 30} 等价于
+        a = {10, 20, 30, nil, nil}
+    ]]
+
+    local seq = {1, 2, 3, 4, 5}
+    for i=1, #seq do
+        print(seq[i])
+    end
+    print(seq[#seq])    --输出最后一个值
+    seq[#seq] = nil     --移除最后一个值
+    seq[#seq + 1] = 6  --在序列最后加一个元素
+end
+
+do
+    --[[
+        遍历表
+
+        使用 pairs迭代器遍历表中的键值对，输出元素的顺序可能是随机的（lua底层机制决定的）
+        执行多次，也可能产生不同的顺序，但每个元素只会出现一次
+
+        使用 ipairs迭代器 可以保证桉顺序输出
+    ]]
+    local t = {10, print, x=12, k = "hi", function ()do
+        print(3)
+    end
+        
+    end}
+    for k, v in pairs(t) do
+        print(k, v)
+    end
+    --[[
+        1       10
+        2       function: 0x10abddca0
+        3       function: 0x7f87f5508a70
+        x       12
+        k       hi
+    ]]
+
+
+    --[[
+                pair vs. ipair
+        pairs可以遍历表中所有的key，并且除了迭代器本身以及遍历表本身还可以返回nil;
+        ipairs则不能返回nil,只能返回数字0，如果遇到nil则退出。
+        ipairs 这个迭代器只能遍历所有数组下标的值，这是前提，也是和 pairs 的最根本区别，也就是说如果 ipairs 在迭代过程中是会直接跳过所有手动设定key值的变量。
+        @注意：ipairs不会被手动键值对中断遍历
+
+        pairs: 迭代 table，可以遍历表中所有的 key 可以返回 nil
+        ipairs: 迭代数组，不能返回 nil,如果遇到 nil 则退出
+
+
+    ]]
+    for k, v in ipairs(t) do
+        print(k, v)
+    end
+    --[[
+        1       10
+        2       function: 0x10abddca0
+        3       function: 0x7f87f5508a70
+    ]]
+
+    for k = 1, #t do
+        print(k, t[k])
+    end
+    --[[
+        1       10
+        2       function: 0x10abddca0
+        3       function: 0x7f87f5508a70
+    ]]
+end
+
+do
+    --[[
+        表的安全访问
+
+        if lib and lib.foo then
+        end
+
+        如果以下是一次成功的访问，
+        @注意：对表进行6次访问而非3次
+        使用 . 操作符就是对表进行访问
+        if lib and 
+            lib.foo and
+            lib.foo.goo and
+            lib.foo.goo.joo then
+        end
+
+        C#提供了 ?. 安全访问操作符
+        a?.b 当a为nil时 不会访问下一个 返回结果为nil而非异常
+
+        lua并不提供安全访问操作符，因为可能会导致程序出现无意的错误
+
+        但可以模拟
+
+        a or {} 当a为nil时，结果为nil
+        if ((((lib or {}).foo or {}).goo or {}).joo then
+        end
+        只会对表访问3次，避免引入新的操作符
+
+        使用 E = {} 可以复用
+        if ((((lib or E).foo or E).goo or E).joo then
+        end
+    ]]
 end

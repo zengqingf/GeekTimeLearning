@@ -1,9 +1,33 @@
+https://www.jianshu.com/p/b71f8ce0336a | Mac OS键盘常用快捷键 - 简书
+
+https://www.jianshu.com/p/266acca9e21e | Unity Socket服务器（客户端）通用框架 - 简书
+https://developer.android.com/guide/components/activities/activity-lifecycle | 了解 Activity 生命周期  |  Android 开发者  |  Android Developers
+http://baurine.github.io/2015/12/26/android_onnewintent.html | Android activity onNewIntent 调用时机
+https://github.com/strangeioc | strangeioc · GitHub
+https://juejin.cn/post/6844904165760565261#heading-12 | 浅谈Unity与Android原生的桥接 - 掘金
+https://zhuanlan.zhihu.com/p/97691316 | Android JNI使用全面讲解 - 知乎
+https://blog.csdn.net/a15920804969/article/details/78512386 | (40条消息) 扩展类的三种方式（继承，装饰模式，动态代理）_四月的萤火之光的博客-CSDN博客
+https://zhuanlan.zhihu.com/p/75510885 | 在Unity中使用protobuf - 知乎
+https://leetcode-cn.com/problems/linked-list-cycle/ | 141. 环形链表 - 力扣（LeetCode）
+https://edu.manew.com/ | 蛮牛教育 - 国内最大的Unity在线学习平台|Unity培训|Unity3d培训|Unity视频学习|Unity教程 Unreal 虚幻 AR VR - Powered By EduSoho
+https://www.cnblogs.com/caizhenbo/p/6825223.html
+https://www.runoob.com/design-pattern/proxy-pattern.html | 代理模式 | 菜鸟教程
+https://www.runoob.com/go/go-data-types.html
+https://d.shikey.com/jike/%E5%B7%B2%E5%AE%8C%E7%BB%93%E7%9A%84%E8%AF%BE%E7%A8%8B/ | jike/已完结的课程 - OneManager
+https://networm.me/ | 狂飙
+https://www.ruanyifeng.com/blog/ | 阮一峰的网络日志
+https://blog.csdn.net/qq_35584878/article/details/100660574 | (40条消息) Android实现重写父类方法必须调用父类该方法_侠一胡的博客-CSDN博客_android子类调用父类的回调
+https://www.liaoxuefeng.com/wiki/1252599548343744/1260473188087424 | 枚举类 - 廖雪峰的官方网站
+http://www.devacg.com/?post=375 | 设计模式
+https://tech.meituan.com/2014/09/23/java-memory-reordering.html | Java内存访问重排序的研究 - 美团技术团队
+http://chen-tao.github.io/2016/12/30/about-java-singleton/ | java单例模式与指令重排 | Chen-Tao
+
 https://web.banlikanban.com/kanban/61bab7e4c0ea591585454c7a | 【系统开发】-任务系统
 https://www.colorhexa.com/ffff50 | #ffff50 hex color
 
 https://www.cnblogs.com/huxi/category/251137.html | Python - 随笔分类 - AstralWind - 博客园
 https://www.cnblogs.com/timy/tag/UE4/ | UE4 - 标签 - 一粒沙 - 博客园
-a
+http://a
 https://time.geekbang.org/ | 极客时间-轻松学习，高效学习-极客邦
 https://time.geekbang.org/search?q=lua | 极客时间-轻松学习，高效学习-极客邦
 https://time.geekbang.org/column/article/120874 | 第78期 | 程序员需要知道的 C10K 问题
