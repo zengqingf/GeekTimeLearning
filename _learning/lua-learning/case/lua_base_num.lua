@@ -31,3 +31,62 @@ do
     print(string.format("%.2f", 3.1415926))  --output: 3.14
     
 end
+
+--[[
+    lua位运算
+    ref: https://blog.csdn.net/zuimrs/article/details/81104092
+]]
+do
+    --lua 5.1
+    -- 引入bit库  bitlib
+    --[[
+    require "bit"
+    -- and操作
+    bit.band(a,b)
+    -- or操作
+    bit.bor(a,b)
+    -- xor操作
+    bit.bxor(a,b)
+    -- not操作
+    bit.bnot(a,b)
+    -- 左移n位
+    bit.lshift(a,n)
+    -- 右移n位
+    bit.rshift(a,n)
+    ]]
+
+    --lua5.2
+    -- 引入内置bit32库
+    --[[
+    require "bit32"
+
+    -- and操作
+    bit32.band(a,b)
+    -- or操作
+    bit32.bor(a,b)
+    -- xor操作
+    bit32.bxor(a,b)
+    -- not操作
+    bit32.bnot(a,b)
+    -- 左移n位
+    bit32.lshift(a,n)
+    -- 右移n位
+    bit32.rshift(a,n)
+    ]]
+
+    --lua5.3
+    --[[
+    -- and操作
+    a & b
+    -- or操作
+    a | b
+    -- xor操作
+    a ~ b
+    -- not操作
+    ~a
+    -- 左移n位
+    a << n
+    -- 右移n位
+    a >> n
+    ]]
+end

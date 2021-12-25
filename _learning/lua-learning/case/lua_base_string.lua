@@ -713,8 +713,6 @@ do
         print("----------------------------------------------------")
 
 
-
-
         print("-----------------------string find test----------------------")
         local link = '<link type="4" type2="0" target_id="1001" map_id="2001">与丽亚好好谈谈</>'
         local _,_,_,targetId = string.find(link, '(target_id)=("%d+")')
@@ -753,6 +751,11 @@ do
         print(string.find('2015-5-12 13:53', '(%d+)-(%d+)-(%d+)', 1, true))     --nil
         print(string.find('%a1234567890%a', '%a', 3, true))     --13      14            从第三个索引开始查找  匹配到的时最后那个 %a   13和14序号
         print("-----------------------string find test2--------------------")
+
+        print("-----------------------string find test3--------------------")
+        local link = '<link color="#ffff50" type="4" type2="1" target_id="100003" map_id="3001">前往探索无主之地(0/1)</>'
+        print(string.find(link, "<link.+>(.+)</>"))
+        print("-----------------------string find test3--------------------")
     end
 
 
@@ -812,6 +815,18 @@ do
             a       214
             b       233
         ]]
+
+
+        for k, v in string.gmatch('500000005_21400,500000001_10000', '(%d+)_(%d+)') do
+            print(k, v)
+        end
+
+        
+        for k, v in string.gmatch('<link type="4" type2="2" item_ids="110210901_1,110210902_2">使用一个经验药水([step1]/1)，使用两个个高级经验药水([step2]/2)</>', '(%d+)_(%d+)') do
+            local iId = string.gsub(k, '"', '')
+            local iNum = string.gsub(v, '"', '')
+            print("<link> gmatch: ", iId, iNum)
+        end
         print("-----------------------string gmatch test--------------------")
     end
 
