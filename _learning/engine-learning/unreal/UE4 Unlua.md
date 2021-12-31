@@ -60,6 +60,32 @@
   --[[
   	Tarray的遍历需要使用 arrayList:Get(i)
   ]]
+  
+  --[[
+  @注意， 序号从0开始还是从1开始
+  ]]
+  
+  --GetItemAt(index) 从0开始
+  ListView:GetItemAt(0)
+          --例子
+          submitItems = Vector.New() --自定义lua类
+          for i = 1, submitItems:Size() do
+             local itemGridObj = self.TileViewSubmitItem:GetItemAt(i - 1)
+             itemGridObj:Update(submitItems[i])
+             itemGridObj:AddSelectedHandler(self, self.OnSubmitItemSelected)
+          end
+  
+  
+  --Get(index) 从1开始
+  TArray:Get(1)
+          --例子
+          local items = self.TileViewSubmitItem:GetListItems()
+          for i = 1, items:Length() do
+              local item = items:Get(i)
+              if item ~= nil then
+                 item:RemoveSelectedHandler(self, self.OnSubmitItemSelected)
+              end
+          end
   ```
   
   

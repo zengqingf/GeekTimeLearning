@@ -154,7 +154,16 @@
 
     
 
+* 3DUI设置成Cylinder 曲面模式时，手机上滑动Scroll问题和点击不灵敏问题
 
+  ``` tex
+  曲面UI的设置: 在打开和关闭的时候设置
+  projectsetting的默认设置还是还原为默认 NoCapture
+  ```
+
+  ![img](UE4 UI开发.assets/企业微信截图_16406064701103.png)
+
+​		![img](UE4 UI开发.assets/企业微信截图_16406065352446.png) 	![img](UE4 UI开发.assets/企业微信截图_16406065805109.png)
 
 
 

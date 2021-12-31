@@ -24,8 +24,8 @@ void TestOperator_1::Test1()
 /*
 C++ 取整
 
-floor(x)返回的是小于或等于x的最大整数。
-ceil(x)返回的是大于x的最小整数。
+floor(x)返回的是小于或等于x的最大整数。  向下取整
+ceil(x)返回的是大于x的最小整数。		 向上取整
 trunc(x)返回的是x舍取小数位后的整数。
 */
 void TestMath_1::Test1()

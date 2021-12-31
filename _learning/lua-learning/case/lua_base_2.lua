@@ -286,3 +286,11 @@ do
     TestMetatable.print(tm1 - tm4)          -- use __sub
     TestMetatable.print(tm4 - tm2)          -- use __sub
 end
+
+--[[
+    求两数组的交集并集
+    ref: https://blog.csdn.net/qiuwen_521/article/details/107816450
+]]
+do
+    
+end

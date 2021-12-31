@@ -756,8 +756,20 @@ do
         local link = '<link color="#ffff50" type="4" type2="1" target_id="100003" map_id="3001">前往探索无主之地(0/1)</>'
         print(string.find(link, "<link.+>(.+)</>"))
         print("-----------------------string find test3--------------------")
+
+        print("-----------------------string find test4--------------------")
+
+        local _,_,itemIds = string.find('[{"id":1, "condType":2, "maxStep":3,"itemIds":[110210901,110210902]}]', '%"itemIds%":%[([%d+,?]+)%]')
+        print(itemIds)
+        print(string.match(itemIds, '(%d+),?'))
+        for k, v in string.gmatch(itemIds, '(%d+),?') do
+            print(k, v)
+        end
+        print("-----------------------string find test4--------------------")
     end
 
+
+    JSON = require("Json")
 
     --[[
         string.match
@@ -779,6 +791,9 @@ do
         print(string.match('2015-5-12 13:53', '%d+-%d+-%d+'))               --2015-5-12
         print(string.match('2015-5-12 13:53', '(%d+)-(%d+)-(%d+)'))         --2015    5       12
         print(string.match('2015-5-12 13:53', '((%d+)-(%d+)-(%d+))'))       --2015-5-12       2015    5       12
+
+
+        print(string.match('[{"id":1, "condType":2, "maxStep":3,"itemIds":[110210901,110210902,110210903]}]', '%"itemIds%":%[([%d+,?]+)%]'))
         print("-----------------------string match test--------------------")
 
 
@@ -821,12 +836,46 @@ do
             print(k, v)
         end
 
-        
+
         for k, v in string.gmatch('<link type="4" type2="2" item_ids="110210901_1,110210902_2">使用一个经验药水([step1]/1)，使用两个个高级经验药水([step2]/2)</>', '(%d+)_(%d+)') do
             local iId = string.gsub(k, '"', '')
             local iNum = string.gsub(v, '"', '')
             print("<link> gmatch: ", iId, iNum)
         end
+       
+        local condDesc = '[{"id":1, "condType":2, "maxStep":3,"itemIds":[110210901,110210902]},{"id":1, "condType":2, "maxStep":1,"itemIds":[110210903,110210904]}]'
+        --[[
+        for itemInfos, _ in string.gmatch(condDesc, '{.+},?') do
+            print(itemInfos)
+            for info, _ in string.gmatch(itemInfos, '({.+}[,?]') do
+                print(info)
+            end
+        end
+        ]]
+
+        local jsonObj = JSON:decode(condDesc)
+        for i = 1, #jsonObj do
+            local obj = jsonObj[i]
+            print(string.format("id: %d, maxStep: %d", obj.id, obj.maxStep))
+            local itemIds = obj["itemIds"]
+            if itemIds ~= nil then
+                for j = 1, #itemIds do
+                    print(itemIds[j])
+                end
+            end
+        end
+    
+
+        for itemIds, _ in string.gmatch(condDesc, '%"itemIds%":%[([%d+,?]+)%]') do
+            print(itemIds)
+            for itemId, _ in string.gmatch(itemIds, '(%d+),?') do
+                print(itemId)
+            end
+        end
+        for itemNum, _ in string.gmatch(condDesc, '%"maxStep%":(%d+)') do
+            print(itemNum)
+        end
+
         print("-----------------------string gmatch test--------------------")
     end
 
@@ -870,6 +919,11 @@ do
         print(string.format("---[%o]--",9))       -- 打印数字011
         print(string.format("---[%u]--",12))      -- 打印数字12
         print(string.format("---[%08x]--",47))    -- 打印0000002f
+
+        print("-----------------------string format test--------------------")
+        local itemInfoDescFormat = '%"'.. "itemIds" ..'%":%[([%d+,?]+)%]'
+        print(itemInfoDescFormat)
+        print("-----------------------string format test--------------------")
     end
 
 
