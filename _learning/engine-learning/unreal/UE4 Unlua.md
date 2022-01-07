@@ -88,7 +88,34 @@
           end
   ```
   
-  
+
+
+
+* UnLua调用C++
+
+  * 传给C++数字型字符串，C++可自动解析为数字
+
+    ``` lua
+    function TaskDataManager:ParseTaskTrackLinkText(type2, params)
+        local iType2 = TaskDetailData.TASK_LINK_TYPE2[type2]
+        if iType2 == 0 or iType2 == 1 then                  --寻路
+            local targetId = params:Find("p1")						      --TODO test  unlua传给c++ 字符串和整型 是一样的效
+            self:TaskAutoTrace(iType2, targetId)                          --TODO test  unlua传给c++ 字符串和整型 是一样的效果
+    end
+    ```
+
+    ``` c++
+    	/// <summary>
+    	///	任务追踪
+    	///	type: 0表示npc寻路， 1表示关卡寻路
+    	///	targetId: 目标id
+    	/// mapId: 地图城镇表ID
+    	/// </summary>
+    	UFUNCTION(BlueprintCallable)
+    	static void StartAutoTaskTrace(int32 type, int32 targetId);
+    ```
+
+    
 
 
 

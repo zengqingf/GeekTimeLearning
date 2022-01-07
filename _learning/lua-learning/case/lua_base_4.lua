@@ -173,3 +173,26 @@ do
     print(collectgarbage("collect"))
     print(collectgarbage("count"))
 end
+
+--[[
+    lua局部函数调用回收机制
+
+    lua使用GC方式是增量标记法 并不会直接回收内存
+    回收的时机和
+    collectgarbage(“setpause”)
+    collectgarbage(“setstepmul”)
+    这2个参数有关 满足这2个参数的时候才会触发 stop the world 然后进行GC
+    当然也可以直接运行 collectgarbage(“collect”) 来进行强制GC
+]]
+do
+    local MainWindow = {}
+    function MainWindow:RefreshAll()
+        local function func()           --每次调用这个函数，其内存都会增加，却不会减少
+        end                             --function在lua中是first class，这段代码每次执行到会创建一个function对象，也就会有内存的分配。
+    end
+
+    local MainWindow2 = {}
+    function MainWindow:func()          --把函数挪到MainWindow中，通过参数或则self来传递想要的数据。
+    end
+    return MainWindow2
+end
