@@ -876,6 +876,29 @@ do
             print(itemNum)
         end
 
+        print("string gmatch 111")
+        local sstr = '<link color="#ec933b" size="20" type="4" type2="frame" p1="PackageBag3DFrame">同时穿戴紫色太刀(0/1)</>\n<link color="#ec933b" size="20" type="4" type2="frame" p1="PackageBag3DFrame">穿戴50级紫色轻甲鞋子(0/1)</>'
+        local rsstr = string.gsub(sstr, '\n', ';')
+        local srstr = rsstr .. ";"
+        for str in string.gmatch(srstr, "([^;]+)") do
+            print(str)
+            local s = string.match(str, "<link.+>(.+)</>")
+            print(s)
+        end
+
+
+        --[[
+            Split a string using string.gmatch() in Lua
+        ]]
+        local s = "one;two;;four"
+        local words = {}
+        for w in (s .. ";"):gmatch("([^;]*);") do 
+            table.insert(words, w) 
+        end
+        for n, w in ipairs(words) do
+            print(n .. ": " .. w)
+        end        
+
         print("-----------------------string gmatch test--------------------")
     end
 

@@ -107,15 +107,29 @@
   子元素需要设置为居中，保证能按比例缩放
   ```
 
+  * 在ScrollBox中的Button，如果需要点击并且同时支持滑动
   
+    **Down and Up 修改为 Precise Tap**，避免滑动列表不能接收到鼠标左键或者手机中的屏幕点击滑动消息
+  
+  * 多排多列滑动列表
+  
+    在Scroll Box中添加Wrap Box，然后以Wrap Box为父控件，添加子控件元素
+  
+  * 子控件自定义大小
+  
+    使用SizeBox
 
 
 
+* VerticalBox/HorizonalBox  元素增减时，保持元素居中
 
+  ![image-20220108174308452](UE4 UI开发.assets/image-20220108174308452-16416349893712.png)
 
+  ![image-20220108174334478](UE4 UI开发.assets/image-20220108174334478-16416350157553.png)
 
+* ListView 元素增减时，保持元素居中
 
-
+  ![image-20220108173235159](UE4 UI开发.assets/image-20220108173235159-16416343581161.png)
 
 
 

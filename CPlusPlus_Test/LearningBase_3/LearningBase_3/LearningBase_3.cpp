@@ -17,13 +17,13 @@ int main()
 	//smart_ptr_sample();
 	//c8.TestSharedPtrCircularRef();
 
-	Chapter_12 c12;
+	//Chapter_12 c12;
 	//c12.TestContainer1();
 	//c12.TestContainer2();
 	//c12.TestContainer3();
 	//c12.TestContainer4();
 	//c12.TestContainer5();
-	c12.TestContainer6();
+	//c12.TestContainer6();
 
 	//Chapter_13 c13;
 	//c13.TestCase5();
@@ -31,8 +31,8 @@ int main()
 	//Chapter_14 c14;
 	//c14.TestCase6(Chapter_14::Fib);
 
-	//Chapter_15 c15;
-	//c15.Test7();
+	Chapter_15 c15;
+	c15.Test7();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
