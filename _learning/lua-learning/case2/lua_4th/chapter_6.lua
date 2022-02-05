@@ -103,5 +103,12 @@ end
     可变长参数
 ]]
 do
-    
+    local function add(...)
+        local s = 0
+        for _, v in ipairs{...} do
+            s = s + v
+        end
+        return s
+    end
+    print(add(3, 4, 5, 10, 24))
 end
