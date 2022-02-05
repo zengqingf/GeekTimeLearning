@@ -1,0 +1,11 @@
+syntax = "proto2";                    // 使用第2版
+
+package sample;                        // 定义名字空间
+
+message Vendor                        // 定义消息
+{
+    required uint32     id      = 1;  // required表示必须字段
+    required string     name    = 2;  // 有int32/string等基本类型
+    required bool       valid   = 3;  // 需要指定字段的序号，序列化时用
+    optional string     tel     = 4;  // optional字段可以没有
+}

@@ -307,3 +307,113 @@ do
         end
     ]]
 end
+
+--[[
+    table 实现 stack
+]]
+do
+
+    --[[
+    local stack = {}
+    function stack:push(x) 
+        table.insert(stack, x)
+    end
+
+    function stack:pop(x)
+        table.remove(stack)  --不指定位置 删除最后一个元素
+    end
+
+    function stack:push_first(x)
+        table.insert(stack, 1, x)
+    end
+
+    function stack:pop_first(x)
+        table.remove(stack, 1)
+    end
+    return stack      --会返回 下面的代码不会执行
+    ]]
+end
+
+
+--[[
+    table move
+将表a中从索引f到e的元素（包含索引f和索引e对应的元素本身）移动到位置t上
+移动（move）实际上是将一个值从一个地方拷贝（copy）到另一个地方
+]]
+do
+    local a = {1, 2, 3, 4, 5}
+    table.move(a, 1, #a, 2)
+    a[1] = 6
+
+    print(a[1])         -- 6
+
+    table.move(a, 2, #a, 1)
+    a[#a] = nil
+
+    print(a[1])         -- 1
+
+    local a1 = table.move(a, 1, #a, 1, {})
+    print(a1[1])
+    print(a1[#a1])
+
+    local b = {9, 8, 7}
+    table.move(a, 1, #a, #b+1, b)  --将a中的元素复制到b的最后
+    print(b[#b])
+end
+
+do
+    local a = {}
+    print(a)
+    a.a = a
+    print(a)
+    print(a.a.a.a)
+    a.a.a.a = 3
+    --print(a.a.a.a)  --stack overflow
+end
+
+do
+    local sunday = "monday"; local monday = "sunday"
+    local t = {sunday = "monday", [sunday] = monday}
+    print(t["monday"])
+    print(t.monday)
+    print(t.sunday, t[sunday], t[t.sunday])
+end
+
+do
+    local big_tb = {}
+    local tb_len = 10000
+    for i = 1, tb_len do
+        if i == 1 then
+            big_tb[i] = "hell"
+        elseif i == tb_len then
+            big_tb[i] = " world"
+        else
+            big_tb[i] = "o"
+        end
+    end
+
+    local function concat_str(str_tb)
+        local res = nil
+        if str_tb ~= nil and #str_tb > 0 then
+            for index, value in ipairs(str_tb) do
+                if index == 1 then
+                    res = value
+                else
+                    res = res .. value
+                end
+            end
+        end
+        return res
+    end
+
+    local start_time = os.clock()
+    local test1 = concat_str(big_tb)
+    local end_time = os.clock()
+    print(string.format("cost time : %.4f", end_time - start_time));
+
+    local start_time = os.clock()
+    local test2 = table.concat(big_tb)
+    local end_time = os.clock()
+    print(string.format("cost time : %.4f", end_time - start_time));
+
+end

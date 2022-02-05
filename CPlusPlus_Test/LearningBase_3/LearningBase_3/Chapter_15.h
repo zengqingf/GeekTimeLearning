@@ -15,6 +15,8 @@
 #include <boost/version.hpp>
 #include <boost/config.hpp>
 
+#include "proto/sample.pb.h"
+
 using std::string;
 using std::vector;
 using std::map;
@@ -156,6 +158,9 @@ public:
 	void Test8()
 	{
 		//TODO ProtoBuffer
+        using vendor_t = sample::Vendor;
+        vendor_t v;
+        assert(!v.IsInitialized());
 	}
 };
 
