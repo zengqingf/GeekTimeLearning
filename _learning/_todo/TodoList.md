@@ -349,6 +349,8 @@
      > [UE4 - blog7 玄冬wong](https://dawnarc.com/tags/ue4/)
      >
      > [UE4 - blog8 执手画眉wan](https://blog.csdn.net/l346242498/category_6684929.html)
+     >
+     > [UE4 C++基础教程](https://www.zhihu.com/column/ue4cpp)
      
   4. ue4 packing & 热更新资源
   
@@ -466,7 +468,11 @@
 * Lua
   
   1. Unity和Lua 如龙之谷
-  
+
+
+
+
+
 * C / C++
 
   1. 侯捷教程
@@ -535,9 +541,19 @@
      代理模式：C++智能指针、引用计数等*/
      ```
 
-     
+  6. 书
 
-     
+     ``` tex
+     《C++ Primer Plus》或《Essential C++》或《C++ Primer》
+     《大话数据结构》或《C++数据结构与算法（目前第4版）》《Effective C++》
+     《More Effective C++》
+     《Effective STL》或《STL源码剖析》
+     《设计模式》、《游戏编程模式》
+     《C++沉思录》
+     《深度探索C++对象模型》
+     ```
+
+
 
 
 

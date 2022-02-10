@@ -2,6 +2,68 @@
 
 
 
+### 概念
+
+- UMG，虚幻运动图形界面设计器（Unreal Motion Graphics UI Designer）
+  - 一个可视化的UI创作工具，用来创建UI元素，如游戏中的HUD、菜单或其它界面相关元素。
+  - 设计器（Designer）选项卡允许界面和基本函数的可视化布局
+  - 图表（Graph）选项卡提供所使用控件背后的功能。
+  - 可以暴露于BP
+
+- Slate ，虚幻引擎中的自定义用户界面系统。
+  - 主要用于编辑器的实现
+  - 在游戏中也可以使用
+  - 只能应用于C++
+
+- 二者关联：
+  - UMG是对Slate的上层封装
+  - Slate是UMG的底层实现
+
+* 举例
+
+  ``` c++
+  UCLASS()
+  class UMG_API UButton : public UContentWidget
+  {
+  	GENERATED_UCLASS_BODY()
+  public:
+      // other codes
+  protected:
+  	/** Cached pointer to the underlying slate button owned by this UWidget */
+  	TSharedPtr<SButton> MyButton;
+  };
+  
+  TSharedRef<SWidget> UButton::RebuildWidget()
+  {
+  	MyButton = SNew(SButton)
+  		.OnClicked(BIND_UOBJECT_DELEGATE(FOnClicked, SlateHandleClicked))
+  		.OnPressed(BIND_UOBJECT_DELEGATE(FSimpleDelegate, SlateHandlePressed))
+  		.OnReleased(BIND_UOBJECT_DELEGATE(FSimpleDelegate, SlateHandleReleased))
+  		.OnHovered_UObject( this, &ThisClass::SlateHandleHovered )
+  		.OnUnhovered_UObject( this, &ThisClass::SlateHandleUnhovered )
+  		.ButtonStyle(&WidgetStyle)
+  		.ClickMethod(ClickMethod)
+  		.TouchMethod(TouchMethod)
+  		.PressMethod(PressMethod)
+  		.IsFocusable(IsFocusable)
+  		;
+      
+  	if ( GetChildrenCount() > 0 )
+  	{
+  		Cast<UButtonSlot>(GetContentSlot())->BuildSlot(MyButton.ToSharedRef());
+  	}
+  	return MyButton.ToSharedRef();
+  }
+  ```
+
+  
+
+
+
+
+
+---
+
 ### UMG
 
 * By C++
@@ -110,6 +172,8 @@
   * 在ScrollBox中的Button，如果需要点击并且同时支持滑动
   
     **Down and Up 修改为 Precise Tap**，避免滑动列表不能接收到鼠标左键或者手机中的屏幕点击滑动消息
+  
+    ![image-20220210144129965](UE4 UI开发.assets/image-20220210144129965-16444752919941.png)
   
   * 多排多列滑动列表
   
