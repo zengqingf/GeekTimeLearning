@@ -193,3 +193,98 @@ do
         （特别地，由于迭代的次数和每次迭代时传入参数的个数会随着参数的个数增长， 因此第二个版本的时间开销是二次代价（quadratic cost）的）
     ]]
 end
+
+
+--[[
+    table.unpack 处理多返回值
+
+    该函数的参数是一个数组，返回值为数组内的所有元素
+
+    函数table.unpack与函数table.pack的功能相反。
+    pack把参数列表转换成Lua语言中一个真实的列表（一个表），
+    而unpack则把Lua语言中的真实的列表（一个表）转换成一组返回值，进而可以作为另一个函数的参数被使用。
+]]
+do
+    print(table.unpack({10, 20, 30}))       --10    20  30
+    print(table.unpack{10, 20, 30})         --10    20  30
+    local a, b = table.unpack{10, 20, 30}   -- 30被丢弃
+    
+    --应用
+    --[[
+        泛型调用 (generic call)
+
+        泛型调用机制允许我们动态地调用具有任意参数的任意函数
+        c语言不支持泛型调用
+
+        lua支持：泛型调用机制允许我们动态地调用具有任意参数的任意函数
+        f(table.unpack(a))
+    ]]
+    print(string.find("hello", "ll"))
+    --代码转换
+    local f = string.find
+    local fs = {"hello", "ll"}
+    print(f(table.unpack(fs)))
+
+    --[[
+        table.unpack使用长度操作符获取返回值的个数（仅用于序列，即没有nil）
+    ]]
+    print(table.unpack({"sun", "mon", "tue", "wed"}, 2, 3))     --指定返回的元素范围  -- mon tue
+
+    --[[
+        lua原生实现 内置c实现的unpack()
+    ]]
+    local function unpack_bylua(t, i, n)
+        i = i or 1
+        n = n or #t
+        if i <= n then
+            return t[i], unpack_bylua(t, i + 1, n)
+        end
+    end
+    print(unpack_bylua({"sun", "mon", "tue", "wed"}, 2, 3))     -- mon tue
+end
+
+
+--[[
+    lua 尾调用
+
+    只有形如 return func(args) 的调用才是尾调用   func及其参数可以为复杂表达式
+
+    Lua语言是支持尾调用消除（tail-callelimination）的。这意味着Lua语言可以正确地（properly）尾递归（tailrecursive），虽然尾调用消除的概念并没有直接涉及递归
+
+    尾调用（tail call）是被当作函数调用使用的跳转[插图]。当一个函数的最后一个动作是调用另一个函数而没有再进行其他工作时，就形成了尾调用。
+
+    function f(x)  x = x + 1; return g(x) end
+    函数g 为尾调用
+    函数f调用完函数g后，f不再进行其他工作，当调用函数执行结束后，程序就不再需要返回最初的调用者
+    因此，在尾调用之后，程序也就不需要在调用栈中保存有关调用函数的任何信息。当g返回时，程序的执行路径会直接返回到调用f的位置。
+
+    应用：
+    Lua语言解释器：使得在进行尾调用时不使用任何额外的栈空间，尾调用消除（tail-call elimination）
+
+    由于尾调用不会使用栈空间，所以一个程序中能够嵌套的尾调用的数量是无限的。不会stack overflow
+]]
+do
+    --[[
+        关键点：判断是否是尾调用
+    ]]
+    local function g(x) return 0 end
+    local function f(x)
+        g(x)               --不是尾调用 函数f还需要丢弃函数g的返回值
+    end
+
+    local function f(x)
+        return g(x) + 1    --不是尾调用 函数f还需要进行加法
+    end
+    local function f(x)
+        return x or g(x)   --不是尾调用 函数f还需要把返回值限定为1个   @注意
+    end
+    local function f(x)
+       return (g(x))      --不是尾调用 函数f还需要把返回值限定为1个   @注意
+    end
+
+    local function goo(x, y)
+    end
+    local function foo(x, i, j, a, b)
+        return x[i].goo(x[j] + a*b, i + j)      --是尾调用
+    end
+end
