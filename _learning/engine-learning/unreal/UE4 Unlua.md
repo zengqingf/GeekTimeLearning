@@ -115,7 +115,59 @@
     	static void StartAutoTaskTrace(int32 type, int32 targetId);
     ```
 
-    
+
+
+
+
+
+* UnLua延迟调用
+
+  ``` lua
+  --方法1
+  --创建一个协程 延迟调用函数 测试代码
+  function MailFrameView_C:DelayFunc(func, Induration)
+     coroutine.resume(coroutine.create(MailFrameView_C.DoDelay), self, self, Induration)
+  end
+  
+  function MailFrameView_C:DoDelay(worldContentObject, duration)
+      UE4.UKismetSystemLibrary.Delay(worldContentObject, duration)
+      --TODO 其他方法
+  end
+  ```
+
+  ``` lua
+  --方法2
+  local anim = function()
+       self:PlayGeActorQueueAction(index, animPaths)
+       CommonUtility.ClearDelayCall(self,self.mHandle)
+  end
+  self.mHandle = CommonUtility.DelayCall({self,anim},0.01,false)
+  
+  --例子：
+  --self.mMyHandle = CommonUtility.DelayCall({self, GameModeTown_C.OpenChapterSelectFrame}, 0.1, false)
+  --function GameModeTown_C:OpenChapterSelectFrame()
+  --    UIManager.OpenFrame(UIFrameClassPath.ChapterSelectFrame, 1, nil)
+  --    CommonUtility.ClearDelayCall(self, self.mMyHandle)
+  --end
+  --
+  --delegate:委托事件
+  --time：延迟时间
+  --isLoop：是否循环
+  --在回调结束要清除自己的handle  UE4.UKismetSystemLibrary.K2_ClearTimerHandle(self, self.mHandle)
+  ---重点提示：每一个使用DelayCall的地方都要考虑一下，调用对象是否有可能在DelayCall触发之前就已经不存在了。如果有可能，那么在调用者的析构函数里也要ClearDelayCall()。
+  ---如果isLoop为true，考虑DelayCall是否会重复调用
+  ---DelayCall的回调只能在UObject中调用，如果需要在Frame里调用，需要借用FrameView写回调
+  function CommonUtility.DelayCall(delegate,time,isLoop)
+      local handle = UE4.UKismetSystemLibrary.K2_SetTimerDelegate(delegate, time, isLoop)
+      return handle
+  end
+  
+  function CommonUtility.ClearDelayCall(target,handle)
+      UE4.UKismetSystemLibrary.K2_ClearTimerHandle(target, handle)
+  end
+  ```
+
+  
 
 
 

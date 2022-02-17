@@ -199,6 +199,24 @@
 
 
 
+* [UserWidget] - Vectical + ScrollBox + Overlay
+
+  Vectical包含ScrollBox，设置ScrollBox Size模式为Fill，**当其他Overlay隐藏时，ScrollBox可以全铺满**
+
+  ![image-20220216111140168](UE4 UI开发.assets/image-20220216111140168-16449811013891.png)
+  
+  * ScorllBox + VerticalBox + Overlay + ListView
+  
+    ScrollBox包含VerticalBox，设置子结点Overlay布局上偏移，**当Overlay隐藏时，下部ListView会填充VerticalBox**
+  
+    ![image-20220216144437067](UE4 UI开发.assets/image-20220216144437067-16449938784841.png)
+  
+    ![image-20220216144459107](UE4 UI开发.assets/image-20220216144459107-16449939003212.png)
+
+
+
+
+
 ---
 
 
