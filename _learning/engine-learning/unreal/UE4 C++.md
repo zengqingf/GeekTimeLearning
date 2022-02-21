@@ -68,15 +68,61 @@
   */
   ```
 
+  ``` c++
+  /*
+  UPROPERTY
+      VisibleAnywhere:	Can be seen in details panel anywhere 	
+      					实例和默认下均可显示; 如果修饰的是数值、布尔值，效果是：只显示并且变量是灰色，无法进行编辑
+      EditInstanceOnly:	Can only be edited in Editor details panel
+      					变量在实例下可编辑，默认下不可编辑
+      VisibleInstanceOnly	变量在物体实例下只读，不可编辑
+      					
+      EditDefaultsOnly:	Can only be edited in Blueprint details panel
+      					默认下可编辑，实例下不显示
+      VisibleDefaultsOnly 在默认下显示并且可读不可编辑
+      					
+      BlueprintReadOnly:	Blueprint can only “get”
+      					蓝图中只能获取变量，不能设置
+      BlueprintReadWrite:	Blueprint can “get” and “set”
+      					在蓝图的事件图表中，能过获取、设置此变量信息，是因为BlueprintReadWrit关键词与蓝图的访问相关。
+      EditAnywhere:		Can be edited in details panel anywhere
+      					在实例、默认中可编辑
+  */
   
+  //e.g. c++创建静态网格组件
+  UPROPERTY(VisibleAnyWhere, Category = "ActorMeshComponents")
+  UStaticMeshComponent* StaticMesh;
+  
+  AFlobter::AFloater()
+  {
+      PrimaryActorTick.bCanEverTick = true;
+      
+      /*
+      1、此函数只能在无参构造器中使用，不能在BeginPlay等函数中使用。
+  	2、参数中的TEXT或者FName参数在同一个Actor中不能重复。
+      */
+      StaticMesh = CreateDefaultSuboject<UStaticMeshComponent>(TEXT("CustomStaticMesh"));
+  }
+  
+  
+  //e.g. 注意：在蓝图的事件图表中，能过获取、设置此变量信息，是因为BlueprintReadWrit关键词与蓝图的访问相关。
+  UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "FloaterVectors")
+  FVector InitialLocation = FVector(0.0f);
+  ```
+
+  
+
+
+
+
+
+
 
 * 基础include文件
 
   ``` c++
   #include "CoreMinimal.h" //包含了UE C++中需要的头文件，如FString等
   ```
-
-
 
 
 
@@ -1431,6 +1477,31 @@
   #undef LOCTEXT_NAMESPACE
   	
   IMPLEMENT_MODULE(FTableIDInputModule, TableIDInput)
+  ```
+
+  
+
+* C++ 和 蓝图相互调用
+
+  ``` c++
+  //创建 C++函数 蓝图调用
+  // 头文件中声明函数
+  UFUNCTION(BlueprintCallable, Category = "BPFunc_Lib")
+      void CppPrint();
+  /*
+  和公开属性类似，使用宏 UFUNCTION 即可。UFUNCTION() 负责将C++函数公开给反射系统。**BlueprintCallable ** 选项将其公开给蓝图虚拟机。每一个公开给蓝图的函数都需要一个与之关联的类别(Category)，这样右键点击快捷菜单的功能才能正确生效。
+  */
+  
+  //创建蓝图（实现）事件C++调用
+  //虚幻引擎会在其内部自动生成C++函数的基本实现，该实现了解如何调用蓝图VM。这通常称为形实替换。
+  //如果对应的蓝图没有实现该函数，则函数行为就像C++空函数体一样，不执行任何操作。
+  UFUNCTION(BlueprintImplementableEvent, Category = "BP_Funclib")
+  	void BPPrint();
+  
+  //创建蓝图（实现）事件 C++调用
+  //提供C++函数的默认实现，同时仍允许蓝图覆盖此函数，
+  UFUNCTION(BlueprintNativeEvent, Category = "BPFunc_Lib")
+  	void BPPrint1();
   ```
 
   

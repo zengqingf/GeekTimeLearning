@@ -288,3 +288,54 @@ do
         return x[i].goo(x[j] + a*b, i + j)      --是尾调用
     end
 end
+
+--[[
+    lua 不使用递归 实现支持无限调用链 （unbounded call chain）
+
+    如果没有正确的尾调用，每次移动都要创建一个栈，多次移动后可能导致栈溢出。
+    但正确的尾调用可以无限制的尾调用，因为每次尾调用只是一个goto到另外一个函数并不是传统的函数调用。
+]]
+do
+    --迷宫实现
+    function Room1()
+        local move = io.read()
+        if move == "south" then
+            return Room3()
+        elseif move == "east" then
+            return Room2()
+        else
+            print("invalid move")
+            return Room1()                  --stay in the same room
+        end
+    end
+
+    function Room2()
+        local move = io.read()
+        if move == "south" then
+            return Room4()
+        elseif move == "west" then
+            return Room1()
+        else
+            print("invalid move")
+            return Room2()
+        end
+    end
+
+    function Room3()
+        local move = io.read()
+        if move == "north" then
+            return Room1()
+        elseif move == "east" then
+            return Room4()
+        else
+            print("invalid move")
+            return Room3()
+        end
+    end
+
+    function Room4()
+        print("congratulation")
+    end
+
+    Room1()
+end

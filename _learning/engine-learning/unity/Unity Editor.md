@@ -17,3 +17,46 @@
   ref: https://www.bilibili.com/video/BV1i7411w7tW
 
   ![Unity可视化方案](Unity Editor.assets/Unity可视化方案.png)
+  
+  
+  
+  * Bolt - Unity AssetStore
+  
+    ref: https://assetstore.unity.com/packages/tools/visual-scripting/bolt-163802?locale=zh-CN
+  
+    主要功能点
+  
+    * 流图：强大的流控制图（类似 Unreal 蓝图），用于低级别逻辑和复杂任务。
+    * 状态图：优雅的有限状态机 (FSM)，来用于高级逻辑和简单状态管理。
+  
+  * AssetGraph - UnityTech
+  
+    ref: https://github.com/Unity-Technologies/AssetGraph
+  
+  * Node Editor Framework for Unity
+  
+    ref: https://github.com/Seneral/Node_Editor_Framework
+  
+  * UndoPro for Unity
+  
+    ref: https://github.com/Seneral/UndoPro
+  
+  * xNode for Unity
+  
+    ref: https://github.com/Siccity/xNode
+  
+    xNodeGroups
+  
+    ref: https://github.com/Siccity/xNodeGroups
+  
+  * NPBehave for Unity 
+  
+    ref: https://github.com/meniku/NPBehave
+  
+    * 行为树
+  
+  * odin-serializer for Unity
+  
+    ref: https://github.com/TeamSirenix/odin-serializer
+  
+    * 序列化编辑器
