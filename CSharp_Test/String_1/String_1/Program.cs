@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace String_1
 {
@@ -7,6 +7,7 @@ namespace String_1
      * 
      * https://docs.microsoft.com/en-us/dotnet/api/system.string.intern?view=netcore-3.1
      * 
+     * C# string 为引用类型，但具备值类型的特点
      * 
      * **/
     class Program
@@ -32,12 +33,22 @@ namespace String_1
 
             Console.WriteLine("{0}, {1} : {2}, {3}", helloWorld, helloWorld2,
                 helloWorld == helloWorld2,
-                object.ReferenceEquals(helloWorld, helloWorld2));
+                object.ReferenceEquals(helloWorld, helloWorld2));                   //hello world, hello world : True, False
 
             string helloWorld3 = "hello world";
             Console.WriteLine("{0}, {1} : {2}, {3}", helloWorld, helloWorld3,
                 helloWorld == helloWorld3,
-                object.ReferenceEquals(helloWorld, helloWorld3));
+                object.ReferenceEquals(helloWorld, helloWorld3));                  //hello world, hello world : True, True
+
+
+            /*
+             字符串的存储原理：
+             当创建一个字符串对象时，会在内存创建一个字符串常量。
+             每次创建一个字符串时都会去字符串常量区中查询这个字符串是否已经创建了，
+             如果已经创建了，就把已经创建的字符串的引用赋值给新创建的字符串，这两个字符串就引用了同一个引用地址，这就解释了上面的a和b在修改之前的引用为什么是相同的；如果没有查询到字符串的值，则创建一个新的字符串常量。
+
+            当修改字符串的值时会创建一个新的字符串对象，并会分配一个新的引用，所以修改a的值后，a和b的引用就不一致了。
+             */
 
             Console.WriteLine("------------------------String.Intern----------------------");
 
