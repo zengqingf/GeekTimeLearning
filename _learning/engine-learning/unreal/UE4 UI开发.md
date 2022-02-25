@@ -66,6 +66,10 @@
 
 ### UMG
 
+* UMG生命周期
+
+
+
 * By C++
 
   * link
@@ -78,16 +82,38 @@
     GetRootWidget()        //获取根节点
     GetChildAt()            //获取子节点
     UMG控件呈树状结构，根据根节点可以获取到所有的子节点
+    
     二，反射绑定
     UPROPERTY(Meta = (BindWidget))
     UButton *ButtonOne;
     绑定的类型和名称必须和蓝图内的一致
+    
     三，根据控件名获取
     GetWidgetFromName()
     获取到UWidget*类型，强转成指定类型
+    UTextBlock* TxtOb = Cast<UTextBlock>(GetWidgetFromName(TEXT("TxtNameInWBP"))); 
     ```
-
+    
     示例见：TMSDK/Unreal/UE4.25/GCloudTest
+    
+    ``` c++
+    /*
+    四, 获取根节点和子节点
+    UMG节点呈树状结构，可通过接口 GetRootWidget 获取根节点，再通过 GetChildAt 获得指定下标的所有子节点，其他相关接口（如 GetChildIndex、GetAllChildren等）在具体使用时可参考源码。 
+    */
+    // 获取根节点画布面板
+    UCanvasPanel* rootPanel = Cast<UCanvasPanel>(GetRootWidget());
+    // 获取指定下标的节点，并通过Cast转换为对应类型指针，这里以 UTextBlock 类为例
+    UTextBlock* txtOb = Cast<UTextBlock>(rootPanel->GetChildAt(6)));
+    // 也可以通过 GetAllChildren 获取所有子节点，返回一个 TArray 数组
+    TArray<UWidget*> nodesArr = rootPanel->GetAllChildren(); 
+    ```
+    
+    ``` tex
+    五, 获得 UUserWidget 的所有节点，将它们组装为一个Map，就可以轻易用Name作为Key来获取相应节点。 作者：程序员问尘 https://www.bilibili.com/read/cv11868180 出处：bilibili
+    ```
+    
+    
 
 
 
@@ -217,6 +243,50 @@
 
 
 
+* [UserWidget] - SizeBox
+
+  ``` tex
+  只能放一个子控件，一般用来精确控制控件大小的容器
+  SizeBox最好作为Child Widget的根节点。
+  （如果SizeBox的父节点是Canvas Panel，SizeBox会变成可拉伸，ChildLayout属性设置无效）
+  在Child Widget父级界面中勾选“Size To Content”，就会变成Child Widget中SizeBox的尺寸。可以做的控件尺寸的精确控制
+  ```
+
+* [UserWidget] - Border
+
+  ``` tex
+  只能包含一个子元素，用来做元素背景
+  Border可以相应鼠标的各种事件
+  
+  可以设置背景图片，也可以是颜色
+  背景颜色和背景图片可以同时设置，最终的效果是保留图片纹理+图片颜色背景颜色（“颜色颜色”就是叠加颜色）。
+  如果背景颜色为白色，则保留背景图片原本的颜色。也可以设置Brush Color的透明度，这样背景图片也会变得透明
+  ```
+
+* [UserWidget] - WidetSwitcher
+
+  ``` tex
+  Widget Switcher可以有很多子控件，但一次只会显示一个子控件。所有的子控件默认情况下都是充满整个Widget Switcher容器
+  ```
+
+* [UserWidget] - ScaleBox
+
+  ``` tex
+  缩放容器，只能有一个子控件，用来缩放保持长宽比例
+  ```
+
+
+
+
+
+* UMG Behavior - IsEnabled
+
+  **若父节点的IsEnabled为false,则子节点修改颜色不会生效，会呈现默认disabled状态的灰色；若父节点Visibility为不显示，则子节点不显示**
+
+  ![image-20220224114411593](UE4 UI开发.assets/image-20220224114411593-16456742533541.png)
+
+
+
 ---
 
 
@@ -322,8 +392,10 @@
   ``` tex
   UE4.15以前，Canvas Panel不参与合批，推荐使用Overlay，但是Overlay不支持子空间的位置和大小直接设置和适配
   UE4.15后支持 同ZOrder的Canvas Panel批次合并
+  
+  1.通用的Widget使用Overlay作为根结点
   ```
-
+  
   ``` tex
   Canvas Panel vs. Overlay
   
@@ -371,7 +443,7 @@
           //确定部件大小：无
           //确定部件层级：无
   ```
-
+  
   ``` tex
   Overlay作用1：
   	动态挂载时，用Overlay作为挂载的根节点，可以设置Overlay的大小，使挂载对象使用填充方式挂载，如图所示

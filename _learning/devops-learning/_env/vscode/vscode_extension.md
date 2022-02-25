@@ -129,3 +129,28 @@
 
 
 
+
+
+
+
+---
+
+
+
+### 插件扩展
+
+* LSP
+
+  * 基于微软LSP(Language Server Protocol)，一种语言服务协议，用于语言功能插件开发
+  * 为不同编程语言添加 自动补全（Auto Complete）跳转定义（Go to Definition） 悬停文档（Documentation on Hover）等功能，提供统一标准化开发工具与功能插件之间的通信协议，一套功能插件通过LSP可以适配多个开发工具
+  * 本质：根据编辑器与功能插件的交互，制定的一套公共流程与协议
+
+* 支持LSP的编辑器
+
+  VSCode，Eclipse IDE，Atom，Subline Text， Emacs等
+
+* VSCode 中 LuaHelper插件
+
+  ![](vscode_extension.assets/IMG_20220224_092228_edit_47449537566716.jpg)
+
+  ![](vscode_extension.assets/IMG_20220224_092447_edit_47585084880758.jpg)

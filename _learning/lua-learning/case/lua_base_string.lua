@@ -886,6 +886,23 @@ do
             print(s)
         end
 
+        print("string gmatch 222")
+        local res = nil
+        local content = [[666\n555]]
+        if content ~= nil then   
+            content = content .. [[\n]]
+            for str in string.gmatch(content, "([^".. [[\n]] .. "]+)") do
+                if str then
+                    if res then
+                        res = res .. '\n' .. str
+                    else
+                        res = str
+                    end
+                end
+            end
+        end
+        print(res)
+
 
         --[[
             Split a string using string.gmatch() in Lua
