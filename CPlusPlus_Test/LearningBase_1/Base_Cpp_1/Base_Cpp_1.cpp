@@ -16,6 +16,11 @@ int main()
 {
     std::cout << "Hello World!\n";
 
+	//base_2.h 测试传值 vs. 传引用 vs. 传指针
+	Base_2 b22;
+	b22.test2();
+	return 0;
+
 	//base_7.h 测试运算符结合次序和运算顺序的关系
 	//TestOperator_1 to_1;
 	//to_1.Test1();

@@ -236,3 +236,34 @@ void Base_2::test_ptr_need_check_null(Base_2 *b2ptr_1, Base_2 *b2ptr_2)
 		b2ptr_1 = nullptr;
 	}
 }
+
+
+//pass-by-value
+void func_1(int x, int y, int z)
+{
+	x = 0;
+}
+//pass-by-pointer
+void func_2(int* x, int* y, int* z)
+{
+	*x = 0;
+}
+//pass-by-reference
+void func_3(int& x, int& y, int& z)
+{
+	x = 0;
+}
+void Base_2::test2()
+{
+	int a = 1;
+	int b = 2;
+	int c = 3;
+	func_1(a, b, c);
+	std::cout << "a= " << a << ", b= " << b << ", c= " << c << std::endl;
+	func_1(1, 2, 3);
+	std::cout << "a= " << a << ", b= " << b << ", c= " << c << std::endl;
+	func_2(&a, &b, &c);
+	std::cout << "a= " << a << ", b= " << b << ", c= " << c << std::endl;
+	func_3(a, b, c);
+	std::cout << "a= " << a << ", b= " << b << ", c= " << c << std::endl;
+}

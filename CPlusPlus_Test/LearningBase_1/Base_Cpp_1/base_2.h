@@ -107,4 +107,7 @@ public:
 
 	//指针是否需要判空
 	static void test_ptr_need_check_null(Base_2 *b2ptr_1, Base_2 *b2ptr_2);
+
+
+	void test2();
 };

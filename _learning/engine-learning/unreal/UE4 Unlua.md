@@ -177,7 +177,52 @@
 
 ### UE4 & UnLua内存管理
 
-* 
+* 内存池使用注意点
+  * **UnLua中使用内存池，如果将UE4层的对象（如，UMG、Actor等）当作池化对象，那么当UE4层尝试释放对这些被池子管理着的对象时，由于lua池子引用，导致无法GC，在切场景时，可能发生内存泄漏**
+    * lua和c++交互时，慎用内存池缓存另一边的对象，尽量只缓存自己产生的对象
+
+
+
+
+
+
+
+---
+
+
+
+### 语法应用
+
+* UE4 和 UnLua层同时存在
+
+  ``` c++
+  UCLASS()
+  class HITBOXMAKERBLUEPRINT_API UPlayerBaseDataManager : public UObject, public IUnLuaInterface
+  {
+      virtual FString GetModuleName_Implementation() const override
+  	{
+  		return TEXT("DataManager.PlayerBaseDataManager_C");
+  	}
+  }
+  ```
+
+  ``` lua
+  local PlayerBaseDataManager_C = Class()
+      function PlayerBaseDataManager_C:Init()
+          if PlayerBaseDataMgr == nil then
+              PlayerBaseDataMgr = self
+          end
+      end
+  return PlayerBaseDataManager_C
+  
+  --全局可使用 PlayerBaseDataMgr 访问 UE4定义的和UnLua定义的 成员函数和变量
+  ```
+
+  
+
+
+
+
 
 
 
