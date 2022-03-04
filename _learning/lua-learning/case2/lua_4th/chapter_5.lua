@@ -417,3 +417,94 @@ do
     print(string.format("cost time : %.4f", end_time - start_time));
 
 end
+
+
+
+--[[
+    用好 表 的特性
+]]
+
+do
+    local ItemData = {}
+        function ItemData:Ctor()
+            ---表格数据
+            self.mItemId = 0
+            self.mItemTable = nil
+            self.mItemLevel = 0  --道具使用等级
+            self.mPackageType = PackageType.eInvalid
+            self.mWearSlotType = -1                             --装备/时装穿戴部位
+            self.mItemType = ItemTableEnum_ItemType.ItemType_None
+            self.mItemSubType = ItemTableEnum_ItemSubType.ST_NONE
+            self.mItemThirdType = ItemTableEnum_ItemThirdType.TT_NONE
+            self.mItemFourthType = ItemTableEnum_ItemFourthType.FT_NONE
+            self.mItemQuality = ItemTableEnum_ItemQuality.CL_NONE
+        
+            ---本地纯表现数据(按道理应该放在ComItem里)
+            self.mIsSelected = false --是否被选中
+        
+            ---服务器数据
+            -- 1.基础数据
+            self.mItemGuid = 0
+            self.mItemCount = 0
+            self.mStrengthLv = 0  --强化等级
+            self.mLimitTimeType = 0 --时限类型（对应枚举ItemTimeType）
+            self.mLimitTime = 0   --时限
+            self.mRePackTime = 0  --封装次数
+            self.mIsNew = false   --是否是新获得的道具
+            self.mEquipSealState = 0   --装备封印状态  1：表示封印，0：表示未封印
+        end
+    return ItemData
+end
+
+do
+
+local PackageBagDataManager = {}
+
+--通过EPackageType排序道具物品
+function PackageBagDataManager:SortItemsByPackageType(ePackageType)
+    local items = ItemDataMgr:GetItemsByType(ePackageType)
+    if (items == nil) then
+        return
+    end
+    local sortProperty = { { "mItemQuality", true },                    --TODO 使用表的特性：  排序类型  和  排序优先级  以及 排序比较升序还是降序  都能满足
+                           { "mItemLevel", true },
+                           { "mItemSubType", false },
+                           { "mItemThirdType", false },
+                           { "mItemFourthType", false },
+                           { "mLimitTime", false },
+                           { "mStrengthLv", true },
+                           { "mRePackTime", true },
+    }
+    items:Sort(function(a, b)
+        for i = 1, #sortProperty do
+            local sortItem = sortProperty[i]
+            if (self:CanCompare(a[sortItem[1]], b[sortItem[1]])) then   --TODO lua表格 sort时，必须要先判断参与比较的两个元素是否相同
+                return self:GetSortRule(a[sortItem[1]], b[sortItem[1]], sortItem[2])
+            end
+        end
+    end)
+end
+
+--当前是否可以比较，当前不能进行比较的话，就进行下一步的比较
+function PackageBagDataManager:CanCompare(leftValue, rightValue)
+    return leftValue ~= rightValue
+end
+
+--排序的规则
+function PackageBagDataManager:GetSortRule(leftValue, rightValue, isCompareBiggerValue)
+    if (leftValue ~= 0 and rightValue == 0) then
+        return true
+    elseif (leftValue == 0 and rightValue ~= 0) then
+        return false
+    else
+        if (isCompareBiggerValue == true) then
+            return leftValue > rightValue
+        else
+            return leftValue < rightValue
+        end
+    end
+end
+
+return PackageBagDataManager
+
+end

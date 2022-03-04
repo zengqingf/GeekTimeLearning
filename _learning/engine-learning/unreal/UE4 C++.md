@@ -350,8 +350,6 @@
 
 
 
-
-
 * float to FString 四舍五入（保留小数）
 
   ``` c++
@@ -936,12 +934,29 @@
 
     ``` tex
     测试环境：UE4.25
-    获取时间戳为默认值 FDateTime 0001.01.01-00.00.00
+    获取时间戳为默认值 
+    FDateTime 0001.01.01-00.00.00
     ```
-
+    
+    
     
 
-    
+* UE4 FDateTime
+
+  ``` c++
+  //1.时分秒
+  ToString(TEXT("%h:%m:%s.%t"))
+  //2.年月日
+  ToString(TEXT("%Y%m%d"))， 格式：20190101
+  FDateTime::Now().ToString(TEXT("%Y-%m-%d-%H-%M-%S"))
+     
+  //时间戳
+  FDateTime::Now().ToUnixTimestamp();
+  //标准时区是：
+  FDateTime::UtcNow().ToUnixTimestamp();
+  ```
+
+  
 
 
 

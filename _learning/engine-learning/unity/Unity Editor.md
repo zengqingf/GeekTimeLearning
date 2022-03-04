@@ -59,4 +59,16 @@
   
     ref: https://github.com/TeamSirenix/odin-serializer
   
-    * 序列化编辑器
+    * 序列化显示编辑器
+    
+  * PerfAssist
+  
+    ref:https://github.com/GameBuildingBlocks/PerfAssist
+  
+    Unity性能相关组件：协程Profiler和表格编辑器查看等
+  
+  * UnityComponent 
+  
+    ref:https://github.com/GameBuildingBlocks/UnityComponent
+  
+    这里整合了Unity资源管理上的一些解决方案。包括资源统计，资源格式化，资源打包以及资源加载等等。
