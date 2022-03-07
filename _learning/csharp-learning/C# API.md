@@ -104,6 +104,16 @@
 
 
 
+* 获取时间戳
+
+  ``` c#
+  new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+  ```
+
+  
+
+
+
 ---
 
 
