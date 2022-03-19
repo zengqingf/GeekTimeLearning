@@ -249,6 +249,29 @@
     USkeletalMesh* MyMesh = Cast<USkeletalMesh*>(Obj);  
     ```
 
+    ``` c++
+    FString path = TEXT("Texture2D'/Game/Resources/UI/ComAvatarRender/RT_ComAvatarRenderActor.RT_ComAvatarRenderActor'");
+    UTextureRenderTarget2D* renderTargetClass = LoadObject<UTextureRenderTarget2D>(GLOBAL_WORLD(),*path);
+    if (renderTargetClass != nullptr){}
+    ```
+
+    ``` c++
+    class USceneCaptureComponent2D *sceneCaptureActor = 
+     	(class USceneCaptureComponent2D *)GetWorld()->SpawnActor<USceneCaptureComponent2D>(USceneCaptureComponent2D::StaticClass());
+    class UTextureRenderTarget2D *renderTarget2D = (class UTextureRenderTarget2D *)NewObject<class UTextureRenderTarget2D>(sceneCaptureActor);
+    sceneCaptureActor->TextureTarget = renderTarget2D;
+    UTextureRenderTarget2D* RenderTarget = NewObject<UTextureRenderTarget2D>();
+    RenderTarget->RenderTargetFormat = ETextureRenderTargetFormat::RTF_RGBA8;
+    RenderTarget->Filter = Filter;
+    RenderTarget->InitAutoFormat(Size.X, Size.Y);
+    RenderTarget->UpdateResourceImmediate(true);
+        ...
+    SceneCapture->TextureTarget = RenderTarget;
+    SceneCapture->CaptureScene();			
+    ```
+
+    
+
   * StaticLoadObject
 
     ``` c++

@@ -252,6 +252,14 @@
   在Child Widget父级界面中勾选“Size To Content”，就会变成Child Widget中SizeBox的尺寸。可以做的控件尺寸的精确控制
   ```
 
+  ![image-20220315103600701](UE4 UI开发.assets/image-20220315103600701-16473117616511.png)
+
+  ```
+  使用SizeBox中的 Max Desired Height 限制子节点下的最大高度
+  ```
+
+  
+
 * [UserWidget] - Border
 
   ``` tex
@@ -284,6 +292,20 @@
   **若父节点的IsEnabled为false,则子节点修改颜色不会生效，会呈现默认disabled状态的灰色；若父节点Visibility为不显示，则子节点不显示**
 
   ![image-20220224114411593](UE4 UI开发.assets/image-20220224114411593-16456742533541.png)
+
+
+
+
+
+* UMG 编辑器中 TextBlock插入换行
+
+  ``` tex
+  手动换行要用Shit+Enter
+  
+  自动换行 Details面板 Wrapping -> Auto Wrap Text + Allow Per Character Wrapping
+  ```
+
+  
 
 
 

@@ -24,5 +24,11 @@
     <ClCompile Include="ReverseList_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="QuickSort_1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapSort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

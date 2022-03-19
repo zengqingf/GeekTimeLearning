@@ -13,6 +13,21 @@ do
     print(3.14 % 1)             --小数部分
     print(3.14 - 3.14 % 1)      --整数部分
 
+    --[[
+        使用string格式化方式
+        如果需要的结果是字符串，则可以使用string.format()函数
+        保留2位小数：string.format(“%.2f”, x)
+
+        使用数字计算方式
+        使用%运算符，得到的结果是数字
+        x%1 表示x的小数部分，x-x%1 表示x的整数部分。
+        类似的，x-x%0.01 将x精确到小数点后2位。
+    ]]
+    local x = 3.1415926
+    print(string.format("%.2f", x))           
+    print(x-x%1)
+    print(x-x%0.01)
+
     print(8 % 3)
     print(1 % 2)
     print(math.floor(8 % 3))    --output：2

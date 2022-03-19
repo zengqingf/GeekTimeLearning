@@ -162,6 +162,8 @@
   <ItemGroup>
     <ClInclude Include="complex.h" />
     <ClInclude Include="complex_test.h" />
+    <ClInclude Include="Fraction_1.h" />
+    <ClInclude Include="ObjectModel_1.h" />
     <ClInclude Include="oop_test.h" />
     <ClInclude Include="oop_test_2.h" />
     <ClInclude Include="template_test.h" />

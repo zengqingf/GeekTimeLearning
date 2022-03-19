@@ -184,3 +184,117 @@
 
   
 
+---
+
+
+
+### Hot Key
+
+* ref: [Basic Keyboard Shortcuts for Unreal Engine 4](https://www.domestika.org/en/blog/4733-basic-keyboard-shortcuts-for-unreal-engine-4)
+
+  #### Most common shortcuts
+
+  \- **Copy**: Ctrl + C
+  \- **Cut**: Ctrl + X
+  \- **Paste**: Ctrl + V
+  \- **Save in Blueprint**: Ctrl + S
+  \- **Find within Blueprint**: Ctrl + F
+  \- **Find in all Blueprints**: Ctrl + Shift + F
+
+  \- **Saves all unsaved levels & assets**: Ctrl + Shift + S 
+
+  \- **Delete**: Delete
+  \- **Undo**: Ctrl + Z
+  \- **Redo**: Ctrl + Y
+  \- **Select All**: Ctrl + A
+  \- **Clear Selection**: Esc
+  \- **Move Selection**: Arrows
+  \- **Rename**: F2
+  \- **Open File**: F1
+  \- **Find in Content Browser**: Ctrl + B
+  \- **Browse Tabs**: Ctrl + Tab
+  \- **Open Level**: Ctrl + O
+  \- **Play/Simulate**: Alt + P / Alt + S
+  \- **Show Nav Mesh**: P
+  \- **Zoom**: Mouse Wheel Up/Down
+
+  #### Object Selection Shortcuts
+
+  \- **Group and Ungroup**: Ctrl + G / Shift + G
+  This shortcut enables organizing elements or parts of a level.
+  \- **Pin and Unpin**: Mouse right-click -> Group
+  Pinning allows for moving separate elements. When you unpin, all elements are combined again.
+
+  #### Viewport Transformation Shortcuts
+
+  \- **Scale**: R
+  \- **Translate**: W
+  \- **Rotate**: E
+  \- **Toggle Move, Rotate, Scale**: Spacebar
+
+  ![Basic Keyboard Shortcuts for Unreal Engine 4 4](UE4 操作.assets/dataprep-ui-original-original.jpg)
+
+  #### Viewport Camera Shortcuts
+
+  \- **Focus**: F
+  Focuses Viewport on a selected object.
+  \- **View**: G
+  Hide tools such as grids and icons to see how the level will appear.
+  \- **Perspective View**: Alt + G
+  \- **Front View**: Alt + H
+  \- **Top View**: Alt + J
+  \- **Side View**: Alt + K
+
+  #### Play World Hotkeys
+
+  \- **Play**: Alt + P
+  \- **Pause**: PAUSE
+  \- **Full Screen**: F11
+  \- **Command Console**: ` / ~
+  \- **Eject**: F8
+
+  #### Viewport Navigation Shortcuts
+
+  \- **Wireframe View**: Alt + 2
+  \- **Unlit View**: Alt + 3
+  \- **Lit View**: Alt + 4
+  \- **Increase Grid Size**: Shift + [
+  \- **Decrease Grid Size**: Shift + ]
+
+  ![Basic Keyboard Shortcuts for Unreal Engine 4 6](UE4 操作.assets/BlueprintEditor_Windows-original-original.jpg)
+
+  #### Level Editor Shortcuts
+
+  \- **Menú**: Right Mouse Button
+  \- **Save All**: Ctrl + S
+  \- **Set Bookmark**: Ctrl + 0-9
+  \- **Jump to Bookmark**: 0-9
+  \- **Hide Selected**: H
+  \- **Unhide All**: Ctrl + H
+  \- **Snap to Floor:** End
+  \- **Snap Pivot to Floor**: Alt + End
+  \- **Snap Bounds to Floor**: Shift + End
+  \- **Snap Origin to Grid**: Ctrl + End
+  \- **Select all Adjacent Floor Surfaces**: Shift + U
+  \- **Select all Adjacent Slant Surfaces**: Shift + Y
+  \- **Select all Adjacent Surfaces**: Shift + J
+  \- **Select all Adjacent Wall Surfaces**: Shift + W
+  \- **Select all Coplanar Surfaces**: Shift + C
+  \- **Find in Blueprint**: Ctrl + K
+  \- **Show Navigation Mesh**: P
+  \- **Duplicate and Transform**: Alt + Transform
+
+  #### Mode Shortcuts
+
+  \- **Actor Placement Mode**: Shift + 1
+  \- **Paint Editing Mode:** Shift + 2
+  \- **Landscape Editing Mode**: Shift + 3
+  \- **Foliage Editing Mode**: Shift + 4
+  \- **Geometry Editing Mode**: Shift + 5
+
+  #### How to create your own Hotkeys in Unreal Engine 4
+
+  \- Open the Preference tab in Editor, click on Edit, then on Keyboard Shortcuts.
+  \- You can use the Search field to look for pre-existing commands.
+  \- To modify shortcuts, click on the text field and write up the new hotkey.
+  \- To delete an existing shortcut, click on the red delete icon.

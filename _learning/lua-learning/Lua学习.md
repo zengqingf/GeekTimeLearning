@@ -36,6 +36,56 @@
 
 
 
+
+
+
+
+---
+
+
+
+### Lua面向对象
+
+* 使用元表和元方法
+
+  元表：metatable
+
+  元方法：__index
+
+  ``` tex
+  继承：通过元表的__index元方法，将一个table A的__index元方法设置为另一个table B，那么B被A继承
+  	如果访问了lua表中不存在的元素时，就会触发lua的查找机制
+  	
+  查找机制：
+  	1. 在table中查找，如果找到，返回该元素，否则2
+  	2. 判断table是否有元表，如果没有元表，返回nil，有元表继续3
+  	3. 判断元表有没有__index方法，如果__index方法为nil，则返回nil，如果__index方法是一个表，则重复 1，2，3；
+  		如果__index方法是一个函数，则调用该函数，并返回该函数的返回值
+  		
+  说明：
+  	1. 元表如一个备用查找表，假设表A的元表是B，那么在A中找不到就会去B中找
+  	2. 设置元表 setmetatable(A, B) 将B设置为A的元表
+  	3. 元方法__index是用于确定一个表在被作为元表是的查找方法
+  	
+  封装：
+  	设置新对象的metatable  setmetatable(tempObj, Class)
+  	
+  继承多态：
+  	父类：设置metatable的元方法__index，指向表Class自己
+  		Class.__index = Class
+  		设置新对象metatable
+          setmetatable(tempObj, Class)
+          
+      子类：设置metatable为Class
+      	setmetatable(SubClass, Class)
+  		设置metatable的元方法__index，指向表subclass自己
+  		SubClass.__index = SubClass
+  ```
+
+  
+
+
+
 ---
 
 

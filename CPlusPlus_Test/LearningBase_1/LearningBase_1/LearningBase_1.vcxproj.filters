@@ -56,5 +56,11 @@
     <ClInclude Include="oop_test_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Fraction_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

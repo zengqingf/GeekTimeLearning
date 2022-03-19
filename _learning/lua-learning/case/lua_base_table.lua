@@ -44,3 +44,22 @@ do
         end
     ]] 
 end
+
+
+--[[
+    Lua - Execute a Function Stored in a Table
+]]
+do
+    local function func(a,b,c) return a,b,c end
+    local a = {myfunc = func}                               
+    print(a.myfunc(3,4,5)) -- prints 3,4,5
+
+    local a = {myfunc = function(a,b,c) return a,b,c end}
+    print(a.myfunc(3,4,5)) -- prints 3,4,5
+
+
+    local tableFunc = require("lua_base_table_2")
+    print(tableFunc:func2(3, 4, 5))
+    --print(tableFunc:func3(3, 4, 5)) --错误
+    print(tableFunc:func4(3, 4, 5))
+end
