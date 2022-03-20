@@ -499,3 +499,13 @@
   ```
 
   
+
+---
+
+
+
+### Unity 基础
+
+* MonoBehaviour生命周期
+
+  ![](Unity Base.assets/monobehaviour_flowchart.svg)

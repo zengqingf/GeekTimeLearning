@@ -14,7 +14,7 @@
 
 
 
-* behaviac
+* behaviac   ref: https://www.behaviac.com/bd_vs_behaviac/
 * graphic / texture compress 见wiz
 * runtime permissions
 * spine animation
