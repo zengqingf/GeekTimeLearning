@@ -5,8 +5,8 @@
 * ref
 
   [Python 入门指南](http://www.pythondoc.com/pythontutorial3/index.html)
-
-
+  
+  [python-cookbook-3rd-edition-docu-CN](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)
 
 
 

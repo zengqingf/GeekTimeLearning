@@ -10,9 +10,11 @@
 
 [Lua和C++交互详细总结](https://www.cnblogs.com/sevenyuan/p/4511808.html)
 
+[lua documentation](https://www.lua.org/docs.html)
+
 * lua 堆栈
 
-  在Lua中，Lua堆栈就是一个struct，堆栈索引的方式可是是正数也可以是负数，区别是：正数索引1永远表示栈底，负数索引-1永远表示栈顶。
+  在Lua中，Lua堆栈就是一个struct，堆栈索引的方式可是是正数也可以是负数，区别是：正数索引 1永远表示栈底，负数索引 -1永远表示栈顶。
 
 
 
