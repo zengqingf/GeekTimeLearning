@@ -1,0 +1,26 @@
+版本机
+tenmove
+tenmove-2021
+
+svn robot用户密码：
+woshijiqiren
+
+
+1.5jenkins
+admin
+tm2018
+    高权限机器人
+    HighPermissionRobot
+    zvdMT6!Z35S@fpa1
+
+    token
+        robot1
+        11e37d716b3a4db72ea51a4d006a7b85d6
+
+
+A8jenkins(应该不会再变了)
+admin
+X!#xwD*DXyvCKK65
+
+//不知道是什么密码
+t3dQkzZNyhwzB4ko

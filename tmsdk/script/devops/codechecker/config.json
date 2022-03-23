@@ -1,0 +1,16 @@
+{
+    "analyze": [
+        "--disable=clang-diagnostic-unused-parameter",
+        "--disable=cppcoreguidelines-special-member-functions",
+        "--disable=performance-noexcept-move-constructor",
+        "--enable=sensitive",
+        "--disable=deadcode.DeadStores",
+        "--verbose=debug"
+    ],
+    "parse": [
+    ],
+    "server": [
+    ],
+    "store": [
+    ]
+}

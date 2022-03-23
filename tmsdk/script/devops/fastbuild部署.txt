@@ -1,0 +1,12 @@
+1.修改FASTBuild-Src-v1.04\dist_v1.04\External\SDK\VisualStudio\VS2019.bff中vs2019 ide安装位置
+2.修改FASTBuild-Src-v1.04\dist_v1.04\External\SDK\VisualStudio\VS2019.bff中clui.dll 和 mspft140ui.dll的位置
+3.修改FASTBuild-Src-v1.04\dist_v1.04\External\SDK\Windows\Windows10SDK.bff Windows10_SDKBasePath 和 Windows10_SDKVersion 数据
+4.在源码Code目录执行fbuild All-x64-Release命令，生成本机exe
+5.添加系统环境变量key=FASTBUILD_BROKERAGE_PATH value=共享文件夹路径
+
+
+
+
+
+本地编译 11264s
+fastbuild编译 

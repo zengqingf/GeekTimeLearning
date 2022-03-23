@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f424b675c83cf479f8177bbda017e8, type: 3}
+  m_Name: GameBuildParams
+  m_EditorClassIdentifier: 
+  buildPackType: 6
+  TestLoginVerifyUrl: 
+  TestChargeCallbackUrl: 
+  TestServerListUrl: 
+  debugModeEnabled: 1
+  isSDKDebug: 0
+  isSDKPayDebug: 0
+  sdkChannelAssetPath: 
+  sdkChannelType: MG
+  sdkConfigPath: 
+  sdkChannelCommonLibs:
+  - CL_Lebian2121
+  buildPlatform: 7
+  buildType: 0
+  buildOptions: 
+  showIcon: {fileID: 0}
+  appIdentifier: com.tm.dnl2.channel.demo.mg
+  bundleVersion: 97.0
+  companyName: 
+  productName: "SDK\u6E20\u9053\u6D4B\u8BD5"
+  scriptDefines: LOG_ERROR
+  gameScenes:
+  - Assets/Scenes/SDKChannel/SDKChannelScene_1.unity
+  buildToPath: "./exportapk/SDK\u6E20\u9053\u6D4B\u8BD5/MG\u6E20\u9053/"
+  buildToFileName: 20191228_150617_AndroidChannelTest_v97.0_MG.apk
+  bundleVersionCode: 97
+  forceSDCard: 1
+  keystoreName: D:/_WorkSpace/_sdk/SDK_Projects/2.0/BuildTools_keystore/hegu.keystore
+  keystorePass: 123456
+  keyaliasName: hegu
+  keyaliasPass: 123456
+  preferInstall: 0
+  minSdkVersion: 16
+  targetSdkVersion: 26
+  targetDevice: 1

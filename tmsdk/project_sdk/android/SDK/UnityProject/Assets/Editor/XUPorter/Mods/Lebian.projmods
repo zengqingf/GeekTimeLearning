@@ -1,0 +1,23 @@
+{
+    "group": "Lebian",
+    "libs": [
+],
+    "frameworks": [
+    		  ],
+    "headerpaths": [],
+    "files":   [
+                    "Lebian/LBSDK.framework",
+                    "Lebian/LBInterface.h",
+                	"Lebian/LBInterface.mm"
+                ],
+    "folders": [],    
+    "excludes": ["^.*.meta$", "^.*.mdown$", "^.*.pdf$"],
+    "compiler_flags": [],
+    "linker_flags": [
+                    ]
+    "embed_binaries":["Lebian/LBSDK.framework"],
+    "plist":"Lebian/mergePlist.xml",
+    "linker_flags": [
+                    "-ObjC"
+                    ]
+}

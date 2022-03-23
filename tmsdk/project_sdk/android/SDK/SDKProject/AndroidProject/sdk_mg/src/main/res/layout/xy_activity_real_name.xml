@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mg_float_back" />
+
+        <TextView
+            android:id="@+id/login_holder_mg_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="实名认证"
+            android:textColor="@color/text_4c"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/go_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/xy_quick_login_save_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="回到游戏"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d1d1d1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/real_name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="尊敬的用户:"
+                android:textColor="#505050"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:lineSpacingExtra="5dp"
+                android:text="按文化部《网络游戏管理暂行办法》要求，网络游戏用户需要进行实名认证。信息仅限用于认证且绝对保密。"
+                android:textColor="#505050"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/input_real_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_bg"
+                android:gravity="center_vertical"
+                android:hint="请输入真实姓名"
+                android:paddingLeft="10dp"
+                android:textColor="#969696"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/input_idcard_et"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_bg"
+                android:gravity="center_vertical"
+                android:hint="请输入身份证号码"
+                android:paddingLeft="10dp"
+                android:textColor="#969696"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/real_name_confirm_tv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/xy_quick_login_save_bg"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        
+        <TextView 
+            android:id="@+id/has_real_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您已完成实名认证"
+            android:textColor="#505050"
+            android:textSize="14sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            />
+        
+    </RelativeLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        >
+        <TextView 
+            android:id="@+id/sdk_version_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.0.20"
+            android:textColor="#c8c8c8"
+            android:textSize="14sp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

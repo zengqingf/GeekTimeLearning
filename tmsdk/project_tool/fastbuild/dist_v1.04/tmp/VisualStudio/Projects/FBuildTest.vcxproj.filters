@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\alias.bff">
+      <Filter>Data\TestAlias</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\bad_string.bff">
+      <Filter>Data\TestAlias\Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\bad_string_recurse.bff">
+      <Filter>Data\TestAlias\Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_string.bff">
+      <Filter>Data\TestAlias\Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_string_recurse.bff">
+      <Filter>Data\TestAlias\Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_to_non_filenode.bff">
+      <Filter>Data\TestAlias\Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\array_typemismatch.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\array_unterminated.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\arrays.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_define.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_undef.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_undef_builtin.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\builtin_variables.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\comments.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\cyclic_dependency.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\define_undef_directives.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\dynamic_var_name_construction.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad2.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad3.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad4.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad5.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad6.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\frozen_foreach.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\frozen_foreach_nested.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_directive.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_exists_directive.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_file_exists_directive.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\root.bff">
+      <Filter>Data\TestBFFParsing\IfFileExistsDirective\RelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\root_sibling.bff">
+      <Filter>Data\TestBFFParsing\IfFileExistsDirective\RelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir\subdir.bff">
+      <Filter>Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir\subdir_sibling.bff">
+      <Filter>Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_excessivedepth.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_once.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_scope.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_scope2.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_a.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_b.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_c.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\integers.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\invalid_directive.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\operator_minus.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_bug.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_bug2.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_unknown.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\self_assignment.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\self_assignment2.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\strings.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation_mismatch.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation_order.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_membershadowsself.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_unterminated.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\structs.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\unnamedscope.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\unnamedscope_unterminated.bff">
+      <Filter>Data\TestBFFParsing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\a.cpp">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\a.h">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\b.cpp">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\b.h">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\c.cpp">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\c.h">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\DeleteFile\fbuild.bff">
+      <Filter>Data\TestBuildAndLinkLibrary\DeleteFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\fbuild.bff">
+      <Filter>Data\TestBuildAndLinkLibrary</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildFBuild\fbuild.bff">
+      <Filter>Data\TestBuildFBuild</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\a.cpp">
+      <Filter>Data\TestCache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\fbuild.bff">
+      <Filter>Data\TestCache\Analyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\file1.cpp">
+      <Filter>Data\TestCache\Analyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\file2.cpp">
+      <Filter>Data\TestCache\Analyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\b.cpp">
+      <Filter>Data\TestCache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\cache.bff">
+      <Filter>Data\TestCache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\ConsistentCacheKeys\fbuild.bff">
+      <Filter>Data\TestCache\ConsistentCacheKeys</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\ConsistentCacheKeys\file1.cpp">
+      <Filter>Data\TestCache\ConsistentCacheKeys</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\lightcache.bff">
+      <Filter>Data\TestCache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file1.cpp">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file1.h">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file2.cpp">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file2.h">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\header1.h">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\header2.h">
+      <Filter>Data\TestCache\LightCache_CyclicInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_ImportDirective\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_ImportDirective</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_ImportDirective\file.cpp">
+      <Filter>Data\TestCache\LightCache_ImportDirective</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\common.h">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder1\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy\Folder1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder1\file.h">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy\Folder1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder2\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy\Folder2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder2\file.h">
+      <Filter>Data\TestCache\LightCache_IncludeHierarchy\Folder2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\file.1.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\file.2.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\header1.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\header2.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\header1.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\header2.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.1.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.1.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.2.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.2.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\fbuild.bff">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\file.cpp">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\file.h">
+      <Filter>Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\buildplugin.bff">
+      <Filter>Data\TestCachePlugin\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\Plugin.cpp">
+      <Filter>Data\TestCachePlugin\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\TestA.cpp">
+      <Filter>Data\TestCachePlugin\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\useplugin.bff">
+      <Filter>Data\TestCachePlugin\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\buildplugin.bff">
+      <Filter>Data\TestCachePlugin\OldInterface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\CachePluginInterface.h">
+      <Filter>Data\TestCachePlugin\OldInterface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\Plugin.cpp">
+      <Filter>Data\TestCachePlugin\OldInterface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\TestA.cpp">
+      <Filter>Data\TestCachePlugin\OldInterface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\useplugin.bff">
+      <Filter>Data\TestCachePlugin\OldInterface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\a.cpp">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\a.h">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\b.cpp">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\c.cpp">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\clr.bff">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\exe.cxx">
+      <Filter>Data\TestCLR</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\testcommon.bff">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompilationDatabase\dir\subdir\file.cpp">
+      <Filter>Data\TestCompilationDatabase\dir\subdir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompilationDatabase\fbuild.bff">
+      <Filter>Data\TestCompilationDatabase</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\compile.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict1.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict2.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict3.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict4.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\exe.cpp">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\Explicit\explicit.bff">
+      <Filter>Data\TestCompiler\Explicit</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\Implicit\implicit.bff">
+      <Filter>Data\TestCompiler\Implicit</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\multipleimplicitcompilers.bff">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\SimpleCompiler.cpp">
+      <Filter>Data\TestCompiler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\copy.bff">
+      <Filter>Data\TestCopy</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\MissingTrailingSlash\fbuild.bff">
+      <Filter>Data\TestCopy\MissingTrailingSlash</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining2\fbuild.bff">
+      <Filter>Data\TestCopy\ObjectListChaining2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining2\file.1.cpp">
+      <Filter>Data\TestCopy\ObjectListChaining2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\fbuild.bff">
+      <Filter>Data\TestCopy\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\file.1.cpp">
+      <Filter>Data\TestCopy\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\file.2.cpp">
+      <Filter>Data\TestCopy\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\a.cs">
+      <Filter>Data\TestCSharp</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\b.cs">
+      <Filter>Data\TestCSharp</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\c.cs">
+      <Filter>Data\TestCSharp</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\csharp.bff">
+      <Filter>Data\TestCSharp</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\fbuild.bff">
+      <Filter>Data\TestCSharp\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\SubDirA\FileA.cs">
+      <Filter>Data\TestCSharp\Exclusions\SubDirA</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\SubDirB\FileB.cs">
+      <Filter>Data\TestCSharp\Exclusions\SubDirB</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\ObjectListFails\fbuild.bff">
+      <Filter>Data\TestCSharp\ObjectListFails</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\UsingNonCSharpCompilerFails\fbuild.bff">
+      <Filter>Data\TestCSharp\UsingNonCSharpCompilerFails</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCUDA\cuda.bff">
+      <Filter>Data\TestCUDA</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCUDA\test.cu">
+      <Filter>Data\TestCUDA</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\a_normal.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\a_pch.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\AnonymousNamespaces\A\file.cpp">
+      <Filter>Data\TestDistributed\AnonymousNamespaces\A</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\AnonymousNamespaces\B\file.cpp">
+      <Filter>Data\TestDistributed\AnonymousNamespaces\B</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\b_normal.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\b_pch.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\BadCode\ErrorWithPercent.cpp">
+      <Filter>Data\TestDistributed\BadCode</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\c_normal.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\c_pch.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\D8049_ToolLongDebugRecord\fbuild.bff">
+      <Filter>Data\TestDistributed\D8049_ToolLongDebugRecord</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ErrorsAreCorrectlyReported\Error.cpp">
+      <Filter>Data\TestDistributed\ErrorsAreCorrectlyReported</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ErrorsAreCorrectlyReported\fbuild.bff">
+      <Filter>Data\TestDistributed\ErrorsAreCorrectlyReported</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\fbuild.bff">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ForceInclude\a.cpp">
+      <Filter>Data\TestDistributed\ForceInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ForceInclude\a.h">
+      <Filter>Data\TestDistributed\ForceInclude</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\PrecompiledHeader.cpp">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\PrecompiledHeader.h">
+      <Filter>Data\TestDistributed</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\Fast.cpp">
+      <Filter>Data\TestDistributed\RemoteRaceWinRemote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\fbuild.bff">
+      <Filter>Data\TestDistributed\RemoteRaceWinRemote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\Slow.cpp">
+      <Filter>Data\TestDistributed\RemoteRaceWinRemote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\SlowTemplate.h">
+      <Filter>Data\TestDistributed\RemoteRaceWinRemote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ShutdownMemoryLeak\a.cpp">
+      <Filter>Data\TestDistributed\ShutdownMemoryLeak</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ShutdownMemoryLeak\fbuild.bff">
+      <Filter>Data\TestDistributed\ShutdownMemoryLeak</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\WarningsAreCorrectlyReported\fbuild.bff">
+      <Filter>Data\TestDistributed\WarningsAreCorrectlyReported</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\WarningsAreCorrectlyReported\Warning.cpp">
+      <Filter>Data\TestDistributed\WarningsAreCorrectlyReported</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\Zi\a.cpp">
+      <Filter>Data\TestDistributed\Zi</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\a.cpp">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\a.h">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\b.cpp">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\b.h">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\exe.cpp">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\fbuild.bff">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\PrecompiledHeader.cpp">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\PrecompiledHeader.h">
+      <Filter>Data\TestDLL</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestError\error.bff">
+      <Filter>Data\TestError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExe\exe.bff">
+      <Filter>Data\TestExe</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExe\exe.cpp">
+      <Filter>Data\TestExe</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\Exclusions\fbuild.bff">
+      <Filter>Data\TestExec\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\Exclusions\main.cpp">
+      <Filter>Data\TestExec\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\exec.bff">
+      <Filter>Data\TestExec</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\exec.cpp">
+      <Filter>Data\TestExec</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestFastCancel\Cancel\fbuild.bff">
+      <Filter>Data\TestFastCancel\Cancel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestFastCancel\Cancel\main.cpp">
+      <Filter>Data\TestFastCancel\Cancel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\BFFDirtied\fbuild.bff">
+      <Filter>Data\TestGraph\BFFDirtied</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DatabaseCorrupt\fbuild.bff">
+      <Filter>Data\TestGraph\DatabaseCorrupt</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DatabaseMoved\fbuild.bff">
+      <Filter>Data\TestGraph\DatabaseMoved</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DeepGraph.bff">
+      <Filter>Data\TestGraph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\library.cpp">
+      <Filter>Data\TestGraph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\a.cpp">
+      <Filter>Data\TestGraph\NoStopOnFirstError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\b.cpp">
+      <Filter>Data\TestGraph\NoStopOnFirstError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\c.cpp">
+      <Filter>Data\TestGraph\NoStopOnFirstError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\d.cpp">
+      <Filter>Data\TestGraph\NoStopOnFirstError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\fbuild.bff">
+      <Filter>Data\TestGraph\NoStopOnFirstError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_boolean.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_false.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_int.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_stringcompare.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_true.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_function_false.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_function_true.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_set_function_false.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_set_function_true.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_set_function_false.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_set_function_true.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_extratokensafterexpression.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_unsupportedoperation.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_unsupportedtypeforin.bff">
+      <Filter>Data\TestIf</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIncludeParser\MSVC-P\fbuild.bff">
+      <Filter>Data\TestIncludeParser\MSVC-P</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIncludeParser\MSVC-P\test.cpp">
+      <Filter>Data\TestIncludeParser\MSVC-P</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestLinker\IncrementalLinking_MSVC\fbuild.bff">
+      <Filter>Data\TestLinker\IncrementalLinking_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\fbuild.bff">
+      <Filter>Data\TestListDependencies</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderA.h">
+      <Filter>Data\TestListDependencies</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderB.h">
+      <Filter>Data\TestListDependencies</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderC.h">
+      <Filter>Data\TestListDependencies</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\SimpleObject.cpp">
+      <Filter>Data\TestListDependencies</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\fbuild.bff">
+      <Filter>Data\TestObject\CacheUsingRelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\File.cpp">
+      <Filter>Data\TestObject\CacheUsingRelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\Subdir\Header.h">
+      <Filter>Data\TestObject\CacheUsingRelativePaths\Subdir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CustomPreprocessor\a.cpp">
+      <Filter>Data\TestObject\CustomPreprocessor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CustomPreprocessor\custompreprocessor.bff">
+      <Filter>Data\TestObject\CustomPreprocessor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\ModTimeChangeBackwards\fbuild.bff">
+      <Filter>Data\TestObject\ModTimeChangeBackwards</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\SourceMapping\fbuild.bff">
+      <Filter>Data\TestObject\SourceMapping</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\SourceMapping\File.cpp">
+      <Filter>Data\TestObject\SourceMapping</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\cppgenerator.bff">
+      <Filter>Data\TestObject\StaleDynamicDeps</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\CPPGeneratorMain.cpp">
+      <Filter>Data\TestObject\StaleDynamicDeps</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\staledeps.bff">
+      <Filter>Data\TestObject\StaleDynamicDeps</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\A\file.cpp">
+      <Filter>Data\TestObjectList\CompilerInputFilesRoot\A</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\B\file.cpp">
+      <Filter>Data\TestObjectList\CompilerInputFilesRoot\B</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\fbuild.bff">
+      <Filter>Data\TestObjectList\CompilerInputFilesRoot</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\A\file.cpp">
+      <Filter>Data\TestObjectList\ConflictingObjects\A</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\B\file.cpp">
+      <Filter>Data\TestObjectList\ConflictingObjects\B</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\fbuild1.bff">
+      <Filter>Data\TestObjectList\ConflictingObjects</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\fbuild2.bff">
+      <Filter>Data\TestObjectList\ConflictingObjects</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\fbuild.bff">
+      <Filter>Data\TestObjectList\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\ignore.cpp">
+      <Filter>Data\TestObjectList\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\ok.cpp">
+      <Filter>Data\TestObjectList\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ExtraOutputPaths\fbuild.bff">
+      <Filter>Data\TestObjectList\ExtraOutputPaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ExtraOutputPaths\file.cpp">
+      <Filter>Data\TestObjectList\ExtraOutputPaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\fbuild.bff">
+      <Filter>Data\TestObjectList\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\file.1.cpp">
+      <Filter>Data\TestObjectList\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\file.2.cpp">
+      <Filter>Data\TestObjectList\ObjectListChaining</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\fbuild.bff">
+      <Filter>Data\TestObjectList\ObjectListChaining_Bad</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\file.1.cpp">
+      <Filter>Data\TestObjectList\ObjectListChaining_Bad</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\file.2.cpp">
+      <Filter>Data\TestObjectList\ObjectListChaining_Bad</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\A.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheAnalyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\B.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheAnalyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\CacheAnalyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheAnalyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders\CacheAnalyze_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\A.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness2</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PCHUser.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeaderA.h">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeaderB.h">
+      <Filter>Data\TestPrecompiledHeaders\CacheUniqueness</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\Deoptimization</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\Deoptimization</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders\Deoptimization</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\DifferentObj_MSVC\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\DifferentObj_MSVC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHNotDefinedError\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\PCHNotDefinedError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\PCHOnly</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\PCHOnly</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders\PCHOnly</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHRedefinitionError\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\PCHRedefinitionError</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\fbuild.bff">
+      <Filter>Data\TestPrecompiledHeaders\PCHReuse</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\FileA.cpp">
+      <Filter>Data\TestPrecompiledHeaders\PCHReuse</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders\PCHReuse</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders\PCHReuse</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHUser.cpp">
+      <Filter>Data\TestPrecompiledHeaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PrecompiledHeader.cpp">
+      <Filter>Data\TestPrecompiledHeaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PrecompiledHeader.h">
+      <Filter>Data\TestPrecompiledHeaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Slow.h">
+      <Filter>Data\TestPrecompiledHeaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\fbuild.bff">
+      <Filter>Data\TestProjectGeneration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\FindExecutableTarget\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\FindExecutableTarget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Intellisense\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Intellisense</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_None\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_BuildAndDeploy_None</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_PerSolutionConfig\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_BuildAndDeploy_PerSolutionConfig</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_Project\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_BuildAndDeploy_Project</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_Empty\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_Empty</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_ExternalProject</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild_MissingProjectGUID.bff">
+      <Filter>Data\TestProjectGeneration\Solution_ExternalProject</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild_WrongData.bff">
+      <Filter>Data\TestProjectGeneration\Solution_ExternalProject</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_Items\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_Items</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_SolutionRelativePaths\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\Solution_SolutionRelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\VCXProj_DefaultConfigs\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\VCXProj_DefaultConfigs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\VCXProj_PerConfigOverrides\fbuild.bff">
+      <Filter>Data\TestProjectGeneration\VCXProj_PerConfigOverrides</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\xcodeproject.bff">
+      <Filter>Data\TestProjectGeneration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestRemoveDir\fbuild.bff">
+      <Filter>Data\TestRemoveDir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\fbuild.bff">
+      <Filter>Data\TestResources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\main.cpp">
+      <Filter>Data\TestResources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\resource.h">
+      <Filter>Data\TestResources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\resource.rc">
+      <Filter>Data\TestResources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Exclusions\fbuild.bff">
+      <Filter>Data\TestTest\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Exclusions\main.cpp">
+      <Filter>Data\TestTest\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_Crash\fbuild.bff">
+      <Filter>Data\TestTest\Fail_Crash</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_Crash\main.cpp">
+      <Filter>Data\TestTest\Fail_Crash</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_ReturnCode\fbuild.bff">
+      <Filter>Data\TestTest\Fail_ReturnCode</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_ReturnCode\main.cpp">
+      <Filter>Data\TestTest\Fail_ReturnCode</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test.bff">
+      <Filter>Data\TestTest</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test.cpp">
+      <Filter>Data\TestTest</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test_timeout.bff">
+      <Filter>Data\TestTest</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test_timeout.cpp">
+      <Filter>Data\TestTest</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTextFile\fbuild.bff">
+      <Filter>Data\TestTextFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\a.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\b.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\c.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\fbuild.bff">
+      <Filter>Data\TestUnity\CacheUsingRelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\File.cpp">
+      <Filter>Data\TestUnity\CacheUsingRelativePaths</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\Subdir\Header.h">
+      <Filter>Data\TestUnity\CacheUsingRelativePaths\Subdir</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\ClangStaticAnalysis\fbuild.bff">
+      <Filter>Data\TestUnity\ClangStaticAnalysis</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\ClangStaticAnalysis\file.1.cpp">
+      <Filter>Data\TestUnity\ClangStaticAnalysis</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\d.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\e.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\fbuild.bff">
+      <Filter>Data\TestUnity\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\ignore.cpp">
+      <Filter>Data\TestUnity\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\ok.cpp">
+      <Filter>Data\TestUnity\Exclusions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\f.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateFromUnity\fbuild.bff">
+      <Filter>Data\TestUnity\IsolateFromUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\fbuild.bff">
+      <Filter>Data\TestUnity\IsolateListFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\file.1.cpp">
+      <Filter>Data\TestUnity\IsolateListFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\file.2.cpp">
+      <Filter>Data\TestUnity\IsolateListFile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\LinkMultiple\fbuild.bff">
+      <Filter>Data\TestUnity\LinkMultiple</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\LinkMultiple_InputFiles\fbuild.bff">
+      <Filter>Data\TestUnity\LinkMultiple_InputFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\PrecompiledHeader.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\PrecompiledHeader.h">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\unity.bff">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\fbuild.bff">
+      <Filter>Data\TestUnity\UnityInputIsolatedFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\file.1.cpp">
+      <Filter>Data\TestUnity\UnityInputIsolatedFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\file.2.cpp">
+      <Filter>Data\TestUnity\UnityInputIsolatedFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\wontcompile.cpp">
+      <Filter>Data\TestUnity</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\ClangMacroExpansion\clang_macro_expansion.cpp">
+      <Filter>Data\TestWarnings\ClangMacroExpansion</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\ClangMacroExpansion\fbuild.bff">
+      <Filter>Data\TestWarnings\ClangMacroExpansion</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\fbuild.bff">
+      <Filter>Data\TestWarnings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\pragma_message.cpp">
+      <Filter>Data\TestWarnings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\warnings.cpp">
+      <Filter>Data\TestWarnings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestZW\Caching\fbuild.bff">
+      <Filter>Data\TestZW\Caching</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestZW\Caching\file.cpp">
+      <Filter>Data\TestZW\Caching</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\FBuildTest.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\TestMain.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\FBuildTest.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\FBuildTest.h">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestAlias.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestArgs.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBFFParsing.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBuildAndLinkLibrary.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBuildFBuild.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCache.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCachePlugin.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCLR.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompilationDatabase.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompiler.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompressor.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCopy.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCSharp.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCUDA.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestDistributed.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestDLL.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestError.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestExe.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestExec.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestFastCancel.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestGraph.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestIf.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestIncludeParser.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestLibrary.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestLinker.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestListDependencies.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestNodeReflection.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestObject.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestObjectList.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestPrecompiledHeaders.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestProjectGeneration.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestRemoveDir.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestResources.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestTest.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestTextFile.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestUnity.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestUserFunctions.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestVariableStack.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestWarnings.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestZW.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestAlias">
+      <UniqueIdentifier>{9187ab7a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data">
+      <UniqueIdentifier>{b206bc61-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestAlias\Reflection">
+      <UniqueIdentifier>{36d98cd8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBFFParsing">
+      <UniqueIdentifier>{e69ef4ce-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBFFParsing\IfFileExistsDirective\RelativePaths">
+      <UniqueIdentifier>{23d59b8f-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBFFParsing\IfFileExistsDirective">
+      <UniqueIdentifier>{a95af36f-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir">
+      <UniqueIdentifier>{c0fb82a4-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBuildAndLinkLibrary">
+      <UniqueIdentifier>{3187f01d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBuildAndLinkLibrary\DeleteFile">
+      <UniqueIdentifier>{d9aebb89-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestBuildFBuild">
+      <UniqueIdentifier>{2c0b48b8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache">
+      <UniqueIdentifier>{4352a7e9-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\Analyze_MSVC">
+      <UniqueIdentifier>{5c1a31d8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\ConsistentCacheKeys">
+      <UniqueIdentifier>{a1907610-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_CyclicInclude">
+      <UniqueIdentifier>{2f974499-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_ImportDirective">
+      <UniqueIdentifier>{a88f4d20-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeHierarchy">
+      <UniqueIdentifier>{5ce49641-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeHierarchy\Folder1">
+      <UniqueIdentifier>{d82cb18c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeHierarchy\Folder2">
+      <UniqueIdentifier>{09ba212f-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingMacro2">
+      <UniqueIdentifier>{01230bb8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingMacro3">
+      <UniqueIdentifier>{9c8492ba-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingMacro">
+      <UniqueIdentifier>{93f46095-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1">
+      <UniqueIdentifier>{8e1c4f9a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingUndefinedMacros">
+      <UniqueIdentifier>{d28467eb-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2">
+      <UniqueIdentifier>{13adf55b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3">
+      <UniqueIdentifier>{607744dc-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCachePlugin\Interface">
+      <UniqueIdentifier>{8f62f103-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCachePlugin">
+      <UniqueIdentifier>{8a87305d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCachePlugin\OldInterface">
+      <UniqueIdentifier>{8e137323-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCLR">
+      <UniqueIdentifier>{4a11dfde-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompilationDatabase\dir\subdir">
+      <UniqueIdentifier>{ba786f0d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompilationDatabase\dir">
+      <UniqueIdentifier>{995c3a6e-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompilationDatabase">
+      <UniqueIdentifier>{e34cc3ec-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompiler">
+      <UniqueIdentifier>{3d15c591-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompiler\Explicit">
+      <UniqueIdentifier>{88c6ed4d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCompiler\Implicit">
+      <UniqueIdentifier>{36b62768-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCopy">
+      <UniqueIdentifier>{9ead7714-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCopy\MissingTrailingSlash">
+      <UniqueIdentifier>{dbeedaae-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCopy\ObjectListChaining2">
+      <UniqueIdentifier>{cbd6013d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCopy\ObjectListChaining">
+      <UniqueIdentifier>{2c7f5484-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp">
+      <UniqueIdentifier>{9bbc0c01-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp\Exclusions">
+      <UniqueIdentifier>{1bf1eb8d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp\Exclusions\SubDirA">
+      <UniqueIdentifier>{7b704db4-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp\Exclusions\SubDirB">
+      <UniqueIdentifier>{3b58981a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp\ObjectListFails">
+      <UniqueIdentifier>{03529c86-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCSharp\UsingNonCSharpCompilerFails">
+      <UniqueIdentifier>{127b6184-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestCUDA">
+      <UniqueIdentifier>{45188949-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed">
+      <UniqueIdentifier>{7d0becca-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\AnonymousNamespaces\A">
+      <UniqueIdentifier>{ceda25b7-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\AnonymousNamespaces">
+      <UniqueIdentifier>{76b0c8ea-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\AnonymousNamespaces\B">
+      <UniqueIdentifier>{024ba7cf-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\BadCode">
+      <UniqueIdentifier>{20120cf9-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\D8049_ToolLongDebugRecord">
+      <UniqueIdentifier>{e338ff92-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\ErrorsAreCorrectlyReported">
+      <UniqueIdentifier>{2864ef07-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\ForceInclude">
+      <UniqueIdentifier>{cc545b7e-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\RemoteRaceWinRemote">
+      <UniqueIdentifier>{4de1f297-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\ShutdownMemoryLeak">
+      <UniqueIdentifier>{bf2cc9fc-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\WarningsAreCorrectlyReported">
+      <UniqueIdentifier>{dec28ffb-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDistributed\Zi">
+      <UniqueIdentifier>{556142e0-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestDLL">
+      <UniqueIdentifier>{bb483bf4-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestError">
+      <UniqueIdentifier>{a5f3d2ed-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestExe">
+      <UniqueIdentifier>{0f560f1c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestExec\Exclusions">
+      <UniqueIdentifier>{e7291b24-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestExec">
+      <UniqueIdentifier>{de9de6a8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestFastCancel\Cancel">
+      <UniqueIdentifier>{020ea4aa-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestFastCancel">
+      <UniqueIdentifier>{debcccb0-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestGraph\BFFDirtied">
+      <UniqueIdentifier>{2daac4ce-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestGraph">
+      <UniqueIdentifier>{7dbcfd67-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestGraph\DatabaseCorrupt">
+      <UniqueIdentifier>{19bdd205-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestGraph\DatabaseMoved">
+      <UniqueIdentifier>{28854ac5-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestGraph\NoStopOnFirstError">
+      <UniqueIdentifier>{1ee7bde0-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestIf">
+      <UniqueIdentifier>{151a60ee-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestIncludeParser\MSVC-P">
+      <UniqueIdentifier>{3d247e2b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestIncludeParser">
+      <UniqueIdentifier>{c0b58a04-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestLinker\IncrementalLinking_MSVC">
+      <UniqueIdentifier>{f9a528a6-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestLinker">
+      <UniqueIdentifier>{acea9db1-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestListDependencies">
+      <UniqueIdentifier>{4400a010-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\CacheUsingRelativePaths">
+      <UniqueIdentifier>{c0ca1822-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject">
+      <UniqueIdentifier>{65e0a316-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\CacheUsingRelativePaths\Subdir">
+      <UniqueIdentifier>{e4312a53-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\CustomPreprocessor">
+      <UniqueIdentifier>{b43fe2b6-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\ModTimeChangeBackwards">
+      <UniqueIdentifier>{20624a0c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\SourceMapping">
+      <UniqueIdentifier>{a50aba42-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObject\StaleDynamicDeps">
+      <UniqueIdentifier>{61888f69-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\CompilerInputFilesRoot\A">
+      <UniqueIdentifier>{0e7f0424-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\CompilerInputFilesRoot">
+      <UniqueIdentifier>{b34a43bb-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList">
+      <UniqueIdentifier>{54026627-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\CompilerInputFilesRoot\B">
+      <UniqueIdentifier>{405ea124-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ConflictingObjects\A">
+      <UniqueIdentifier>{79d95095-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ConflictingObjects">
+      <UniqueIdentifier>{6fe0e264-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ConflictingObjects\B">
+      <UniqueIdentifier>{5c9d24cd-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\Exclusions">
+      <UniqueIdentifier>{ff01526b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ExtraOutputPaths">
+      <UniqueIdentifier>{a24061ca-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ObjectListChaining">
+      <UniqueIdentifier>{6f068ff2-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestObjectList\ObjectListChaining_Bad">
+      <UniqueIdentifier>{645b013d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\CacheAnalyze_MSVC">
+      <UniqueIdentifier>{8e68e94b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders">
+      <UniqueIdentifier>{5e0e6a0a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\CacheUniqueness2">
+      <UniqueIdentifier>{afe1dbd2-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\CacheUniqueness">
+      <UniqueIdentifier>{a3a6606c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\Deoptimization">
+      <UniqueIdentifier>{bd2995b4-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\DifferentObj_MSVC">
+      <UniqueIdentifier>{253e333c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\PCHNotDefinedError">
+      <UniqueIdentifier>{08715577-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\PCHOnly">
+      <UniqueIdentifier>{6271d4fb-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\PCHRedefinitionError">
+      <UniqueIdentifier>{8dbae7a2-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestPrecompiledHeaders\PCHReuse">
+      <UniqueIdentifier>{d5a44ae9-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration">
+      <UniqueIdentifier>{146b024d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\FindExecutableTarget">
+      <UniqueIdentifier>{32433dc8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Intellisense">
+      <UniqueIdentifier>{542fbbad-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_BuildAndDeploy_None">
+      <UniqueIdentifier>{91d38ab0-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_BuildAndDeploy_PerSolutionConfig">
+      <UniqueIdentifier>{97669095-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_BuildAndDeploy_Project">
+      <UniqueIdentifier>{60a45974-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_Empty">
+      <UniqueIdentifier>{90fa3e75-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_ExternalProject">
+      <UniqueIdentifier>{9b8466bc-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_Items">
+      <UniqueIdentifier>{681fce43-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\Solution_SolutionRelativePaths">
+      <UniqueIdentifier>{d5c0724f-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\VCXProj_DefaultConfigs">
+      <UniqueIdentifier>{7d74b131-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestProjectGeneration\VCXProj_PerConfigOverrides">
+      <UniqueIdentifier>{345906ad-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestRemoveDir">
+      <UniqueIdentifier>{de30563b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestResources">
+      <UniqueIdentifier>{d640cfe7-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestTest\Exclusions">
+      <UniqueIdentifier>{79a95f33-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestTest">
+      <UniqueIdentifier>{74df925f-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestTest\Fail_Crash">
+      <UniqueIdentifier>{455c1cd1-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestTest\Fail_ReturnCode">
+      <UniqueIdentifier>{b2428269-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestTextFile">
+      <UniqueIdentifier>{f5b70b50-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity">
+      <UniqueIdentifier>{5b51593a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\CacheUsingRelativePaths">
+      <UniqueIdentifier>{374b2051-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\CacheUsingRelativePaths\Subdir">
+      <UniqueIdentifier>{ba07e6b2-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\ClangStaticAnalysis">
+      <UniqueIdentifier>{b6733158-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\Exclusions">
+      <UniqueIdentifier>{21d3801a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\IsolateFromUnity">
+      <UniqueIdentifier>{59e0e9ee-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\IsolateListFile">
+      <UniqueIdentifier>{106e477b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\LinkMultiple">
+      <UniqueIdentifier>{191ed811-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\LinkMultiple_InputFiles">
+      <UniqueIdentifier>{876ad02e-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestUnity\UnityInputIsolatedFiles">
+      <UniqueIdentifier>{11fc39c8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestWarnings\ClangMacroExpansion">
+      <UniqueIdentifier>{06b11180-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestWarnings">
+      <UniqueIdentifier>{7c3cc1e8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestZW\Caching">
+      <UniqueIdentifier>{cb421c34-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data\TestZW">
+      <UniqueIdentifier>{e9d73db2-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{9e819373-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

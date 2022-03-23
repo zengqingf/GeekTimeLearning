@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--LogicCore additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <!--<trace enable="true"/>-->
+  <!-- 初始化-->
+  <init>
+    <log text="Tenmove SDK Init"/>
+	<setBoolFromProperty result="bGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="false"/>
+        <if condition="bGradle">
+            <true>
+                <log text="TMSDK Gradle Build"/>
+            </true>
+            <false>
+                <log text="TMSDK Ant Build"/>
+            </false>
+        </if>
+  </init>
+
+    <!--在ndk-build编译之前，从Intermediate/Android/APK中拷贝或删除文件-->
+    <prebuildCopies>
+        <!--
+		<log text="GCloudCore Copy Dirs Begin. PluginDir is $S(PluginDir), BuildDir is $S(BuildDir)"/>
+        <copyDir src="$S(PluginDir)/../GCloudCoreLib/Android/GCloudCore" dst="$S(BuildDir)/JavaLibs/GCloudCore"/>
+		-->
+    </prebuildCopies>
+
+  <resourceCopies>
+	<log text="TMSDK Resource Start copy start...$S(PluginDir)" />
+	<log text="TMSDK Resource Start copy start...$S(BuildDir)" />
+    <copyDir src="$S(PluginDir)/Android/libs/" dst="$S(BuildDir)/libs/" />
+	<!--
+	<copyDir src="$S(PluginDir)/Build/" dst="$S(BuildDir)/" />
+    <copyDir src="$S(PluginDir)/prebuild/$S(Architecture)/" dst="$S(BuildDir)/libs/$S(Architecture)/" />
+	-->
+  </resourceCopies>
+  
+  <AARImports>
+  </AARImports>
+  
+    <!-- optional updates applied to AndroidManifest.xml -->
+    <androidManifestUpdates>
+    </androidManifestUpdates>
+
+    <!--混淆配置-->
+	<proguardAdditions>
+		<insert>
+			<!-- 
+			-dontwarn com.tencent.bugly.**
+			-keep public class com.tencent.bugly.**{*;}
+			-->
+		</insert>
+	</proguardAdditions>
+	
+	<!--Gradle构建配置-->
+    <buildscriptGradleAdditions>
+        <insert>
+            <![CDATA[
+            ]]>
+        </insert>
+    </buildscriptGradleAdditions>
+	
+	<!--base build.gradle 配置-->
+	<baseBuildGradleAdditions>
+		<insert>
+		<![CDATA[
+			    allprojects {
+                    repositories {
+                        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+                        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public/" }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/groups/androidbuild"
+                        }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/repositories/google-maven"
+                        }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/repositories/jcenter"
+                        }
+                        flatDir name: 'libs', dirs: "$projectDir/src/main/libs"
+                    }
+                }
+		]]>
+		</insert>
+	</baseBuildGradleAdditions>
+	
+	<!--base build.gradle buildscript 配置-->
+	<buildscriptGradleAdditions>
+	</buildscriptGradleAdditions>
+	
+	<!--app build.gradle 配置-->
+	<buildGradleAdditions>
+        <insert>
+            <![CDATA[
+
+				dependencies {
+					implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+					implementation(name: 'TMSDK_BaseUE4', ext:'aar')
+					implementation(name: 'TMSDK_BridgeApp', ext:'aar')
+					implementation(name: 'TMSDK_BridgeCall', ext:'aar')
+					implementation(name: 'TMSDK_BridgeService', ext:'aar')
+					implementation(name: 'TMSDK_Bugly', ext:'aar')
+					implementation(name: 'TMSDK_CommonLib', ext:'aar')
+					implementation(name: 'TMSDK_OpenSrc', ext:'aar')
+					implementation(name: 'TMSDK_Platform', ext:'aar')
+					implementation(name: 'TMSDK_PlatformMG', ext:'aar')
+
+					//need by bridge module
+					api 'com.alibaba:arouter-api:1.5.1'
+					annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+					implementation 'com.alibaba:fastjson:1.1.72.android'
+					implementation 'com.orhanobut:logger:2.2.0'
+				}
+				
+				android {
+					defaultConfig {
+					
+						//need for gradle build
+						multiDexEnabled true
+					
+						//need by bridge module
+						javaCompileOptions {
+							annotationProcessorOptions {
+								arguments = [AROUTER_MODULE_NAME: project.getName()]
+							}
+						}
+					}
+				}
+            ]]>
+        </insert>
+    </buildGradleAdditions>
+	
+	<buildGradleAdditions>
+        <insert>
+            <![CDATA[
+            ]]>    
+        </insert>
+    </buildGradleAdditions>
+	
+
+  <!-- GameActivity.java中导入类 -->
+  <gameActivityImportAdditions>
+    <insert>
+      import com.tm.sdk.bridge.app.BridgeUtils;
+      import com.tm.base.ue4.BaseActivityControl;
+    </insert>
+  </gameActivityImportAdditions>
+  
+    <!--GameActivity.java导完类之后要做的事情 -->
+    <gameActivityPostImportAdditions>
+    </gameActivityPostImportAdditions>
+
+  <!--GameActivity.java implements 添加实现接口 -->
+  <gameActivityImplementsAdditions>
+    <insert>
+      //OnTouchListener,
+    </insert>
+  </gameActivityImplementsAdditions>
+
+  <!-- GameActivity.java类中添加代码 -->
+  <gameActivityClassAdditions>
+    <insert>
+      public void AndroidThunk_Java_InitCall() {
+      BridgeUtils.Init(null);
+      }
+      public String AndroidThunk_Java_CallAndroid(String param) {
+      return BridgeUtils.Call(param);
+      }
+
+      /*
+      //test
+      @Override
+      public boolean onTouch(View view, MotionEvent motionEvent) {
+      switch(motionEvent.getAction()) {
+      case  MotionEvent.ACTION_DOWN:
+      nativeTouchScreenPos(motionEvent.getRawX(), motionEvent.getRawY());
+      Log.debug("on Screen Touch");
+      break;
+      }
+      //注意返回值
+      //true：view继续响应Touch操作；
+      //false：view不再响应Touch操作，故此处若为false，只能显示起始位置，不能显示实时位置和结束位置
+      return true;
+      //TODO
+      //return BaseActivityControl.onTouch(view, motionEvent);
+      }
+      */
+      @Override
+      public boolean onTouchEvent(MotionEvent event)
+      {
+      switch(event.getAction()) {
+      case MotionEvent.ACTION_DOWN:
+      nativeTouchScreenPos(event.getRawX(), event.getRawY());
+      return true;
+      }
+      return false;
+      }
+      public native void nativeTouchScreenPos(float x, float y);
+    </insert>
+  </gameActivityClassAdditions>
+
+  <!--GameActivity.java onCreate添加代码 -->
+  <gameActivityOnCreateAdditions>
+    <insert>
+      BaseActivityControl.onCreate(this);
+
+      //mainView.setOnTouchListener(this);
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <!-- GameApplication.java导入类 -->
+  <gameApplicationImportAdditions>
+    <insert>
+      import com.tm.base.ue4.BaseApplicationControl;
+    </insert>
+  </gameApplicationImportAdditions>
+
+  <!-- GameApplication.java类中添加代码 -->
+  <gameApplicationOnCreateAdditions>
+    <insert>
+      BaseApplicationControl.onCreate(this);
+      
+    </insert>
+  </gameApplicationOnCreateAdditions>
+  
+  
+    <!--在libUE4.so库加载之前需要加载的库-->
+    <soLoadLibrary>
+       <!--<loadLibrary name="gcloudcore" failmsg="abase library not loaded and required!"/>-->
+    </soLoadLibrary>
+  
+</root>

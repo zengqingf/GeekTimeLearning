@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ihoc.mgpa.plugin" >
+
+    <!-- OAID必备权限，华硕 -->
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+    <!-- rich haptic -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 华为振动 -->
+    <uses-permission android:name="com.huawei.gameassistant.permission.PUBLIC_THIRD_API" />
+    <!-- 后台下载 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+</manifest>

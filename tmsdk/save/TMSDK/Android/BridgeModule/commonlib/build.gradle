@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            //自定义 debug  避免debuggable导致默认BuildConfig.DEBUG 值错误
+            buildConfigField("boolean", "IS_DEBUG", "false");
+        }
+        debug {
+
+            //自定义 debug  避免debuggable导致默认BuildConfig.DEBUG 值错误
+            buildConfigField("boolean", "IS_DEBUG", "true");
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //other libs
+    implementation 'com.orhanobut:logger:2.2.0'
+}
+
+// task: delete the old aar
+task DeleteOldAar_SDK(type: Delete) {
+    delete 'release/'
+}
+
+// task: export contents as aar
+task ExportAar_SDK(type: Copy) {
+    from('build/outputs/aar/')
+    //into('release/')
+    into('../bridgemodule_release/')
+    include('commonlib-debug.aar')
+    //rename the jar
+    rename('commonlib-debug.aar', 'TMSDK_CommonLib.aar')
+}
+
+// task by task
+ExportAar_SDK.dependsOn(DeleteOldAar_SDK, assemble)
+
+apply from: '../maven_push.gradle'

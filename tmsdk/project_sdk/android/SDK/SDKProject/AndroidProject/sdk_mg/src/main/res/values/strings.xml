@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MG_SDK_SRC</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="version_code">版本号\t</string>
+    <string name="close_to_select_other_account">关闭后每次进入游戏时可重新选择账号登录</string>
+	<string name="open_to_login_recent_account">开启后将自动使用最近登录游戏的账号进入游戏</string>
+	<string name="your_account_is">您的账号为：</string>
+	<string name="you_has_bind_phone">您已绑定手机,可通过手机号找回账号和密码,还可以直接使用手机号登录游戏</string>
+	<string name="if_changed_phone_to_account_center">如需修改手机号，请前往账户中心设置</string>
+	<string name="account">账号：</string>
+	<string name="phone_number">手机号码：</string>
+	<string name="net_failure_tip">网络连接错误，请检查网络</string>
+	<string name="account_page_tip_qmqj">客服\n（工作日10-18时在线）</string>
+	<string name="account_page_tip_cqws">玩家交流群 </string>
+	<string name="bind_success">绑定成功</string>
+	<string name="pay_failure">支付失败</string>
+	<string name="anti_addiction_verify_failed_tip">姓名或身份证号不正确</string>
+	<string name="recharge_center">游戏充值</string>
+	<string name="select_pay_type">选择支付方式</string>
+	<string name="alipay">支付宝</string>
+	<string name="wechat">微信</string>
+	<string name="qqPay">QQ钱包</string>
+	<string name="confirm">确认</string>
+	
+	
+</resources>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename ='css/style.css')}}">
+
+    <title>测试报告汇总</title>
+</head>
+
+<body>
+    <!-- <header>
+        <p>这是headeer</p>
+    </header> -->
+    <div class="maincontent">
+        <div>
+            <h3>最新测试</h3>
+            <div id='newest_unit'>
+
+            </div>
+        </div>
+        <div id='history'>
+            <h3>历史测试</h3>
+            <div id='history_unit'>
+                <!-- <ul class="unit">
+                    <li class="unit_item newline">测试时间：<span>123123</span></li>
+                    <li class="unit_package">测试包：<a href="http://www.baidu.com" target="_Blank">xxx.apk</a></li>
+                    <li class="unit_item">
+                        测试机器：<span>杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机杨都齐测试机</span>
+                    </li>
+                    <li class="unit_item newline">测试目的：<span>登陆-None</span></li>
+                    <li class="unit_item newline">测试结果：<span>x成功 x失败 x不稳定</span></li>
+                    <li class="unit_item newline">测试报告：<a href="http://www.baidu.com" target="_Blank">跳转</a></li>
+                </ul>
+                <ul class="unit">
+                    <li class="unit_item newline">测试时间：<span>2020-12-09 15:05:30</span></li>
+                    <li class="unit_package">测试包：<a href="http://www.baidu.com" target="_Blank">xxx.apk</a></li>
+                    <li class="unit_item">
+                        测试机器：<span>杨都齐测试机111111111111111111111111111111111111111111111111111111111111111111111111111111</span>
+                    </li>
+                    <li class="unit_item newline">测试目的：<span>登陆-None</span></li>
+                    <li class="unit_item newline">测试结果：<span>x成功 x失败 x不稳定</span></li>
+                    <li class="unit_item newline">测试报告：<a href="http://www.baidu.com" target="_Blank">跳转</a></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- <footer>
+        <p>这是footer</p>
+    </footer> -->
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{url_for('static',filename ='js/models.js')}}"></script>
+<script>
+    function addHistoryUnit(time, packageurl, devices, target, suc_count, fail_count, unstable_count, reporturl) {
+        let tmp = packageurl.split('/');
+        let packagename = tmp[tmp.length - 1];
+        let content = '<ul class="unit">' +
+            '<li class="unit_item newline">测试时间：<span>' + time + '</span></li>' +
+            '<li class="unit_package">测试包：<a href="' + packageurl + '" target="_Blank">' + packagename + '</a></li>' +
+            '<li class="unit_item">' +
+            '测试机器：<span>' + devices + '</span>' +
+            '</li>' +
+            '<li class="unit_item newline">测试目的：<span>' + target + '</span></li>' +
+            '<li class="unit_item newline">测试结果：<span>' + suc_count + '成功 ' + fail_count + '失败 ' + unstable_count +
+            '不稳定</span></li>' +
+            '<li class="unit_item newline">测试报告：<a href="' + reporturl + '" target="_Blank">跳转</a></li>' +
+            '</ul>';
+        old = $('#history_unit').html();
+        $('#history_unit').html(old + content);
+    }
+
+    function setNewestUnit(time, packageurl, devices, target, suc_count, fail_count, unstable_count, reporturl) {
+        reporturl = 'http://192.168.2.92:5000/autotest/info/?id=100'
+        let tmp = packageurl.split('/');
+        let packagename = tmp[tmp.length - 1];
+        let content = '<ul>' +
+            '<li>测试时间：' + time + '</li>' +
+            '<li>测试包：<a href="' + packageurl + '" target="_Blank">' + packagename + '</a></li>' +
+            '<li>测试机器：' + devices + '</li>' +
+            '<li>测试目的：' + target + '</li>' +
+            '<li>测试结果：' + suc_count + '成功 ' + fail_count + '失败 ' + unstable_count + '不稳定</li>' +
+            '<li>测试报告：<a href="' + reporturl + '" target="_Blank">跳转</a></li>' +
+            '</ul>';
+        $('#newest_unit').html(content);
+    }
+    window.onload = function () {
+        postData('autotest', {
+            'startid': 0,
+            'count': 10
+        }, 'getReportSummary', function (data) {
+            data.forEach(element => {
+                addHistoryUnit(element['time'], element['packageurl'], element['devices'], element[
+                    'target'], element['suc_count'], element['fail_count'], element[
+                    'unstable_count'], element['reporturl'])
+            });
+            let element = data[0]
+            setNewestUnit(element['time'], element['packageurl'], element['devices'], element[
+                'target'], element['suc_count'], element['fail_count'], element[
+                'unstable_count'], element['reporturl'])
+        });
+        
+        // addHistoryUnit('20201210', 'http://www.baidu.com', '测试机', '测试', 1, 1, 1, 'http://www.baidu.com')
+    };
+</script>
+
+</html>

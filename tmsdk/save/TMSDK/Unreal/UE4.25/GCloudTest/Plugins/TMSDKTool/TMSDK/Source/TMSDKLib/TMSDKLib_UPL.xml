@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--LogicCore additions-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <!--<trace enable="true"/>-->
+  <!-- 初始化-->
+  <init>
+    <log text="Tenmove SDK Init"/>
+	<setBoolFromProperty result="bGradle" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="bEnableGradle" default="false"/>
+        <if condition="bGradle">
+            <true>
+                <log text="TMSDK Gradle Build"/>
+            </true>
+            <false>
+                <log text="TMSDK Ant Build"/>
+            </false>
+        </if>
+  </init>
+
+  <!--临时关闭混淆-->
+<gradleProperties>
+  <insertValue value="DISABLE_MINIFY=1"/>
+</gradleProperties>
+
+    <!--在ndk-build编译之前，从Intermediate/Android/APK中拷贝或删除文件-->
+    <prebuildCopies>
+        <!--
+		<log text="GCloudCore Copy Dirs Begin. PluginDir is $S(PluginDir), BuildDir is $S(BuildDir)"/>
+        <copyDir src="$S(PluginDir)/../GCloudCoreLib/Android/GCloudCore" dst="$S(BuildDir)/JavaLibs/GCloudCore"/>
+		-->
+		
+
+	<log text="TMSDK Copy Dirs Begin. PluginDir is $S(PluginDir), BuildDir is $S(BuildDir)"/>
+      <!--GCloud Dolphin 配置Start-->
+   <copyDir src="$S(PluginDir)/../../PlatformRes/Android/" dst="$S(BuildDir)/assets/"/>
+      <!--GCloud Dolphin 配置End-->
+   <copyDir src="$S(PluginDir)/../../PlatformRes/All/" dst="$S(BuildDir)/assets/"/>
+
+    </prebuildCopies>
+
+  <resourceCopies>
+	<log text="TMSDK Resource Start copy start...$S(PluginDir)" />
+	<log text="TMSDK Resource Start copy start...$S(BuildDir)" />
+    <copyDir src="$S(PluginDir)/Android/libs/" dst="$S(BuildDir)/libs/" />
+	<!--
+	<copyDir src="$S(PluginDir)/Build/" dst="$S(BuildDir)/" />
+    <copyDir src="$S(PluginDir)/prebuild/$S(Architecture)/" dst="$S(BuildDir)/libs/$S(Architecture)/" />
+	-->
+  </resourceCopies>
+
+  <!--一些必要权限-->>
+  <androidManifestUpdates>
+    <addPermission android:name="android.permission.READ_PHONE_STATE" />
+    <addPermission android:name="android.permission.INTERNET" />
+    <addPermission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <addPermission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <addPermission android:name="android.permission.READ_LOGS" />
+  </androidManifestUpdates>
+  
+  <AARImports>
+  </AARImports>
+  
+    <!-- optional updates applied to AndroidManifest.xml -->
+    <androidManifestUpdates>
+    </androidManifestUpdates>
+
+    <!--混淆配置-->
+	<proguardAdditions>
+		<insert>
+			<!-- 
+			-dontwarn com.tencent.bugly.**
+			-keep public class com.tencent.bugly.**{*;}
+			-->
+		</insert>
+	</proguardAdditions>
+	
+	<!--Gradle构建配置-->
+    <buildscriptGradleAdditions>
+        <insert>
+            <![CDATA[
+            ]]>
+        </insert>
+    </buildscriptGradleAdditions>
+	
+	<!--base build.gradle 配置-->
+	<baseBuildGradleAdditions>
+		<insert>
+		<![CDATA[
+			    allprojects {
+                    repositories {
+                        /*
+                        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+                        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public/" }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/groups/androidbuild"
+                        }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/repositories/google-maven"
+                        }
+                        maven {
+                            url "http://maven.oa.com/nexus/content/repositories/jcenter"
+                        }
+                       */
+                       
+                        //local host maven library     maven2 + group
+                        maven {
+                            //url 'http://192.168.2.200:8081/repository/maven-release-central/'
+                            url 'http://192.168.2.132:5001/repository/maven-center-release/'
+                        }
+                        flatDir name: 'libs', dirs: "$projectDir/src/main/libs"
+                    }
+                }
+		]]>
+		</insert>
+	</baseBuildGradleAdditions>
+	
+	<!--base build.gradle buildscript 配置-->
+	<buildscriptGradleAdditions>
+	</buildscriptGradleAdditions>
+	
+	<!--app build.gradle 配置-->
+	<buildGradleAdditions>
+        <insert>
+            <![CDATA[
+
+				dependencies {
+					implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+          
+          //use local maven
+          implementation 'com.tm.base.ue4:tmsdk_base_ue4:0.0.1@aar'
+          implementation 'com.tm.sdk.bridge.app:tmsdk_bridge_app:0.0.1@aar'
+          implementation 'com.tm.sdk.bridge.call:tmsdk_bridge_call:0.0.1@aar'
+          implementation 'com.tm.sdk.bridge.service:tmsdk_bridge_service:0.0.1@aar'
+          implementation 'com.tm.sdk.commonlib:tmsdk_commonlib:0.0.1@aar'
+          implementation 'com.tm.sdk.open.src:tmsdk_opensrc:0.0.1@aar'
+          implementation 'com.tm.sdk.platform:tmsdk_platform:0.0.1@aar'
+          
+          /*  local test
+					implementation(name: 'TMSDK_BaseUE4', ext:'aar')
+					implementation(name: 'TMSDK_BridgeApp', ext:'aar')
+					implementation(name: 'TMSDK_BridgeCall', ext:'aar')
+					implementation(name: 'TMSDK_BridgeService', ext:'aar')
+					//implementation(name: 'TMSDK_Bugly', ext:'aar')
+					implementation(name: 'TMSDK_CommonLib', ext:'aar')
+					implementation(name: 'TMSDK_OpenSrc', ext:'aar')
+					implementation(name: 'TMSDK_Platform', ext:'aar')
+					//implementation(name: 'TMSDK_PlatformMG', ext:'aar')
+          */
+
+					//need by bridge module
+					api 'com.alibaba:arouter-api:1.5.1'
+					annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+					implementation 'com.alibaba:fastjson:1.1.72.android'
+					implementation 'com.orhanobut:logger:2.2.0'
+				}
+				
+				android {
+					defaultConfig {
+					
+						//need for gradle build
+						multiDexEnabled true
+					
+						//need by bridge module
+						javaCompileOptions {
+							annotationProcessorOptions {
+								arguments = [AROUTER_MODULE_NAME: project.getName()]
+							}
+						}
+					}
+					
+										
+					aaptOptions {
+        					noCompress '.txt','.json','.xml','.res','.pak','.dat'
+    					}
+				}
+            ]]>
+        </insert>
+    </buildGradleAdditions>
+	
+	<buildGradleAdditions>
+        <insert>
+            <![CDATA[
+            ]]>    
+        </insert>
+    </buildGradleAdditions>
+	
+
+  <!-- GameActivity.java中导入类 -->
+  <gameActivityImportAdditions>
+    <insert>
+      import com.tm.sdk.bridge.app.BridgeUtils;
+      import com.tm.base.ue4.BaseActivityControl;
+
+      import com.tm.sdk.ftptool.FTPTool;
+    </insert>
+  </gameActivityImportAdditions>
+  
+    <!--GameActivity.java导完类之后要做的事情 -->
+    <gameActivityPostImportAdditions>
+    </gameActivityPostImportAdditions>
+
+  <!--GameActivity.java implements 添加实现接口 -->
+  <gameActivityImplementsAdditions>
+    <insert>
+      //OnTouchListener,
+    </insert>
+  </gameActivityImplementsAdditions>
+
+  <!-- GameActivity.java类中添加代码 -->
+  <gameActivityClassAdditions>
+    <insert>
+      public void AndroidThunk_Java_InitCall() {
+      BridgeUtils.Init(null);
+      }
+      public String AndroidThunk_Java_CallAndroid(String param) {
+      return BridgeUtils.Call(param);
+      }
+
+      /*
+      //test
+      @Override
+      public boolean onTouch(View view, MotionEvent motionEvent) {
+      switch(motionEvent.getAction()) {
+      case  MotionEvent.ACTION_DOWN:
+      nativeTouchScreenPos(motionEvent.getRawX(), motionEvent.getRawY());
+      Log.debug("on Screen Touch");
+      break;
+      }
+      //注意返回值
+      //true：view继续响应Touch操作；
+      //false：view不再响应Touch操作，故此处若为false，只能显示起始位置，不能显示实时位置和结束位置
+      return true;
+      //TODO
+      //return BaseActivityControl.onTouch(view, motionEvent);
+      }
+      */
+
+      /* TMSDK addition start */
+      @Override
+      public boolean onTouchEvent(MotionEvent event)
+      {
+      switch(event.getAction()) {
+      //case MotionEvent.ACTION_DOWN:
+      //nativeTouchScreenPos(event.getRawX(), event.getRawY());
+		  case MotionEvent.ACTION_DOWN:
+		  case MotionEvent.ACTION_POINTER_DOWN:
+			  isTouchBegin = true;
+			  bTriggerMultiTouchEvent = false;
+			  break;
+		  case MotionEvent.ACTION_UP:
+		  case MotionEvent.ACTION_POINTER_UP:
+		  case MotionEvent.ACTION_CANCEL:
+		  case MotionEvent.ACTION_OUTSIDE:
+		  	  isTouchBegin = false;
+		  	  break;
+	  }
+	  int pointerCount = event.getPointerCount();
+	  if(pointerCount >= multiPointerCount) {
+        if(isTouchBegin) {
+            if(!bTriggerMultiTouchEvent) {
+                nativeMultiTouchEvent();
+                bTriggerMultiTouchEvent = true;
+            }
+        }
+	  }
+      return true;
+      }
+      //public native void nativeTouchScreenPos(float x, float y);
+      public native void nativeMultiTouchEvent();
+	  private boolean isTouchBegin = false;
+      private int multiPointerCount = 4;
+      private boolean bTriggerMultiTouchEvent = false;
+      public void setMultiPointerCount(int count){
+	  multiPointerCount = count;
+	  }
+
+      //get App versionCode
+      public long getVersionCode(){
+      PackageManager packageManager=getPackageManager();
+      PackageInfo packageInfo;
+      long versionCode=0;
+      try {
+      packageInfo=packageManager.getPackageInfo(getPackageName(),0);
+      if(ANDROID_BUILD_VERSION >= 28) {
+      versionCode = packageInfo.getLongVersionCode();
+      }else {
+      versionCode = packageInfo.versionCode;
+      }
+      } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+      }
+      return versionCode;
+      }
+
+      //get App versionName
+      public String getVersionName(){
+      PackageManager packageManager=getPackageManager();
+      PackageInfo packageInfo;
+      String versionName="";
+      try {
+      packageInfo=packageManager.getPackageInfo(getPackageName(),0);
+      versionName=packageInfo.versionName;
+      } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+      }
+      return versionName;
+      }
+
+      //get App targetSdkVersion
+      public int getTargetSdkVersion(){
+      int targetSdkVersion = 0;
+      try
+      {
+      PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+      targetSdkVersion = packageInfo.applicationInfo.targetSdkVersion;
+      }
+      catch (PackageManager.NameNotFoundException e)
+      {
+      Log.debug(e.getMessage());
+      }
+      return targetSdkVersion;
+      }
+
+      /*request permissions  start*/
+      private int m_targetSdkVersion = 0;
+      private void _requestPermissions(String[] permissions)
+      {
+      if(permissions == null || permissions.length == 0)
+      {
+      Log.debug("### Not need request permissions... ");
+      return;
+      }
+      m_targetSdkVersion = getTargetSdkVersion();
+      if( m_targetSdkVersion &gt;= 23) {
+      if (ANDROID_BUILD_VERSION &gt;= 23) //23 is the API level (Marshmallow) where runtime permission handling is available
+      {
+      Log.debug("### Target SDK is " + m_targetSdkVersion + ".  This may cause issues if permissions are denied by the user.");
+      for (String per : permissions) {
+      Log.debug("### Start request permissions... " + per);
+      }
+      PermissionHelper.acquirePermissions(permissions, this);
+      }
+      }
+      }
+
+      public void requestRecordVoicePermissions()
+      {
+      _requestPermissions(new String[]{
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.RECORD_AUDIO",
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+      });
+      }
+
+      public void requestSDCardPermissions()
+      {
+      _requestPermissions(new String[]{
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+      });
+      }
+      /*request permissions end*/
+
+      //上传PSO到FTP
+      public boolean UploadPSO(String localpath)
+      {
+      return FTPTool.upload("192.168.2.60",21,"client_sdk","o9VCfN5j","client_ftp",localpath,"/client_ftp/A8_PSOCache/PSO_GLSL_ES3_1_ANDROID.rec.upipelinecache");
+      }
+
+      /* TMSDK addition end */
+
+    </insert>
+  </gameActivityClassAdditions>
+
+  <!--GameActivity.java onCreate添加代码 -->
+  <gameActivityOnCreateAdditions>
+    <insert>
+      BaseActivityControl.onCreate(this);
+
+      //mainView.setOnTouchListener(this);
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+    <!--GameActivity.java onDestroy添加代码-->
+    <gameActivityOnDestroyAdditions>
+        <insert>
+            
+        </insert>
+    </gameActivityOnDestroyAdditions>
+    
+    <!--GameActivity.java onStart添加代码-->
+    <gameActivityOnStartAdditions>
+        <insert>
+        
+        </insert>
+    </gameActivityOnStartAdditions>
+    
+    <!--GameActivity.java OnRestart添加代码-->
+    <gameActivityOnRestartAdditions>
+        <insert>
+            
+        </insert>
+    </gameActivityOnRestartAdditions>
+    
+    <!--GameActivity.java onStop添加代码-->
+    <gameActivityOnStopAdditions>
+        <insert>
+            
+        </insert>
+    </gameActivityOnStopAdditions>
+    
+    <!--GameActivity.java onPause添加代码-->
+    <gameActivityOnPauseAdditions>
+        <insert>
+            
+        </insert>
+    </gameActivityOnPauseAdditions>
+    
+    <!--GameActivity.java onResume添加代码-->
+    <gameActivityOnResumeAdditions>
+        <insert>
+            
+        </insert>
+    </gameActivityOnResumeAdditions>
+    
+    <!-- GameActivity.java onActivityResult添加代码 -->
+    <gameActivityOnActivityResultAdditions>
+        <insert>
+        </insert>
+    </gameActivityOnActivityResultAdditions>
+    
+    <!--GameActivity.java OnNewIntent添加代码-->
+    <gameActivityOnNewIntentAdditions>
+        <insert>
+        </insert>
+    </gameActivityOnNewIntentAdditions>
+
+  <!-- GameApplication.java导入类 -->
+  <gameApplicationImportAdditions>
+    <insert>
+      import com.tm.base.ue4.BaseApplicationControl;
+    </insert>
+  </gameApplicationImportAdditions>
+
+  <!-- GameApplication.java类中添加代码 -->
+  <gameApplicationOnCreateAdditions>
+    <insert>
+      BaseApplicationControl.onCreate(this);
+      
+    </insert>
+  </gameApplicationOnCreateAdditions>
+  
+  
+    <!--在libUE4.so库加载之前需要加载的库-->
+    <soLoadLibrary>
+       <!--<loadLibrary name="gcloudcore" failmsg="abase library not loaded and required!"/>-->
+    </soLoadLibrary>
+    
+    <proguardAdditions>
+        <insert>
+            
+        </insert>
+    </proguardAdditions>
+</root>

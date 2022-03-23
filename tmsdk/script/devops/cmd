@@ -1,0 +1,10 @@
+hdiutil attach -nomount ram://20971520  10g 
+hdiutil attach -nomount ram://41943040  20g 
+
+newfs_hfs -v 'ramdisk_ald15dev' /dev/disk4
+
+mount -o noatime -t hfs /dev/disk4 ramdisk_ald15dev
+
+
+
+svn --username "jenkins" --password "123456" --no-auth-cache merge -r 234827:234485 "/Users/tengmu/ramdisk/Volumes/A/JenkinsRoot/workspace/DNL1_5_Dev/Client/Build_Test/ABProject" "/Users/tengmu/ramdisk/Volumes/A/JenkinsRoot/workspace/DNL1_5_Dev/Client/Build_Test/ABProject"

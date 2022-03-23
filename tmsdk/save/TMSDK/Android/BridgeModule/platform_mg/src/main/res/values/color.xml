@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <color name="red">#FF4500</color>
+    <color name="red2">#E70909</color>
+    <color name="red3">#ffEF420D</color>
+    <color name="gray">#ffbcbcbc</color>
+    <color name="gray2">#ff979797</color>
+    <color name="gray3">#ff6e6e6e</color>
+    <color name="gray4">#666666</color>
+    <color name="drak_gray">#ff606060</color>
+    <color name="yellow">#fffc6009</color>
+    <color name="yellow2">#ffff9320</color>
+    <color name="yellow3">#fff99720</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white2">#fff5f5f5</color>
+    <color name="dark_purple">#FF843249</color>
+    <color name="light_black">#99000000</color>
+    <color name="light_black2">#7f000000</color>
+    <color name="light_black3">#787878</color>
+    <color name="pay_tab_text_color">#ff9e5200</color>
+    <color name="user_product_color">#ffCC9933</color>
+    <color name="black">#ff5d5d5d</color>
+    <color name="black2">#ffaaaaaa</color>
+    <color name="xieyi">#ff6000</color>
+    <color name="text_333">#333333</color>
+    <color name="text_666">#666666</color>
+    <color name="text_999">#999999</color>
+    <color name="text_4c">#4c4c4c</color>
+    <color name="mg_line">#f0f0f0</color>
+    <color name="background">#f8f8fa</color>
+    <color name="touming">#00000000</color>
+    <color name="btn_bg">#ff8f17</color>
+    
+    <color name="zg_colorAccent">#FF4081</color>
+    <color name="zg_colorBlack">#000000</color>
+    <color name="zg_colorDarkBlack">#333333</color>
+    <color name="zg_colorLightBlack">#999999</color>
+    <color name="zg_colorLightBlue2">#00AEF1</color>
+    <color name="zg_colorPrimary">#3F51B5</color>
+    <color name="zg_colorPrimaryDark">#303F9F</color>
+    <color name="zg_colorWhite">#FFFFFF</color>
+    <color name="zg_translucent_background">#80000000</color>
+    <dimen name="fab_margin">16dp</dimen>
+    
+</resources>

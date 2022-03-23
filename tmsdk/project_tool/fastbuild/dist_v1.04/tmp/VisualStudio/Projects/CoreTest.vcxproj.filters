@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\CoreTest.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\TestMain.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestArray.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestAString.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestAtomic.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestEnv.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestFileIO.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestFileStream.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestHash.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestLevenshteinDistance.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestMemPoolBlock.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestMutex.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestPathUtils.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestReflection.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestSemaphore.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestSharedMemory.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestSmallBlockAllocator.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestSystemMutex.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestTCPConnectionPool.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\CoreTest\Tests\TestTimer.cpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{9e819373-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

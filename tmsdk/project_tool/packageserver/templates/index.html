@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title> 
+            {{game}}出包汇总
+        </title>
+    </head>
+    <body>
+        {% for plat,packageTypeName,urls in packageBlocks %}
+        <div id={{plat}}>
+            <h2>{{plat}}包:{{packageTypeName}}</h2>
+            <ul>
+                {% for url,name in urls%}
+                <li><a href="{{url}}">{{name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </body>
+</html>

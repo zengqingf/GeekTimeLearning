@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{0E00D67F-4EBF-2359-7128-72BDF307B62B}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "GCloudTest",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"UMG"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Bugly",
+			"Enabled": true
+		}
+	]
+}

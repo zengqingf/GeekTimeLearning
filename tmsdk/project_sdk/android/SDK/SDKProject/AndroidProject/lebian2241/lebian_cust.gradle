@@ -1,0 +1,21 @@
+project.extensions.create('lebian', LBCustExtension)
+lebian {
+    meta_MainChId = ''
+    meta_ClientChId = ''
+    // 如果您想为不同的渠道配置不同的值，则启动下面这行代码，同时在lebian_app.gradle或者您的主gradle中为不同的variant配置不同的值
+    // meta_ClientChId = '${ClientChId}'
+    meta_LEBIAN_SECID = ''
+    screenOrientation = 'landscape'
+
+//    packageName = ''
+//    taskAffinity = ':xxx'
+}
+
+class LBCustExtension {
+    String meta_MainChId
+    String meta_ClientChId
+    String meta_LEBIAN_SECID
+    String screenOrientation
+    String packageName
+    String taskAffinity
+}

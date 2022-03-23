@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\FBuildWorker.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\FBuildWorkerOptions.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\FBuildWorkerOptions.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Main.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\MainWindowResource.rc">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\resource.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\IdleDetection.cpp">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\IdleDetection.h">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\Worker.cpp">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\Worker.h">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\WorkerSettings.cpp">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\WorkerSettings.h">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\WorkerWindow.cpp">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildWorker\Worker\WorkerWindow.h">
+      <Filter>Worker</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Worker">
+      <UniqueIdentifier>{fdd45410-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

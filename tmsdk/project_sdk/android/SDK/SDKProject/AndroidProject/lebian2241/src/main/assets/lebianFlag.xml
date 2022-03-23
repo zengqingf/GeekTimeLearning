@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flaginfo>
+    <sdkflag flag="3" />
+    <patch flag="1" />
+    <keepmd5 flag="1" />
+    <assetbundle flag="3" /><!-- 1:支持空文件(不支持bin),2:支持bin空文件,3:支持空文件里写1 -->
+    <patchc flag="1" />
+    <xdelta flag="1" />
+    <patchk flag="1" />
+    <obbxd flag="1" />
+    <obbpatch flag="1"/>
+    <rxdelta flag="1" />
+</flaginfo>

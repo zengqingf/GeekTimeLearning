@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    android:background="@drawable/com_sswl_dialog_bg"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/com_sswl_fragment_top"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/com_sswl_color_save_text"
+        android:textSize="15sp"
+        tools:text="账号：u368129012" />
+
+    <TextView
+        android:id="@+id/tv_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_account"
+        android:layout_alignLeft="@id/tv_account"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/com_sswl_color_save_text"
+        android:textSize="15sp"
+        tools:text="密码：sff232" />
+
+    <TextView
+        android:id="@+id/tv_register_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/com_sswl_color_save_text"
+        android:textSize="18sp"
+        android:text="@string/com_sswl_register_success" />
+
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_register_success"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/com_sswl_color_save_text"
+        android:textSize="18sp"
+        android:text="@string/com_sswl_save_account_remind" />
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_below="@id/tv_tips"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/com_sswl_enter_game"
+        android:background="@drawable/com_sswl_btn_bg"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10sp"/>
+
+
+</RelativeLayout>

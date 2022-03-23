@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation files('libs\\base_mg.jar')
+    implementation files('libs\\classes.jar')
+    implementation files('libs\\ky_sdk_common.jar')
+    implementation files('libs\\pay_mg.jar')
+    implementation files('libs\\wftsdk3.3.jar')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //业务组件依赖common组件
+    compileOnly project(":opensrc")
+    compileOnly project(':commonlib')
+    compileOnly project(':tmsdk_platform')
+}
+
+// task: delete the old aar
+task DeleteOldAar_SDK(type: Delete) {
+    delete 'release/'
+}
+
+// task: export contents as aar
+task ExportAar_SDK(type: Copy) {
+    from('build/outputs/aar/')
+    //into('release/')
+    into('../bridgemodule_release/')
+    include('platform_mg-debug.aar')
+    //rename the jar
+    rename('platform_mg-debug.aar', 'TMSDK_PlatformMG.aar')
+}
+
+// task by task
+ExportAar_SDK.dependsOn(DeleteOldAar_SDK, assemble)

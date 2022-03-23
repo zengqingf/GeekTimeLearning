@@ -1,0 +1,4 @@
+# native bridge
+-keep public class com.tencent.gcloud.apm.jni.TApmNativeHelper { *; }
+-keep public class com.tencent.gcloud.apm.portal.TApmAgent { *; }
+

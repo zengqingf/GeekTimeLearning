@@ -1,0 +1,24 @@
+version: "3.0"
+services: 
+  pypiproxy:
+    image: 192.168.5.10:5002/pypiproxy:latest
+    volumes: 
+      - pypiproxy_packages:/pypi/packages
+    ports: 
+      - mode: host
+        protocol: tcp
+        published: 5000
+        target: 8080
+    deploy:
+      mode: global
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.labels.pypiproxy-server == true
+          
+
+
+
+volumes:
+  pypiproxy_packages:

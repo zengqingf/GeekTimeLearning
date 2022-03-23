@@ -1,0 +1,56 @@
+/*
+ LBBWBX.strings
+ LanguageTest
+ 
+ Created by 荀江涛 on 16/10/25.
+ Copyright © 2016年 xunjiangtao. All rights reserved.
+ */
+/*wifi*/
+"split_wifi_fore_download"  = "تحتاج اللعبة إلى تنزيل المورد%.2fM ، أنت حاليًا في شبكة WiFi ، ولن تتمكن من متابعة اللعبة دون تنزيل ، هل ستقوم بتنزيلها الآن؟";
+"split_wifi_back_download"  = "تحتاج اللعبة إلى تنزيل المورد%.2fM ، أنت حاليًا في شبكة WiFi ، هل تم تنزيله في الخلفية؟";
+"hotfix_wifi_fore_download" = "تحتاج اللعبة إلى تنزيل حزمة التحديث%.2fM ، أنت حاليًا على شبكة WiFi ، هل ستقوم بتنزيلها الآن؟";
+"hotfix_wifi_back_download" = "تحتاج اللعبة إلى تنزيل مورد التحديث%.2fM ، أنت حاليًا في شبكة WiFi ، هل تم تنزيله في الخلفية؟";
+"patch_res_wifi_download"   = " للحصول على تجربة ألعاب أفضل  ، الحجم: %.2fM ، هل تريد التنزيل الآن؟";
+/*wwan*/
+"split_wwan_fore_download"  = "تحتاج اللعبة إلى تنزيل المورد%.2fM ، أنت حاليًا في شبكة حركة المرور ، ولن تتمكن من متابعة اللعبة دون تنزيل ، هل ستقوم بتنزيلها الآن؟";
+"split_wwan_back_download"  = "تحتاج اللعبة إلى تنزيل المورد%.2fM ، أنت حاليًا في شبكة حركة المرور ، هل تم تنزيله في الخلفية؟";
+"hotfix_wwan_fore_download" = "تحتاج اللعبة إلى تنزيل حزمة التحديث%.2fM ، أنت الآن في شبكة حركة المرور ، هل ستقوم بتنزيلها الآن؟";
+"hotfix_wwan_back_download" = "تحتاج اللعبة إلى تنزيل مورد التحديث%.2fM ، أنت حاليًا في شبكة حركة المرور ، هل تم تنزيله في الخلفية؟";
+"patch_res_wwan_download"   = "يوصى بتنزيل موارد اللعبة للحصول على تجربة ألعاب أفضل ، الحجم: %.2fM ، الموجود حاليًا ضمن شبكة غير واي فاي ، قم بالتنزيل الآن؟";
+/*unReach*/
+"alert_noReachable" = "فشل الاتصال ، يرجى التحقق من الشبكة";
+/*title*/
+"title_connectServer"             = "جاري الاتصال بالسيرفر...";
+"title_resource_downloading"      = "جاري تحميل الموارد...";
+"title_network_error"             = "تم قطع الشبكة";
+"title_resource_downloadFailed"   = "فشل التنزيل ، يرجى التحقق من الشبكة";
+"title_resource_downloadFinished" = "اكتمال التنزيل";
+"title_resource_unzip"            = "جاري ت تفكيك حزمة مضغوط (بدون استهلاك حركة المرور)...";
+"title_resource_unzip_failed"     = "فشل تفكيك حزمة مضغوط ، إعادة التنزيل";
+"title_resource_combining"        = "جاري دمج الموارد (لا تغلق اللعبة)...";
+"title_resource_combine_failed"   = "فشل دمج الموارد";
+"title_resource_combined"         = "اكتمال دمج الموارد";
+"title_resource_allFinished"      = "جاري تحميل اللعبة ، يرجى الانتظار";
+/*button*/
+"button_ok" = "نعم";
+"button_no" = "لا";
+"button_download_now" = "تنزيل الآن";
+"button_download_background" = "تنزيل في الخلفية";
+"button_download_later" = "التحديث عن ذلك لاحقا";
+"button_exitGame" = "الخروج من اللعبة";
+"button_exit" = "الخروج";
+"button_confirm" = "تأكيد";
+"button_retry" = "إعادة المحاولة";
+"button_jumpAppStore" = "القفز إلى المتجر";
+/*other*/
+"alert_space_notEnough" = "مساحة تخزين غير كافية ، يرجى تنظيف مساحة كافية وإعادة المحاولة";
+"alert_space_notEnough_size" = "مساحة تخزين غير كافية ، تحتاج اللعبة إلى مساحة خالية %.fM، يرجى تنظيف مساحة كافية وإعادة المحاولة";
+"alert_lowSpeed"        = "سرعة تنزيل خلفية مورد اللعبة بطيئة جدًا ، ستؤثر على تجربة اللعبة ، سواء تنزيل جميع الموارد (%.2fM) في مرة واحدة أم لا؟";
+"alert_resourceEnd"     = "لاستمرار اللعبة ، تحتاج إلى تنزيل مورد%.2fM. يوصى بفتح WiFi وتجربة شاشة اللعبة الكاملة. هل تريد تنزيلها؟";
+"alert_old_player"      = "تنزيل جميع الموارد (%.2fM) في مرة واحدة ، ستكون اللعبة أكثر سلاسة";
+"alert_old_player_wwan" = "تنزيل جميع الموارد (%.2fM) في مرة واحدة ، ستكون اللعبة أكثر سلاسة. أنت الآن في شبكة حركة المرور ، هل ستقوم بتنزيلها الآن؟";
+"alert_resource_failed" = "فشل تحميل الموارد: MD5 غير متطابق";
+"alert_restart_option"  = "اكتمال التحديث ،هل إعادة تشغيل اللعبة لتحميل الإصدار الجديد؟";
+"alert_restart_force"   = "اكتمال التحديث، يرجى إعادة تشغيل اللعبة";
+"alert_appstore"        = "تحتوي اللعبة على إصدار جديد على AppStore ، هل تذهب إلى التحديث";
+"alert_sdk_add_error"   = "خطأ تكامل Sdk ، رقم قناة (Info.plist-> LEBIAN_APPID) ومنطقة الإصدار التي يختارها sdk (lebianFlag.xml-> select_area) غير متطابق";

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="280dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_xy_login_white_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mg_ic_back" />
+
+        <ImageView
+            android:id="@+id/login_holder_mg_icon"
+            android:layout_width="145dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/login_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="40dp"           
+            android:background="@drawable/xy_phone_regin_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mg_login_mobile" />
+
+            <EditText
+                android:id="@+id/xy_reg_mobile_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/xy_phone_regin_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+
+            <ImageView
+                android:id="@+id/mobile_login_msg_code_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/mg_msg_code" />
+
+            <TextView
+                android:id="@+id/reg_mobile_code_tv"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="#ff8f17"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/xy_reg_code_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@id/reg_mobile_code_tv"
+                android:layout_toRightOf="@id/mobile_login_msg_code_iv"
+                android:background="@null"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/reg_next_tv"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/xy_quick_login_save_bg"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+        
+       <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:layout_marginTop="15dp"
+	        >
+	        
+	        <ImageView
+		        android:id="@+id/onekeyregin_holder_check_xieyi_iv"
+		        android:layout_width="15dp"
+		        android:layout_height="15dp"		        
+		        android:checked="true"
+		        android:src="@drawable/mg_register_protocol_checked" />
+	       <TextView
+	             android:id="@+id/onekeyregin_holder_check_xieyi_tv"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"	            
+	             android:text=" 我已经阅读并同意"
+	             android:textColor="@color/gray"
+	             android:textSize="14sp" />
+		    <TextView
+		        android:id="@+id/onekeyregin_holder_xieyi_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="14sp"
+		        android:text="《用户服务协议》"
+		        android:textColor="@color/xieyi"
+		         />
+	    </LinearLayout>
+        
+    </LinearLayout>
+
+</RelativeLayout>

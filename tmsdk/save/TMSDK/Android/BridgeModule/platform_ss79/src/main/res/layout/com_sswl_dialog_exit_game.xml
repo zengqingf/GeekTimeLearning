@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="240dp"
+    android:layout_gravity="center">
+    <LinearLayout
+        android:layout_width="282dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/com_sswl_dialog_bg"
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            android:id="@+id/rl_recommand"
+            android:layout_marginTop="60dp"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:background="@drawable/com_sswl_btn_bg1_exit">
+            <com.sswl.sdk.widget.textview.GradientColorTextView
+                android:id="@+id/tv_recommand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:text="@string/com_sswl_new_game_recommend"
+                android:textSize="16sp"/>
+            <ImageView
+                android:layout_toRightOf="@id/tv_recommand"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/com_sswl_recommand_fire"/>
+
+        </RelativeLayout>
+        <com.sswl.sdk.widget.textview.GradientColorTextView
+            android:id="@+id/tv_gift"
+            android:layout_marginTop="14dp"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/com_sswl_get_gift"
+            android:background="@drawable/com_sswl_btn_bg1_exit"
+            android:textSize="16sp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_continue"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/com_sswl_btn_bg"
+                android:baselineAligned="false"
+                android:text="@string/com_sswl_continue_game"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_exit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/com_sswl_btn_bg_exit"
+                android:text="@string/com_sswl_exit_game"
+                android:textColor="#796D6D"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="340dp"
+        android:layout_height="80dp"
+        android:src="@drawable/com_sswl_exit_bar"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@drawable/com_sswl_exit_icon1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="5dp"/>
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@drawable/com_sswl_exit_icon1"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="170dp"/>
+
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@drawable/com_sswl_exit_icon2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="8dp"/>
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@drawable/com_sswl_exit_icon3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="210dp"
+        android:layout_marginBottom="4dp"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>

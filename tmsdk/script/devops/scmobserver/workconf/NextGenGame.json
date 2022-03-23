@@ -1,0 +1,69 @@
+{
+    "engine":"ue4",
+    "svnurl":"https://192.168.2.12:8443/svn/Tenmove_Project_A8/trunk/Program",
+    "rootDir":"/trunk/Program",
+    "vaildWorks":[
+        {
+            "workType":"CompileCode",
+            "workArgs":["false","ios"],
+            "workMechine":"192.168.2.196",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":[]
+        },
+        
+        {
+            "workType":"CompileCode",
+            "workArgs":["true"],
+            "workMechine":"192.168.2.200",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":[]
+
+        },
+        
+        {
+            "workType":"CompileCode",
+            "workArgs":["false","android"],
+            "workMechine":"192.168.2.197",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":[]
+
+        },
+        {
+            "workType":"UE4UnluaIntelliSenseGen",
+            "workArgs":[],
+            "workMechine":"192.168.2.197",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":["CompileCode"]
+        },
+        {
+            "workType":"CompileBluePrints",
+            "workArgs":[],
+            "workMechine":"192.168.2.197",
+            "orderPaths":["Client/NextGenGame/Content/NextGenActionGame","Client/NextGenGame/Source"],
+            "dependences":["CompileCode"]
+        },
+        {
+            "workType":"UE4ConfigIniFileUpdate",
+            "workArgs":[],
+            "workMechine":"192.168.2.197",
+            "orderPaths":["Client/NextGenGame/Config"],
+            "dependences":[]
+        },
+
+        {
+            "workType":"PackageApplication",
+            "workArgs":["Client_Tool_Temp/A8_Trunk_Android_win10_195","android",""],
+            "workMechine":"192.168.2.195",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":[]
+        },
+        {
+            "workType":"OpenApplication",
+            "workArgs":["Client_Tool_Temp/Android_Autotest_Target_win10_4.104"],
+            "workMechine":"192.168.2.203",
+            "orderPaths":["Client/NextGenGame/Source","Client/NextGenGame/Plugins"],
+            "dependences":["PackageApplication"]
+        }
+        
+    ]
+}

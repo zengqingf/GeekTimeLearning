@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="330dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_sswl_dialog_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/com_sswl_logo" />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progressDrawable="@drawable/com_sswl_webview_progress"
+        android:visibility="gone" />
+
+    <com.sswl.sdk.widget.x5.X5WebView
+        android:id="@+id/wv"
+        android:layout_width="250dp"
+        android:layout_height="250dp">
+
+    </com.sswl.sdk.widget.x5.X5WebView>
+    <Button
+        android:id="@+id/btn_know"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="@string/com_sswl_btn_know"
+        android:textSize="15sp"
+        android:background="@drawable/com_sswl_btn_bg"
+        android:textColor="@android:color/white"/>
+</LinearLayout>
+
+

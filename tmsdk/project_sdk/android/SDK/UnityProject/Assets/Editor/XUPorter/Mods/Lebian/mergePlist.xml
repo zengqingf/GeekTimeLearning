@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>LEBIAN_APPID</key>
+<integer>68523</integer>
+<key>LEBIAN_VERCODE</key>
+<integer>$[versioncode]</integer>
+<key>LEBIAN_META</key>
+<string>$[channel]</string>
+<key>LEBIAN_SECID</key>
+<string>j8o3pxmo.c</string>
+</dict>
+</plist>

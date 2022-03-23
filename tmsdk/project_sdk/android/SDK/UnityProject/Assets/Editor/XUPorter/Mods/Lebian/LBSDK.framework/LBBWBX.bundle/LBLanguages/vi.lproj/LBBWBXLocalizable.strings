@@ -1,0 +1,56 @@
+/*
+ LBBWBX.strings
+ LanguageTest
+ 
+ Created by 荀江涛 on 16/10/25.
+ Copyright © 2016年 xunjiangtao. All rights reserved.
+ */
+/*wifi*/
+"split_wifi_fore_download"  = "Cần tải %.2fM tài nguyên, hiện bạn đang dùng WiFi, không tải sẽ không thể tiếp tục, tải ngay?";
+"split_wifi_back_download"  = "Cần tải %.2fM tài nguyên, hiện bạn đang dùng WiFi, xác nhận tải?";
+"hotfix_wifi_fore_download" = "Cần tải %.2fM tài nguyên cập nhật, hiện bạn đang dùng WiFi, xác nhận tải?";
+"hotfix_wifi_back_download" = "Cần tải %.2fM tài nguyên cập nhạt, hiện bạn đang dùng WiFi, xác nhận tải?";
+"patch_res_wifi_download"   = "Để trải nghiệm tốt hơn, bạn nên tải tài nguyên game, kích thước: %.2fM, tải ngay?";
+/*wwan*/
+"split_wwan_fore_download"  = "Cần tải %.2fM tài nguyên, hiện bạn đang dùng cước lưu lượng, không tải không thể tiếp tục, tải ngay?";
+"split_wwan_back_download"  = "Cần tải %.2fM tài nguyên, hiện bạn đang dùng cước lưu lượng, xác nhận tải?";
+"hotfix_wwan_fore_download" = "Cần tải %.2fM gói cập nhật, hiện bạn đang dùng cước lưu lượng, xác nhận tải?";
+"hotfix_wwan_back_download" = "Cần tải %.2fM tài nguyên cập nhật, hiện bạn đang dùng cước lưu lượng, xác nhận tải?";
+"patch_res_wwan_download"   = "Để trải nghiệm tốt hơn, bạn nên tải tài nguyên game, kích thước: %.2fM, hiện không dùng WiFi, tải ngay?";
+/*unReach*/
+"alert_noReachable" = "Kết nối thất bại, hãy kiểm tra mạng";
+/*title*/
+"title_connectServer"             = "Đang kết nối server…";
+"title_resource_downloading"      = "Đang tải tài nguyên…";
+"title_network_error"             = "Đã ngắt kết nối mạng";
+"title_resource_downloadFailed"   = "Tải thất bại, hãy kiểm tra mạng";
+"title_resource_downloadFinished" = "Tải xong";
+"title_resource_unzip"            = "Đang giải nén (Không tốn lưu lượng)…";
+"title_resource_unzip_failed"     = "Giải nén thất bại, tải lại";
+"title_resource_combining"        = "Đang ghép tài nguyên (không đóng game)…";
+"title_resource_combine_failed"   = "Ghép tài nguyên thất bại";
+"title_resource_combined"         = "Ghép xong tài nguyên";
+"title_resource_allFinished"      = "Đang nhận game, vui lòng chờ";
+/*button*/
+"button_ok" = "Có";
+"button_no" = "Không";
+"button_download_now" = "Tải ngay";
+"button_download_background" = "Tải nền";
+"button_download_later" = "Nhắc lại sau";
+"button_exitGame" = "Thoát game";
+"button_exit" = "Thoát";
+"button_confirm" = "Xác nhận";
+"button_retry" = "Thử lại";
+"button_jumpAppStore" = "Chuyển tới store";
+/*other*/
+"alert_space_notEnough" = "Không đủ bộ nhớ, hãy xóa bớt và thử lại";
+"alert_space_notEnough_size" = "Không đủ bộ nhớ, game cần %.fM dung lượng, hãy xóa bớt và thử lại";
+"alert_lowSpeed"        = "Tốc độ tải từ tool quá chậm, sẽ ảnh hưởng trải nghiệm game, tải toàn bộ tài nguyên ngay (%.2fM)?";
+"alert_resourceEnd"     = "Chơi tiếp cần tải %.2fM tài nguyên, nên dùng WiFi, trải nghiệm đồ họa hoàn chỉnh, tải?";
+"alert_old_player"      = "Tải toàn bộ tài nguyên (%.2fM) chơi game sẽ mượt hơn";
+"alert_old_player_wwan" = "Tải toàn bộ tài nguyên (%.2fM), chơi game sẽ mượt hơn, hiện bạn đang dùng lưu lượng, tải ngay?";
+"alert_resource_failed" = "Nhận tài nguyên thất bại: MD5 không khớp";
+"alert_restart_option"  = "Cập nhật xong, khởi động lại game nhận phiên bản mới?";
+"alert_restart_force"   = "Cập nhật xong, hãy khởi động lại game";
+"alert_appstore"        = "Trên AppStore có phiên bản mới, đến cập nhật";
+"alert_sdk_add_error"   = "Tích hợp sdk lỗi, TK kênh Lebian (Info.plist->LEBIAN_APPID) và sdk khu vực phát hành (lebianFlag.xml->selected_area) không tương thích";

@@ -1,0 +1,18 @@
+UwaProjScan.Record.ProjectAssets.ParticleEffect.ParticleEffectManager类
+
+PrepareData方法
+第212-215行额外添加了代码
+if (num2 > 20f)
+{
+    num2 = 20f;
+}
+限制最长播放时长为20秒
+
+WatchNext方法
+第90行额外添加了代码
+System.IO.File.WriteAllText("ok", "ok");
+
+扫描完成后生成标志
+
+WatchNext方法
+资源加载和实例化添加判空 新版已加

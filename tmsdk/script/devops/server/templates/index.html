@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <select id="channel">
+    </select>
+    
+    <input id="issueID" type="text" placeholder="bugly #号后面的数字,复制整个名字就行" size="36">
+    <button id="submit" onclick="Submit()">查询</button>
+    <div>
+        <table border="1">
+            <tr>
+                <td>可用内存</td>
+                <td>可用储存</td>
+                <td>开始游戏时间</td>
+                <td>游戏时间</td>
+                <td>系统版本</td>
+                <td>包版本</td>
+                <td>包名</td>
+                <td>是否Root</td>
+            </tr>
+            <tr>
+                <td id="freeMem"></td>
+                <td id="freeStorage"></td>
+                <td id="startGameTime"></td>
+                <td id="gameTime"></td>
+                <td id="osVersion"></td>
+                <td id="productVersion"></td>
+                <td id="processName"></td>
+                <td id="isRoot"></td>
+            </tr>
+        </table>
+        <pre id="crashDump"></pre>
+    </div>
+    <div>
+        <pre id="output"></pre>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    let initdata = {};
+    window.onload = function () {
+        $('#issueID').bind('keyup', function (event) {
+
+            if (event.keyCode == "13") {
+                //回车执行查询
+                $('#submit').click();
+            }
+        }).on('input', function () {
+            let newval = $(this).val().replace(/[^\d]/g, '');
+            $(this).val(newval);
+        });
+        $.getJSON('http://192.168.2.92:5000/search/?method=init',function (data) {
+            initdata = data;
+            
+            let channel = getQueryVariable('channel');
+            let issueId = getQueryVariable('issueId');
+            $('#issueID').val(issueId);
+            InitChannel(channel);
+            // 自动填充跳转后自动查询
+            if ($('#issueID').val() != '' && !isNaN($('#issueID').val())){
+                $('#submit').click();
+            }
+        });
+
+    }
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+        }
+        return('');
+    }
+    function AddOption(id,value,html,selected){
+        let JQobj = $("#"+id);
+        let oldhtml = JQobj.html();
+        let newhtml = '';
+        if (selected !== undefined){
+            newhtml = oldhtml + '<option value="'+value+'" selected="selected">'+html+'</option>';
+        }
+        else{
+            newhtml = oldhtml + '<option value="'+value+'">'+html+'</option>';
+        }
+        
+        JQobj.html(newhtml);
+    }
+    function ClearOption(id){
+        let JQobj = $("#"+id);
+        JQobj.html('');
+    }
+    function InitChannel(selectedVal){
+        let data = initdata['channel']
+        ClearOption('channel')
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const element = data[key];
+                if (key == selectedVal){
+                    AddOption("channel",key,key,1);
+                }
+                else{
+                    AddOption("channel",key,key);
+                }
+                
+            }
+        }
+    }
+    function Submit(event) {
+        // console.log(event);
+        let channel = $("#channel").val();
+        let issueID = $("#issueID").val();
+        console.log(channel);
+        console.log(issueID);
+        load(channel, issueID);
+    }
+
+    function getSendJsonData(rawdata, method) {
+        data = {
+            'data': rawdata
+        }
+        if (method !== undefined) {
+            data['method'] = method;
+        }
+        return data
+    }
+
+    function postdata(route, jsondata, success, method) {
+        jsondata = getSendJsonData(jsondata,method)
+        let url = "http://192.168.2.92:5000/" + route + "/"
+        return $.post({
+            url: url,
+            contentType: "application/json",
+            data: JSON.stringify(jsondata),
+            success: success
+        });
+    }
+
+    function load(channel, issueID) {
+        postdata('search', {
+            'channel':channel,
+            'issueId': issueID
+        }, function (data) {
+            console.log(data);
+            js = $.parseJSON(data);
+            crashstr = js['retraceCrashDetail'];
+            let freeMem = js['freeMem'];
+            let freeStorage = js['freeStorage'];
+            freeMem = ReadableByte(freeMem);
+            freeStorage = ReadableByte(freeStorage);
+
+            let isRoot = js['isRooted'].toString();
+            let osVersion = js['osVer'];
+            let productVersion = js['productVersion'];
+            let processName = js['processName'];
+            let crashTime = js['crashTime'];
+            let startTime = js['startTime']; 
+
+            let startGameTime_Date = new Date(startTime);
+
+            let startGameTime = startGameTime_Date.getFullYear() + '-' + (startGameTime_Date.getMonth() + 1) +
+                '-' + startGameTime_Date.getDate() + ' ' +
+                startGameTime_Date.getHours() + ':' + startGameTime_Date.getMinutes() + ':' + startGameTime_Date
+                .getSeconds()
+
+            let gameTime = new Date(crashTime).getTime() - startGameTime_Date.getTime();
+            let gameTime_minute = (gameTime / (1000 * 60)).toFixed(2);
+
+
+
+            let crashstr_encode = HtmlEncode(crashstr);
+            let str_encode = HtmlEncode(data);
+            SetDate(freeMem, freeStorage, startGameTime, gameTime_minute, osVersion, productVersion,
+                processName, isRoot, crashstr_encode);
+            SetOutput(str_encode);
+
+        }, 'lastCrash').fail(function (xhr, errorText, errorType) {
+            Clear();
+            SetOutput("issueID => " + issueID + ' 找不到');
+        });
+    }
+
+    function Clear() {
+        SetDate("", "", "", "", "", "", "", "");
+        SetOutput("");
+    }
+
+    function SetDate(freeMem, freeStorage, startGameTime, gameTime, osVersion, productVersion, processName, isRoot,
+        dump) {
+        $("#freeMem").html(freeMem);
+        $("#freeStorage").html(freeStorage);
+        $("#startGameTime").html(startGameTime);
+        $("#gameTime").html(gameTime + '分钟');
+
+        $("#osVersion").html(osVersion);
+        $("#productVersion").html(productVersion);
+        $("#processName").html(processName);
+        $("#isRoot").html(isRoot);
+        SetDump(dump);
+    }
+
+    function SetDump(str) {
+        $("#crashDump").html(str);
+    }
+
+    function SetOutput(str) {
+        $("#output").html(str);
+    }
+
+    function HtmlEncode(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        str_encode = div.innerHTML;
+        str_encode = str_encode.replace(/\\n/g, '<br>');
+        return str_encode;
+    }
+
+    function ReadableByte(b) {
+        let n = parseFloat(b);
+        let count = 0;
+        let ref = ['B', 'KB', 'MB', 'GB']
+        while (n > 1000.0) {
+            n /= 1024;
+            count += 1
+        }
+        return n.toFixed(3) + ref[count]
+    }
+</script>
+
+</html>

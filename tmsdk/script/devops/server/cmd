@@ -1,0 +1,1 @@
+sqlacodegen postgresql://postgres:123456@192.168.2.147:5432/postgres --outfile=models.py

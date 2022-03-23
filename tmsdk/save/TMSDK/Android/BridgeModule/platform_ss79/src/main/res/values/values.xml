@@ -1,0 +1,150 @@
+<resources>
+    <color name="com_sswl_color_float_bg">#EDEDED</color>
+    <color name="com_sswl_color_float_text">#8C8C8C</color>
+    <color name="com_sswl_color_btn_pressed">#F05024</color>
+    <color name="com_sswl_color_btn_unpressed">#FF6D2D</color>
+    <color name="com_sswl_color_vercode_btn_unpressed">#FA8E28</color>
+    <color name="com_sswl_color_vercode_btn_pressed">#999999</color>
+    <color name="com_sswl_color_btn_green_bg">#25D73A</color>
+    <color name="com_sswl_color_edittext_bg_grey">#b3b3b3</color>
+    <color name="com_sswl_color_text_grey">#858585</color>
+    <color name="com_sswl_color_text_grey1">#555555</color>
+    <color name="com_sswl_color_edittext">#888888</color>
+    <color name="com_sswl_color_save_text">#F05B29</color>
+    <color name="com_sswl_color_pay_title">#1AAD19</color>
+    <color name="com_sswl_color_selected_blue">#4EACFD</color>
+    <color name="com_sswl_color_btn2_bg_unpress">#FA8E28</color>
+    <color name="com_sswl_color_btn2_bg_press">#FFD56A06</color>
+    <color name="com_sswl_color_btn3_bg_press">#666666</color>
+    <color name="com_sswl_color_btn3_bg_unpress">#999999</color>
+    <color name="com_sswl_color_btn_bg_exit">#FFD1D1D1</color>
+    <color name="com_sswl_color_phone_bound_title_bg">#E7531F</color>
+<string name="com_sswl_connection_fail">网络连接失败，请检查您的网络是否有问题</string>
+    <string name="com_sswl_game_download_remind">开始下载安装包，可到手机的"下载管理"中查看任务下载进度哦~</string>
+    <string name="com_sswl_account">账号</string>
+    <string name="com_sswl_cs">客服</string>
+    <string name="com_sswl_notice">公告</string>
+    <string name="com_sswl_gift">礼包</string>
+    <string name="com_sswl_safe_app">安全令牌</string>
+    <string name="com_sswl_choose_login_remind">请选择登录方式</string>
+    <string name="com_sswl_guest_login">快速注册</string>
+    <string name="com_sswl_phone_login">手机登录</string>
+
+
+
+    <string name="com_sswl_hint_phone_num">请输入手机号</string>
+    <string name="com_sswl_hint_vercode">请输入验证码</string>
+    <string name="com_sswl_hint_account">账号(6-15个小写字母或者数字)</string>
+    <string name="com_sswl_hint_pwd">密码(6-16个字符)</string>
+    <string name="com_sswl_btn_vercode">获取验证码</string>
+    <string name="com_sswl_btn_login">登录</string>
+    <string name="com_sswl_btn_confirm">确定</string>
+    <string name="com_sswl_btn_cancel">取消</string>
+    <string name="com_sswl_btn_switch_account">切换账号</string>
+    <string name="com_sswl_btn_register_login">注册并登录</string>
+    <string name="com_sswl_retrieve_pwd">找回密码&gt;</string>
+    <string name="com_sswl_other_login">其他登录&gt;</string>
+    <string name="com_sswl_register_account">注册账号&gt;</string>
+    <string name="com_sswl_term_read">我已阅读并同意</string>
+    <string name="com_sswl_retrieve_pwd_tip">提示:未绑定用户找回密码点击</string>
+    <string name="com_sswl_online_service">在线客服</string>
+    <string name="com_sswl_input_dynamic_pwd_tip">请输入游戏安全令牌动态密码</string>
+    <string name="com_sswl_hint_dynamic_pwd">请输入动态密码</string>
+    <string name="com_sswl_register_success">注册成功</string>
+    <string name="com_sswl_save_account_remind">账号密码已截图存放到相册</string>
+    <string name="com_sswl_enter_game">进入游戏(%1$d)</string>
+    <string name="com_sswl_toast_account_error">您的账号输入有误，正确的账号是由6-15个小写字母或者数字组成</string>
+    <string name="com_sswl_toast_pwd_error">您的密码输入有误，正确的密码是由6-16个字符组成</string>
+    <string name="com_sswl_toast_remind_read_term">请您先认真阅读并同意用户服务协议再进行注册哦</string>
+    <string name="com_sswl_toast_network_unavailable">当前网络不可用，请检查您的网络设置</string>
+    <string name="com_sswl_toast_phone_error">您的手机号码输入有误，请重新输入</string>
+    <string name="com_sswl_toast_send_vercdoe">验证码已发送到您的手机，请注意查收</string>
+    <string name="com_sswl_toast_vercode_error">验证码不能为空</string>
+    <string name="com_sswl_retrieve_pwd_tips">您的账号为：&lt;font color="#0C9EFF"&gt;%1$s&lt;/font&gt;,请输入新密码</string>
+    <string name="com_sswl_change_pwd_success">找回密码成功，请重新进入游戏</string>
+    <string name="com_sswl_dynamic_code_error">动态密码不为空</string>
+    
+    
+    
+    <string name="com_sswl_toast_safe_app_url_empter">敬请期待...</string>
+    <string name="com_sswl_complete_userinfo_remind">完成手机绑定，即可领取豪华大礼包哦~</string>
+    <string name="com_sswl_bound_phone_advice">安全提醒：\n\u3000\u3000您的账号安全性较低，关联手机后可一键找回账号，更有豪华大礼包相赠哦！</string>
+    <string name="com_sswl_bound_phone_title">绑定手机</string>
+    <string name="com_sswl_btn_complete_userinfo">立即领取</string>
+    <string name="com_sswl_quick_login_pwd_empty">您的密码文件已丢失，请联系客服重置或者使用其他登录来手动输入账号密码登录</string>
+    <string name="com_sswl_certification_remind">按文化部《网络游戏管理暂行办法》要求，网络游戏用户需要进行实名认证，请您先进行实名认证</string>
+    <string name="com_sswl_hint_certification_name">请输入姓名，如：张三</string>
+    <string name="com_sswl_hint_idcard_num">请输入身份证号码</string>
+    <string name="com_sswl_commit_certification">提交认证</string>
+    <string name="com_sswl_toast_name_empty">姓名不能为空</string>
+    <string name="com_sswl_toast_idcard_num_error">身份证号码输入有误</string>
+    <string name="com_sswl_no_certification_exit_remind">亲爱的玩家，您好!\n\u3000\u3000根据文化部《网络游戏管理暂行办法》规定,需要您完成实名认证后方可进行游戏哦~</string>
+    <string name="com_sswl_no_certification_pay_remind">亲爱的玩家，您好!\n\u3000\u3000根据文化部《网络游戏管理暂行办法》规定,需要您完成实名认证后方可进行充值哦~</string>
+    <string name="com_sswl_btn_continue_certificate">继续认证</string>
+    <string name="com_sswl_btn_exit_game">退出游戏</string>
+    <string name="com_sswl_btn_exit_recharge">退出充值</string>
+    <string name="com_sswl_btn_next">下一步</string>
+    <string name="com_sswl_btn_know">知道了</string>
+    <string name="com_sswl_get_gift">领取礼包</string>
+    <string name="com_sswl_new_game_recommend">新游推荐</string>
+    <string name="com_sswl_continue_game">继续游戏</string>
+    <string name="com_sswl_exit_game">退出游戏</string>
+    <string name="com_sswl_update_remind">检测到有更新的版本，是否进行更新？</string>
+    <string name="com_sswl_btn_update">立即更新</string>
+    <string name="com_sswl_btn_ignore">稍后更新</string>
+    <string name="com_sswl_apk_md5_error">啊哦~安装包下载过程中有损坏，跳转到浏览器下载~</string>
+    <string name="com_sswl_anti_addiction_pre_remind">亲爱的玩家，您好！\n\u3000\u3000根据国家有关部门的相关规定，未成年人平日游戏时长不得超过90分钟，节假日游戏时长不得超过3小时，您本日游戏已累计在线：%1$d分钟啦，本日可登录时长还剩下：%2$d分钟,请合理安排游戏时间,注意休息哦~</string>
+    <string name="com_sswl_anti_addiction_remind">亲爱的玩家，您好！\n\u3000\u3000根据国家有关部门的相关规定， 未成年人平日游戏时长不得超过90分钟，节假日游戏时长不得超过3小时，您本日游戏已累计在线：%1$d分钟啦，请下线休息吧~</string>
+    <string name="com_sswl_anti_addiction_remind1">亲爱的玩家，您好！\n\u3000\u3000根据国家有关部门的相关规定，未成年人22:00-8:00期间不允许进入游戏，请合理安排游戏时间，多注意休息哦~</string>
+    <string name="com_sswl_tips">温馨提示</string>
+
+    <string name="com_sswl_bind_phone_remind">您的账号安全级别过低，\n绑定手机后可一键修改密码，更有豪华大礼包相赠噢~</string>
+    <string name="com_sswl_btn_confirm_bind">确认绑定</string>
+
+<style name="com_sswl_dialog_style" parent="android:Theme.Dialog">
+
+        
+        <item name="android:windowFrame">@null</item>
+        
+        <item name="android:windowIsFloating">false</item>
+        
+        <item name="android:windowIsTranslucent">true</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        
+        <item name="android:background">@null</item>
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+        
+        <item name="android:backgroundDimEnabled">false</item>
+        
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:imeOptions">flagNoExtractUi|flagNoFullscreen</item>
+    </style>
+
+    <style name="com_sswl_dim_enable_dialog_style" parent="android:Theme.Dialog">
+
+        
+        <item name="android:windowFrame">@null</item>
+        
+        <item name="android:windowIsFloating">false</item>
+        
+        <item name="android:windowIsTranslucent">true</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        
+        <item name="android:background">@null</item>
+        
+        <item name="android:windowBackground">@android:color/transparent</item>
+        
+        <item name="android:backgroundDimEnabled">true</item>
+        
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:imeOptions">flagNoExtractUi|flagNoFullscreen</item>
+    </style>
+
+
+<string name="com_sswl_game_downloading">遨游游戏</string>
+    <string name="com_sswl_account_login">遨游账号</string>
+    <string name="com_sswl_term_detail">遨游用户服务协议</string>
+</resources>

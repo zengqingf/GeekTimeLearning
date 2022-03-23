@@ -1,0 +1,31 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:39-2:103
+	package
+		ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:108-141
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+	android:versionName
+		ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:25-50
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:1:49-107
+	android:versionCode
+		ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:1-24
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+uses-sdk
+ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:51-92
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:51-92
+INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:51-92
+	android:targetSdkVersion
+		ADDED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml:2:61-90
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml
+		INJECTED from F:\_Dev\projects\Tenmove_Client\main_trunk\SDK\Unity\_TestOutput_New\MG_SDK_TM\unity-android-resources\AndroidManifest.xml

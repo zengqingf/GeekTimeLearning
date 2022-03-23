@@ -1,0 +1,19 @@
+{
+    "group": "Breakpad",
+    "libs": [
+    ],
+    "frameworks": [
+    ],
+    "headerpaths": ["Breakpad/include"],
+    "files":   [
+        "Breakpad/libbreakpad.a"
+    ],
+    "folders": ["Breakpad/include"],
+    "excludes": ["^.*.meta$", "^.*.mdown$", "^.*.pdf$"],
+    "compiler_flags": [],
+    "embed_binaries":[],
+    "plist": "Breakpad/mergePlist.xml",
+    "linker_flags": [
+            "-ObjC"
+    ]
+}

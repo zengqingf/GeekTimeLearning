@@ -1,0 +1,22 @@
+{
+    "windows": {
+        "serverversion": 1
+    },
+    "android": {
+        "serverversion": 2,
+        "debug": {
+            "online": null,
+            "fullpack": null,
+            "hotfixpack": null,
+            "prepublish": {
+                "versioncode": "11",
+                "fullpack": null,
+                "hotfixpack": null
+            },
+            "history": []
+        }
+    },
+    "ios": {
+        "serverversion": 1
+    }
+}

@@ -1,0 +1,301 @@
+{
+    "192.168.2.196":{
+        "Unity2018.4.23f1":{
+            "androidsdkpath": "/Volumes/SSD228/tools/2018.4.23f1_tools/android-sdk_2018_DNL15",
+            "ndkpath": "/Volumes/SSD228/tools/android-ndk-r16b",
+            "enginepath": "/Applications/Unity2018.4.23f1"
+        },
+        "UE4.25":{
+            "androidsdkpath": "/build_env/a8/android_sdk/sdk",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/build_env/a8/android_ndk/android-ndk-r21e",
+            "enginepath": "/Applications/UE/UE_4.25"
+        },
+        "UE4.26":{
+            "androidsdkpath": "/build_env/a8/android_sdk/sdk",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/build_env/a8/android_ndk/android-ndk-r21e",
+            "enginepath": "/Applications/UE/UE_4.26"
+        },
+        "tenmove":{
+            "androidsdkpath": "/build_env/a8/android_sdk/sdk",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/build_env/a8/android_ndk/android-ndk-r21e",
+            "enginepath": "/Applications/UE/UE_4.25"
+        }
+    },
+
+    "192.168.2.195":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "desktop-htkqqld\\tenmove":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.2.200":{
+        "UE4.25":{
+            "androidsdkpath": "D:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "D:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "D:\\UE_4.25"
+        },
+        "AB-202103181500/Administrator":{
+            "androidsdkpath": "D:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "D:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "D:\\UE_4.25"
+        }
+    },
+    "192.168.2.201":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\Program Files\\Epic Games\\UE_4.25"
+        },
+        "AB-202103181500/Administrator":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\Program Files\\Epic Games\\UE_4.25"
+        }
+    },
+    "192.168.2.202":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "desktop-vvn2869\\tenmove":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.4.91":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "desktop-vjullrl\\tenmove":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.4.202":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "desktop-dtvt2c9\\rog":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21b",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.2.204":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "DESKTOP-2K9PCDC\\tenmove":{
+            "androidsdkpath": "C:\\build_env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\build_env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.2.197":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "DESKTOP-TUGDRQC\\tenmove":{
+            "androidsdkpath": "C:\\env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    "192.168.4.250":{
+        "UE4.25":{
+            "androidsdkpath": "C:\\env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        },
+        "DESKTOP-FCKGT00\\AuroreGame":{
+            "androidsdkpath": "C:\\env\\a8\\android_sdk\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\AdoptOpenJDK\\jdk-8.0.292.10-hotspot",
+            "ndkpath": "C:\\env\\a8\\android_ndk\\android-ndk-r21e",
+            "enginepath": "C:\\UE\\UE_4.25"
+        }
+    },
+    
+
+
+
+
+
+    "192.168.2.174":{
+        "UE4.22":{
+            "androidsdkpath": "/Users/tengmu/_tool/2018.4.23f1_tools/android-sdk_2018",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/Users/tengmu/_tool/2018.4.23f1_tools/android-ndk-r16b",
+            "enginepath": "/Applications/UE/UE_4.22"
+        }
+    },
+
+    "192.168.2.175":{
+        "Unity2018.4.23f1":{
+            "androidsdkpath": "/Users/tengmu/Documents/tool/2018.4.23f1_tools/android-sdk_2018_dnl15",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/Users/tengmu/Documents/tool/2018.4.23f1_tools/android-ndk-r16b",
+            "enginepath": "/Applications/Unity2018.4.23f1"
+
+        }
+        
+    },
+    "192.168.2.176":{
+        "Unity2018.4.23f1":{
+            "androidsdkpath": "/Users/tengmu/tool/android-sdk_2018",
+            "androidjdkpath":"/build_env/a8/android_jdk/jdk/Contents/Home",
+            "ndkpath": "/Users/tengmu/tool/android-ndk-r16b",
+            "enginepath": "/Applications/Unity2018.4.23f1"
+        }
+        
+    },
+    "192.168.2.193":{
+        "Unity2018.4.23f1":{
+        }
+        
+    },
+    "192.168.2.194":{
+        "Unity2018.4.23f1":{
+        }
+        
+    },
+    "192.168.2.178":{
+        "专线不打包":{
+        }
+        
+    },
+    "192.168.2.190":{
+        "测试机不打包":{
+        }
+        
+    },
+
+
+
+
+
+
+
+
+
+    "192.168.4.104":{
+        "Unity2018.4.23f1":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r16b",
+            "enginepath": "D:\\software\\Unity2018.4.23f1\\Unity"
+        },
+        "Unity5.6.3f1":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r10e",
+            "enginepath": "D:\\software\\Unity5.6.3f1\\Unity"
+        },
+        "UE4.22":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r16b",
+            "enginepath": "E:\\softwave\\UE_4.22"
+        },
+        "UE4.25":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r21b-windows-x86_64\\android-ndk-r21b",
+            "enginepath": "E:\\softwave\\UE_4.25"
+        },
+        "desktop-fpfra9k\\tengmu":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r21b-windows-x86_64\\android-ndk-r21b",
+            "enginepath": "E:\\softwave\\UE_4.25"
+        }
+    },
+    "192.168.255.10":{
+        "Unity2018.4.23f1":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r16b",
+            "enginepath": "D:\\software\\Unity2018.4.23f1\\Unity"
+        },
+        "Unity5.6.3f1":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r10e",
+            "enginepath": "D:\\software\\Unity5.6.3f1\\Unity"
+        },
+        "UE4.22":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r16b-windows-x86_64\\android-ndk-r16b",
+            "enginepath": "E:\\softwave\\UE_4.22"
+        },
+        "UE4.25":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r21b-windows-x86_64\\android-ndk-r21b",
+            "enginepath": "E:\\softwave\\UE_4.25"
+        },
+        "desktop-fpfra9k\\tengmu":{
+            "user":"desktop-fpfra9k\\tengmu",
+            "password":"123456",
+            "androidsdkpath": "E:\\tool_build\\android_sdk",
+            "androidjdkpath":"C:\\Program Files\\Java\\jdk1.8.0_271",
+            "ndkpath": "E:\\tool_build\\android-ndk-r21b-windows-x86_64\\android-ndk-r21b",
+            "enginepath": "E:\\softwave\\UE_4.25"
+        }
+    }
+}

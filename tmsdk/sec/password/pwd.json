@@ -1,0 +1,31 @@
+{
+    "buildmechine":{
+        "password":"tenmove-2021"
+    },
+    "jenkins":{
+        "username":"HighPermissionRobot",
+        "password":"11e37d716b3a4db72ea51a4d006a7b85d6"
+    },
+    "ftp":{
+        "username":"client_sdk",
+        "password":"o9VCfN5j"
+    },
+    "bugly":{
+        "id":"967c235c8a ",
+        "key":"e42ae7b5-8d28-47c8-a242-33ddc2e5b23a"
+    },
+    "maven":{
+        "username":"admin",
+        "password":"32194f63-226d-4577-a6ab-aecc8c49ca44"
+    },
+    "gitlab_jenkins":{
+        "account":"jenkins",
+        "token":"a79cTSLdFeyJ2y5iwqtZ",
+        "password":"123456789"
+    },
+    "svn_jenkins":{
+        "account":"jenkins",
+        "password":"4y0a0CRg6yD1ZYcX"
+    }
+    
+}

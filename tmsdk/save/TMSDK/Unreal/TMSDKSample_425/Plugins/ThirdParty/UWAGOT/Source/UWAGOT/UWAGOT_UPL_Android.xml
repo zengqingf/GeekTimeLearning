@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    UWAGOT Plugin
+    Created by zfk
+-->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <trace enable="true"/>
+  <init>
+	<log text="UWAGOT Init"/>
+  </init>
+
+  <proguardAdditions>
+  </proguardAdditions>
+
+  <prebuildCopies>
+  </prebuildCopies>
+  
+  <resourceCopies>
+  </resourceCopies>
+
+  <AARImports>
+  </AARImports>
+
+  <gameActivityImportAdditions>
+	<insert>
+    import dalvik.system.DexClassLoader;
+    import java.lang.reflect.*;
+    import android.os.Environment;
+    import java.io.File;
+    import android.app.Activity;
+    import java.io.InputStream;
+    import java.io.FileOutputStream;
+    import android.content.pm.PackageManager;
+    import android.content.pm.PackageInfo;
+    import android.content.pm.PackageManager.NameNotFoundException;
+  </insert>
+  </gameActivityImportAdditions>
+
+  <androidManifestUpdates>
+  </androidManifestUpdates>
+
+  <!-- optional additions to GameActivity onCreate in GameActivity.java -->
+  <gameActivityOnCreateAdditions>
+  </gameActivityOnCreateAdditions>
+
+  <!-- optional additions to GameActivity onDestroy in GameActivity.java -->
+  <gameActivityOnDestroyAdditions>
+  </gameActivityOnDestroyAdditions>
+
+  <gameActivityClassAdditions>
+	<insert>
+    public String AndroidThunkJava_GetSdkVersion()
+    {
+        Log.debug("==============> AndroidThunkJava_GetSdkVersion! ");
+        return android.os.Build.VERSION.RELEASE;
+    }
+    
+    public String GetCodeCacheDir()
+    {
+        if (android.os.Build.VERSION.SDK_INT >= 21)
+        {
+            Context context = getApplicationContext();
+            File cacheDir = context.getCodeCacheDir();
+            String path = cacheDir.getAbsolutePath();
+            
+            Log.debug("==============> android SDK >= 21 codeCacheDir:" + path);
+            return path;
+        }
+        else
+        {
+            ApplicationInfo appInfo = getApplicationInfo();
+            File file = new File(appInfo.dataDir, "code_cache");
+            if (file.mkdir())
+            {
+                String path = file.getPath();
+                Log.debug("==============> android SDK less than 21 mkdir success codeCacheDir:" + path);
+                return path;
+            }
+            
+            Log.debug("==============> android SDK less than 21 mkdir fail codeCacheDir:" + appInfo.dataDir);
+            return appInfo.dataDir;
+        }
+    }
+
+    private Class ScreenCaptureForUnityClass;
+    private Method ScreenCaptureInitMethod;
+    private Method isReadyMethod;
+    private Method ScreenCaptureMethod;
+    String SDcardDir;
+    
+    private Class HardwareTrackManagerClass;
+    private Object HardwareTrackManager;
+    private int FlushInterval;
+    private Method CheckInfoToWriteMethod;
+    private Method StopTrackMethod;
+    public void AndroidThunkJava_LoadDex(String savedPath, String outputPath)
+    {
+        File dir = Environment.getExternalStorageDirectory();
+        SDcardDir = dir.getPath();
+        savedPath = SDcardDir + "/" + savedPath;
+        String dexPath = savedPath + "uwa.dex";
+        Log.debug("==============> AndroidThunkJava_LoadDex! " + dexPath);
+            
+        //Context context = getApplicationContext();
+        //File cacheDir = context.getCodeCacheDir();
+        String path = GetCodeCacheDir();
+
+        DexClassLoader dexClassLoader = new DexClassLoader(dexPath, path, null, getClassLoader());
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= 21)
+            {
+                Log.debug("==============> AndroidThunkJava_LoadDex ScreenCapture!");
+                ScreenCaptureForUnityClass = dexClassLoader.loadClass("com.uwa.uwascreen.ScreenCaptureForUnity");
+                if (ScreenCaptureForUnityClass != null)
+                {
+                    ScreenCaptureInitMethod = ScreenCaptureForUnityClass.getMethod("ScreenCaptureInit", int.class, Activity.class);
+                    //isReadyMethod = ScreenCaptureForUnityClass.getMethod("isReady");
+                    ScreenCaptureMethod = ScreenCaptureForUnityClass.getMethod("ScreenCapture", String.class, int.class);
+                    ScreenCaptureInitMethod.invoke(null, 135, this);
+                    Log.debug("==============> AndroidThunkJava_LoadDex ScreenCapture Success!");
+                }
+            }
+            
+            if (outputPath.equals(""))
+                return;
+            
+            HardwareTrackManagerClass = dexClassLoader.loadClass("com.uwa.hardwaretrack.HardwareTrackManager");
+            if (HardwareTrackManagerClass != null)
+            {
+                Method m = HardwareTrackManagerClass.getMethod("GetHardwareTrackManager", null);
+                HardwareTrackManager = m.invoke(null, null);
+                Log.debug("==============> AndroidThunkJava_LoadDex HardwareTrackManager Success!");
+            }
+            
+            if (HardwareTrackManager != null)
+            {
+                Method InitMethod = HardwareTrackManagerClass.getMethod("Init", Activity.class, String.class, String.class, int.class, String.class);
+                String HdIdmapPath = outputPath + "hardware_map.txt";
+                String FrameinfoPath = outputPath + "1.hf";
+                Log.debug("==============> AndroidThunkJava_LoadDex HardwareTrackInit path!" + HdIdmapPath + " " + FrameinfoPath);
+                
+                FlushInterval = 500;
+                
+                InitMethod.invoke(HardwareTrackManager, this, HdIdmapPath, FrameinfoPath, FlushInterval, null);
+                
+                CheckInfoToWriteMethod = HardwareTrackManagerClass.getMethod("CheckInfoToWrite", int.class, int.class);
+                StopTrackMethod = HardwareTrackManagerClass.getMethod("Stop", null);
+                
+                Log.debug("==============> AndroidThunkJava_LoadDex HardwareTrackInit Success!");
+            }
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void AndroidThunkJava_CaptureScreen(String path)
+    {
+        //path = SDcardDir + path;
+        //Log.debug("==============> AndroidThunkJava_CaptureScreen path : " + path);
+        boolean isReady = true;  //isReadyMethod.invoke(null, null);
+        if (isReady)
+        {
+            try {
+                ScreenCaptureMethod.invoke(null, path, 70);
+            } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public void AndroidThunkJava_CheckInfoToWrite(int frameIndex)
+    {
+        if (CheckInfoToWriteMethod == null)
+            return;
+            
+        if (frameIndex % 30 == 0)
+        {
+            try {
+                Log.debug("==============> AndroidThunkJava_CheckInfoToWrite frameIndex : " + frameIndex);
+                CheckInfoToWriteMethod.invoke(HardwareTrackManager, frameIndex, 15);
+            } 
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public void AndroidThunkJava_StopTrack()
+    {
+        try {
+            Log.debug("==============> AndroidThunkJava_StopTrack");
+            StopTrackMethod.invoke(HardwareTrackManager, null);
+        } 
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public String AndroidThunkJava_GetApplicationName()
+    {
+        Context context = getApplicationContext();
+        ApplicationInfo applicationInfo = context.getApplicationInfo();
+        int stringId = applicationInfo.labelRes;
+        return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
+    }
+    
+    public String AndroidThunkJava_GetPackageName()
+    {
+        return getApplicationContext().getPackageName();
+    }
+    
+    public String AndroidThunkJava_GetBundleVersion()
+    {
+        Context context = getApplicationContext();
+        String packageName = context.getPackageName();
+        String result = "";
+        
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            result = packageInfo.versionName;
+        }
+        catch (NameNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        
+        return result;
+    }
+    
+    public String AndroidThunkJava_GetOrientation()
+    {
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            return "Landscape";
+        } else {
+            return "Portrait";
+        }
+    }
+  </insert>
+  </gameActivityClassAdditions>
+</root>

@@ -1,0 +1,8 @@
+{
+	"BuildId": "13144385",
+	"Modules": 
+	{
+		"TMSDKBridge": "UE4Editor-TMSDKBridge.dll",
+		"TMSDKUtility": "UE4Editor-TMSDKUtility.dll"
+	}
+}

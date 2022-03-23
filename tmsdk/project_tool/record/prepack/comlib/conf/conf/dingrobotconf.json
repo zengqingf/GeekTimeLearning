@@ -1,0 +1,6 @@
+{
+    "内网发包群苦工":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=b66ecc61ee2d2d38bdb00a6f52747aa8465edcdf6118f8ab3d1047d03b38a33e",
+        "key":"SECab7597a071226a83d4ad4df64bbc81d7d5b032edd7dcd23fd501c4b7dfcafb8c"
+    }
+}

@@ -1,0 +1,34 @@
+lebian.packageName = 'lb_target_pkgname'
+lebian.taskAffinity = 'lb_target_pkgname'
+
+android {
+    flavorDimensions 'sdktype'
+    productFlavors {
+        'regeng' {
+            dimension 'sdktype'
+        }
+        'fenbao-lite' {
+            dimension 'sdktype'
+        }
+        'fenbao-with-regeng' {
+            dimension 'sdktype'
+        }
+        'fenbao-am-lite' {
+            dimension 'sdktype'
+        }
+        'fenbao-am-with-regeng' {
+            dimension 'sdktype'
+        }
+    }
+    sourceSets {
+        'regeng' {
+            manifest.srcFile 'src/regeng/AndroidManifest.xml'
+        }
+        'fenbao-with-regeng' {
+            manifest.srcFile 'src/regeng/AndroidManifest.xml'
+        }
+        'fenbao-am-with-regeng' {
+            manifest.srcFile 'src/regeng/AndroidManifest.xml'
+        }
+    }
+}

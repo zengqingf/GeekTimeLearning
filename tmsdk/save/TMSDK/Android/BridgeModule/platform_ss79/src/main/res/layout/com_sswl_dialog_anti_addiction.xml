@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/com_sswl_dialog_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/com_sswl_title_round_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/com_sswl_tips"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+        />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_remind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/com_sswl_anti_addiction_remind"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        />
+
+
+        <Button
+            android:id="@+id/btn_confirm_exit"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/com_sswl_btn_bg"
+            android:text="@string/com_sswl_btn_confirm"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"/>
+
+
+</LinearLayout>

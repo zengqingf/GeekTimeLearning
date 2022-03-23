@@ -1,0 +1,34 @@
+{
+    "内网发包群苦工":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=b66ecc61ee2d2d38bdb00a6f52747aa8465edcdf6118f8ab3d1047d03b38a33e",
+        "key":"SECab7597a071226a83d4ad4df64bbc81d7d5b032edd7dcd23fd501c4b7dfcafb8c"
+    },
+    "发包群更新机器人":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=4f15526b3350cc53cfcbcdf8fbb76548a30912c3b8c6bc24ff1a407d11b9de4f",
+        "key":"SEC3546324653891befc73616a1d699a384e68ae4a2defc983f33146fd80804c263"
+    },
+    "一点五优化群优化机器人":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=76f48b3f6654d831bdfbf5568ca67f2c3328b54ca52be4ababac67e54e786aa6",
+        "key":"SECdbcb05f11f19d302bf21bf7e8e8681f007f234f6957aeb3a4e84cfba41d61fa9"
+    },
+    "一点零注意了机器人":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=c29f463dda94bb317ea97ef37ddaf50ccc42a181ddc5cf50cda95e84f102e7ae",
+        "key":"SECad2832d42bc61e613c617ada84a78ea85015ef3091a789dd3b4ff32e3000285c"
+    },
+    "一点五包来了机器人":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=e2c3c6a4009351218232688c9976ea2dba3bf6b5421b7727a2e758c5afa18f81",
+        "key":"SECda9ca91b4db028d1ebd97f21c2fe04de0add2ff46f368d93ce50e563b761b2aa"
+    },
+    "一点五注意了机器人":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=b3e49d3d2f9f987f2ec9ce9d0e6ff03e344fd7fc53c936a7a94d663525bdf629",
+        "key":"SEC45884e44609fd8555bb0adbe3da3aa769aa59e9445658abdcac4d37eeade36f8"
+    },
+    "A8客户端警察":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=ac89ce8de830a081db20d2fe4e29283e636fb9eb98c7db2f1846b7ce01a3d562",
+        "key":"SECeca6717c961cc5deb60618c0073470ebfa126265b5a1ab2ea8062d57816da7cf"
+    },
+    "A8出包群":{
+        "webhook":"https://oapi.dingtalk.com/robot/send?access_token=9a537d2689b62c58d25ebca0b18c793e0e3533d72b7deb3c5a76f0a624f000b7",
+        "key":"SECaf0ee6af10db3a4d6b625f1410295f5cfe6b3e115dee02e94d903f3bb3257146"
+    }
+}

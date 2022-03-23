@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_sswl_dialog_bg"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="138dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/com_sswl_logo" />
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/com_sswl_close_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        />
+
+</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/com_sswl_bind_phone_remind"
+        android:textSize="10sp"
+        android:textColor="@color/com_sswl_color_vercode_btn_pressed"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/com_sswl_edittext_bg"
+        android:hint="@string/com_sswl_hint_phone_num"
+        android:singleLine="true"
+        android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+        android:textColor="@color/com_sswl_color_edittext"
+        android:paddingLeft="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textColorHint="@color/com_sswl_color_edittext_bg_grey"
+        android:textSize="14sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+    <EditText
+        android:id="@+id/et_vercode"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/com_sswl_edittext_bg"
+        android:hint="@string/com_sswl_hint_vercode"
+
+        android:singleLine="true"
+        android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+        android:textColor="@color/com_sswl_color_edittext"
+        android:paddingLeft="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textColorHint="@color/com_sswl_color_edittext_bg_grey"
+        android:textSize="14sp"/>
+        <Button
+            android:id="@+id/btn_vercode"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/com_sswl_btn_bg"
+            android:text="@string/com_sswl_btn_vercode"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_bind"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/com_sswl_btn_bg"
+        android:text="@string/com_sswl_btn_confirm_bind"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+</LinearLayout>

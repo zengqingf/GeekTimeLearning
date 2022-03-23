@@ -1,0 +1,27 @@
+{
+	"FileVersion": 1,
+	"Version": 1,
+	"VersionName": "2.0.1",
+	"FriendlyName": "UWA GOT",
+	"Description": "UWA GOT for Unreal",
+	"Category": "UWA",
+	"CreatedBy": "UWA",
+	"CreatedByURL": "www.uwa4d.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": true,
+	"Modules": [
+    {
+            "Name": "UWAGOT",
+            "Type": "Runtime",
+            "LoadingPhase": "Default",
+            "WhitelistPlatforms": [
+                "Win64",
+                "Android"
+            ]
+    }
+  ]
+}

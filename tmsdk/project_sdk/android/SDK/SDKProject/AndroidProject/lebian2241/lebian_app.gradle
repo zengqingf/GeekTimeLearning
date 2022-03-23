@@ -1,0 +1,24 @@
+
+
+android {
+    defaultConfig {
+        // 如果您的gradle也配置了multiDexKeepProguard，请把下面这行代码注释掉，
+        // 并将lebian/multiDexKeep.pro中的内容添加到您的配置文件中
+        multiDexKeepProguard project(':lebian').file('multiDexKeep.pro')
+
+        // 如果您需要为不同的渠道配置不同的渠道号，您可以在不同的variant里面用下面的方式配置ClientChId
+        //manifestPlaceholders += ["ClientChId": "def"]
+    }
+    buildTypes.each {
+        it.proguardFile(project(':lebian').file('proguard-rules.pro'))
+    }
+}
+
+dependencies {
+    compile project(':lebian')
+}
+afterEvaluate { //在脚本执行之后，build 之前执行
+    android.signingConfigs.each {
+        it.v2SigningEnabled(false) //默认不使用v2签名
+    }
+}

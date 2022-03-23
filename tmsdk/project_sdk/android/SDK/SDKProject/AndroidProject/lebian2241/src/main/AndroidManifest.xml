@@ -1,0 +1,143 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.excelliance.open">
+
+    <!-- 如下内容放到AndroidManifest.xml的<application>标签的外面 -->
+    <!-- lebian sdk permission begin -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.GET_DETAILED_TASKS" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- lebian sdk permission end -->
+
+    <application android:networkSecurityConfig="@xml/lebian_network_security_config">
+
+        <!-- 如下内容放到AndroidManifest.xml的<application>标签的里面 -->
+        <!-- lebian sdk components begin -->
+        <meta-data
+            android:name="ClientChId"
+            android:value="${ClientChId}" /><!--自定义，比如百度可以设置为baidu，建议使用字母，如果使用数字，数字大小不要超过1亿,暂时不支持中文-->
+        <meta-data
+            android:name="MainChId"
+            android:value="${MainChId}" /><!--登陆乐变管理后台www.loveota.com(大陆)或www.loveota.net（其他）查看-->
+        <meta-data
+            android:name="LEBIAN_SECID"
+            android:value="${LEBIAN_SECID}"/><!--登陆乐变管理后台www.loveota.com(大陆)或www.loveota.net（其他）查看-->
+        <meta-data
+            android:name="LEBIAN_APPLICATION"
+            android:value="${LEBIAN_APPLICATION}"/>
+
+
+        <service
+            android:name="com.excelliance.lbsdk.debug.LBSdkCrashReportService"
+            android:exported="false"
+            android:process=":lebian.bugreport">
+            <intent-filter>
+                <action android:name="com.excelliance.lbsdk.debug.action.CRASH_REPORT" />
+                <action android:name="com.excelliance.kxqp.platform.action.CRASH_REPORT" />
+            </intent-filter>
+        </service>
+
+        <service android:exported="false" android:name="com.excelliance.lbsdk.base.AssistService" />
+        <activity android:exported="false" android:name="com.excelliance.lbsdk.base.ForwardActivity" />
+
+        <activity
+            android:name="com.excelliance.open.NextChapter"
+            android:configChanges="orientation|screenSize"
+            android:process=":lbmain"
+            android:screenOrientation="${screenOrientation}"
+            android:theme="@style/LebianNextChapterTheme"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.startNextChapter" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.excelliance.open.AssistActivity"
+            android:configChanges="orientation|screenSize"
+            android:process=":lbmain"
+            android:screenOrientation="portrait"
+            android:theme="@style/LebianNoActionBarFullscreenTheme"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.startAssistActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.excelliance.open.PromptActivity"
+            android:configChanges="orientation|screenSize"
+            android:process=":lbmain"
+            android:theme="@style/LebianPromptTheme">
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.startPromptActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.excelliance.lbsdk.base.BGReceiver"
+            android:process=":lebian.base">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.appstate" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.queryUpdate" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.ss" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:exported="true"
+            android:name="com.excelliance.lbsdk.base.BaseService"
+            android:process=":lebian.base">
+            <intent-filter>
+                <action android:name="com.excelliance.lbsdk.action.BaseService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.excelliance.lbsdk.main.BGService"
+            android:process=":lebian.dns">
+            <intent-filter>
+                <action android:name="com.excelliance.open.action.gameverchk" />
+                <action android:name="com.excelliance.open.action.apkverchk" />
+                <action android:name="com.excelliance.open.action.dmchk" />
+                <action android:name="com.excelliance.open.action.fw" />
+                <action android:name="com.excelliance.open.action.bwbxdla"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.excelliance.open.NEXT_CHAPTER" />
+                <action android:name="com.excelliance.open.action.PLAT_DO" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.excelliance.lbsdk.action.BGService" />
+            </intent-filter>
+        </service>
+        <provider
+            android:name="com.excelliance.lbsdk.preferences.provider.LBContentProvider"
+            android:authorities="${lb_target_pkgname}:com.excelliance.lbsdk.preferences.provider.LBContentProvider"
+            android:process=":lebian.base"
+            android:exported="false" />
+    </application>
+
+</manifest>

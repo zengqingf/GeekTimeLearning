@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LebianNoActionBarNoAnimation" parent="@android:style/Theme.NoTitleBar">
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <!--通常来说Translucent 是没有动画的，但防止有系统重写Animation-->
+    <style name="LebianTranslucentNoActionBarNoAnimationTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="LebianTranslucentNoActionBarFullscreenTheme" parent="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+    <style name="LebianTranslucentNoActionBarTheme" parent="@android:style/Theme.Translucent.NoTitleBar" />
+
+    <style name="LebianNoActionBarFullscreenTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="LebianMainAppTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="LebianPromptTheme" parent="@android:style/Theme.Translucent.NoTitleBar"/>
+    <style name="LebianNextChapterTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="lebian_note_down_tv">
+        <item name="android:textColor">#FF8040</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+{
+	"BuildId": "",
+	"Modules": 
+	{
+		"TMSDK": "UE4Editor-TMSDK.dll",
+		"TMSDKBridge": "UE4Editor-TMSDKBridge.dll"
+	}
+}

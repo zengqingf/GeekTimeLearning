@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="40dp" >
+
+    <TextView
+        android:id="@+id/xy_account_list_item_account_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/xy_account_list_item_dell_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:visibility="visible"
+        android:focusable="false"
+        android:background="@drawable/com_xy_xylogin_dellhistory" />
+    
+
+</RelativeLayout>

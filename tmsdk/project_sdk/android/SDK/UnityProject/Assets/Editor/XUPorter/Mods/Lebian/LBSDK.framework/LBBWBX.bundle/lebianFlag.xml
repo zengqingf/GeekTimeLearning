@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flaginfo>
+    <!--
+     //接入SDK后，lebian_worktype 在0 1 2模式下需要交给乐变技术支持进行资源分包才能使用，3直接上传到卓盟后台“iOS压缩”做压缩处理，4表示不做分包处理，单纯资源热更（需要打开资源热更开关, 即hotfix_enable设置为true）
+     use_sdk         :  是否使用乐变SDK，为false时，SDK将不起作用
+     
+     selected_area   :  表示App的发布地区，需要和卓盟后台(区分 国内后台和海外后台)保持一致。其中0表示大陆地区，1表示非台湾的海外地区，2表示台湾地区
+     
+     lebian_worktype :  表示SDK的工作模式: 其中 0 代表二次下载(一次性把游戏资源全部下载完后再进入游戏), 1 代表边玩边下(玩家在后台进行边玩边下载), 2 代表先二次加载再边玩边下, 3 代表包体显示优化（压缩资源包), 4 代表整包更新（如果没有分包，只使用整包热更新，一定要设置为4）
+     
+     /***************************   游戏分包热更功能控制    *****************************/
+     
+     hotfix_enable   :  表示是否使用资源热更新，默认为false，需要使用资源热更时打开此开关，详情查看热更文档。
+     
+     resource_dir    :  表示您的游戏资源文件夹（默认为Unity游戏打成ipa包后的Data/目录，cocos游戏都需要重新指定），如果有多个请用英文的分号分割开来,例如 "res/;src/"
+     
+     bigFiles        :  为了有效减少包体大小，可以设定这个参数，指定的大文件将会被拆分成碎块小资源分包（仅在lebian_worktype为1和2模式生效）如果有多个请用分号(;)分割开来,例如 "Data/resources.assets;Data/resources.assets.resS"
+    
+     open_statistics :  表示是否使用统计功能，默认为true，我们会统计用户下载完成率，更新进度等数据。
+     
+     crashlog_catch  :  表示是否使用crash log异常捕获功能，可在乐变后台查看，默认是true。
+     
+     hotfix_pre_request  :  游戏加载前乐变会自动检查更新，默认为true，这个开关只在hotfix_enable打开的情况下有效。
+     
+     lebian_hotfix_request  :  游戏启动后乐变会自动检查更新，默认为true，这个开关只在hotfix_enable打开的情况下有效。
+     
+     注意：如果需要关闭乐变自动检查更新，改成手动调用热更请求，那么需要将hotfix_pre_request和lebian_hotfix_request设置为false。
+     
+     respatch_enable :  表示分包模式下，是否使用资源差分包，默认是true。
+     
+     /*************************   游戏弹窗控制  *************************************/
+     
+     old_player      :  当玩家为老用户时提示一次性加载所有资源（判断条件为缺失资源20条），默认开启
+     low_speed       :  后台下载网速低的时候提示用户一次性加载所有资源，默认关闭
+     wwan_first      :  边玩边下模式下，流量网络进游戏后的第一个提示框，默认开启
+     wifi_alert      :  二次加载模式下，在wifi下，一进游戏会弹出需要下载资源的提示框，默认开启
+     res_wifi_alert  :  有资源差分包的情况下，wifi下的下载是否需要弹框提示，默认关闭
+     
+     /*************************  游戏非常规功能控制  ***********************************/
+    
+     appStoreId            :  此App在appstore里的id，使用我们热更时如果跳转appstore的功能需要我们来做，就需要设置，如果没有这种需求，可忽略
+     specified_language    :  乐变SDK的提示语支持多种语言，如果只想指定唯一一种语言，可以在这里设置，比如只想使用日语，可填写ja  如果不清楚某种语言该写什么，可以咨询我们。
+     download_tip_color    :  资源下载界面，提示语的字体颜色
+     download_data_color   :  资源下载界面，下载进度数据的字体颜色
+     contentMode           :  下载界面背景图拉伸方式：0 非等比全屏拉伸(会有变形), 1 等比拉伸，不足区域黑色填充， 2 等比拉伸，超出屏幕部分裁剪
+     ue4_game              :  是否是虚幻4引擎开发的游戏
+     
+     -->
+    <sdkflag flag="9.0.1" />
+    <patch flag="1" />
+    <globalsettings
+        
+        use_sdk = "true"
+        selected_area = "0"
+        lebian_worktype = "4"
+        
+        resource_dir = "Data/"
+        bigFiles = ""
+        open_statistics = "true"
+        crashlog_catch = "true"
+        ue4_game = "false"
+        
+        hotfix_enable = "true"
+        hotfix_pre_request = "true"
+        lebian_hotfix_request = "true"
+        respatch_enable = "true"
+        
+        old_player = "true"
+        low_speed = "false"
+        wwan_first = "true"
+        wifi_alert = "true"
+        res_wifi_alert = "false"
+        
+        appStoreId = ""
+        specified_language = ""
+        download_tip_color = "#A9A9A9"
+        download_data_color = "#FFFFFF"
+        contentMode = "0"
+        
+        ></globalsettings>
+</flaginfo>
+

@@ -1,0 +1,73 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tm.mustaddsdk">
+
+
+    <!--声明过期库需要在SDK版本声明之前，否则可能会在多个manifest合并中失效-->
+    <!--UniWebView 过期库-->
+    <uses-sdk tools:overrideLibrary="com.onevcat.uniwebview"/>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"/>
+
+    <application>
+    <!--UniWebview start-->
+        <activity android:name="com.onevcat.uniwebview.UniWebViewFileChooserActivity" />
+    <!--UniWebview end-->
+    
+    <!--YouMe Voice SDK Start-->
+        <receiver android:name="com.youme.im.NetworkStatusReceiver" android:label="NetworkConnection" >  
+            <intent-filter>  
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />  
+            </intent-filter>
+        </receiver>
+ 
+  
+        <service android:name ="com.youme.voiceengine.VoiceEngineService"> 
+            <intent-filter> 
+                <action android:name="com.youme.voiceengine.VoiceEngineService"/> 
+                <category android:name="android.intent.category.default"/> 
+            </intent-filter> 
+        </service>
+
+    <!--YouMe Voice SDK End -->
+
+
+
+    <!-- authorities中的大小写要注意下 -->
+    <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:grantUriPermissions="true"
+        android:exported="false">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+    </provider>
+
+</application>
+    <!-- UniWebView Start-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- UniWebView End-->
+
+    <!-- YouMe Voice SDK Start -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- YouMe Voice SDK End -->
+
+</manifest>

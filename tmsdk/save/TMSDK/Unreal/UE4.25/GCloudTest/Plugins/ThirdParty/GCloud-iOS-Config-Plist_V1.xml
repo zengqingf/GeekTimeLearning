@@ -1,0 +1,30 @@
+<key>NSMicrophoneUsageDescription</key>
+<string>Apply Microphone Permission</string>
+<key>GCloudCore</key>
+<dict>
+    <key>RemoteConfigUrl</key>
+    <string>https://cloudctrl.gcloud.qq.com</string>
+    <key>GTraceUrl</key>
+    <string>https://cloudctrl.gcloud.qq.com/gtrace/get_traceid_list</string>
+</dict>
+<key>GCloud</key>
+<dict>
+    <key>GameId</key>
+    <string>948137280</string>
+    <key>GameKey</key>
+    <string>8ab7d865a7a686ae4c94ff9b3d3fccd4</string>
+</dict>
+<key>TDM</key>
+<dict>
+    <key>LogLevel</key>
+    <string>1</string>
+    <key>AppChannel</key>
+    <string>{TDM_APP_CHANNEL}</string>
+    <key>AppId</key>
+    <string>948137280</string>
+</dict>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>

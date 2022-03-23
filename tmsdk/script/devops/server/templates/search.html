@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>
+            <select id="channel" onchange="ChannelChange()">
+            </select>
+            <select id="version">
+            </select>
+            <select id="time">
+            </select>
+            <select id="searchType">
+            </select>
+            <input id="searchStr" type="text" placeholder="查询内容" size="36">
+            <button id="submit" onclick="Submit()">查询</button>
+            
+        </div>
+    
+        
+        
+    </div>
+    <div>
+        <button id="ext" onclick="Ext()">附加查询</button>
+        <button id="showList" onclick="ShowAll()">根据分支、版本、时间并按时间列出所有Issues</button>
+    </div>
+    <div>
+        <p id="searchResCount"></p>
+    </div>
+    <div>
+        <table id="resTable" border="1">
+            <tr>
+                <td>分支</td>
+                <td>版本</td>
+                <td>包名</td>
+                <td>地点</td>
+                <td>地下城id</td>
+                <td>玩家名</td>
+                <td>玩家等级</td>
+                <td>崩溃时间</td>
+                <td>是否已解析</td>
+                <td>issueId</td>
+                <td>崩溃数</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    function ShowAll() {
+        let sendData = {
+            'channel':$('#channel').val(),
+            'version':$('#version').val(),
+            'time':$('#time').val()
+        };
+        postdata('search',sendData,function (data) {
+            alldata = JSON.parse(data)
+            SetSearchResCount(alldata.length)
+            InitTable(alldata)
+        },'showAll')
+    }
+    function AddRow(channel,productVersion,bundleId,locate,locateId,playerName,playerLevel,crashTime,isDumped,issueId,crashCount){
+        if (issueId != 'issueId'){
+            issueId = '<a href="http://192.168.2.92:5000/?channel='+channel+'&issueId='+ issueId + '" target ="_blank">'+ channel+'-'+issueId + '</a>'
+        }
+
+        AddHtml('resTable','<tr id="mark"><td>'+channel+'</td><td>'+productVersion+'</td><td>'+bundleId+'</td><td>'+locate+'</td><td>'+locateId+'</td><td>'+playerName+'</td><td>'+playerLevel+'</td><td>'+crashTime+'</td><td>'+isDumped+'</td><td>'+issueId+'</td><td>'+crashCount+'</td></tr>');
+
+    }
+    function ClearTable(){
+        $("#resTable").empty();
+        AddRow('渠道','版本','包名','地点','地下城id','玩家名','玩家等级','崩溃时间','是否已解析','issueId','崩溃数')
+    }
+    function SetHtml(id,html){
+        $("#"+id).html(html);
+    }
+    function AddHtml(id,html){
+        let base = $("#"+id).html();
+        $("#"+id).html(base + html);
+    }
+    let initdata;
+
+    window.onload = function () {
+        $.getJSON('http://192.168.2.92:5000/search/?method=init',function (data) {
+            initdata = data;
+            console.log(initdata);
+            InitAll();
+        });
+    }
+    function getSendJsonData(rawdata, method) {
+        data = {
+            'data': rawdata
+        }
+        
+        if (method !== undefined) {
+            data['method'] = method;
+        }
+        return data
+    }
+
+    function postdata(route, jsondata, success, method) {
+        jsondata = getSendJsonData(jsondata,method)
+        let url = "http://192.168.2.92:5000/" + route + "/"
+        return $.post({
+            url: url,
+            contentType: "application/json",
+            data: JSON.stringify(jsondata),
+            success: success
+        });
+    }
+    function AddOption(id,value,html){
+        let JQobj = $("#"+id);
+        let oldhtml = JQobj.html();
+        let newhtml = oldhtml + '<option value="'+value+'">'+html+'</option>';
+        JQobj.html(newhtml);
+    }
+    function ClearOption(id){
+        let JQobj = $("#"+id);
+        JQobj.html('');
+    }
+    function InitAll(){
+        InitBranch();
+        InitVersion();
+        InitSearchType();
+        InitTime();
+    }
+    function InitBranch(){
+        let data = initdata['channel']
+        ClearOption('channel')
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const element = data[key];
+                AddOption("channel",key,key);
+            }
+        }
+    }
+    function InitVersion() {
+        let curval = $("#channel").val();
+        let list = initdata['channel'][curval]['version'];
+        ClearOption('version');
+        list.forEach(ver => {
+            AddOption('version',ver,ver);
+        });
+    }
+    function InitSearchType() {
+        let data = initdata['searchType']
+        ClearOption('searchType')
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const element = data[key];
+                AddOption("searchType",key,element);
+            }
+        }
+    }
+    function InitTime() {
+        let data = initdata['time']
+        ClearOption('time')
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const element = data[key];
+                AddOption("time",key,element);
+            }
+        }
+    }
+    function ClearList() {
+        $("#list").html('');
+    }
+
+    
+    function ChannelChange() {
+        InitVersion();
+    }
+    function InitTable(dataList) {
+        ClearTable();
+        dataList.forEach(e => {
+            AddRow(e['channel'],e['productVersion'],e['bundleId'],e['locate'],e['locateId'],
+            e['playerName'],e['playerLevel'],e['crashTime'],e['isDumped'],e['issueId'],e['count'])
+        });
+    }
+    function SetSearchResCount(count){
+        $("#searchResCount").html("共查询到"+count+"条数据（限制最多200条）")
+    }
+    function Submit() {
+        let sendData = {
+            'channel':$('#channel').val(),
+            'version':$('#version').val(),
+            'searchType':$('#searchType').val(),
+            'time':$('#time').val(),
+            'searchStr':$('#searchStr').val()
+        };
+        postdata('search',sendData,function (data) {
+            // console.log(data);
+            alldata = JSON.parse(data)
+            SetSearchResCount(alldata.length)
+            InitTable(alldata)
+        },'crashSearch')
+        
+    }
+</script>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<init>
+		<log text="Tencent Bugly init"/>
+	</init>
+
+	<resourceCopies>
+    <!--<copyFile src="$S(PluginDir)/Android/libs/bugly_crash_release.jar" dst="$S(BuildDir)/libs/bugly_crash_release.jar" />-->
+    <!--<copyDir src="$S(PluginDir)/Android/libs/$S(Architecture)/" dst="$S(BuildDir)/libs/$S(Architecture)/" />-->
+    <copyFile src="$S(PluginDir)/Android/libs/TMSDK_Bugly.aar" dst="$S(BuildDir)/libs/TMSDK_Bugly.aar" />
+	</resourceCopies>
+
+	<proguardAdditions>
+		<insert>
+			-dontwarn com.tencent.bugly.**
+			-keep public class com.tencent.bugly.**{*;}
+		</insert>
+	</proguardAdditions>
+
+	<androidManifestUpdates>
+		<addPermission android:name="android.permission.READ_PHONE_STATE" />
+		<addPermission android:name="android.permission.INTERNET" />
+		<addPermission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		<addPermission android:name="android.permission.ACCESS_WIFI_STATE" />
+		<addPermission android:name="android.permission.READ_LOGS" />
+	</androidManifestUpdates>
+
+</root>

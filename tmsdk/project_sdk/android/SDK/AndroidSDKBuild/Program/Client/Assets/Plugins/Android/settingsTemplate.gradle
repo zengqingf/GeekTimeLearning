@@ -1,0 +1,25 @@
+**INCLUDES**
+// 工程相对路径 Temp/gradleOut/.
+def projectPath = '../../../../SDKProject/AndroidProject'
+// 通用
+include ':sdk_common_lib'
+project(':sdk_common_lib').projectDir = new File(projectPath + '/sdk_common_lib')
+include ':mustaddsdk'
+project(':mustaddsdk').projectDir = new File(projectPath + '/mustaddsdk')
+
+// 加sdk必须加下面的
+// include ':sdkinterface', ':unitylib', ':sdk_base'
+// project(':sdkinterface').projectDir = new File(projectPath + '/sdkinterface')
+// project(':unitylib').projectDir = new File(projectPath + '/unitylib')
+// project(':sdk_base').projectDir = new File(projectPath + '/sdk_base')
+
+// // 加什么sdk
+// include ':sdk_mg'
+// project(':sdk_mg').projectDir = new File(projectPath + '/sdk_mg')
+
+// include ':lebian2241'
+// project(':lebian2241').projectDir = new File(projectPath + '/lebian2241')
+
+
+
+

@@ -1,0 +1,8 @@
+{
+	"BuildId": "13144385",
+	"Modules": 
+	{
+		"Bugly": "UE4Editor-Bugly-Win64-DebugGame.dll",
+		"BuglyEditor": "UE4Editor-BuglyEditor-Win64-DebugGame.dll"
+	}
+}

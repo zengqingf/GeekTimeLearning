@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.UserCenterActivity" >
+
+    <ImageView
+        android:id="@+id/mImageClosed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:src="@drawable/com_xy_xylogin_dellhistory" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="为了您的帐号安全，请尽快绑定"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:textColor="@color/text_999"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/mTextBindPhone"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#FF801D"
+        android:gravity="center"
+        android:text="绑定手机"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/mTextRealName"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#009AE0"
+        android:gravity="center"
+        android:text="实名认证"
+        android:layout_marginBottom="35dp"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -272,6 +272,11 @@ do
         2       function: 0x10abddca0
         3       function: 0x7f87f5508a70
     ]]
+
+    --倒序删除表元素
+    for i=#t, 1, -1 do    
+        table.remove(t, i)          
+    end
 end
 
 do

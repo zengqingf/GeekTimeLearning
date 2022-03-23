@@ -96,4 +96,53 @@ void test_big_little_endian_3() {
 		printf("Little_Endian\n");
 	}
 }
+
+
+void TestBigLittleEndian()
+{
+	//八进制和十六进制表示（打印）
+	int x = 100;
+	printf("dec = %d, octal = %o, hex = %x\n", x, x, x);    //八进制 %o   十六进制 %x
+	printf("dec = %d, octal = %#o, hex = %#x\n", x, x, x);  //会输出 0..   0x..
+
+	// unsigned int （无符号整型） 能表示 比 int 更大的数
+
+	// signed 关键字 强调使用有符号数的意图  
+	// short == short int == signed short = signed short int
+
+	//整数溢出
+	//常见例子：在超过最大值时  unsigned int 从 0 开始    int从 -2147483648 开始
+	int ii = 2147483647;
+	unsigned int jj = 4294967295;
+	printf("%d, %d, %d\n", ii, ii + 1, ii + 2);
+	printf("%u, %u, %u\n", jj, jj + 1, jj + 2);
+
+	//getchar();
+
+	/*测试大端小端*/
+	int ival = 0x12345678;
+	float fval = (float)ival;
+	int *pval = &ival;
+	show_int(ival);
+	show_float(fval);
+	show_pointer(pval);
+	/*
+	output:
+	006FF80C 78			小端
+	006FF80D 56
+	006FF80E 34
+	006FF80F 12
+
+	006FF80C b4			小端
+	006FF80D a2
+	006FF80E 91
+	006FF80F 4d
+
+	006FF80C f8			小端
+	006FF80D f8
+	006FF80E 6f
+	006FF80F 00
+	*/
+}
+
 #endif //TEST_BIG_LITTLE_ENDIAN

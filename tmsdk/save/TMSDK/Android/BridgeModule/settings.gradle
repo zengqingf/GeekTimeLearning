@@ -1,0 +1,26 @@
+include ':bridge_app'
+include ':tmsdk_platform'
+include ':tmsdk_bugly'
+include ':bridge_service'
+include ':bridge_call'
+include ':base_ue4'
+include ':opensrc'
+include ':commonlib'
+
+//Unity
+//include ':base'
+//include ':platform_ss79'
+//include ':platform_mg'
+
+//Test Version one
+/*
+include ':ue4bridge'
+include ':sdkbridge'
+include ':bridgeservice'
+include ':flatbuffers'
+include ':unitybridge'
+include ':app'
+include 'unity-android-resources'
+*/
+
+rootProject.name = "TenmoveSDKBridgeModule"

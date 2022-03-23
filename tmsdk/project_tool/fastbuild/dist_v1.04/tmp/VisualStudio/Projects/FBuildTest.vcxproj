@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="x64-Debug|x64">
+      <Configuration>x64-Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Analyze|x64">
+      <Configuration>x64-Analyze</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Profile|x64">
+      <Configuration>x64-Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Release|x64">
+      <Configuration>x64-Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Debug|x64">
+      <Configuration>x64Clang-Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Profile|x64">
+      <Configuration>x64Clang-Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Release|x64">
+      <Configuration>x64Clang-Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\alias.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\bad_string.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\bad_string_recurse.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_string.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_string_recurse.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestAlias\Reflection\ok_to_non_filenode.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\array_typemismatch.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\array_unterminated.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\arrays.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_define.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_undef.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\bad_undef_builtin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\builtin_variables.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\comments.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\cyclic_dependency.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\define_undef_directives.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\dynamic_var_name_construction.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad3.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad4.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad5.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\else_directive_bad6.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\frozen_foreach.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\frozen_foreach_nested.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_directive.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_exists_directive.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\if_file_exists_directive.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\root.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\root_sibling.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir\subdir.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\IfFileExistsDirective\RelativePaths\SubDir\subdir_sibling.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_excessivedepth.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_once.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_scope.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\include_scope2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_a.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_b.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\includes_c.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\integers.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\invalid_directive.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\operator_minus.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_bug.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_bug2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\parent_scope_unknown.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\self_assignment.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\self_assignment2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\strings.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation_mismatch.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_concatenation_order.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_membershadowsself.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\struct_unterminated.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\structs.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\unnamedscope.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBFFParsing\unnamedscope_unterminated.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\a.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\b.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\c.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\c.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\DeleteFile\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildAndLinkLibrary\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestBuildFBuild\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\file1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\Analyze_MSVC\file2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\cache.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\ConsistentCacheKeys\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\ConsistentCacheKeys\file1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\lightcache.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file1.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\file2.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\header1.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_CyclicInclude\header2.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_ImportDirective\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_ImportDirective\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\common.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder1\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder1\file.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder2\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeHierarchy\Folder2\file.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\header1.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro2\header2.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\header1.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro3\header2.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.1.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.2.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingMacro\file.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\1\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\2\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCache\LightCache_IncludeUsingUndefinedMacros\3\file.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\buildplugin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\Plugin.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\TestA.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\Interface\useplugin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\buildplugin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\CachePluginInterface.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\Plugin.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\TestA.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCachePlugin\OldInterface\useplugin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\a.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\c.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\clr.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCLR\exe.cxx" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\testcommon.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompilationDatabase\dir\subdir\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompilationDatabase\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\compile.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict1.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict3.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\conflict4.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\exe.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\Explicit\explicit.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\Implicit\implicit.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\multipleimplicitcompilers.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCompiler\SimpleCompiler.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\copy.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\MissingTrailingSlash\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining2\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining2\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCopy\ObjectListChaining\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\a.cs" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\b.cs" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\c.cs" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\csharp.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\SubDirA\FileA.cs" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\Exclusions\SubDirB\FileB.cs" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\ObjectListFails\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCSharp\UsingNonCSharpCompilerFails\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCUDA\cuda.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestCUDA\test.cu" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\a_normal.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\a_pch.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\AnonymousNamespaces\A\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\AnonymousNamespaces\B\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\b_normal.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\b_pch.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\BadCode\ErrorWithPercent.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\c_normal.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\c_pch.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\D8049_ToolLongDebugRecord\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ErrorsAreCorrectlyReported\Error.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ErrorsAreCorrectlyReported\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ForceInclude\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ForceInclude\a.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\Fast.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\Slow.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\RemoteRaceWinRemote\SlowTemplate.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ShutdownMemoryLeak\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\ShutdownMemoryLeak\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\WarningsAreCorrectlyReported\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\WarningsAreCorrectlyReported\Warning.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDistributed\Zi\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\a.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\b.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\exe.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestDLL\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestError\error.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExe\exe.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExe\exe.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\Exclusions\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\Exclusions\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\exec.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestExec\exec.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestFastCancel\Cancel\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestFastCancel\Cancel\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\BFFDirtied\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DatabaseCorrupt\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DatabaseMoved\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\DeepGraph.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\library.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\c.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\d.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestGraph\NoStopOnFirstError\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_boolean.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_false.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_int.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_stringcompare.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_function_true.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_function_false.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_function_true.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_set_function_false.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_not_set_function_true.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_set_function_false.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\if_set_function_true.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_extratokensafterexpression.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_unsupportedoperation.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIf\usageerror_unsupportedtypeforin.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIncludeParser\MSVC-P\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestIncludeParser\MSVC-P\test.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestLinker\IncrementalLinking_MSVC\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderA.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderB.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\HeaderC.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestListDependencies\SimpleObject.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\File.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CacheUsingRelativePaths\Subdir\Header.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CustomPreprocessor\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\CustomPreprocessor\custompreprocessor.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\ModTimeChangeBackwards\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\SourceMapping\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\SourceMapping\File.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\cppgenerator.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\CPPGeneratorMain.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObject\StaleDynamicDeps\staledeps.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\A\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\B\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\CompilerInputFilesRoot\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\A\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\B\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\fbuild1.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ConflictingObjects\fbuild2.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\ignore.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\Exclusions\ok.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ExtraOutputPaths\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ExtraOutputPaths\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestObjectList\ObjectListChaining_Bad\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\A.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\B.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheAnalyze_MSVC\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\A.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness2\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PCHUser.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeaderA.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\CacheUniqueness\PrecompiledHeaderB.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Deoptimization\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\DifferentObj_MSVC\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHNotDefinedError\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHOnly\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHRedefinitionError\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\FileA.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHReuse\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PCHUser.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestPrecompiledHeaders\Slow.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\FindExecutableTarget\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Intellisense\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_None\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_PerSolutionConfig\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_BuildAndDeploy_Project\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_Empty\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild_MissingProjectGUID.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_ExternalProject\fbuild_WrongData.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_Items\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\Solution_SolutionRelativePaths\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\VCXProj_DefaultConfigs\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\VCXProj_PerConfigOverrides\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestProjectGeneration\xcodeproject.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestRemoveDir\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\resource.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestResources\resource.rc" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Exclusions\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Exclusions\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_Crash\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_Crash\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_ReturnCode\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\Fail_ReturnCode\main.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test_timeout.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTest\test_timeout.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestTextFile\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\a.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\b.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\c.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\File.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\CacheUsingRelativePaths\Subdir\Header.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\ClangStaticAnalysis\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\ClangStaticAnalysis\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\d.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\e.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\ignore.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\Exclusions\ok.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\f.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateFromUnity\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\IsolateListFile\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\LinkMultiple\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\LinkMultiple_InputFiles\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\PrecompiledHeader.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\PrecompiledHeader.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\unity.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\file.1.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\UnityInputIsolatedFiles\file.2.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestUnity\wontcompile.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\ClangMacroExpansion\clang_macro_expansion.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\ClangMacroExpansion\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\pragma_message.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestWarnings\warnings.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestZW\Caching\fbuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Data\TestZW\Caching\file.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\FBuildTest.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\TestMain.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\FBuildTest.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\FBuildTest.h" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestAlias.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestArgs.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBFFParsing.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBuildAndLinkLibrary.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestBuildFBuild.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCache.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCachePlugin.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCLR.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompilationDatabase.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompiler.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCompressor.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCopy.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCSharp.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestCUDA.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestDistributed.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestDLL.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestError.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestExe.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestExec.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestFastCancel.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestGraph.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestIf.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestIncludeParser.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestLibrary.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestLinker.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestListDependencies.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestNodeReflection.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestObject.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestObjectList.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestPrecompiledHeaders.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestProjectGeneration.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestRemoveDir.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestResources.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestTest.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestTextFile.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestUnity.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestUserFunctions.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestVariableStack.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestWarnings.cpp" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildTest\Tests\TestZW.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{bd7199ac-6c94-4f93-bc2a-7f5284b7d434}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools\FBuild\FBuildTest\FBuildTest.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;ANALYZE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools\FBuild\FBuildTest</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <BuildLog>
+    <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and '$(AndroidAPILevel)' != '' and Exists('$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\Android.Common.targets')" Project="$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\Android.Common.targets" />
+</Project>

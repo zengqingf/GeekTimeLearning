@@ -1,0 +1,7 @@
+-*Engine/Source/*
+-*Engine/Plugins/*
+-*Plugins/ThirdParty/*
++*Plugins/ThirdParty/TMSDK*
++*Plugins/ThirdParty/TMSDKBridge*
++*Plugins/ThirdParty/TMSDKCommon*
++*Plugins/ThirdParty/TMSDKTools*

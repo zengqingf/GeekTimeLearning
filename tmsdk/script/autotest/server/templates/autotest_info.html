@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename ='css/style.css')}}">
+    <title>
+        测试报告详情
+    </title>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div>
+            <h3>当前测试报告</h3>
+            <div id="info_unit">
+
+            </div>
+        </div>
+        <!-- TODO 用图像方式显示测试结果 -->
+        <div>
+            <h3>失败测试</h3>
+            <div id="fail_unit">
+
+            </div>
+        </div>
+        <div>
+            <h3>不稳定测试</h3>
+            <div id=unstable_unit>
+
+            </div>
+        </div>
+        <div>
+            <h3>成功测试</h3>
+            <div id="suc_unit">
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename ='js/models.js')}}"></script>
+    <script>
+        function setInfo(time, packageurl, devices, target, suc_count, fail_count, unstable_count) {
+            let tmp = packageurl.split('/');
+            let packagename = tmp[tmp.length - 1];
+            let content = '<ul>' +
+                '<li>测试时间：' + time + '</li>' +
+                '<li>测试包：<a href="' + packageurl + '" target="_Blank">' + packagename + '</a></li>' +
+                '<li>测试机器：' + devices + '</li>' +
+                '<li>测试目的：' + target + '</li>' +
+                '<li>测试结果：' + suc_count + '成功 ' + fail_count + '失败 ' + unstable_count + '不稳定</li>'
+            '</ul>';
+            $('#info_unit').html(content);
+        }
+
+        function addUnit(id, device, target, proc_reporturl, airtest_reporturl) {
+            let content = '<ul class="unit">' +
+                '<li class="unit_item newline">测试机器：<span>' + device + '</span></li>' +
+                '<li class="unit_item newline">测试用例：<span>' + target + '</span></li>' +
+                '<li class="unit_item newline">测试报告-proc：<a href="' + proc_reporturl + '" target="_Blank">跳转</a></li>' +
+                '<li class="unit_item newline">测试报告-airtest：<a href="' + airtest_reporturl +
+                '" target="_Blank">跳转</a></li>' +
+                '</ul>';
+            old = $('#' + id).html();
+            $('#' + id).html(old + content)
+
+        }
+
+        function addSuc(device, target, proc_reporturl, airtest_reporturl) {
+            addUnit('suc_unit', device, target, proc_reporturl, airtest_reporturl)
+        }
+
+        function addFail(device, target, proc_reporturl, airtest_reporturl) {
+            addUnit('fail_unit', device, target, proc_reporturl, airtest_reporturl)
+        }
+
+        function addUnstable(device, target, proc_reporturl, airtest_reporturl) {
+            addUnit('unstable_unit', device, target, proc_reporturl, airtest_reporturl)
+        }
+
+
+        window.onload = function () {
+            let id = getQueryVariable('id')
+            postData('autotest', {
+                'id': id
+            }, 'getReportInfo', function (data) {
+                let summary = data['summary'];
+                let suc = data['suc'];
+                let fail = data['fail'];
+                let unstable = data['unstable'];
+
+                setInfo(summary['time'], summary['packageurl'], summary['devices'], summary[
+                    'target'], summary['suc_count'], summary['fail_count'], summary[
+                    'unstable_count']);
+
+                suc.forEach(element => {
+                    addSuc(element['device'], element['target'], element[
+                        'proc_reporturl'], element['airtest_reporturl'])
+                });
+                fail.forEach(element => {
+                    addFail(element['device'], element['target'], element[
+                        'proc_reporturl'], element['airtest_reporturl'])
+                });
+                unstable.forEach(element => {
+                    addUnstable(element['device'], element['target'], element[
+                        'proc_reporturl'], element['airtest_reporturl'])
+                });
+
+            });
+        };
+    </script>
+</body>
+
+</html>

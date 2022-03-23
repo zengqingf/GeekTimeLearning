@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tm.commonlib">
+
+    <!-- Common Start -->
+    <!-- 外部存储（手机中或SD卡）读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 安装程序包权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <!-- 写入系统设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 设备震动 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- Common End -->
+
+
+</manifest>

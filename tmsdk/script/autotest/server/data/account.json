@@ -1,0 +1,14 @@
+{
+    "dnfdebug":[
+        {
+            "account":"1",
+            "password":"1"
+        }
+    ],
+    "testmg":[
+        {
+            "account":"MG10625079",
+            "password":"330330"
+        }
+    ]
+}

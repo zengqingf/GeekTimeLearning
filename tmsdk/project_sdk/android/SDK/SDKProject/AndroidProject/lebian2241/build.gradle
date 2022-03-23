@@ -1,0 +1,99 @@
+apply plugin: 'com.android.library'
+apply from: 'lebian_cust.gradle'
+if (rootProject.extensions.getByName('ext').properties.containsKey('lebian_internal_only')) {
+    if (rootProject.extensions.getByName('ext').properties.get('lebian_internal_only')) {
+        println("[LEBIAN] lebian_internal_only true")
+        apply from: 'internal_use_only'
+    }
+}
+
+boolean enable_regeng = getValueFromSettings("use_regeng").toBoolean()
+boolean enable_fenbao = getValueFromSettings("use_streaming").toBoolean()
+boolean enable_handle_assetmanager = getValueFromSettings("streaming_handle_assetmanager").toBoolean()
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        println "[LEBIAN] cust cfg=[enable_fenbao=${enable_fenbao}, enable_handle_assetmanager=${enable_handle_assetmanager}, enable_regeng=${enable_regeng}]"
+        minSdkVersion 8
+        targetSdkVersion 26
+
+        manifestPlaceholders = [
+                "MainChId": lebian.meta_MainChId,
+                "ClientChId": lebian.meta_ClientChId,
+                "LEBIAN_SECID": lebian.meta_LEBIAN_SECID,
+                "LEBIAN_APPLICATION": 'com.excelliance.open.LBApplication',
+                "screenOrientation": lebian.screenOrientation,
+                "lb_target_pkgname": (lebian.packageName ? lebian.packageName :'${applicationId}'),
+                "lb_task_Affinity": (lebian.taskAffinity ? lebian.taskAffinity :'${applicationId}')
+        ]
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-rules.pro"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-rules.pro"
+        }
+    }
+
+    sourceSets {
+        main {
+            if (enable_fenbao && enable_regeng) {
+                manifest.srcFile 'src/regeng/AndroidManifest.xml'
+                if (enable_handle_assetmanager) {
+                    assets.srcDirs += 'src/fenbao-am-with-regeng/assets'
+                } else {
+                    assets.srcDirs += 'src/fenbao-with-regeng/assets'
+                }
+            } else if (enable_regeng) {
+                manifest.srcFile 'src/regeng/AndroidManifest.xml'
+                assets.srcDirs += 'src/regeng/assets'
+            } else if (enable_fenbao) {
+                if (enable_handle_assetmanager) {
+                    assets.srcDirs += 'src/fenbao-am-lite/assets'
+                } else {
+                    assets.srcDirs += 'src/fenbao-lite/assets'
+                }
+            }
+        }
+    }
+
+
+}
+
+afterEvaluate {
+    if (!project.file('libs/lebianbase.jar').exists()) {
+        tasks.getByName('preBuild').dependsOn(':sdkapk:buildBase')
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly project(':sdk_base')
+}
+
+def getValueFromSettings(taget) {
+    def ret
+    def xmlFile = this.projectDir.getPath() + "/src/main/assets/lebian/globalSettings.xml"
+    def xmlParser = new groovy.util.XmlParser()
+    def result = xmlParser.parse(xmlFile)
+    result.setting.each {
+        def key = it.attributes().get("key")
+        if (key == taget) {
+            ret = it.attributes().get("value")
+            println ret
+        }
+    }
+    return ret
+}

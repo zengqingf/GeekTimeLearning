@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tdatamaster.tdm"
+    android:versionCode="1403"
+    android:versionName="1.14.003.1403" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="28" />
+    <!-- 获取设备信息 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 网络通信 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取MAC地址 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application>
+
+      <!--添加：TDM数据上报 Start-->
+      <meta-data android:name="GCloud.TDM.AppId" android:value="@string/tdm_AppId" />
+      <meta-data android:name="GCloud.TDM.AppChannel" android:value="@string/tdm_AppChannel" />
+      <meta-data android:name="GCloud.TDM.AppKey" android:value="@string/tdm_AppKey" />
+      <meta-data android:name="GCloud.TDM.APPKEY_DENGTA" android:value="@string/tdm_APPKEY_DENGTA" />
+      <meta-data android:name="GCloud.TDM.TGEMIT_ROUTER_ADDRESS_FORMAL" android:value="@string/RouterAddressFormal" />
+      <meta-data android:name="GCloud.TDM.TGEMIT_ROUTER_ADDRESS_TEST" android:value="@string/RouterAddressTest" />
+
+      <!--其他配置-->
+      <meta-data android:name="GCloud.TDM.Test" android:value="false" />
+      <meta-data android:name="GCloud.TDM.LogLevel" android:value="1" />
+      <!--添加：TDM数据上报 End-->
+    </application>
+
+</manifest>

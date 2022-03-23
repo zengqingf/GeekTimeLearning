@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_sswl_dialog_bg"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/com_sswl_fragment_top"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/com_sswl_choose_login_remind"
+        android:textColor="@color/com_sswl_color_text_grey"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_guest_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/com_sswl_login_guest_icon"
+            android:drawablePadding="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/com_sswl_guest_login"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_phone_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/com_sswl_login_phone_icon"
+            android:drawablePadding="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/com_sswl_phone_login"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_account_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/com_sswl_login_account_icon"
+            android:drawablePadding="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/com_sswl_account_login"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

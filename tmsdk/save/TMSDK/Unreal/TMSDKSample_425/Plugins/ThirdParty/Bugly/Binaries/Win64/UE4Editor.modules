@@ -1,0 +1,8 @@
+{
+	"BuildId": "13144385",
+	"Modules": 
+	{
+		"Bugly": "UE4Editor-Bugly.dll",
+		"BuglyEditor": "UE4Editor-BuglyEditor.dll"
+	}
+}

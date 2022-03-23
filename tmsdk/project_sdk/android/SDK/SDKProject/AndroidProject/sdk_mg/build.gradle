@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    compileOnly 'com.android.support:appcompat-v7:28.+'
+    implementation project(':sdkinterface')
+    implementation files('libs/mg/base_mg.jar')
+    implementation files('libs/mg/classes.jar')
+    implementation files('libs/mg/ky_sdk_common.jar')
+    implementation files('libs/mg/pay_mg.jar')
+    implementation files('libs/mg/wftsdk3.3.jar')
+    compileOnly project(':unitylib')
+}
+
+//task to delete the old jar
+task SDK_MG_2_0_DeleteOldJar(type: Delete) {
+    delete 'release/AndroidPlugin.jar'
+}
+
+//task to export contents as jar
+task SDK_MG_2_0_ExportJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('release/')
+    include('classes.jar')
+    ///Rename the jar
+    rename('classes.jar', 'AndroidPlugin.jar')
+
+
+}
+
+SDK_MG_2_0_ExportJar.dependsOn(SDK_MG_2_0_DeleteOldJar, build)

@@ -1,0 +1,20 @@
+{
+    "group": "Util",
+    "libs": [
+             "libc++.tbd",
+             "libsqlite3.tbd"
+],
+    "frameworks": [
+    		  ],
+    "headerpaths": [],
+    "files":   [
+                	"Util/BridgeUtil.h",
+                	"Util/BridgeUtil.mm"
+                ],
+    "folders": [],    
+    "excludes": ["^.*.meta$", "^.*.mdown$", "^.*.pdf$"],
+    "compiler_flags": [],
+    "linker_flags": [
+                       "-ObjC"
+                    ]
+}

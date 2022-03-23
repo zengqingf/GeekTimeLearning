@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFFile.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFFile.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFFileExists.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFFileExists.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFKeywords.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFMacros.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFMacros.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFParser.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFParser.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFStackFrame.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFStackFrame.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFUserFunctions.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFUserFunctions.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFVariable.cpp">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\BFFVariable.h">
+      <Filter>BFF</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\Function.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\Function.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionAlias.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionAlias.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCompiler.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCompiler.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCopy.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCopy.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCopyDir.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCopyDir.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCSAssembly.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionCSAssembly.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionDLL.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionDLL.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionError.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionError.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionExec.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionExec.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionExecutable.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionExecutable.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionForEach.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionForEach.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionIf.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionIf.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionLibrary.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionLibrary.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionListDependencies.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionListDependencies.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionObjectList.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionObjectList.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionPrint.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionPrint.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionRemoveDir.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionRemoveDir.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionSettings.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionSettings.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionTest.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionTest.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionTextFile.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionTextFile.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionUnity.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionUnity.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionUsing.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionUsing.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVCXProject.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVCXProject.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVSProjectExternal.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVSProjectExternal.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVSSolution.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionVSSolution.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionXCodeProject.cpp">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Functions\FunctionXCodeProject.h">
+      <Filter>BFF\Functions</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFToken.cpp">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFToken.h">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFToken.natvis">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFTokenizer.cpp">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFTokenizer.h">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\BFF\Tokenizer\BFFTokenRange.h">
+      <Filter>BFF\Tokenizer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\Cache.cpp">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\Cache.h">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\CachePlugin.cpp">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\CachePlugin.h">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\CachePluginInterface.h">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\ICache.cpp">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\ICache.h">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\LightCache.cpp">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Cache\LightCache.h">
+      <Filter>Cache</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Error.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Error.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuild.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuild.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuildCore.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuildOptions.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuildOptions.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FBuildVersion.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FLog.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\FLog.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\AliasNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\AliasNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CompilerNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CompilerNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CopyDirNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CopyDirNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CopyFileNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CopyFileNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CSNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\CSNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\Dependencies.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\Dependencies.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\DirectoryListNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\DirectoryListNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\DLLNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\DLLNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ExecNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ExecNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ExeNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ExeNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\FileNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\FileNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\LibraryNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\LibraryNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\LinkerNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\LinkerNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ListDependenciesNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ListDependenciesNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_AllowNonFile.cpp">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_AllowNonFile.h">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_EmbedMembers.cpp">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_EmbedMembers.h">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_IgnoreForComparison.cpp">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_IgnoreForComparison.h">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_InheritFromOwner.cpp">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_InheritFromOwner.h">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_Name.cpp">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\MetaData\Meta_Name.h">
+      <Filter>Graph\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\Node.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\Node.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\Node.natvis">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\NodeGraph.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\NodeGraph.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\NodeProxy.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\NodeProxy.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ObjectListNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ObjectListNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ObjectNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\ObjectNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\RemoveDirNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\RemoveDirNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\SettingsNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\SettingsNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\SLNNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\SLNNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\TestNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\TestNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\TextFileNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\TextFileNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\UnityNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\UnityNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VCXProjectNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VCXProjectNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VSProjectBaseNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VSProjectBaseNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VSProjectExternalNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\VSProjectExternalNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\XCodeProjectNode.cpp">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Graph\XCodeProjectNode.h">
+      <Filter>Graph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Args.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Args.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\BuildProfiler.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\BuildProfiler.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CIncludeParser.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CIncludeParser.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CompilationDatabase.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CompilationDatabase.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Compressor.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Compressor.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CtrlCHandler.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\CtrlCHandler.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\FBuildStats.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\FBuildStats.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\MultiBuffer.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\MultiBuffer.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ProjectGeneratorBase.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ProjectGeneratorBase.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Report.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\Report.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ResponseFile.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ResponseFile.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\SLNGenerator.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\SLNGenerator.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ToolManifest.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\ToolManifest.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\VSProjectGenerator.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\VSProjectGenerator.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\XCodeProjectGenerator.cpp">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Helpers\XCodeProjectGenerator.h">
+      <Filter>Helpers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Client.cpp">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Client.h">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Protocol.cpp">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Protocol.h">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Server.cpp">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\Protocol\Server.h">
+      <Filter>Protocol</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\Job.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\Job.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\JobQueue.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\JobQueue.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\JobQueueRemote.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\JobQueueRemote.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerBrokerage.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerBrokerage.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerThread.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerThread.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerThreadRemote.cpp">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuildCore\WorkerPool\WorkerThreadRemote.h">
+      <Filter>WorkerPool</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="BFF">
+      <UniqueIdentifier>{0a55d9d7-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="BFF\Functions">
+      <UniqueIdentifier>{2c77adb8-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="BFF\Tokenizer">
+      <UniqueIdentifier>{224e6b4b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Cache">
+      <UniqueIdentifier>{ffe90794-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Graph">
+      <UniqueIdentifier>{b3e8f300-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Graph\MetaData">
+      <UniqueIdentifier>{3e190a4b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{59c4f417-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{0377da28-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="WorkerPool">
+      <UniqueIdentifier>{b1707bf6-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

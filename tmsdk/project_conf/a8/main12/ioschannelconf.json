@@ -1,0 +1,14 @@
+{
+    "debug":{
+        "usesdk":"base",
+        "applicationid":"com.tenmove.a8.dev",
+        "applicationname": "A8_Dev",
+        "keystorename":"a8_debug_dev"
+    },
+    "release":{
+        "usesdk":"base",
+        "applicationid":"com.tenmove.a8",
+        "applicationname": "A8_Dev",
+        "keystorename":"a8_debug_dev"
+    }
+}

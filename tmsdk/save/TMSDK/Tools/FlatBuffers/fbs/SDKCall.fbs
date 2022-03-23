@@ -1,0 +1,45 @@
+// schema, IDL file
+namespace TMSDKClient.FlatBuffers;
+
+/*  not support for csharp
+rpc_service Call {
+    UnityCall(CallInfo):CallResult;
+}*/
+
+enum CallDefine:byte {
+    TM_UNITY_SDK_CALLBACK_GAMEOBJECT = 0,
+    unityCallandroid = 1,
+}
+
+enum PlatformSDKMethodName:byte {
+    init = 0,
+    login = 1,
+    logout = 2,
+    pay = 3
+}
+
+table Dict {
+    entries:[DictEntry];
+}
+
+table DictEntry {
+    key:string(key);
+    value:string;
+}
+
+table CallInfo {
+    callMethodName:string;
+    callMethodParams:Dict;
+    isCallback:bool;
+    callbackId:string;
+}
+
+enum ResultCode:byte {
+    Success = 0,
+    Exception = 1,
+}
+
+table CallResult {
+    code:ResultCode;
+    message:string;
+}

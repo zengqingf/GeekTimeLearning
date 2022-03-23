@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="280dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_xy_login_white_bg"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/login_holder_mg_icon"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/login_logo" />
+
+
+    <AutoCompleteTextView
+        android:id="@+id/login_holer_account_edit"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/login_holder_mg_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/xy_phone_regin_bg"
+        android:completionThreshold="2"
+        android:dropDownHorizontalOffset="0dp"
+        android:dropDownVerticalOffset="2dp"
+        android:ems="20"
+        android:editable="false"
+        android:hint="账号/手机号"
+        android:imeOptions="flagNoExtractUi"
+        android:maxLength="20"
+        android:paddingLeft="60dp"
+        android:singleLine="true"
+        android:textSize="15sp" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/login_holer_account_edit"
+        android:layout_alignLeft="@+id/login_holer_account_edit"
+        android:layout_alignTop="@+id/login_holer_account_edit"
+        android:layout_marginLeft="18dp"
+        android:src="@drawable/mg_login_account" />
+
+    <ImageView
+        android:id="@+id/login_holder_drop_iv"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/login_holer_account_edit"
+        android:layout_alignTop="@+id/login_holer_account_edit"
+        android:src="@drawable/com_xy_xylogin_dropdown" />
+    
+     <TextView 
+        android:id="@+id/login_holder_login_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="登录"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_holer_account_edit"
+        android:background="@drawable/xy_quick_login_save_bg"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"            
+	    />
+    
+     
+      <LinearLayout 
+         	android:id="@+id/ll_protocol"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:layout_below="@id/login_holder_login_btn"
+	        android:layout_marginTop="10dp"
+	        >
+	        	      	   	
+		    <ImageView
+		        android:id="@+id/onekeyregin_holder_check_xieyi_iv"
+		        android:layout_width="15dp"
+		        android:layout_height="15dp"		        
+		        android:checked="true"
+		        android:src="@drawable/mg_register_protocol_checked" />
+	       <TextView
+	             android:id="@+id/onekeyregin_holder_check_xieyi_tv"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"	            
+	             android:text=" 我已阅读并同意"
+	             android:textColor="@color/gray"
+	             android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/onekeyregin_holder_xieyi_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:text="《用户协议》"
+		        android:textColor="@color/xieyi"
+		         />
+		    <TextView	            
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"	            
+	             android:text="和"
+	             android:textColor="@color/gray"
+	             android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/onekeyregin_holder_yinsi_tv"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:text="《隐私政策》"
+		        android:textColor="@color/xieyi"
+		         />
+	    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_holder_login_btn"
+        android:layout_marginTop="35dp"
+        >
+        
+        <!-- <TextView 
+            android:id="@+id/find_pwd_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="找回密码"
+            android:textSize="14sp"
+            android:textColor="#4c4c4c"
+            />
+        
+        <View 
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:background="#4c4c4c"
+            />
+         -->
+        <TextView 
+            android:id="@+id/other_login_way_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="使用其它账号登录"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="#787878"
+            />
+        
+    </LinearLayout>
+
+    
+</RelativeLayout>

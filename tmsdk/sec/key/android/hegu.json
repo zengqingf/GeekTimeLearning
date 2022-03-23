@@ -1,0 +1,6 @@
+{
+    "keystorename":"hegu.keystore",
+    "storepass":"123456",
+    "alias":"hegu",
+    "keypass":"123456"
+}

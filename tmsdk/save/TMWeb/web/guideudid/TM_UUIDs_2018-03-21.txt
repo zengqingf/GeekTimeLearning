@@ -1,0 +1,19 @@
+Device ID	Device Name
+041c06950db7fee891a4a4cacd2c9bb8a14fad09    TM_QA_iPhone6Plus
+180bef7beb06caf44ea301cfa514aa2ab5edb9db    TM_QA_iPhone5c
+b8d9097eb01eb4e74c17cfa6ed0e0efe7c5d76ae    TM_QA_iPhone5
+9631e7f35958b5c6e2d0cf444de805045298ce1d    TM_QA_iPhone5s
+79c9ed498b43e6d20273846a5b408f9e687462ea    TM_QA_iPadmini4
+82c2f685504ea5a40cea7a8cab7f292ae9e46f2f    TM_QA_iPhone6
+433a2f3fd8f0d4bd150d6f88c64d002966651564    TM_俞翔_iPhoneX
+a27a63d236135af3b8178477abdba7add2186873    TM_马哲_iPhone6Plus
+4dda45bae25232d25e5444f9fc160f3b1e0ab075    TM_吴端端_iPhoneX
+2aba8415116f6fd278f7c2b9dece2f158c8fa0ca    TM_周贤伟_iPhone5s
+6393b79c4e1936dbb1d1a28a0408d7bdfc0b7dc2    TM_金星萌_iPhone6s
+695cdde27bb88f2f6cd34d628e87a3e3550aee10    TM_QA_iPhoneX
+153056e2e52794694527dd52177e2cb709b6967d    TM_於乐凯_iPhoneX
+b3ea63d5d605a3b56e87ca481d7e81d4ceffbb5c    TM_尹佳航_iPhone6s
+c1c66bf51833a7bf271667122873fc5972e3d400    TM_张亮_iPhone7Plus
+49ac523ba558f8e172c985ca7d74ee8ab544c833    TM_曹雪骏_iPhone6sPlus
+ed10d9e722774d98675202bf493c753d3f53d850    TM_秦君_iPhone7Plus
+fe763aa43515d65a90db13233a21c181d108878d    TM_高锦_iPhone7

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSDropDown.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSDropDown.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSDropDown.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSFont.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSFont.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSLabel.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSLabel.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSLabel.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSListView.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSListView.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSListView.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSMenu.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSMenu.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSMenu.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSSplitter.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSSplitter.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSSplitter.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSTrayIcon.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSTrayIcon.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSTrayIcon.mm">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSUI.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSWidget.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSWidget.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSWindow.cpp">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSWindow.h">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\OSUI\OSWindow.mm">
+    </CustomBuild>
+  </ItemGroup>
+</Project>

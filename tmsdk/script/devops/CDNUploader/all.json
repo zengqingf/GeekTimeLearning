@@ -1,0 +1,35 @@
+{
+    "ftppath":"/hotfix/dev",
+    "cdnpath":"/data/wwwroot/static.aldzn.xyimg.net",
+    "zippath":{
+        "android":"asset/android/zip",
+        "iosother":"asset/ios/zip",
+        "ios":"asset/ios/zip"
+    },
+    "verpath":"asset/version.json",
+    "channelplat":{
+        "android":{
+            "mg":"mg",
+            "mgother":"mgother",
+            "mgotherhc":"mgotherhc",
+            "mgyyb":"mgyyb",
+            "sn79":"",
+            "jinli":"hardcore/am",
+            "baidu":"hardcore/baidu",
+            "coolpad":"hardcore/coolpad",
+            "huawei":"hardcore/huawei",
+            "mgother915":"mgother915",
+            "meizu":"hardcore/mz",
+            "samsung":"hardcore/samsung",
+            "oppo":"hardcore/oppo",
+            "vivo":"hardcore/vivo",
+            "xiaomi":"hardcore/xiaomi"    
+            },
+        "iosother":{
+            "xy":""
+        },
+        "ios":{
+            "appstore":"zyappstore"
+        }
+    }
+}

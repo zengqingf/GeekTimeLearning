@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- init section is always evaluated once per architecture -->
+
+  <androidManifestUpdates>
+
+
+  </androidManifestUpdates>
+
+
+    <resourceCopies>
+        <!-- copy src -->
+        <copyDir src="$S(PluginDir)/../APMSDKLib/Android/libs/" dst="$S(BuildDir)/libs/" />
+		<copyDir src="$S(PluginDir)/../APMSDKLib/Android/assets/" dst="$S(BuildDir)/assets" />
+        <copyDir src="$S(PluginDir)/../APMSDKLib/Android/libs/$S(Architecture)/" dst="$S(BuildDir)/libs/$S(Architecture)/" />
+    </resourceCopies>
+  
+
+  <gameActivityImportAdditions>
+    <insert>
+      import com.tencent.gcloud.apm.portal.TApmAgent;
+            
+    </insert>
+  </gameActivityImportAdditions>
+
+  <gameActivityClassAdditions>
+    <insert>
+
+      public String AndroidThunkJava_getSDKVersion()
+      {
+        Log.error("xclient AndroidThunkJava_GetSDKVersion: ");
+        return TApmAgent.getInstance().getSDKVersion();
+      }
+
+      public int AndroidThunkJava_initContext(String appId, String engine, boolean debug)
+      {
+        Log.error("xclient AndroidThunkJava_InitContext: " + engine +""+ debug );
+        return TApmAgent.getInstance().initContext(this, appId, "unreal", debug);
+      }
+
+      public void AndroidThunkJava_disableDomCDNDomain()
+      {
+        Log.debug("xclient AndroidThunkJava_disableDomCDNDomain");
+        TApmAgent.getInstance().disableDomCDNDomain();
+      }
+
+      public void AndroidThunkJava_syncServerTime(long time)
+      {
+        Log.debug("xclient AndroidThunkJava_syncServerTime: " + time);
+        TApmAgent.getInstance().syncServerTime(time);
+      }
+
+      public void AndroidThunkJava_setOpenId(String userID)
+      {
+        Log.debug("xclient AndroidThunkJava_SetOpenId: " + userID);
+        TApmAgent.getInstance().setOpenId(userID);
+      }
+
+      public void AndroidThunkJava_markLevelLoad(String sceneName)
+      {
+        Log.debug("xclient AndroidThunkJava_MarkLevelLoad: " + sceneName);
+        TApmAgent.getInstance().markLevelLoad(sceneName);
+      }
+
+      public void AndroidThunkJava_markLevelLoadCompleted( )
+      {
+        Log.debug("xclient AndroidThunkJava_markLevelLoadCompleted");
+        TApmAgent.getInstance().markLevelLoadCompleted();
+      }
+
+      public void AndroidThunkJava_markLevelFin()
+      {
+        Log.debug("xclient AndroidThunkJava_MarkLevelFin ");
+        TApmAgent.getInstance().markLevelFin();
+      }
+
+      public void AndroidThunkJava_saveGpuInfo(String gpu_model)
+      {
+        Log.debug("xclient AndroidThunkJava_SaveGpuInfo: " + gpu_model);
+        TApmAgent.getInstance().saveGpuInfo(gpu_model);
+      }
+
+      public void AndroidThunkJava_postNTL(int latency)
+      {
+        Log.debug("xclient AndroidThunkJava_postNTL: " + latency);
+        TApmAgent.getInstance().postNetLatency(latency);
+      }
+
+      public void AndroidThunkJava_beginExtTag(String tagName)
+      {
+      Log.debug("xclient AndroidThunkJava_BeginExtTag: " + tagName);
+      TApmAgent.getInstance().beginExtTag(tagName);
+      }
+
+      public void AndroidThunkJava_endExtTag(String tagName)
+      {
+      Log.debug("xclient AndroidThunkJava_EndExtTag: " + tagName);
+      TApmAgent.getInstance().endExtTag(tagName);
+      }
+
+      public void AndroidThunkJava_beginTag(String tagName)
+      {
+        Log.debug("xclient AndroidThunkJava_BeginTag: " + tagName);
+        TApmAgent.getInstance().beginTag(tagName);
+      }
+
+      public void AndroidThunkJava_endTag()
+      {
+        Log.debug("xclient AndroidThunkJava_EndTag: ");
+        TApmAgent.getInstance().endTag();
+      }
+
+      public int AndroidThunkJava_getDeviceLevelSyncFromServerByQcc(String configName, String gpuRender)
+      {
+        Log.debug("xclient AndroidThunkJava_getDeviceLevelSyncFromServerByQcc " + configName + " " + gpuRender);
+        return  TApmAgent.getInstance().checkDCLSByQccSync(configName, gpuRender, gpuRender);
+      }
+
+      public int AndroidThunkJava_getDeviceLevelByQcc(String configName, String gpuRender)
+      {
+        Log.debug("xclient AndroidThunkJava_GetDeviceLevelByQcc " + configName + " " + gpuRender);
+        return  TApmAgent.getInstance().checkDCLSByQcc(configName, gpuRender, gpuRender);
+      }
+
+	    public void AndroidThunkJava_setEngineMetaInfo(int engine, String engineVersion, int grapohicsApi,
+      String vendor, String render, String version,
+      int gragraphicsMemSize, int graphicsMT, int supportRendertargetCount,
+      int isOpenGLES)
+      {
+          Log.debug("xclient AndroidThunkJava_setEngineMetaInfo ");
+          TApmAgent.getInstance().setEngineMetaInfo(engine, engineVersion, grapohicsApi, vendor, render, version,
+                  gragraphicsMemSize, graphicsMT, supportRendertargetCount,isOpenGLES);
+      }
+
+
+      public void AndroidThunkJava_setQuality(int quality)
+      {
+        Log.debug("xclient AndroidThunkJava_SetQuality" + quality);
+        TApmAgent.getInstance().setQulaity(quality);
+      }
+
+      public void AndroidThunkJava_postMarkEvent(int key, String value){
+        Log.debug("xclient AndroidThunkJava_PostMarkEvent" + key + " " + value);
+        TApmAgent.getInstance().postEvent(key, value);
+      }
+
+      public void AndroidThunkJava_postEventIS(int key, String info)
+      {
+        Log.debug("xclient AndroidThunkJava_PostEventIS" + key + " " + info);
+        TApmAgent.getInstance().postEvent(key, info);
+      }
+
+      public void AndroidThunkJava_setVersionIden(String versionName)
+      {
+        Log.debug("xclient AndroidThunkJava_setVersionIden" + versionName);
+        TApmAgent.getInstance().setVersionIden(versionName);
+      }
+ 
+
+      public void AndroidThunkJava_postFrame(float deltatime)
+      {
+        TApmAgent.getInstance().postFrame(deltatime);
+      } 
+
+      public void AndroidThunkJava_postCoordinates(float x, float y, float z, float pitch, float yaw, float roll)
+      {
+      Log.debug("xclient AndroidThunkJava_PostCoordinates" + x + " " + y  + " " + z + " " + pitch + " " + yaw + " " + roll) ;
+      TApmAgent.getInstance().postCoordinates(x, y, z, pitch, yaw, roll);
+      }
+
+      public void AndroidThunkJava_postValueF(String category, String key, float a) {
+      TApmAgent.getInstance().postValueF(category, key, a);
+      }
+
+      public void AndroidThunkJava_postValueF(String category, String key, float a, float b) {
+      TApmAgent.getInstance().postValueF(category, key, a, b);
+      }
+
+      public void AndroidThunkJava_postValueF(String category, String key, float a, float b, float c) {
+      TApmAgent.getInstance().postValueF(category, key, a, b, c);
+      }
+
+      public void AndroidThunkJava_postValueI(String category, String key, int a) {
+      TApmAgent.getInstance().postValueI(category, key, a);
+      }
+
+      public void AndroidThunkJava_postValueI(String category, String key, int a, int b) {
+      TApmAgent.getInstance().postValueI(category, key, a, b);
+      }
+
+      public void AndroidThunkJava_postValueI(String category, String key, int a, int b, int c) {
+        TApmAgent.getInstance().postValueI(category, key, a, b, c);
+      }
+
+      public void AndroidThunkJava_postValueS(String category, String key, String value) {
+      TApmAgent.getInstance().postValueS(category, key, value);
+      }
+
+      public void AndroidThunkJava_beginTupleWrap(String category) {
+        TApmAgent.getInstance().beginTupleWrap(category);
+      }
+
+      public void AndroidThunkJava_endTupleWrap() {
+        TApmAgent.getInstance().endTupleWrap();
+      }
+
+      public void AndroidThunkJava_beginExclude() {
+        TApmAgent.getInstance().beignExclude();
+      }
+
+      public void AndroidThunkJava_endExclude() {
+        TApmAgent.getInstance().endExclude();
+      }
+
+      public void AndroidThunkJava_initStepEventContext() {
+        //TApmAgent.getInstance().initStepEventContext();
+      }
+
+
+	  public void AndroidThunkJava_linkLastStepCategorySession(String category) {
+      //TApmAgent.getInstance().linkStepEventSession(category);
+      }
+     
+      public void AndroidThunkJava_postStepEvent(String eventCategory, int stepId, int status, int code, String msg, String extraKey,boolean finish, boolean authorize) {
+      TApmAgent.getInstance().postStepEvent(eventCategory, stepId, status, code, msg, extraKey, finish, authorize);
+      }
+	  
+      public void AndroidThunkJava_releaseStepEventContext() {
+      //TApmAgent.getInstance().releaseStepEventContext();
+      }
+
+      public void AndroidThunkJava_setDeviceLevel(int level) {
+       TApmAgent.getInstance().setDefinedDeviceClass(level);
+      }
+
+      public void AndroidThunkJava_setTargetFramerate(int target) {
+      TApmAgent.getInstance().setTargetFramerate(target);
+      }
+
+      public String AndroidThunkJava_getErrorMsg(int code) {
+        return TApmAgent.getInstance().getErrorMsg(code);
+      }
+
+
+      public void AndroidThunkJava_setServerInfo(String zoneId, String roomIp){
+          TApmAgent.getInstance().setServerInfo(zoneId, roomIp);
+      }
+
+      public void AndroidThunkJava_markStarUpFinish( )
+      {
+      Log.debug("gpm AndroidThunkJava_markStarUpFinish");
+      TApmAgent.startUpFinish();
+      }
+
+      
+    </insert>
+  </gameActivityClassAdditions>
+
+
+  <androidManifestUpdates>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  </androidManifestUpdates>
+
+  <proguardAdditions>
+    <insert>
+      -keep public class com.tencent.gcloud.apm.portal.TApmAgent { *; }
+      -keep public class com.tencent.gcloud.apm.jni.TApmNativeHelper { *; }
+	  -keep public class com.tencent.gcloud.apm.cloudcontrol.ApmCCStrategy { *; }
+      -keep public class com.tencent.gcloud.apm.template.CCStrategyTemplate { *; }
+
+    </insert>
+  </proguardAdditions>
+
+</root>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="tdm_AppId">948137280</string> 
+    <string name="tdm_AppChannel">3387</string>
+    <string name="tdm_AppKey">8ab7d865a7a686ae4c94ff9b3d3fccd4</string>
+    <string name="tdm_APPKEY_DENGTA">8ab7d865a7a686ae4c94ff9b3d3fccd4</string>
+    <string name="RouterAddressFormal">https://hc.tdm.qq.com:8013/tdm/v1/route</string>
+    <string name="RouterAddressTest">https://htest.tdm.qq.com:8013/tdm/v1/route</string>
+</resources>

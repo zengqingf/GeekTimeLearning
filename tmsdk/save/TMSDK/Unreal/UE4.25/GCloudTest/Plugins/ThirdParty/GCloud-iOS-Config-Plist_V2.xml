@@ -1,0 +1,47 @@
+<key>GCloudCore</key>
+<dict>
+    <key>RemoteConfigUrl</key>
+    <string>https://cloudctrl.gcloud.qq.com</string>
+    <key>GTraceUrl</key>
+    <string>https://cloudctrl.gcloud.qq.com/gtrace/get_traceid_list</string>
+</dict>
+<key>TDM</key>
+<dict>
+    <key>AppId</key>
+    <string>948137280</string>
+    <key>AppChannel</key>
+    <string>3356</string>
+    <key>AppKey</key>
+    <string>8ab7d865a7a686ae4c94ff9b3d3fccd4</string>
+    <key>TGEMIT_ROUTER_ADDRESS_FORMAL</key>
+    <string>https://sg.tdatamaster.com:8013/tdm/v1/route</string>
+    <key>TGEMIT_ROUTER_ADDRESS_TEST</key>
+    <string>https://htest.tdm.qq.com:8013/tdm/v1/route</string>
+    <key>LogLevel</key>
+    <integer>1</integer>
+    <key></key>
+    <false/>
+</dict>
+<key>GCloud</key>
+<dict>
+    <key>GameId</key>
+    <string>948137280</string>
+    <key>GameKey</key>
+    <string>8ab7d865a7a686ae4c94ff9b3d3fccd4</string>
+</dict>
+<key>NSMicrophoneUsageDescription</key>
+<string>Apply Microphone Permission</string>
+<key>GRobot</key>
+<dict>
+    <key>XYGameId</key>
+    <string>{XY_GAME_ID}</string>
+</dict>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Apply Photo Library permission</string>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Apply Photo Library permission</string>

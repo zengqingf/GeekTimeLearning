@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white2"
+    android:orientation="vertical"
+    android:id="@+id/ll_pay_center">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/recharge_center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:padding="10dp"
+            android:src="@drawable/com_xy_xypay_close_imag" />
+    </FrameLayout>
+
+    
+
+   <LinearLayout
+        style="@style/PayDialogLinearContainer"
+        android:layout_height="30dp"
+        android:layout_marginTop="0dp">
+        <TextView
+            android:id="@+id/recharge_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/red"
+            tools:text="￥ 6元" 
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+        
+    </LinearLayout>
+
+    
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray2" />
+
+ 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="@string/select_pay_type"
+        android:textColor="@color/gray3"
+        android:textSize="10sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray2" />
+ <!--微信-->
+    <LinearLayout
+        android:id="@+id/wechatContainer"
+        style="@style/PayDialogLinearContainer"
+        android:clickable="true"
+        android:onClick="onClick">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/wechat" />
+
+        <TextView
+            style="@style/PayDialogTextViewStyle"
+            android:paddingLeft="10dp"
+            android:text="@string/wechat" />
+
+        <ImageView
+            android:id="@+id/wechatCheck"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/selection_checked" />
+    </LinearLayout>
+    
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray2" />
+
+   <!--支付宝-->
+    <LinearLayout
+        android:id="@+id/alipayContainer"
+        style="@style/PayDialogLinearContainer"
+        android:layout_marginTop="0dp"
+        android:clickable="true"
+        android:onClick="onClick">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/alipay" />
+
+        <TextView
+            style="@style/PayDialogTextViewStyle"
+            android:paddingLeft="10dp"
+            android:text="@string/alipay" />
+
+        <ImageView
+            android:id="@+id/alipayCheck"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/selection_non_checked" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray2" />
+
+     <!--QQ钱包-->
+    <LinearLayout
+        android:id="@+id/qqPay"
+        style="@style/PayDialogLinearContainer"
+        android:clickable="true"
+        android:onClick="onClick">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/qq" />
+
+        <TextView
+            style="@style/PayDialogTextViewStyle"
+            android:paddingLeft="10dp"
+            android:text="@string/qqPay" />
+
+        <ImageView
+            android:id="@+id/qqCheck"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/selection_non_checked" />
+    </LinearLayout>
+    
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray2" />
+    
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_btn_yellow"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:text="@string/confirm"/>
+  <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:id="@+id/web_layout"
+        android:visibility="gone"
+       /> 
+</LinearLayout>

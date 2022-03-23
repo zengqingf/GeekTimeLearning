@@ -1,0 +1,8 @@
+{
+    "dnl15dev":{
+        "usesdk":"base",
+        "applicationid":"com.tm.dnl15",
+        "applicationname": "ALD15",
+        "keystorename":"tm_dev"
+    }
+}

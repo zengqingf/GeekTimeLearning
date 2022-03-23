@@ -1,0 +1,3 @@
+1.确认新渠道是否有特殊签名文件，例如MG用android.keystore，SN79用dkmproxy.keystore
+    ,需要在comlib/conf/mainconf.json的android_keystoreconf和keystoreconf中添加
+2.

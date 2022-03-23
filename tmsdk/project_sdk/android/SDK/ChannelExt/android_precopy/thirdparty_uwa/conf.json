@@ -1,0 +1,10 @@
+{
+    "Open=true-DirectMode=Mono-DirectMonoManual=true":{
+        "DirectMode":"Mono",
+        "DirectMonoManual":true
+    },
+    "Open=true-DirectMode=None-DirectMonoManual=true":{
+        "DirectMode":"None",
+        "DirectMonoManual":true
+    }
+}

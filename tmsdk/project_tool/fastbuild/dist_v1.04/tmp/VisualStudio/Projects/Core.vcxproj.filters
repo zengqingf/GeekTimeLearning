@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\Array.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\Forward.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\Move.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\Singleton.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\Sort.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Containers\UniquePtr.h">
+      <Filter>Containers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Core.bff">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Core.natvis">
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\Assert.cpp">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\Assert.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\Env.cpp">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\Env.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\ErrorFormat.cpp">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\ErrorFormat.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\glibc_compat.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\MSVCStaticAnalysis.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\Types.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Env\WindowsHeader.h">
+      <Filter>Env</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\ConstMemoryStream.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\ConstMemoryStream.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\FileIO.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\FileIO.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\FileStream.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\FileStream.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\IOStream.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\IOStream.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\MemoryStream.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\MemoryStream.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\PathUtils.cpp">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\FileIO\PathUtils.h">
+      <Filter>FileIO</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\Constants.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\Conversions.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\CRC32.cpp">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\CRC32.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\Random.cpp">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\Random.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\Trig.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Math\xxHash.h">
+      <Filter>Math</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\Mem.cpp">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\Mem.h">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemDebug.cpp">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemDebug.h">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemPoolBlock.cpp">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemPoolBlock.h">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemTracker.cpp">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\MemTracker.h">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\SmallBlockAllocator.cpp">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Mem\SmallBlockAllocator.h">
+      <Filter>Mem</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\Network.cpp">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\Network.h">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\NetworkStartupHelper.cpp">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\NetworkStartupHelper.h">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\TCPConnectionPool.cpp">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Network\TCPConnectionPool.h">
+      <Filter>Network</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Atomic.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Mutex.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Mutex.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Process.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Process.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Semaphore.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Semaphore.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\SharedMemory.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\SharedMemory.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\SystemMutex.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\SystemMutex.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Thread.cpp">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Process\Thread.h">
+      <Filter>Process</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Profile\Profile.h">
+      <Filter>Profile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Profile\ProfileManager.cpp">
+      <Filter>Profile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Profile\ProfileManager.h">
+      <Filter>Profile</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_File.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_File.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Hidden.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Hidden.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Optional.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Optional.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Path.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Path.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Range.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\Meta_Range.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\MetaData.cpp">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\MetaData.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\MetaData\MetaDataInterface.h">
+      <Filter>Reflection\MetaData</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\Object.cpp">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\Object.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\PropertyType.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectedProperty.cpp">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectedProperty.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionInfo.cpp">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionInfo.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionIter.cpp">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionIter.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionMacros.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\ReflectionSettings.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\Struct.cpp">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Reflection\Struct.h">
+      <Filter>Reflection</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Strings\AStackString.h">
+      <Filter>Strings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Strings\AString.cpp">
+      <Filter>Strings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Strings\AString.h">
+      <Filter>Strings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Strings\LevenshteinDistance.cpp">
+      <Filter>Strings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Strings\LevenshteinDistance.h">
+      <Filter>Strings</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Time\Time.cpp">
+      <Filter>Time</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Time\Time.h">
+      <Filter>Time</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Time\Timer.cpp">
+      <Filter>Time</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Time\Timer.h">
+      <Filter>Time</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Tracing\Tracing.cpp">
+      <Filter>Tracing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\Code\Core\Tracing\Tracing.h">
+      <Filter>Tracing</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Containers">
+      <UniqueIdentifier>{6458e095-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Env">
+      <UniqueIdentifier>{01c6c262-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{c7db1368-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Math">
+      <UniqueIdentifier>{965656a5-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Mem">
+      <UniqueIdentifier>{1b2a5e9c-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Network">
+      <UniqueIdentifier>{1f5c2ad7-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Process">
+      <UniqueIdentifier>{85e979be-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Profile">
+      <UniqueIdentifier>{ca04c4b9-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Reflection\MetaData">
+      <UniqueIdentifier>{6bfa5c3a-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Reflection">
+      <UniqueIdentifier>{2328d787-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Strings">
+      <UniqueIdentifier>{0d4a637d-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Time">
+      <UniqueIdentifier>{c680e9fb-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tracing">
+      <UniqueIdentifier>{8ed724db-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

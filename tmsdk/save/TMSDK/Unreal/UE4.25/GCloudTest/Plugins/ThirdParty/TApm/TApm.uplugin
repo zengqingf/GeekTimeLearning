@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "TApm",
+	"Description": " Game Performance Management Toolkit",
+	"Category": "TApm",
+	"CreatedBy": "vincentwgao",
+	"CreatedByURL": "perfsight",
+	"DocsURL": "perfsight",
+	"MarketplaceURL": "perfsight",
+	"SupportURL": "perfsight",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "TApm",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"BlacklistPlatforms":
+            [
+                "Linux"
+            ]
+		}
+	]
+}
+

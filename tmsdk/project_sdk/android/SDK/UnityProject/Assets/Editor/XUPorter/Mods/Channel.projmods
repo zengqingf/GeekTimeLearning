@@ -1,0 +1,31 @@
+{
+    "group": "Channel",
+    "libs": [
+    	"libc++.tbd",
+    	"libsqlite3.tbd"
+    ],
+    "frameworks": [
+    ],
+    "headerpaths": [],
+    "files":   [
+    				"Channel/HZPlatform.framework",
+                	"Channel/KFNSdkResources.bundle",
+                	"Channel/Bridge.h",
+                    "Channel/Bridge.mm",
+                	"Channel/BridgeDelegateClass.h",
+                    "Channel/BridgeDelegateClass.mm"
+                ],
+    "folders": [],    
+    "excludes": ["^.*.meta$", "^.*.mdown$", "^.*.pdf$"],
+    "compiler_flags": [],
+    "plist": "Channel/mergePlist.xml",
+    "linker_flags": [
+    					"-ObjC",
+                        "-Wl,-rename_section,__TEXT,__cstring,__RODATA,__cstring",
+                        "-Wl,-rename_section,__TEXT,__gcc_except_tab,__RODATA,__gcc_except_tab",
+                        "-Wl,-rename_section,__TEXT,__const,__RODATA,__const",  
+                        "-Wl,-rename_section,__TEXT,__objc_methname,__RODATA,__objc_methname",
+                        "-Wl,-rename_section,__TEXT,__objc_classname,__RODATA,__objc_classname",
+                        "-Wl,-rename_section,__TEXT,__objc_methtype,__RODATA,__objc_methtype"
+    				]
+}

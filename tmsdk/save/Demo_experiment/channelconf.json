@@ -1,0 +1,10 @@
+{
+    "dnfdebug":{
+        "usesdk":"base",
+        "minsdkversion":"16",
+        "targetsdkversion":"23",
+        "applicationid":"com.tm.demo1",
+        "applicationname": "Demo1",
+        "keystorename":"hegu.keystore"
+    }
+}

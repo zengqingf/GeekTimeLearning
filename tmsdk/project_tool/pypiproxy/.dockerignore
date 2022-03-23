@@ -1,0 +1,12 @@
+*.pyc
+*.pyo
+**/__pycache__
+
+
+venv
+pkg
+packages
+docs
+MANIFEST.in
+README.rst
+setup.py

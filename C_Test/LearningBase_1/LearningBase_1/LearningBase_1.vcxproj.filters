@@ -15,11 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LearningBase_1.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="test_big_little_endian.h">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="test_sizeof_variable.h">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LearningBase_1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test_get_compilerV_sysV.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_pointer_type_variable.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

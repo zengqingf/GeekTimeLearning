@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_sswl_dialog_bg"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/com_sswl_fragment_top"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/com_sswl_edittext_bg"
+        android:drawableLeft="@drawable/com_sswl_login_edittext_account_icon"
+        android:drawablePadding="8dp"
+        android:hint="@string/com_sswl_hint_account"
+        android:singleLine="true"
+        android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+        android:textColor="@color/com_sswl_color_edittext"
+        android:paddingLeft="5dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textColorHint="@color/com_sswl_color_edittext_bg_grey"
+        android:textSize="15sp"/>
+
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/com_sswl_edittext_bg">
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:drawableLeft="@drawable/com_sswl_login_edittext_pwd_icon"
+            android:drawablePadding="8dp"
+            android:hint="@string/com_sswl_hint_pwd"
+            android:singleLine="true"
+            android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+            android:textColor="@color/com_sswl_color_edittext"
+            android:background="@null"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/com_sswl_color_edittext_bg_grey"
+            android:textSize="15sp"/>
+
+        <CheckBox
+            android:id="@+id/cb_pwd_switch"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:button="@drawable/com_sswl_login_edittext_pwd_switch_icon"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/com_sswl_btn_bg"
+        android:text="@string/com_sswl_btn_register_login"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_term"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:button="@drawable/com_sswl_login_term_icon"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/com_sswl_term_read"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/com_sswl_term_detail"
+            android:textColor="@color/com_sswl_color_btn_pressed" />
+    </LinearLayout>
+
+
+</LinearLayout>

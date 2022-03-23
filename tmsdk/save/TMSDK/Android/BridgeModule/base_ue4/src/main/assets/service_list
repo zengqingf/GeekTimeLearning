@@ -1,0 +1,10 @@
+{
+  "service_list":
+  [
+    {
+      "name": "bugly",
+      "service": "BuglyService",
+      "enabled": true
+    }
+  ]
+}

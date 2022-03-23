@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile project(':sdkinterface')
+    compile project(':sdk_mg')
+    compile files('libs/lebianbase2021.jar')
+}
+
+/*不带分包乐变*/
+task SDK_NEW_LB_2021_NO_FENBAO_DeleteOldJar(type: Delete) {
+    delete 'release/LeBianUtil_tm_GameApplication_2021_nofenbao.jar'
+}
+
+//task to export contents as jar
+task SDK_NEW_LB_2021_NO_FENBAO_ExportJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('release/')
+    include('classes.jar')
+    ///Rename the jar
+    rename('classes.jar', 'LeBianUtil_tm_GameApplication_2021_nofenbao.jar')
+}
+
+SDK_NEW_LB_2021_NO_FENBAO_ExportJar.dependsOn(SDK_NEW_LB_2021_NO_FENBAO_DeleteOldJar, build)
+
+
+/*分包乐变*/
+task SDK_NEW_LB_2021_FENBAO_DeleteOldJar(type: Delete) {
+    delete 'release/LeBianUtil_tm_GameApplication_2021_fenbao.jar'
+}
+
+//task to export contents as jar
+task SDK_NEW_LB_2021_FENBAO_ExportJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('release/')
+    include('classes.jar')
+    ///Rename the jar
+    rename('classes.jar', 'LeBianUtil_tm_GameApplication_2021_fenbao.jar')
+}
+
+SDK_NEW_LB_2021_FENBAO_ExportJar.dependsOn(SDK_NEW_LB_2021_FENBAO_DeleteOldJar, build)

@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.25",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "TMSDKSample_425",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Bugly",
+			"Enabled": true
+		},
+		{
+			"Name": "UWAGOT",
+			"Enabled": false
+		},
+		{
+			"Name": "TMSDKBridge",
+			"Enabled": true
+		}
+	]
+}

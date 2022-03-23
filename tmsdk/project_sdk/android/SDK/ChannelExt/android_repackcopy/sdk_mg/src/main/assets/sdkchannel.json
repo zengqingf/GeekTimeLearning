@@ -1,0 +1,15 @@
+{
+	"channelID" : "mg",
+    "channelName" : "MG线上",
+    "channelParam" : "mg",
+    "channelType" : "MG",
+    "platformType" : "Android",
+    "payCallbackUrlFormat" : "http://{0}/charge",
+    "needPayToken" : false,
+    "needPayResultNotify" : false,
+    "serverListName" : "serverList.xml",
+	"needUriEncodeOpenUid" : false,
+	"needShowChannelRankBtn" : false,
+	"needLocalNotification" : false,
+	"needBindMobilePhone" : false
+}

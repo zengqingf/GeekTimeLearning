@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>昨日新增统计</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <h1>昨日新增统计</h1>
+    {% for channel,issuesids_updatetime in lastDaySummry.items() %}
+    <h2>{{channel}}</h2>
+    <h3>更新时间 {{issuesids_updatetime['updatetime']}}</h3>
+        {% for issueid in issuesids_updatetime['issueids'] %}
+        <a href="http://192.168.2.92:5000/?channel={{channel}}&issueId={{issueid}}">{{channel}}-{{issueid}}</a>
+        {% endfor %}
+    {% endfor %}
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+</html>

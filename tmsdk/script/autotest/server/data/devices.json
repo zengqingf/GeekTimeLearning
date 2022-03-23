@@ -1,0 +1,37 @@
+{
+    "mumu模拟器_win":{
+        "chinese":"mumu模拟器_win",
+        "serialno":"127.0.0.1:7555",
+        "usestf":false
+    },
+    "杨都齐测试机":{
+        "chinese":"杨都齐测试机",
+        "serialno":"590250e6",
+        "usestf":false
+    },
+    "华为荣耀V9":{
+        "chinese":"华为荣耀V9",
+        "serialno":"6EB0217808004166",
+        "usestf":false
+    },
+    "小米9":{
+        "chinese":"小米9",
+        "serialno":"bc43490",
+        "usestf":false
+    },
+    "一加7":{
+        "chinese":"一加7",
+        "serialno":"a15d5e7e",
+        "usestf":false
+    },
+    "OPPOA92S":{
+        "chinese":"OPPOA92S",
+        "serialno":"HE8PHATWAEF6HIX8",
+        "usestf":false
+    },
+    "OPPOPBEM00":{
+        "chinese":"OPPOPBEM00",
+        "serialno":"b7623753",
+        "usestf":true
+    }
+}

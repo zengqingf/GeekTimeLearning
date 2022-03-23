@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:background="@drawable/com_xy_login_white_bg"
+    android:orientation="vertical" >
+     
+      <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        >
+        
+	    <ImageView
+	        android:id="@+id/login_holder_mg_icon"
+	        android:layout_width="145dp"
+	        android:layout_height="45dp"       
+	        android:src="@drawable/login_logo" />
+	   
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="修改密码成功！请重新进入游戏！"
+	        android:textColor="#939393"
+	        android:layout_marginTop="30dp"
+	        android:textSize="14sp"
+	        />
+	    
+    	<TextView 
+            android:id="@+id/reg_next_tv"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="确定"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/xy_quick_login_save_bg"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"            
+	        />
+    	
+	</LinearLayout>
+
+</RelativeLayout>

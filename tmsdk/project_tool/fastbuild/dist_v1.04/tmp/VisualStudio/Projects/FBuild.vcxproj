@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="x64-Debug|x64">
+      <Configuration>x64-Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Analyze|x64">
+      <Configuration>x64-Analyze</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Profile|x64">
+      <Configuration>x64-Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64-Release|x64">
+      <Configuration>x64-Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Debug|x64">
+      <Configuration>x64Clang-Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Profile|x64">
+      <Configuration>x64Clang-Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64Clang-Release|x64">
+      <Configuration>x64Clang-Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuild\FBuild.bff" />
+    <CustomBuild Include="..\..\..\Code\Tools\FBuild\FBuild\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2c4d9461-6c94-4f93-bc2a-7f5284b7d434}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <LocalDebuggerCommand>$(SolutionDir)..\$(Configuration)\Tools/FBuild/FBuild\FBuild.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -forceremote -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -forceremote -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -forceremote -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -forceremote -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;ANALYZE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -forceremote -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;DEBUG;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;PROFILING_ENABLED;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <NMakeBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache $(ProjectName)-$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd $(SolutionDir)\..\..\Code\ &amp; fbuild -vs -dist -monitor -fastcancel -cache -clean $(ProjectName)-$(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_WIN32;__WINDOWS__;WIN64;__X64__;RELEASE;</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>..\..\..\Code\;..\..\..\..\..\..\..\..\..\..\software\VS2019_IDE\VC\Tools\MSVC\14.28.29333\include\;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\ucrt;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\um;..\..\..\..\..\..\..\..\..\..\Windows Kits\10\Include\10.0.18362.0\shared;</NMakeIncludeSearchPath>
+    <AdditionalOptions>/std:c++17 </AdditionalOptions>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\Code\Tools/FBuild/FBuild</LocalDebuggerWorkingDirectory>
+    <IntDir>$(SolutionDir)\Temp</IntDir>
+    <OutDir>$(SolutionDir)\Temp</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Debug|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Analyze|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Profile|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64-Release|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Debug|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Profile|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64Clang-Release|x64'">
+    <BuildLog>
+      <Path>$(SolutionDir)\Temp\$(ProjectName)-$(Configuration).log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and '$(AndroidAPILevel)' != '' and Exists('$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\Android.Common.targets')" Project="$(VCTargetsPath)\Application Type\$(ApplicationType)\$(ApplicationTypeRevision)\Android.Common.targets" />
+</Project>

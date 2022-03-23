@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+    <!-- 常用 -->
+    <setting key="selected_area" value="0"/> <!-- 0（大陆）;1（海外）;2（台湾，仅限游戏使用）;-->
+    <setting key="use_regeng" value="true"/> <!-- 使用热更功能设置为true；不使用热更功能设置为false -->
+    <setting key="use_streaming" value="false"/> <!-- 使用分包功能设置为true；不使用分包功能设置为false -->
+    <setting key="streaming_twiceload" value="false"/> <!-- 二次加载开关，启动游戏立即下载所有资源 -->
+    <!-- 热更 -->
+    <setting key="download_after_quit" value="true"/> <!-- 热更新提示框，用户选择取消按钮，是否在后台下载 -->
+    <setting key="auto_check_newver_onstart" value="true"/> <!-- 启动时自动检查新版本，如果设成false，需要主动调用queryUpdate接口-->
+    <setting key="newv_location" value="4"/> <!-- 新版本存放路径，4：自动 5：/sdcard/ 6：/data/-->
+    <!-- 分包 -->
+    <setting key="streaming_handle_assetmanager" value="false"/> <!-- 是否使用assetmanager方式加载资源，由乐变修改 -->
+    <setting key="streaming_show_loading_progress" value="true"/> <!-- 缺资源显示加载动画 -->
+    <setting key="streaming_show_loading_after_download_missing_time" value="15"/> <!-- 缺资源后下载时间超过多久会显示加载动画，默认15s-->
+    <setting key="streaming_show_first_dialog_without_wifi" value="true"/> <!-- 流量网络启动游戏提示下载 -->
+    <setting key="streaming_show_first_dialog_always" value="false"/> <!-- 在任何网络下启动游戏都提示下载 -->
+    <setting key="streaming_check_old_user_auto" value="true"/> <!-- 自动检查老用户-->
+    <setting key="streaming_old_user_missing_condition" value="100"/> <!-- 老用户判断条件，默认缺失20条资源提示一次性下载所有资源 -->
+    <setting key="streaming_show_old_user_count" value="3"/> <!-- 如果老用户提示，玩家选择不下载，再次达到条件时，是否还要提示，默认提示3次 -->
+    <setting key="streaming_twload_api_control" value="false"/> <!-- 通过调用接口控制二次加载时机，打开此开关后如果是二次加载完整资源则choose_by_user_bwbx也需要打开，如果是二次加载+边玩边下则不需要打开choose_by_user_bwbx，并且需要主动调用接口LebianSdk.twiceLoad -->
+    <setting key="streaming_twiceload_force" value="false"/> <!-- 二次加载提示只保留一个按钮 -->
+    <setting key="streaming_download_full_after_second_dialog" value="false"/> <!-- 试玩资源耗尽后，选择下载，直接切换到下载界面，将所有资源一次性下载下来 -->
+    <setting key="streaming_network_weak" value="true"/> <!-- 网络差的情况提示下载所有资源 -->
+    <setting key="streaming_show_dialog_with_wifi_when_twload" value="false"/> <!-- wifi网络下显示二次加载下载提示，默认启动游戏直接切到下载界面 -->
+    <setting key="streaming_second_dialog_interval" value="0"/> <!-- 流量网络启动游戏玩家如果没有选择下载，此开关用来控制多久后提示下载，单位为毫秒，0表示资源耗尽再提示下载 -->
+    <setting key="streaming_show_dialog_button_by_old_user" value="false"/> <!-- 老用户提示只显示下载一个按钮，默认“是”“否”两个按钮 -->
+    <setting key="streaming_twiceload_later" value="false"/> <!-- 启动游戏在后台二次加载 -->
+    <setting key="streaming_show_dialog_without_wifi_when_twiceload_later" value="true"/> <!-- streaming_twiceload_later打开的情况，流量网络启动时提示下载 -->
+    <setting key="streaming_show_dailog_respatch_in_wifi" value="false"/> <!-- wifi网络提示资源差分包下载 -->
+    <setting key="streaming_show_progress_in_downloading_animation" value="false"/> <!-- 缺资源加载动画显示下载进度 -->
+    <setting key="streaming_load_local_res" value="false"/> <!-- 游戏如果会加载解压到本地的资源，需要将此开关打开 -->
+    <setting key="streaming_missing_size_limit" value="40"/> <!-- 流量网络启动玩家选择了不下载，资源耗尽后，缺失多少资源再提示下载，默认5M -->
+    <!-- 通用 -->
+    <setting key="use_lebian" value="true"/> <!-- 乐变sdk总开关，false禁用乐变 -->
+    <setting key="enable_crash_report" value="false"/> <!-- 使用乐变闪退日志抓取功能 -->
+    <setting key="use_animal_when_switch_view" value="true"/> <!-- 乐变下载界面使用多张背景图，切换时使用淡入淡出动画 -->
+    <setting key="scale_mode_in_nextchapter" value="0"/> <!-- 下载界面的图片采用的缩放模式(默认参数为零) 0：等比平铺屏幕，多余部分会被剪切 1：等比缩放，不足的部分会用黑色填充 2：平铺屏幕，非等比缩放，图片会发生变形-->
+    <setting key="enable_exit_button" value="true"/> <!-- 下载提示框显示取消按钮，默认只显示下载按钮-->
+    <setting key="use_http_or_https" value="0"/> <!-- 使用http请求还是https请求，0:http 1:自签名https 2:ca -->
+    <setting key="engine" value="-1"/> <!--   1(UNITY);2(COCOS);3(UE4);4(WANMEI);5(UNITY_BIG_ASSET);6(UE3);(-1)(未配置)-->
+</settings>

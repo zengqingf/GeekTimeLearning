@@ -1,0 +1,44 @@
+version: '3.0'
+
+services:
+  nginx:
+    image: nginx:1.21.1-alpine
+    deploy:
+      mode: global
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.labels.pypiserver-nginx == true
+
+    ports:
+      - mode: host
+        protocol: tcp
+        published: 5001
+        target: 80
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - pypiserver
+  pypiserver:
+    image: pypiserver/pypiserver:latest
+    deploy:
+        mode: global
+        restart_policy:
+          condition: any
+        placement:
+          constraints:
+            - node.labels.pypiserver-server == true
+    volumes:
+      - pypipackages:/data/packages
+    command: >
+      --fallback-url https://pypi.doubanio.com/simple
+    networks:
+      - pypiserver
+
+networks:
+  pypiserver:
+    driver: bridge
+
+volumes:
+  pypipackages:

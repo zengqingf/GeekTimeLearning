@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Clang.bff">
+      <Filter>Clang</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Linux\Clang10.bff">
+      <Filter>Clang\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Linux\Clang3.bff">
+      <Filter>Clang\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Linux\Clang6.bff">
+      <Filter>Clang\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Linux\Clang_CI.bff">
+      <Filter>Clang\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\OSX\Clang12.bff">
+      <Filter>Clang\OSX</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\OSX\Clang8.bff">
+      <Filter>Clang\OSX</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\OSX\Clang_CI.bff">
+      <Filter>Clang\OSX</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Windows\Clang10.bff">
+      <Filter>Clang\Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Windows\Clang11.bff">
+      <Filter>Clang\Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Windows\Clang7.bff">
+      <Filter>Clang\Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Windows\Clang8.bff">
+      <Filter>Clang\Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Clang\Windows\Clang9.bff">
+      <Filter>Clang\Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\GCC\GCC.bff">
+      <Filter>GCC</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\GCC\Linux\GCC4.bff">
+      <Filter>GCC\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\GCC\Linux\GCC7.bff">
+      <Filter>GCC\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\GCC\Linux\GCC9.bff">
+      <Filter>GCC\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\GCC\Linux\GCC_CI.bff">
+      <Filter>GCC\Linux</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\VisualStudio\VisualStudio.bff">
+      <Filter>VisualStudio</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\VisualStudio\VS2015.bff">
+      <Filter>VisualStudio</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\VisualStudio\VS2017.bff">
+      <Filter>VisualStudio</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\VisualStudio\VS2019.bff">
+      <Filter>VisualStudio</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Windows\Windows.bff">
+      <Filter>Windows</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\External\SDK\Windows\Windows10SDK.bff">
+      <Filter>Windows</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Clang">
+      <UniqueIdentifier>{019b1a4b-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Clang\Linux">
+      <UniqueIdentifier>{a0b2d619-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Clang\OSX">
+      <UniqueIdentifier>{292ba778-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Clang\Windows">
+      <UniqueIdentifier>{51c28f91-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GCC">
+      <UniqueIdentifier>{f33a3ba7-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GCC\Linux">
+      <UniqueIdentifier>{98451b8e-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="VisualStudio">
+      <UniqueIdentifier>{5304eae5-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{60442efc-6c94-4f93-bc2a-7f5284b7d434}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

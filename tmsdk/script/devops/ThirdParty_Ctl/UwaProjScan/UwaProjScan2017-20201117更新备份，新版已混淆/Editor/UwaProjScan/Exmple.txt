@@ -1,0 +1,44 @@
+﻿/*
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UwaProjScan.ScanRule.CustomRules;
+
+public class MyUwaProjScan : ICustomRule
+{
+    /// <summary>
+    /// 自定义测试名
+    /// </summary>
+    public string Description => "实例测试";
+    /// <summary>
+    /// 自定义测试id，不能重复
+    /// </summary>
+    public ushort Id => 1;
+    /// <summary>
+    /// 重要性
+    /// </summary>
+    public RulePriority Priority =>  RulePriority.Medium;
+
+    /// <summary>
+    /// 运行函数
+    /// </summary>
+    /// <param name="hasTable">是否有表格</param>
+    /// <param name="table">表格数据，最多会上传2000条</param>
+    /// <returns>是否成功</returns>
+    public bool Run(out bool hasTable, out RuleDataTable table)
+    {
+        hasTable = true;
+        table = new RuleDataTable("列名1", "列名2", "列名3");
+        table.AddRow("string1", 1, false);
+        table.AddRow("string2", 2, true);
+        table.AddRow("string3", 3, false);
+        return true;
+        //无表格情况
+        //hasTable = false;
+        //table = null;
+        //return true;
+        
+    }
+
+}
+*/

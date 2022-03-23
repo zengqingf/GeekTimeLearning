@@ -1,0 +1,65 @@
+svn结构：
+游戏工程一个svn
+android工程一个svn
+每个sdk分debug和release分支
+
+ios手动管理的svn结构
+debug分支
+├── sdk名
+    └── 主干
+    └── [tags]
+        └── [版本]
+            └── 拷贝分支
+            └── debug模式生成产物
+release分支
+├── sdk名
+    └── [tags]
+        └── [版本]
+            └── 拷贝分支
+            └── release模式生成产物
+
+包版本管理工具：
+android：gradle
+i\\\
+android的sdk接入流程：
+1.提交代码到主干
+2.jenkins自动构建sdk debug包并提交到maven debug库
+3.修改游戏工程plugins中的gradle debug包引用
+4.打游戏sdk debug包
+5.测试通过则根据debug版本号在debug分支主干生成release产物提交到maven release库
+
+ios的sdk接入流程：
+1.提交代码到主干
+2.jenkins自动构建sdk debug包并拷贝分支到tags
+3.根据sdk名拷贝生成产物到游戏工程目录下plugins中
+4.打游戏sdk debug包
+5.测试通过则根据debug版本号在debug分支主干生成release产物并一起和分支拷贝到release的tags中
+6.打游戏sdk release包则根据提供的sdk版本生成release（默认使用最新）
+
+
+
+
+游戏分支分debug分支和release分支，所以在gradle里声明就行了
+
+
+
+
+
+
+****ue4不是通过xcode构建的，是通过自身脚本进行.app生成所以用不了cocopods****
+ios：cocopods
+
+cocopods更新版本：
+1.修改对应分支trunk的.spec文件中的  spec.version      = "x.x.x"和
+  spec.source       = { :svn => "http://192.168.2.61:8080/svn/DNF_SDK/DevOps_Scripts/cocopods" ,:tag =>"x.x.x" }
+  然后提交
+2.根据svn版本号拷贝trunk创建tags并按版本号命名，
+3.发布则根据版本号拷贝debug分支中的tags到release的tags，然后修改release分支的.spec文件中的  spec.version      = "x.x.x"和
+  spec.source       = { :svn => "http://192.168.2.61:8080/svn/DNF_SDK/DevOps_Scripts/cocopods" ,:tag =>"x.x.x" }
+  然后提交
+引用：
+    生成podfile：
+pod '模块名字',:svn => "http://192.168.2.61:8080/svn/DNF_SDK/DevOps_Scripts/cocopods" ,:tag =>"x.x.x" 
+
+
+

@@ -1,0 +1,95 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            //自定义 debug  避免debuggable导致默认BuildConfig.DEBUG 值错误
+            buildConfigField("boolean", "IS_DEBUG", "false");
+        }
+        debug {
+
+            //自定义 debug  避免debuggable导致默认BuildConfig.DEBUG 值错误
+            buildConfigField("boolean", "IS_DEBUG", "true");
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //other libs
+    implementation 'com.alibaba:fastjson:1.1.72.android'
+
+    // arouter-compiler 的注解依赖需要所有使用 ARouter 的 module 都添加依赖
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+
+    //业务组件、业务基础组件 共同依赖的库（网络库、图片库等）都写在这里
+
+    compileOnly project(':commonlib')
+    compileOnly project(':opensrc')
+
+    // unity classes jar
+    compileOnly('com.unity3d.player:unity_classes:2018.4.23f1_il2cpp_dev')   //compile only 只在编译期间使用 不会打进jar 和 aar
+}
+
+allprojects {
+    repositories {
+        //google()
+        //jcenter()
+        //mavenCentral()  jcenter() > mavenCentral()
+        maven {
+            url 'http://192.168.2.200:8081/repository/maven-release-central/'
+        }
+    }
+}
+
+// task: delete the old aar
+task DeleteOldAar_SDK(type: Delete) {
+    delete 'release/'
+}
+
+// task: export contents as aar
+task ExportAar_SDK(type: Copy) {
+    from('build/outputs/aar/')
+    //into('release/')
+    into('../bridgemodule_release/')
+    include('base-debug.aar')
+    //rename the jar
+    rename('base-debug.aar', 'TMSDK_Base.aar')
+}
+
+// task by task
+ExportAar_SDK.dependsOn(DeleteOldAar_SDK, assemble)

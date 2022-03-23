@@ -1,0 +1,190 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tm.dnl15">
+
+    <application android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+>
+        <activity android:name="com.tm.dnl15.MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTask"
+            android:fitsSystemWindows="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <meta-data android:name="qd_code" android:value="82001"></meta-data>
+        <meta-data android:name="XOPENSDK_APPKEY" android:value="316"></meta-data>
+
+        <activity
+            android:name="com.mgbase.ui.LoginActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.LogoutActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.UserCenterActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.mgbase.dialog.SelectAutonymDialog"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/DialogActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.mgbase.ui.HelpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.ProtocolActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity" >
+        </activity>
+        <activity
+            android:name="com.mgpay.ui.PayCenterActivity"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTask"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/DialogActivity" >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.AccountDetailActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.ModifyPwdActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity" >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.BindPhoneActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.RealNameActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.mgbase.ui.FloatWebActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.mokredit.payment.MktPayment"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="com.switfpass.pay.activity.QQWapPayWebView"
+            android:screenOrientation="behind"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- 汇付宝 SDK 需添加 -->
+        <activity
+            android:name="com.heepay.plugin.activity.HyNotityActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:theme="@style/AppBaseTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <!-- 支付宝原生 SDK 需添加 -->
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"/>
+
+        <activity
+            android:name="com.ipaynow.plugin.presenter.PayMethodActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:theme="@android:style/Theme.Dialog"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+        <!-- 微信WAP版支付 android:windowSoftInputMode="stateHidden"-->
+        <activity
+            android:name="com.ipaynow.plugin.inner_plugin.wechatwp.activity.WeChatNotifyActivity"
+            android:configChanges="keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name="com.csesteel.jishoubao.ZGPayAcitvity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.mgpay.ui.ResultHandlerActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www"
+                    android:pathPrefix="/pay"
+                    android:scheme="mg" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="com.mgbase.service.FloatWindowService"></service>
+
+
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+</manifest>
