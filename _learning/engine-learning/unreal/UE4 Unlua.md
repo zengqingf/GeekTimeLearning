@@ -51,8 +51,23 @@
   ItemData(Item)数据对象继承 蓝图的UObject，添加界面用变量和事件
   事件可以分发ItemData的变化给外部监听对象，
   	也可以ItemData关联的Item(Entry)的改变（Selected，InnerBtnClick等）分发给外部监听对象
+  	
+  	
+  	
+  @注意：
+  Item（列表项）中不能放self逻辑，需要放到Entry（列表项数据）中，即
+  刷新列表时，需要通过更新Entry(即ItemData)数据，然后调用
+  TileView/ListView : RegenerateAllEntries()  触发Item 的 OnListItemObjectSet
+  
+  self逻辑指：每个Entry的改变，触发Item的变化，这些表现相关的可以写在Item类中，但是数据改变相关的需要写在Entry中（或承载Entry的父类中）
+  
+  RegenerateAllEntries vs. RequestRefresh
+  但是调用 TileView/ListView : RequestRefresh()  只是触发下一帧的刷新，不会触发Item 的 OnListItemObjectSet，
+  							同时，只是释放当前未绑定到Item上的Entry，会为新的（或新出现的）Item生成对应的Entry，不会刷新当前存在的Item
+  							
+  一般需要刷新列表中N个元素，则调用RegenerateAllEntries，虽然性能上不理想
   ```
-
+  
   ``` lua
   --unlua中调用蓝图接口
   --蓝图接口 Tarray GetList()
