@@ -36,17 +36,21 @@
 
   [learnOpenGL-CN](https://learnopengl-cn.readthedocs.io/zh/latest/)
 
-  [cg-developer](https://developer.download.nvidia.cn/CgTutorial/cg_tutorial_appendix_e.html)
+  [cg-developer](https://develodownload.nvidia.cn/CgTutorial/cg_tutorial_appendix_e.html)
 
 * 教程
 
   [RayWenderLich-GameTechArticles](https://www.raywenderlich.com/gametech)
 
-  [笨木头游戏开发 - UnityECS入门](http://www.benmutou.com/archives/category/ECS%E5%85%A5%E9%97%A8)
-
   [小甲鱼网站](https://ilovefishc.com/)
 
   [c++ 3d game engine programming](https://www.3dgep.com/)
+
+  [拉勾教育](https://kaiwu.lagou.com/learn)
+
+  [腾讯课堂](https://ke.qq.com/)
+
+  [UWA学堂](https://edu.uwa4d.com/)
 
 * tools
 
@@ -66,6 +70,10 @@
 
 
 
+
+
+
+
 ---
 
 
@@ -81,6 +89,8 @@
   [linux-朱双印](https://www.zsythink.net/)
 
   [linux-cookshell](https://coolshell.cn/articles/8883.html)
+
+  [leetcodebook-halfrost](https://books.halfrost.com/leetcode//)
 
 * 教程
 
@@ -101,3 +111,7 @@
 * 框架
 
   [PureMVC](http://puremvc.org/)
+  
+  [ProtocolBuf](https://developers.google.com/protocol-buffers/docs/cpptutorial)
+  
+  [flatbuffers](https://halfrost.com/flatbuffers_schema/)

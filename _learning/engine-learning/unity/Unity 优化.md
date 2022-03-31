@@ -794,3 +794,109 @@
   ```
 
   
+
+---
+
+
+
+### Unity减少GC
+
+基础知识：
+
+Mono堆内存：C#托管的堆内存，只增不减，
+
+GC：回收已经没有索引的资源，这个操作会有卡顿，所有不能频繁操作
+  自动GC：mono上创建了太多对象的时候
+  主动GC：我们会在战斗结束，切房间，切系统的时候进行GC。
+
+参考： https://jingxuanwang.github.io/2014/05/02/unity-memory-management
+
+进阶篇： 
+https://blog.uwa4d.com/archives/optimzation_memory_1.html
+https://blog.uwa4d.com/archives/optimzation_memory_2.html
+
+注意点：
+
+**字符串的连接不直接使用+号，”Hello” + “world”实际上会产生3个字符串。使用StringBuilder或者String.format**
+
+**类的实例化是在堆上，结构体的实例化是在栈上，而且是值传递，不会产生GC。大量对象的时候能使用结构体就使用结构体**
+
+```
+堆栈的空间有限，对于大量的逻辑的对象，创建类要比创建结构好一些。``结构表示轻量对象，并且结构的成本较低，适合处理大量短暂的对象。``在表现抽象和多级别的对象层次时，类是最好的选择。``大多数情况下该类型只是一些数据时，结构是最佳的选择。
+```
+
+List和Dictionary初始化的时候最好把容量设置好，List的容量会根据当前在List里数量翻倍递增，递增的时候会使用copy操作，会产生GC。
+
+```
+List和Dictionary的构造会有GC，所以能少用就少用，
+```
+
+实例化GameObject的时候直接传递父结点，而不是先实例化再挂到父节点上，这样的速度更快，而且使用更少的内存
+
+调用[GameObject.name](http://gameobject.name/)会产生GC，因为底层需要跟Native的代码交互。
+
+使用[GameObject.CompareTag](http://gameobject.comparetag/)而不是直接使用==
+
+不在Update里执行GameObject.Find GetComponent等操作
+
+box和unbox 装箱和拆箱，泛型不会产生装箱拆箱，但是泛型会为每个类型都生成对应的IL代码
+
+```
+object objValue = ``4``;``int` `value = (``int``)objValue;
+```
+
+![img](Unity 优化.assets/image2019-6-12_18-45-8.png)
+
+增加或者删除一个代理函数每次会产生104B的GC，最常用的比如调用List.RemovAll(()=>{})，类似这种的。
+
+```
+解决方法：避免在Update里调用，或者增加flag，当flag为``true``的时候才调用removeall
+```
+
+Pool
+
+```
+0``资源Pool（GameObject，texture，audio等）``1``逻辑对象Pool（BeActor,BeEntity等）``2``子弹pool（BeProjectile pool）
+```
+
+内置数组，ArrayList ，List的区别
+
+```
+内置数组：大小确定，访问快，但是不能扩容``ArrayList：Object，类型不安全，支持大小动态伸缩，有可能发生装箱拆箱``List<``int``>:泛型接口，类型安全，没有装箱拆箱
+```
+
+反射
+
+```
+作用：反射创建实例，反射调用成员函数，修改成员变量的值``缺点：慢，产生大量GC，获取/设置变量值的时候会有装箱，拆箱``参考：https:``//blog.csdn.net/jiankunking/article/details/53889287
+```
+
+TypeTable-反射
+
+```
+Type.GetType(typeName);得到type后再用Activator.CreateInstance()实例化``缓存得到的Type，加快访问速度
+```
+
+使用Attribute
+
+![img](Unity 优化.assets/image2019-6-12_18-47-38.png)
+
+`结论：运行时反射绑定费时又慢，用ComCommonBind`
+
+枚举
+
+```
+不要把枚举当 Tkey 使用，不要把枚举转成 string 使用。``枚举名字ToString()的时候会有装箱，产生GC。如果一定要使用那就ToString()后缓存起来
+```
+
+![img](Unity 优化.assets/image2019-6-12_18-48-57.png)
+
+闭包
+
+```
+使用闭包的时候，涉及到大约 120B 的 GC，随着闭包引用内容的增加而增大``看自己的需求，如果函数调用频繁的话，要考虑是否不使用闭包来实现
+```
+
+协程优化
+
+![img](Unity 优化.assets/image2019-6-12_18-49-8.png)
