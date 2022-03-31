@@ -508,4 +508,61 @@
 
 * MonoBehaviour生命周期
 
+  ![image-20220331234142243](Unity Base.assets/image-20220331234142243-8741303.png)
+  
   ![](Unity Base.assets/monobehaviour_flowchart.svg)
+  
+  ``` tex
+  Awake:当一个脚本实例被载入时Awake被调用，要先于Start。建议少用，此刻物体可能还没有实例化出来，会影响程序执行顺序。需要注意的是，假设实例化一个物件：
+  
+  GameObject go = new GameObject();
+  go.GetComponent().Test();
+  这个Test()的调用顺序会在Awake()之后，在Start()之前
+  
+  Start:Start仅在Update函数第一次被调用前调用。物体实例化完成后调用（估计，没确认）。
+  
+  Update:当MonoBehaviour启用时,其Update在每一帧被调用，受设备性能影响
+  
+  FixedUpdate:这个函数会在每个固定的物理时间片被调用一次.这是放置游戏基本物理行为代码的地方。
+  UPDATE之后调用。
+  
+  Reset：Reset是在用户点击检视面板的Reset按钮或者首次添加该组件时被调用.此函数只在编辑模式下被调用.Reset最常用于在检视面板中给定一个最常用的默认值.
+  
+  OnDestory:物体被删除时调用。
+  
+  OnEnable：物体启用时被调用。
+  
+  OnDisable:物体被禁用时调用。
+  
+  OnGui:这个函数会每帧调用好几次（每个事件一次），GUI显示函数只能在OnGui中调用。备注：这个各大翻译都直接翻译成每帧调用一次了。下面是官方的原文。
+  OnGui:This means that your OnGUI implementation might be called several times per frame (one call per event). For more information on GUI events see the Event reference. If the MonoBehaviour's enabled property is set to false, OnGUI() will not be called.
+  ```
+  
+  
+
+---
+
+
+
+### Unity Physics
+
+* 物体碰撞条件
+
+  ![image-20220331232814358](Unity Base.assets/image-20220331232814358-8740495.png)
+
+  ``` tex
+  （区分 碰撞和触发）其中至少一个物体（必须运动的）必须带有碰撞器（collider）+刚体(Rigidbody)，
+        另一个物体（可以静止也可以运动）也必须至少带有collider，例如（CharacterController）。
+  （运动学刚体碰撞器 不受力的作用，即使是运动的刚体碰撞器，也只是刚体碰撞器被受力）
+  移动的运动学刚体碰撞器 VS. 静止的运动学刚体碰撞器
+  	没有任何反应,就像两个静态碰撞器一样。
+  移动的运动学刚体碰撞器 VS. 静止的静态碰撞器
+  	没有任何碰撞效果。运动学刚体碰撞器是不受到任何外力作用的。
+  ```
+
+  ``` tex
+  对象包含Box Collider 2D组件，且作为trigger使用时，检测是否有对象进入的函数是？
+  void OnTriggerEnter2D(Collider2D other){}
+  ```
+
+  
