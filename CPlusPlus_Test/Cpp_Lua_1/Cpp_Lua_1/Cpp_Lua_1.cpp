@@ -11,8 +11,8 @@ int main()
     std::cout << "Hello World!\n";
 
 	TestLua_1 tl_1;
-	//tl_1.Test1();
-	//tl_1.Test2();
+	tl_1.Test1();
+	tl_1.Test2();
 	tl_1.Test3();
 
 	//TestLua_2();
