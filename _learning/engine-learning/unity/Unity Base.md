@@ -508,6 +508,8 @@
 
 * MonoBehaviour生命周期
 
+  ![image-20220401223223879](Unity Base.assets/image-20220401223223879-8823545.png)
+  
   ![image-20220331234142243](Unity Base.assets/image-20220331234142243-8741303.png)
   
   ![](Unity Base.assets/monobehaviour_flowchart.svg)
@@ -538,7 +540,99 @@
   OnGui:This means that your OnGUI implementation might be called several times per frame (one call per event). For more information on GUI events see the Event reference. If the MonoBehaviour's enabled property is set to false, OnGUI() will not be called.
   ```
   
+
+* 脚本挂载执行顺序
+
+  ``` tex
+  脚本赋值给游戏对象的顺序
+  先赋值给游戏对象的脚本后执行，后赋值的脚本先执行（数据结构的“栈”特性，先进后出）
   
+  如对象 A\B\C  ,分别赋予脚本 a\b\c   Hierarchy面板中从上到下 A\B\C ，则脚本执行先
+  C的Awake和OnEnable  B的。。A的。。
+  再 C的Start  B的。。 A的。。
+  之后遵循一般生命周期规律
+  ```
+
+* 脚本库
+
+  ``` tex
+  4大核心类库
+  GameObject、Transform、Time、MonoBehaviour
+  
+  GameObject：
+  AddComponent()                GetComponent()
+  AddComponent<T>            GetComponent<T>
+  CreatePrimitive()  创建原始类型的游戏对象（Cube\Sphere...）
+  
+  Transform:
+  localScale  localPosition  localEulerAngles
+  DetachChildren()  所有子物体解除父子关系
+  CompareTag() 游戏物体有被标记标签吗？标记的标签名（string）
+  BroadcastMessage( ) 向下广播（传值），正向
+  SendMessageUpwards( ) 向上广播，逆向
+  
+  Time:
+  deltaTime 间隔时间，可保证每帧的间隔时间一定
+  time 从游戏开始到现在所用时间（只读）
+  timeScale 传递时间的缩放，可用于实现（快进快播）减速运动或加速运动
+                    常用于“暂停游戏”的场合
+  realtimeSinceStartup  以秒计，自游戏开始的实时时间（只读，不被timeScale所影响）
+  
+  
+  MonoBehaviour: 
+  OnMouseOver()
+  OnMouseExit()
+  OnMouseDown()
+  OnMouseUp()  当用户释放鼠标按钮时调用
+  OnMouseDrag()
+  
+  OnControllerColliderHit()  在移动的时候，当Controller 碰撞到 Collider时调用
+  OnParticleCollision() 当粒子碰到Collider时调用
+  
+  OnBecameVisible() 当Renderer(渲染器) 在任何相机上可见时调用
+  OnBecameInvisible() 当Renderer (渲染器) 在任何相机上都不可见调用
+  
+  OnLevelWasLoaded() 当一个新关卡被载入时此函数被调用
+  
+  OnDrawGizmos() 如果你想绘制可被点选的Gizmos，执行这个函数
+  OnDrawGizmosSelected() 如果想在物体对象被选中时绘制Gizmos，执行这个函数
+  
+  OnApplication..()    (Pause/Focus/Quit)  当玩家暂停 时 发送到所有的游戏物体
+                                           当玩家获得或是去焦点时发送给所有物体对象
+                                           在应用退出之前发送给所有游戏物体对象
+  ```
+
+* SendMessage传值
+
+  ``` tex
+  Unity中的传值：（实现脚本间的数据传值）
+  1、脚本组件传值
+  2、可以跨场景传值的“类静态字段”方式
+  3、SendMessage数据传值技术（简单、易用、耦合性较低）
+  4、定义委托与事件进行数据传值
+  
+  实现数据持久化：
+  5、PlayerPrefs技术
+  6、XML数据持久化技术
+  
+  7、网络服务器端技术
+  
+  SendMessage
+  语法定义：
+  public void SendMessage( string methodName )
+  public void SendMessage( string methodName ,object value=null)
+                                                                     object类型：也可以是object[]类型———自定义System.objectArray[]数组
+  public void SendMessage( string methodName ,object value=null, 
+                                           SendMessageOptions.options=SendMessageOptions.RequireReceiver)
+                                                                        目标方法如果不存在，则报错
+  SendMessageOptions.options=SendMessageOptions.DontrequireReceiver)                                                                      目标方法如果不存在，不报错sendMessage 高级传值————广播传值
+  向下广播发送（BroadcastMessage）正序——相同名称的方法进行传值，先父物体到子物体         
+  向上广播发送（SendMessageUpwards） 逆序
+  ```
+
+  
+
+
 
 ---
 
@@ -563,6 +657,221 @@
   ``` tex
   对象包含Box Collider 2D组件，且作为trigger使用时，检测是否有对象进入的函数是？
   void OnTriggerEnter2D(Collider2D other){}
+  
+  2D碰撞器+RigidBody2D 无法和 3D碰撞器发生碰撞效果
+  
+  
+  API:
+  OnTriggerEnter(Collider)  &&  OnTriggerEnter2D(Collider2D)
+  OnTriggerExit(Collider)  &&  OnTriggerExit2D(Collider2D)
+  OnTriggerStay(Collider)  &&  OnTriggerStay2D(Collider2D)    
+  
+  OnCollisionEnter2D(Collision2D) 
+  OnCollisionExit2D(Collision2D) OnCollisionStay2D(Collision2D) OnCollisionEnter(Collision) OnCollisionExit(Collision) OnCollisionStay(Collision) 
+  
+  
+  1、碰撞检测的条件
+        两个游戏对象发生碰撞的必要条件是  必须有一个为刚体，一个为碰撞体
+        两个游戏对象不但有碰撞现象，并且存在里的相互作用，则必须两个对象都为刚体
+  2、物理材质（Phisics Materials）
+     Dynamic Friction 滑动摩擦力，值为0 效果像冰，值为1则物体运行很快停止
+     Static Friction 静摩擦力  值为0时，效果像冰
+     Bounciness  表面弹力，值为0时不发生反弹，值为1时反弹不损耗任何能量
+  3、脚本控制  刚体
+      this.transform.Translate();//进行位移
+      this.rigidbody.velocity=Vector3.forwards;//使用刚体的速度
+  上述三条  按照惯性由大到小排列
+  ```
+  
+
+
+
+* 物理模拟
+
+  ``` tex
+  1、铰链关节
+  若需要保证一个刚体  具有刚体属性但是不受外力影响  则 勾选  Is Kinematic
+  铰链关节组件   Hinge Joint
+  线框模式下观察，调整组件的  轴向和 锚点   
+  添加第三人称角色，添加脚本  使用 OnControllerColliderHit()
+  当然，还可以制作锁链门
+  
+  2、弹簧关节，可以模拟两个刚体的松散关系
+  Spring Joint
+  与“父子物体”不同，在较大外力作用下（外力大于 Break Force）时，可以解体
+  Ragdoll....    &&   CharacterJoint  
+  
+  3、布料模拟
+  柔体
+  Unity      { Interactive Cloth\ Cloth Renderer }
+                 { Skinned Cloth\ Skinned Mesh Renderer }  旧版的
+  unity 5.3.4  中  只有cloth 组件
+  注意，如果不需要专门表现布料模拟方面的项目，可以使用“面片”代替，可以简化处理以降低系统消耗，提高“帧速率”
+  ```
+
+  
+
+
+
+---
+
+
+
+* 光源
+
+  ``` tex
+  1、四种光源的属性
+  Cookie  
+  用于为光源指定拥有Alpha通道的纹理，作用是    光线在不同地方有不同的亮度。
+  如果光源是聚光灯或方向光，可以指定一个2D纹理
+  如果是一个点光源，必须指定一个Cubemap（立方体纹理）
+  
+  Color
+  通过光线的    强度和颜色  可以很好模拟自然世界的早晨、中午、晚间的光线效果
+  
+  Shadow Type
+  光源投射的阴影类型
+  默认 只有 Directional light 可以开启阴影
+  如果Point light 、 Spot light 需要开启阴影，
+                                必须要在menu中 Edit-Project Setting - Player ,
+  
+  Flare
+  光源的粒子效果
+  
+  2、实现较逼真的白昼场景
+  除了设置直射光的角度、强度、颜色等和添加相应的白昼效果天空盒
+  还可以添加       镜头耀斑        
+        a、在相机中添加  FlareLayer 组件
+        b、导入Unity自带的资源包“Light Flares”
+        c、将镜头耀斑资源（如50mm Zoom）赋值给直线光 Flare 属性
+  
+  3、夜晚场景可添加雾效增加逼真效果
+  ```
+
+
+
+
+
+---
+
+
+
+* 模型
+
+  ``` tex
+  1、Unity 和 3D Max  推荐统一使用 米  作为单位
+  3D Max中 显示单位比例 公制  设为 米
+                   系统单位属性   1单位=1米
+  
+  2、3D Max中 使用快捷键  M   打开材质面板，选择材质球并赋予相应材质的贴图  
+        单击“将材质指定给选定对象”和“视口中显示明暗处理材质”两个按钮（一般位于材质球下面行）
+                            可以看到材质效果
+         导出模型（尽量为英文路径）
+        在Unity中选择导入好的模型  并设置 Scale Factor =1
+  ```
+
+
+
+---
+
+
+
+* 声音
+
+  ``` tex
+  1、Audio Listener 音频监听组件
+  2、Audio Source 音频播放组件（包含Audio Clip）
+  3、Audio Reverb Zones 音频混响器
+       实现游戏场景中不同环境的逼真音效模拟
+  4、Audio Filter 音频滤波器
+       Audio Low Pass Filter 低通。。 用于抑制高频信号，通过低频，如雷声近处尖锐，远处低沉，还有槅门听声的效果
+  ```
+
+  
+
+---
+
+
+
+* 图形
+
+  ``` tex
+  Quaternion.Euler(x,y,z) 返回一个绕x轴旋转x度再绕y轴旋转y度再绕z轴旋转z度的Quaternion,
+  因此Quaternion.Euler(0,90,0)返回一个绕y轴旋转90度的旋转操作.
+  Quaternion作用于Vector3的右乘操作（*）返回一个将向量做旋转操作后的向量.
+  因此Quaternion.Euler(0,90,0)*Vector3(0.0,0.0,-10)表示将向量Vector3(0.0,0.0,-10)做绕y轴90度旋转后的结果.等于Vector3(-10,0,0).
+  ```
+
+
+
+---
+
+
+
+* 寻路NavMesh
+
+  ``` tex
+  1、Nav Mesh  
+  将场景中不动的物体设为静态
+  Window -  Navigation 导航寻路
+  
+  2、Nav Mesh Agent   寻路主角代理组件
+  
+  3、寻路斜坡
+  斜坡角度过大  通过设置 Navigation 面板中的  Max  Slope 属性再进行烘培
+  
+  4、OffMeshLink  
+  使两个分开渲染的独立区域，分别放置起点终点
+  
+  5、网格分层
+  通过设置导航烘培面板中的  Layers 进行包含不同层的烘培  
+  并在Nav Agent  的  Nav  Mesh  Walkable  属性中设置不同角色能走的层
+  
+  6、Nav Mesh Obstacle  导航中的障碍物组件，通过设置其是否 enabled 
+  ```
+
+
+
+
+
+---
+
+
+
+* 动画
+
+  ``` tex
+  1、Avatar 替身
+  实现  模型和模型动画的解耦  可以单独制作人物角色和人物角色动画，角色动画可复用角色模型
+  2、Animator Controller
+  3、设置动画循环，  动画循环的起始帧和结束帧  完全重合时，显示绿色
+  4、通过代码修改属性值进行代码控制
+  5、融合术技术  Blend Tree
+  6、动画层和身体蒙板
+  动画层和蒙板：将不同部位的动画组合起来（在新的层中 使用新建的遮罩（Avatar Mask）将相关需要获取的动画片段进行遮罩，  在新建层中赋值该遮罩），最后形成全身的动画
+  7、动画复用技术
+  ```
+
+
+
+
+
+---
+
+
+
+* 粒子
+
+  ``` tex
+  ParticleSystem ps;
+  ps.Stop();
+  ps.Play():
+  
+  ParticleEmitter pe;
+  pe.emit=false;//播放
+  pe.emit-true;
+  
+  或者直接禁用或启用绑定的游戏物体对象
   ```
 
   

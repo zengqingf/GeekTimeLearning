@@ -793,7 +793,35 @@
   ThirdParty   ...MyGenericScripts   Debug   Extensions   Framework   Graphics   IO   Math   ...MyGameScripts   Debug   Gameplay      Actors      Items      ...   Framework   Graphics   GUI   ...
   ```
 
+
+
+
+---
+
+
+
+### Unity引擎操作优化
+
+* 相机裁剪
+
+  ``` tex
+  Window  -   Occlusion Culling  -   Select Occluder Static /  Occludee Static   -Bake   -   Scene( VisualLizatiar )
+  如果场景中存在大量“小物件”， 可以使用“层消隐距离”
+  在比较远的距离剔除 小物件，减少绘图调用
+  如：在较远距离下，大建筑物可见，小石块不可见
+  处理方法：将小物件放入一个独立层（Separate Layer）中，  使用
+       Camera.main.layerCullDistances = distance; //(设置的消隐距离)
   
+  * 层级细节（LOD，Level of Detail）
+  根据物体在游戏画面中所占的像素的多少（所占游戏试图的百分比）来调整不同复杂度的模型
+  简单说就是，一个物体离摄像机较近时，用复杂度高的模型，较远时用复杂度低的模型
+  ```
+
+  
+
+
+
+
 
 ---
 
