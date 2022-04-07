@@ -909,12 +909,28 @@ do
         ]]
         local s = "one;two;;four"
         local words = {}
-        for w in (s .. ";"):gmatch("([^;]*);") do 
+        for w in s:gmatch("([^;]*)") do        
+        --for w in (s .. ";"):gmatch("([^;]*);") 也可用
             table.insert(words, w) 
         end
         for n, w in ipairs(words) do
             print(n .. ": " .. w)
         end        
+
+        local ss = "50_1,30_2,20_3|40_1,30_2,30_3"
+        local partReg = "([^|]*)"
+        local wordss = {}
+        for w in string.gmatch(ss, partReg) do
+            table.insert(wordss, w)
+        end
+        for n, w in ipairs(wordss) do
+            print(n .. ": " .. w)
+        end      
+        
+        local s2 = "110210008|110210011,110210008;110210008"
+        for w in string.gmatch(s2, "(%d+)") do
+            print(w)
+        end
 
         print("-----------------------string gmatch test--------------------")
     end

@@ -71,6 +71,7 @@ end
 --[[
     该方法错误，
     在lua中 0.7 % 0.1 = 0.1
+    导致结果错误
 ]]
 function error.getPreciseDecimalFloor(nNum, n)
     if type(nNum) ~= "number" then

@@ -27,6 +27,7 @@ int main()
 	TestPointer_3();
 	TestPointer_4();
 	TestPointer_5();
+	TestPointer_6();
 
 	return 0;
 }

@@ -200,7 +200,7 @@ char* TestStrCpy(char *dst, const char *src)
 	assert((dst != NULL) && (src != NULL));
 	char* address = dst;
 
-	while ((*dst++ = *src++) != '\0')
+	while ((*dst++ = *src++) != '\0')						//直接修改传入的形参（作为局部变量使用，不好，调试时无法看到最初的值）
 		;
 
 	return address;
@@ -212,6 +212,48 @@ void TestPointer_5()
 	int len = strlen(TestStrCpy(strDst, "hello world"));
 	printf("strDst len=%d, content=%s", len, strDst);
 	free(strDst);
+}
+
+
+#include <ctype.h>			//define: isalnum() 返回真的连续字符，否则为空字符
+//将数组作为函数参数传递
+
+//从英语文本文件中将单词一个个读取
+int get_word(char *buf, int buf_size, FILE *fp)
+{
+	int len;
+	int ch;
+
+	while ((ch = getc(fp)) != EOF && !isalnum(ch))			//跳过空白字符
+		;
+
+	if (ch == EOF)
+	{
+		return EOF;
+	}
+
+	len = 0;												//ch存放单词的首字母
+	do {
+		buf[len] = ch;
+		len++;
+		if (len > buf_size)
+		{
+			fprintf(stderr, "word too long. \n");
+			exit(1);
+		}
+	} while ((ch = getc(fp)) != EOF && isalnum(ch));
+
+	buf[len] = '\0';
+	return len;
+}
+
+void TestPointer_6()
+{
+	char buf[256];
+	while (get_word(buf, 256, stdin) != EOF)
+	{
+		printf("<<%s>> \n", buf);
+	}
 }
 
 #endif //TEST_POINTER_TYPE_VARIABLE
