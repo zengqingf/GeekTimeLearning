@@ -132,6 +132,14 @@
 
 
 
+### UE4 FString
+
+* ref
+
+  [UE4 Doc - String Handling](https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/StringHandling/)
+
+
+
 * sprintf_s vs snprintf
 
   sprintf 用于将输出存到字符缓冲中
@@ -363,7 +371,71 @@
   FString numStr = FString::SanitizeFloat((int)(num * 1000 + 0.5) / 1000.0);
   ```
 
+
+
+
+* FString Format
+
+  ``` c++
+  /*UE4 不支持
+  const TCHAR* a = TEXT("test %d");
+  FString formatted = FString::Printf(a, TEXT("123"));
+  */
   
+  //仅支持C/C++类型的
+  static FString Printf
+  (
+      const TCHAR * Fmt,
+  )
+      
+  int32 i = 1;
+  FString Text1 = FString::Printf(TEXT("Text%d"), i);
+  
+  //其他 ref: https://blog.csdn.net/qq_20309931/article/details/52910467
+  /*Format TArray格式化
+  InFormatString 是进行格式化的字符串
+  InOrderedArguments 是会对InFormatString中的{index}，根据InOrderedArguments中的索引进行替换
+  */
+  static FString Format
+  (
+      const TCHAR * InFormatString,
+      const TArray < FStringFormatArg > & InOrderedArguments
+  )
+  TArray<FStringFormatArg> FormatArray;
+  FormatArray.Add(FStringFormatArg(1));
+  FormatArray.Add(FStringFormatArg(2));
+  FString Text1 = FString::Format(TEXT("Text{0}{1}{0}"), FormatArray);
+  
+  /* Format TMap格式化
+  InFormatString 是进行格式化的字符串
+  InNamedArguments 是会对InFormatString中的{key}，根据InNamedArguments中的键值索引替换成InNamedArguments里面的值
+  */
+  static FString Format
+  (
+      const TCHAR * InFormatString,
+      const TMap < FString , FStringFormatArg > & InNamedArguments
+  )
+  TMap<FString, FStringFormatArg> FormatMap;
+  FormatMap.Add(TEXT("key1"), FStringFormatArg(1));
+  FString Text1 = FString::Format(TEXT("Text{key1}"), FormatMap);
+  
+  TMap<FString, FStringFormatArg> FormatMap;
+  FormatMap.Add(TEXT("key1"), FStringFormatArg(1));
+  FormatMap.Add(TEXT("key2"), FStringFormatArg(2));
+  FString Text1 = FString::Format(TEXT("Text{key1}{key2}{key1}"), FormatMap);
+  
+  
+  /*
+  字符串拼接
+  */
+  FString Text1 = TEXT("Text") + FString::FormatAsNumber(1); // Text1
+  ```
+
+  
+
+
+
+
 
 ---
 

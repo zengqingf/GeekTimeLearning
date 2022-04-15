@@ -129,6 +129,21 @@
 
 
 
+---
+
+
+
+### 快捷键
+
+* 选中鼠标光标所在位置单词
+
+  ``` tex
+  Ctrl+D 
+  selects the word at the cursor, or the next occurrence of the current selection.
+  ```
+
+  
+
 
 
 

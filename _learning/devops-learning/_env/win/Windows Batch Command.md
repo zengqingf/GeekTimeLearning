@@ -791,6 +791,18 @@
 
 
 
+* Windows磁盘速度测试
+
+  ``` powershell
+  :: 以管理员身份运行命令行程序，win+R–>输入cmd并回车.(否则在win10下面最终测试结果会一闪而过)
+  :: 输入命令winsat disk并回车，此时为默认扫描系统盘，一般也就是C盘.
+  :: 输入winsat disk + 参数-drive 盘符, 例如扫描D盘：winsat disk -drive d
+  ```
+
+  
+
+
+
 ---
 
 

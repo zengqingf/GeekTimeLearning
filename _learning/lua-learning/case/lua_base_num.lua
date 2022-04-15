@@ -153,7 +153,6 @@ function math.bigNumberToShow(number)
 	end
 end
 
-
 --[[取余，取整]]
 do
 

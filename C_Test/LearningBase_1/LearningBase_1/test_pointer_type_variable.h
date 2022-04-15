@@ -218,8 +218,22 @@ void TestPointer_5()
 #include <ctype.h>			//define: isalnum() 返回真的连续字符，否则为空字符
 //将数组作为函数参数传递
 
+/*
+作为函数形参声明时，以下等同
+int func(int *a)
+int func(int a[])			--是语法糖
+int func(int a[10000])		--是语法糖
+*/
+
+/*
+C语言不进行数组边界检查
+
+*/
+
 //从英语文本文件中将单词一个个读取
-int get_word(char *buf, int buf_size, FILE *fp)
+//int get_word(char *buf, int buf_size, FILE *fp)				//char buf[] 只有在声明函数形参时，才能将数组写成 指针形式
+//int get_word(char buf[], int buf_size, FILE *fp)
+int get_word(char buf[1000], int buf_size, FILE *fp)		   //编译器会把int func(int a[]) 解读为 int func(int *a)， 写成int func(int a[10000])会无视内部值，int a[] 作为函数形参时也是一种语法糖
 {
 	int len;
 	int ch;
@@ -254,6 +268,73 @@ void TestPointer_6()
 	{
 		printf("<<%s>> \n", buf);
 	}
+}
+
+/*
+《征服C指针 第二版》
+
+C 数组没有边界检查
+对超出下标范围的内存执行写入操作时，会发生内存损坏；
+	可能在程序执行早期就报 Segmentation fault(段错误)或 exit(XXX) 已停止了工作；
+	也可能相邻变量内容被破坏，但程序仍继续运行，直到很久后发生错误，会造成巨大影响
+
+数组边界检查即使很小程度上影响效率，但是很有必要在编码时就进行数组边界检查
+	不要期望于编译器在编译期间执行
+原因：引用数组内容时，使用a[i]语法糖，等同于*(a + i)；
+	  将数组作为参数传递给函数时，传递的是指向数组初始元素的指针，此时不会传递数组长度
+	  需要人为主动传递，编译器并不知道此数组长度
+	  所以需要在编码时进行数组边界检查
+
+即使将指针封装成结构体传递，附带指针本身可取值返回，但是会丢失非调试模式下编译的库与指针的兼容性
+
+总的来说，在现阶段实际可供使用的编译器中，几乎没有能够进行数组边界检查的。
+不过，如果是解释器的运行环境，似乎可以进行数组边界检查。		
+*/
+
+/*
+《征服C指针 第二版》
+
+C99可变长数组(VLA, Varable Length Array)
+	惯用名：使用malloc() 分配的数组称为 动态数组
+
+
+*/
+void TestPointer_7()
+{
+	/* C99 支持 
+	int size1, size2, size3;
+	printf("input 3 int value: \n");
+	scanf("%d%d%d", &size1, &size2, &size3);
+
+	//可变长数组声明
+	int array1[size1];
+	int array2[size2][size3];
+
+	//对可变长数组进行初始化赋值
+	int i;
+	for (i = 0; i < size1; i++)
+	{
+		array1[i] = i;
+	}
+	int j;
+	for (i = 0; i < size2; i++) {
+		for (int j = 0; j < size3; j++)
+		{
+			array2[i][j] = i * size3 + j;
+		}
+	}
+
+	//键盘输入 3 4 5
+	printf("sizeof(array1) .. %zd \n", sizeof(array1));		//12
+	printf("sizeof(array2) .. %zd \n", sizeof(array2));		//80
+
+	*/
+
+	//上述VLA中 数组长度在运行时决定
+	//一直到ANSI C为止，sizeof返回值都由编译时决定，而在ISO C99中，可以在运行时决定
+	//VLA目前只用于非static的局部变量，对于全局变量不可用
+	//C99中，无法通过VLA使结构体变长，但可以使用柔性数组成员
+	//C11中 VLA降级为可选功能，__STDC_NO_VLA__ 宏将无法使用VLA
 }
 
 #endif //TEST_POINTER_TYPE_VARIABLE
