@@ -1,0 +1,6 @@
+[submodule "Hugo/mjx1010/themes/hugo-book"]
+	path = Hugo/mjx1010/themes/hugo-book
+	url = https://github.com/alex-shpak/hugo-book
+[submodule "Hugo/mjx1010/themes/paper"]
+	path = Hugo/mjx1010/themes/paper
+	url = https://github.com/nanxiaobei/hugo-paper
