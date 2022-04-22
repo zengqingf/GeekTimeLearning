@@ -1,0 +1,14 @@
+第一种方法
+
+通过Unity 2019 下载器 下载
+
+
+第二种方法
+
+https://docs.microsoft.com/zh-cn/visualstudio/releases/2019/system-requirements
+访问系统要求页面
+在页面中选择 Download Community 2019 
+下载内容 为 vs_Community.exe
+
+而不是在 https://visualstudio.microsoft.com/zh-hans/vs/ 这里下载的
+vs_community__1682973011.1606719598.exe

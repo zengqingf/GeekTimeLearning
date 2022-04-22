@@ -24,7 +24,7 @@
     <ClCompile Include="LearningBase_1.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test_virtual_memory_adress.h">
+    <ClCompile Include="test_virtual_memory_address.h">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

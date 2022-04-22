@@ -30,6 +30,9 @@
     <ClCompile Include="Singleton_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Singleton_2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FactoryMethod_1.h">
@@ -57,6 +60,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Adapter_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge_Example_1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

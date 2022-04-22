@@ -9,6 +9,7 @@
 #include "test_get_compilerV_sysV.h"
 #include "test_sizeof_variable.h"
 #include "test_pointer_type_variable.h"
+#include "test_virtual_memory_address.h"
 
 int main()
 {
@@ -19,15 +20,24 @@ int main()
 	GetOsInfo();
 	PrintCVersion();
 
+	/*
+	大小端
 	PrintSizeofVariable();
 	TestBigLittleEndian();
+	*/
 
+	/*
+	指针和数组
 	TestPointer_1();
 	TestPointer_2();
 	TestPointer_3();
 	TestPointer_4();
 	TestPointer_5();
 	TestPointer_6();
+	*/
+
+	//TestVirtualAddress_1();
+	TestVirtualAddress_2();
 
 	return 0;
 }

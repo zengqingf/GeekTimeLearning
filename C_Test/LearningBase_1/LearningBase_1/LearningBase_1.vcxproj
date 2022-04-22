@@ -154,7 +154,7 @@
     <ClCompile Include="LearningBase_1.c" />
     <ClCompile Include="test_big_little_endian.h" />
     <ClCompile Include="test_sizeof_variable.h" />
-    <ClCompile Include="test_virtual_memory_adress.h" />
+    <ClCompile Include="test_virtual_memory_address.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test_get_compilerV_sysV.h" />
