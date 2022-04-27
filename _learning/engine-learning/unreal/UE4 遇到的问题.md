@@ -807,4 +807,19 @@
   project name 设置成 test 可能会遇到上述打安卓包报错
   ```
 
+
+
+
+* UE4 无法打开源文件“file_name.generated.h”(Cannot open source file name.generated.h)
+
+  ``` tex
+  1）关闭“UE4 Editor”和“Visual Studio”。
+  2）打开项目目录并删除所有这些文件夹：
+  .vs, Binaries, Intermediate [可选], Saved [可选]，YourGame.sln。
+  确保Config文件夹还在
+  3）右击YourGame.urpoject并选择生成Visual Studio项目文件。
+  4）完成重新生成后，打开.uproject文件。
+  5）编辑器将再次提示您缺少.dll模块，并将要求您重新构建解决方案。单击“是”，它将开始重建。
+  ```
+
   

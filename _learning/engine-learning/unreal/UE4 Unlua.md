@@ -298,4 +298,82 @@
   --因为Global.lua中 DataMgr模块require先于FrameBase  继承DataMgr的TeamDataMgr中require了TeamMainFrame,导致引入的TeamMainFrame未继承FrameBase
   ```
 
+
+
+
+* UE4 Unlua 调用 AddChild问题  以及  内存泄漏问题
+
+  ``` lua
+  --问题示例：
+  
+  --界面1 包含了 界面2
+  local ChapterDetailFrameView_C = Class(ViewBasePath)
+  function ChapterDetailFrameView_C:Open(param, frame)
+      if self.ChapterDetailMainView ~= nil then
+          self.ChapterDetailMainView:Open(paramData,self)
+      end
+  end
+  
+  function ChapterDetailFrameView_C:Close()
+      if self.ChapterDetailMainView ~= nil then
+          self.ChapterDetailMainView:Close()
+      end
+  end
+  return ChapterDetailFrameView_C
+  
+  --界面2
+  local ChapterDetailMainView_C = Class(UserWidgetExPath)
+  --结算任务弹窗
+  local finishTaskPopup = nil
+  function ChapterDetailMainView_C:Open(param, frame)
+      finishTaskPopup = LoadPopup()
+      
+      if self.mRoot ~= nil then
+  ----- AddChild() 使用注意点: 
+        --[[
+  ---Adds a new child widget to the container.  Returns the base slot type,
+  ---requires casting to turn it into the type specific to the container.
+          会创建一个新的child，原child会执行Destruct，新child会执行Construct
+          所以如果挂在同一个对象，需要先移除对象，再添加，但是这样会导致对象的析构函数调用了，对象会被GC，此时不创建对象，仍拿着对象的引用变量去添加对象，会导致对象不存在
+          ]]
+  
+  ---下面这种写法还是错误的： finishTaskPopup只是一个对象，RemoveChild后，对象析构，等待GC后，在AddChild时，对象不存在
+          if self.mRoot:HasChild(finishTaskPopup) then
+              self.mRoot:RemoveChild(finishTaskPopup)
+          end    
+          self.mRoot:AddChild(finishTaskPopup)
+          
+  ----- 正确做法：在同一个节点下只挂载一个对象，根据需求隐藏和显示这个对象，最后释放这个对象    
+        if self.mFinishTaskPopupDict ~= nil then
+            local popup = nil
+             if self.mFinishTaskPopupDict:ContainsKey(taskType) then
+                 popup = self.mFinishTaskPopupDict[taskType]
+             end
+             if nil == popup then
+                  self.mFinishTaskPopupDict:Add(taskType, LoadPopup())
+                  if root ~= nil then
+                      root:AddChild(widgetItem)
+                  end
+             end
+         end
+      end
+  end
+  
+  -----内存泄漏：如果不执行Close清理，finishTaskPopup还是绑定着界面3对象，界面3不会被GC
+  function ChapterDetailMainView_C:Close()
+     finishTaskPopup = nil
+  end
+  return ChapterDetailMainView_C 
+  
+  
+  --界面3
+  local BattleFinishTaskPopup_C = Class(UserWidgetExPath)
+  function BattleFinishTaskPopup_C:Construct()
+  end
+  
+  function BattleFinishTaskPopup_C:Destruct()
+  end
+  return 
+  ```
+
   

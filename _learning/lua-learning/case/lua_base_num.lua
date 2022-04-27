@@ -73,7 +73,7 @@ end
     在lua中 0.7 % 0.1 = 0.1
     导致结果错误
 ]]
-function error.getPreciseDecimalFloor(nNum, n)
+function math.getPreciseDecimalFloor(nNum, n)
     if type(nNum) ~= "number" then
         return nNum;
     end
@@ -365,6 +365,10 @@ number >= 1.0 不成立，但是可以用 number >= 0.99 这样子解决问题�
 do
     print(100 / 10)                 --5.3以上输出10.0， 5.1输出10
     print(math.formatNum(100/10))   --修正后输出10
+
+    print(101002 / 1000)
+    print(math.getPreciseDecimalRound(101002/1000))
+    print(math.getPreciseDecimalRound(101502/1000))
 end
 
 --[[

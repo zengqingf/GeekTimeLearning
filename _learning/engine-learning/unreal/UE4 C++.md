@@ -1499,6 +1499,47 @@
 
 
 
+* C++ 新的初始化特性 : {}初始化
+
+  ``` c++
+  //正常情况
+  class BeEntity;
+  struct EventParam
+  {
+     int int_0 = 0;
+     int int_1 = 0;
+  };
+  //使用时
+  EventParam param = { 1, 2 };
+  
+  //修改时，添加变量到头
+  class BeEntity;
+  struct EventParam
+  {
+      int eventType = 0;
+      int int_0 = 0;
+      int int_1 = 0;
+  };
+  
+  //使用时，初始化值不同，导致异常！！！
+  EventParam param = { 1, 2 };
+  
+  //修改后
+  class BeEntity;
+  struct EventParam
+  {
+      int eventType = 0;
+      int int_0 = 0;
+      int int_1 = 0;
+  };
+  
+  //{}使用建议，使用时要注意
+  ```
+
+  
+
+
+
 
 
 

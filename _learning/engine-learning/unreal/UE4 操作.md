@@ -182,7 +182,30 @@
   }
   ```
 
+
+
+
+
+
+
+
+---
+
+
+
+### UnrealVersionSelector
+
+* 重装后或者更新引擎版本导致引用丢失，重绑定解决
+
+  ``` tex
+  1 找到Epic Lanucher的安装目录，寻找lancher->Engine->Binaries->Win64->UnrealVersionSelector.exe
+  2 把UnrealVersionSelector.exe 拷贝到Ue4的版本工程目录，例如UE_4.18->Engine->Binaries->Win64
+  3 双击运行UnrealVersionSelector.exe 即可，可能会有延迟，重启一下电脑也可
+  ```
+
   
+
+
 
 ---
 
