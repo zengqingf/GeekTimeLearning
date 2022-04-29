@@ -1,1 +1,0 @@
-recursive-include build_dist/CodeChecker/lib/python3/plist_to_html/static *
