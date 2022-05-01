@@ -117,4 +117,15 @@ link:
 
   
 
+* fatal: unable to access 'xxx': schannel: failed to receive handshake, SSL/TLS connection failed
+
+  ``` sh
+  git config – global http.sslBackend “openssl”
+  # 修改.gitconfig文件 [http]中的sslbackend = openssl
+  
+  git config --global http.sslCAInfo [path to .pem file]
+  ```
+
+  
+
   
