@@ -888,10 +888,13 @@ do
 
         print("string gmatch 222")
         local res = nil
-        local content = [[666\n555]]
+        local content = [[666\n555abnocbne]]
         if content ~= nil then   
-            content = content .. [[\n]]
-            for str in string.gmatch(content, "([^".. [[\n]] .. "]+)") do
+            local regex = [[\n]]
+            local rstr = string.gsub(content, regex, '\n')
+            print(rstr)
+            content = content .. regex
+            for str in string.gmatch(content, regex) do
                 if str then
                     if res then
                         res = res .. '\n' .. str
@@ -903,7 +906,27 @@ do
         end
         print(res)
 
+        print("string gmatch 333")
+        local content2 = '"是否出售1件[<tag color="#FF7DAAFF">粉</>]物品强化券+14（绑定100%）？"'
+        local rep = '{content:0}'
+        local valueStr = string.gsub(content2, '%%', '%%'..'%%')            --替换时，遇到特殊字符（转义用）%，需要使用'%%' 来转义
+                                                                            --但是不能在[]中使用[%%]
+        print(valueStr)
+        local res2 = string.gsub(rep, rep, valueStr)
+        print(res2)
 
+        print("string gmatch 444")
+        local content3 = "2_开启后可获得以下道具：|3_开启后可随机获得以下道具中的1种或5种："
+        local content4 = "开启后可自选以下道具中的1种：|开启后可获得以下道具：|开启后可随机获得以下道具中的10种："
+        for k in string.gmatch(content3, '([^|]*)') do
+            print(k)
+            for t, d in string.gmatch(k, '(%d+)_(.+)') do
+                print(t, d)
+            end
+        end
+
+
+        print("string gmatch 555")
         --[[
             Split a string using string.gmatch() in Lua
         ]]

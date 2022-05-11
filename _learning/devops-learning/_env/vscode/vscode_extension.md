@@ -135,11 +135,27 @@
 
 ### 快捷键
 
+``` tex
+通过编辑器中提供的Ctrl + Shift + P(或Mac上的Command + Shift + P)搜索功能，然后搜索format document(格式化文档)，找到相应的快捷方式。
+```
+
+
+
 * 选中鼠标光标所在位置单词
 
   ``` tex
   Ctrl+D 
   selects the word at the cursor, or the next occurrence of the current selection.
+  ```
+
+* 代码格式化，代码移动
+
+  ``` tex
+  选中按TAB右移，按SHIFT+TAB左移
+  
+  Windows Shift + Alt + F
+  Mac		Shift + Option + F
+  Ubuntu 	Ctrl + Shift + I
   ```
 
   

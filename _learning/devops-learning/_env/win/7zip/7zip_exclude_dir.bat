@@ -1,8 +1,8 @@
 @echo off
 ::设置7z的exe路径
-set zip7=D:\programs\7-Zip\7z.exe
+set zip7=D:\Programs\7-Zip\7z.exe
 ::设置压缩包路径
-set save=F:\_zippack
+set save=E:\_Share
 ::设置当天日期，备份文件名
 set curdate=%date:~0,4%-%date:~5,2%-%date:~8,2%
 ::设置要打包压缩的文件夹

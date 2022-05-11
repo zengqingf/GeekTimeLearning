@@ -275,6 +275,53 @@
 
 
 
+* lua没有支持continue的原因
+
+  ref:https://www.cnblogs.com/jejee/archive/2012/09/22/2697952.html
+
+  ``` tex
+  ref:https://www.luafaq.org/#T1.26
+  
+  1.26 Why is there no continue statement?
+  This is a common complaint. The Lua authors felt that continue was only one of a number of possible new control flow mechanisms (the fact that it cannot work with the scope rules of repeat/until was a secondary factor.)
+  
+  In Lua 5.2, there is a goto statement which can be easily used to do the same job.
+  
+  在Lua中，repeat until 有点类似于C++的do while，但在机制上有一点区别，在Lua的until的条件表达式中，表达式中的变量可以是repeat until代码块内声明的局部变量，但在C++中，while的条件表达式中的变量不允许出现do while内部声明的临时变量，必须是do while外部声明的变量。
+  ```
+
+  ``` lua
+  --假设lua支持continue 可能情况如下：
+  local a = 1　　-- outer
+  repeat
+      if f() then
+          continue
+      end
+      local a = 1　　-- inner
+      ...
+  until a == 0
+  
+  --由于continue会跳过后面local a = 1的声明，那么 until a == 0 到底是指内部的local a还是外部的a就会有歧义了！
+  ```
+
+  ``` lua
+  --用别的机制来代码continue,
+  --在循环内套一个repeat ... until true，再将想用continue的地方写成break。
+  
+  for i = 1, 10 do
+      repeat
+          if i == 5 then
+              break
+          end
+          print(i)
+      until true
+  end
+  ```
+
+  
+
+
+
 
 
 

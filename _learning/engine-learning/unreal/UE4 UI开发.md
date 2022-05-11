@@ -365,7 +365,66 @@
   如果其下组件平铺并且可响应点击，则可以不设置为Visible
   ```
 
+
+
+
+* UMG TileView间隔
+
+  ![img](UE4 UI开发.assets/企业微信截图_16518351021457-16518351946891.png)
+
+  ``` tex
+  由于设置Entry Spacing会将整个Entry Widget缩小，可以适当调大Entry高度，保证Entry自身的大小不变
+  ```
+
   
+
+* ScrollBox 嵌套 TileView/ListView，滚动问题
+
+  ``` tex
+  ScrollBox下放TileView或者ListView时，
+  非PC或Editor平台时，在TileView和ListView上滑动，不会生效，滑动冲突
+  
+  上述嵌套发生一般时需要做动态布局（TileView没有内容时，会自动上移置顶），可以通过Vertical替代ScrollBox实现
+  ```
+
+
+
+* ScrollBox 嵌套 CheckBox (ToggleButton)，滚动问题
+
+  ![image-20220511110536270](UE4 UI开发.assets/image-20220511110536270-16522383374241.png)
+
+  ![image-20220511110615605](UE4 UI开发.assets/image-20220511110615605-16522383769892.png)
+
+  ``` tex
+  设置Checkbox IsEnabled为false, 新增Button，添加OnClick响应Checkbox SetIsCheckDirty 触发选中回调
+  ```
+
+  ``` c++
+  void UToggleEx::SetIsCheckDirty(bool InIsChecked)
+  {
+  	SetIsChecked(InIsChecked);
+  	if(OnCheckStateChanged.IsBound())
+  	{
+  		OnCheckStateChanged.Broadcast(InIsChecked);
+  	}
+  }
+  ```
+
+
+
+* VerticalBox + ListView/TileView 滚动问题
+
+  ``` tex
+  无法完全上拉
+  ```
+
+  ![image-20220511112142249](UE4 UI开发.assets/image-20220511112142249-16522393033323.png)
+
+  ``` tex
+  在TileView或ListView上添加CanvasPanel后，可以正常上拉
+  ```
+
+  ![image-20220511112422737](UE4 UI开发.assets/image-20220511112422737-16522394636004.png)
 
 
 
@@ -714,3 +773,21 @@
 
 
 
+---
+
+
+
+### UMG 和 粒子
+
+* 粒子特效显示隐藏的方式（UE4.27）
+
+  ![image-20220505201033101](UE4 UI开发.assets/image-20220505201033101-16517526341861.png)
+
+  ``` tex
+  选择Auto Activate 表示创建后，就开始播放粒子
+  选择Reactivate 表示一轮粒子特效时间后再开始播放粒子特效（即表现上会看到延迟播放）
+  
+  隐藏粒子特效需要套一个父节点，设置父节点的RenderOpacity为0 以及 Visibility 为 Collapsed(折叠)
+  ```
+
+  
