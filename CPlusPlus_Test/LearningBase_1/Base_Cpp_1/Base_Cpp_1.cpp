@@ -10,11 +10,16 @@
 #include "base_6.h"
 #include "base_7.h"
 
+#include "base_static.h"
+
 #include <math.h>
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+	//base_static.h 测试局部静态变量分配内存和初始化时间
+	test_static();
 
 	//base_2.h 测试传值 vs. 传引用 vs. 传指针
 	Base_2 b22;

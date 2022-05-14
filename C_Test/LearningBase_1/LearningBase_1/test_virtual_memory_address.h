@@ -101,4 +101,37 @@ void TestVirtualAddress_2()
 	现代应用程序中的内存地址为虚拟内存地址空间
 */
 
+
+
+/*
+
+*/
+void TestVirtualAddress_3()
+{
+	static int a;
+
+}
+/*C语言变量分类：
+1. 命名空间限制：作用域（scope）(代码块内) +  链接（linkage）(static extern)
+2. 存储期（storage duration）
+
+
+全局变量：函数外部定义的变量，多文件均可引用
+static变量： 将全局变量的作用域限定在当前源文件内，对于其他源文件不可见（static函数同理）
+局部变量：只能在其声明所在的代码块{...} 中被引用，（从C99开始，可以在代码中间位置声明局部变量）
+			为局部变量添加static，可以保证离开作用域后，局部变量不被释放
+
+存储期：
+静态存储期（static storage duration）:
+			全局变量、文件内的static变量、带static限定的局部变量
+			生命周期：从程序开始到结束为止
+
+
+
+*/
+
+/*
+
+
+*/
 #endif //TEST_VIRTUAL_MEMORY_ADDRESS
