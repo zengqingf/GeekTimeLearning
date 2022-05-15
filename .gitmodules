@@ -4,3 +4,6 @@
 [submodule "Hugo/mjx1010/themes/paper"]
 	path = Hugo/mjx1010/themes/paper
 	url = https://github.com/nanxiaobei/hugo-paper
+[submodule "Hugo/mjx1010/themes/fuji"]
+	path = Hugo/mjx1010/themes/fuji
+	url = https://github.com/dsrkafuu/hugo-theme-fuji.git
