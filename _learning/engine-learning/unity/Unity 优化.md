@@ -928,3 +928,4 @@ Type.GetType(typeName);得到type后再用Activator.CreateInstance()实例化``�
 协程优化
 
 ![img](Unity 优化.assets/image2019-6-12_18-49-8.png)
+
