@@ -377,3 +377,36 @@
   ```
 
   
+
+* UE4.27结合UnLua，UserWidget创建后通过Lua层绑定UserWidgetEx扩展的脚本，无法调用到蓝图层的Construct和Destruct
+
+  ``` lua
+  require("UnLua")
+  ---@class UserWidgetEx_C : UUserWidget,SingleClass
+  local UserWidgetEx_C = Class()
+  
+  function UserWidgetEx_C:Construct()
+  end
+  
+  --继承UserWidgetEx的脚本，重写Destruct时，需要将self.Super.Destruct(self)写在Destruct的末尾，因为执行DestroyUObject后，该object及其包含的组件就不可正常访问了
+  function UserWidgetEx_C:Destruct()
+      UIManager:DestroyUObject(self)
+  end
+  
+  return UserWidgetEx_C
+  ```
+
+  ``` lua
+  local TalentNode_C = Class(UserWidgetExPath)
+  function TalentNode_C:Construct()
+  end
+  
+  function TalentNode_C:Destruct()
+      self.Super.Destruct(self)
+  end
+  --Lua层可以调用Construct
+  --但无法调用蓝图Event Construct
+  --但可以调用蓝图Event Pre Construct
+  ```
+  
+  ![image-20220517194437191](UE4 Unlua.assets/image-20220517194437191.png)

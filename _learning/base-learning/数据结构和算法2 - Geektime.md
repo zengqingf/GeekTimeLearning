@@ -763,6 +763,127 @@
       };
       ```
   
+      ``` c++
+      template<class T,bool (Greater)(T&,T&)>
+      	class PriorityQueue
+      	{
+      	public:
+      		PriorityQueue(int n):_capacity(n),_size(0)
+      		{
+      			if(_capacity < 64)
+      			{
+      				_capacity = 64;										//@注意：初始化容器容量
+      			}
+      			_heap = new T[_capacity ];
+      		}
+      		~PriorityQueue()
+      		{
+      			delete _heap;
+      		}
+      		// inline void operator=(const PriorityQueue<T>&) {}
+      	
+      		inline void Clear()
+      		{
+      			_size = 0;
+      		}
+      	
+      		inline T Top()
+      		{
+      			return _heap[0];
+      		}
+      	
+      		inline T Pop()
+      		{
+      			T result = _heap[0];
+      			_size--;
+      			TrickleDown(0, _heap[_size]);
+      			return result;
+      		}
+      	
+      		inline void Push(T node)
+      		{
+      			if(_size == _capacity)									//@注意：需要扩容
+      			{
+      				_capacity *= 2;
+      				T* newheap = new T[_capacity];
+      				memcpy(newheap,_heap,sizeof(T)*_size);
+      				delete _heap;
+      				_heap = newheap;
+      			}
+      			_size++;
+      			BubbleUp(_size-1, node);								//如果没有扩容操作，堆化时可能会溢出，造成奔溃
+      		}
+      	
+      		inline void Modify(T node)
+      		{
+      			for (int i = 0; i < _size; ++i)
+      			{
+      				if (_heap[i] == node)
+      				{
+      					BubbleUp(i, node);
+      					return;
+      				}
+      			}
+      		}
+      
+      		inline void Modify(bool (Equals)(T& node))
+      		{
+      			for (int i = 0; i < _size; ++i)
+      			{
+      				if (Equals(_heap[i]))
+      				{
+      					BubbleUp(i, _heap[i]);
+      					return;
+      				}
+      			}
+      		}
+      	
+      		inline bool Empty() const { return _size == 0; }
+      	
+      		inline int GetMemUsed() const
+      		{
+      			return sizeof(*this) +
+      			sizeof(T)*(_capacity+1);
+      		}
+      	
+      		inline int Capacity() const { return _capacity; }
+      	
+      	private:
+      		void BubbleUp(int i, T node)
+      		{
+      			int parent = (i-1)/2;
+      			// note: (index > 0) means there is a parent
+      			while ((i > 0) && Greater(_heap[parent] , node))
+      			{
+      				_heap[i] = _heap[parent];
+      				i = parent;
+      				parent = (i-1)/2;
+      			}
+      			_heap[i] = node;
+      		}
+      		void TrickleDown(int i, T node)
+      		{
+      			int child = (i*2)+1;
+      			while (child < _size)
+      			{
+      				if (((child+1) < _size) && 
+      					Greater(_heap[child], _heap[child+1]))
+      				{
+      					child++;
+      				}
+      				_heap[i] = _heap[child];
+      				i = child;
+      				child = (i*2)+1;
+      			}
+      			BubbleUp(i, node);
+      		}
+      	
+      		T* _heap;
+      		int _capacity;
+      		int _size;
+      	};	
+      ```
+  
       
   
     * 中位数
