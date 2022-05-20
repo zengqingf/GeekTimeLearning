@@ -819,6 +819,95 @@
 
   
 
+---
+
+### Unity优化
+
+unity中减少堆内存分配以减少垃圾回收处理：
+只有局部变量且为值类值的变量是从stack栈中分配内存，其它所有情况都是从heap堆中分配内在。
+\* 缓存获取到的数据。
+\* 频繁被调用的函数中尽量少的分配空间。如Update函数，缓存变量或者增加时间判断每延迟多少时间后再执行一次而没必要每帧执行。
+\* 复用集合类变量，如List数据，当有新数据时Clear()后重新添加而不是new List()。
+\* 使用缓存池Object pooling，网上相关教程挺多的。
+\* String: 
+\- string是引用类型，减少没必要的新string尽量缓存；
+\- Text组件文本若经常变化，可以考虑将不变的文本和变化的文本拆为多个Text组件；
+\- string的+操作每次都会产生垃圾，请用StringBuilder代替之，尤其注意在Update()中使用string；
+\- 不需要调用测试之后应该移除所有的Debug.Log()，每次调用至少产生并丢弃一个string，即便是空调用不输出任何东西也一样；
+\- 不要用 String.Compare或String.CompareTo返回0来比较相等，而是用作排序sort。（非内存优化建议）
+\* unity函数调用：
+\- 有些函数或属性每次调用都会产生新的数组并返回，尽量缓存结果，如Mesh.normals
+
+``` c#
+for (int i = 0; i < myMesh.normals.Length; i++)
+{
+    Vector3 normal = myMesh.normals[i];
+}
+//改为
+Vector3[] meshNormals = myMesh.normals;
+for (int i = 0; i < meshNormals.Length; i++)
+{
+
+    Vector3 normal = meshNormals[i];
+}
+```
+
+\- GameObject.name和GameObject.tag同样每次调用都会产生新的string，当检查是否相等时请使用GameObject.CompareTag()代替，它不会产生垃圾；
+\- 其它一些函数同样有类似的替代调用，如 Input.GetTouch() 和 Input.touchCount 代替 Input.touches, 或者 Physics.SphereCastNonAlloc() 代替Physics.SphereCastAll()；
+
+\* 尽量避免装箱拆箱，如string.Format()传入值类型数据时必然存在将值类型装箱为object类型的转换。
+\* 协程Coroutines：
+\- yield return null代替yield return 0;
+\- 减少相同的new操作：
+
+``` c#
+while (!isComplete)
+{
+    yield return new WaitForSeconds(1f);
+}
+//改为
+WaitForSeconds delay = new WaitForSeconds(1f);
+while (!isComplete)
+{
+    yield return delay;
+}
+```
+
+\- 如果由于协程产生了很多垃圾，则可以用其它方式代替协程实现相同功能。如果主要是对时间的控制则可以将逻辑写到Update函数中；如果是控制一系列事情的先后执行顺序则可以使用事件机制(观察者模式)来实现各模块的沟通。
+\* 除数组外的foreach的调用会产生额外的GC，尽量少用，5.5版本后该问题被解决。
+*函数引用，无论是匿名还是具名函数，都会有堆内存分配，尤其是闭包closure会增加更多的内存占用，少量使用函数引用（一般是各种delegate了）。
+*LINQ和正则表达式都会由于存在装箱而产生垃圾，对性能要求比较高时应避免使用它们。
+\* struct结构是值类型，但当结构中包含引用类型时，垃圾回收器也不得不对整个结构进行检查，当有大的结构数组存在时就会加大垃圾回收的负担：
+
+``` c#
+public struct ItemData
+{
+    public string name;
+    public int cost;
+    public Vector3 position;
+}
+private ItemData[] itemData;
+
+//由于string是引用类型导致垃圾回收器对整个结构数组都需要检查，拆分出来就可以避免该问题：
+private string[] itemNames;
+private int[] itemCosts;
+private Vector3[] itemPositions;
+```
+
+\* 类被引用的数量越多，垃圾回收需要检查的工作则越大，尽量减少没必要的类引用。
+
+\* 在游戏暂停、场景切换等时机，可以主动进行垃圾回收，从而及时去除游戏中已经不必要的内存占用：
+
+``` c#
+void Update()
+ {
+     if(Time.frameCount % 50 == 0)
+     {
+         System.GC.Collection();
+     }
+ }
+```
+
 
 
 
