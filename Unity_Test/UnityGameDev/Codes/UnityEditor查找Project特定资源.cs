@@ -1,7 +1,7 @@
 public static class ProjectExtends{
 
     /*
-    清理引用的自由8u安
+    清理missing的引用ß
     */
     [MenuItem("Edit/Cleanup Missing Scripts")]
     static void CleanupMissingScripts ()
