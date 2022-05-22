@@ -90,8 +90,10 @@
 
   [Unity博客](https://blog.unity.com/cn)
 
-  [Godot引擎 Docs](https://docs.godotengine.org/en/stable/index.html)
+  [Unity官方技术手册（UnityWebApp）](https://connect.unity.com/doc/)
 
+  [Godot引擎 Docs](https://docs.godotengine.org/en/stable/index.html)
+  
   [Cocos Docs](https://www.cocos.com/docs)
 
 
@@ -113,6 +115,8 @@
   [linux-cookshell](https://coolshell.cn/articles/8883.html)
 
   [leetcodebook-halfrost](https://books.halfrost.com/leetcode//)
+
+  [航歌-开发者知识平台](http://www.hangge.com/)
 
   
 
@@ -163,6 +167,8 @@
   [Python Docs](https://docs.python.org/zh-cn/3/library/index.html)
 
   [SS64 Commond Line Ref Docs](https://ss64.com/)
+  
+  [C#编程指南](https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/)
 
 
 
@@ -182,6 +188,12 @@
 
   [正则在线](https://regex101.com/)
 
+  [Unicode ASCII 字符在线查询](http://www.endmemo.com/unicode/ascii.php)
+
+  
+
+  [CSharp在线编译工具](https://sharplab.io/)
+
   
 
 * art资源
@@ -189,11 +201,21 @@
   [open game art](https://opengameart.org/)
 
   [Web Safe Colors](https://www.bootcss.com/p/websafecolors/)
-  
+
   [Html颜色代码](https://htmlcolorcodes.com/zh/)
+
+  [ShoeBox 贴图资源](http://renderhjs.net/shoebox/)
+
+  
 
 * env
 
   [Bitbucket](https://bitbucket.org/JuXingMao/profile/repositories)
 
   [Notion 笔记](https://www.notion.so/zh-cn)
+  
+  [图床SM.MS](Home - SM.MS | Dashboard)
+  
+  [ShowDoc](https://www.showdoc.cc/item/index)
+  
+  [百度脑图](http://naotu.baidu.com/home)

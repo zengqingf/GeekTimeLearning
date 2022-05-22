@@ -823,6 +823,8 @@
 
 ### Unity优化
 
+ref: https://www.cnblogs.com/suoluo/p/6204236.html
+
 unity中减少堆内存分配以减少垃圾回收处理：
 只有局部变量且为值类值的变量是从stack栈中分配内存，其它所有情况都是从heap堆中分配内在。
 \* 缓存获取到的数据。

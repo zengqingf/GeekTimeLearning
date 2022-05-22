@@ -305,6 +305,91 @@
 
 
 
+* 球形插值Slerp
+
+  ref: https://www.cnblogs.com/suoluo/p/5695362.html
+
+  官方：http://docs.unity3d.com/ScriptReference/Vector3.Slerp.html
+
+  ``` tex
+  一开始主观认为这个球形插值Slerp应该本来就是两点之间画弧线，貌似很简单，但该官方例子实现太阳升降却写得很复杂，虽没几行代码却不明白做了些什么事- -
+  
+  向量即既有长度同时有方向，看介绍可以知道，相比线性插值Lerp将Vector3当作空间的点，球形插值Slerp则是将Vector3当作方向，返回的Vector3的长度是两点之前的距离插值，方向是两个向量之间的夹角度数的插值。
+  
+  注意这里的“夹角度数”，我觉得理解这个夹角度数比较重要，不然仅仅靠Slerp是在两向量之间做距离插值的同时也对方向做插值还是不太好理解Slerp的最终效果会是个什么样的弧线。
+  
+  为了能形象的理解Slerp是怎样在做“插值”，我将每一帧的状态都以图形的方式画在了场景中，代码如下，仅仅在官方代码基础上增加了画图功能：
+  ```
+
+  ``` c#
+  void Start ()
+  {
+      startTime = Time.time;
+      DrawLine (sunrise.position, Color.red);
+      DrawLine (sunset.position, Color.cyan);
+      StartCoroutine (UpdateLine ());
+  }
+  
+  IEnumerator ShowSlerp ()
+  {
+      while (Vector3.Distance (transform.position, sunset.position) > 0.05f)
+      {
+          Vector3 center = (sunrise.position + sunset.position) * 0.5F;
+          DrawLine (center, Color.yellow);
+          yield return null;
+          center -= new Vector3 (0, 1, 0);
+          DrawLine (center, Color.gray);
+          yield return null;
+  
+          Vector3 riseRelCenter = sunrise.position - center;
+          DrawLine (riseRelCenter, Color.green);
+          yield return null;
+          Vector3 setRelCenter = sunset.position - center;
+          DrawLine (setRelCenter, Color.blue);
+          yield return null;
+  
+          float fracComplete = (Time.time - startTime) / journeyTime;
+          transform.position = Vector3.Slerp (riseRelCenter, setRelCenter, fracComplete);
+          DrawLine (transform.position, Color.magenta);
+          yield return null;
+          transform.position += center;
+          DrawLine (transform.position, Color.white);
+          yield return null;
+      }
+  }
+  ```
+
+  ![img](Unity API.assets/908578-20160725151012341-1054558591.png)
+
+  ``` tex
+  这样代码逻辑就显而意见了：原本是在红向量与浅蓝（蓝绿）向量间做Slerp，转变为绿向量与蓝向量间做Slerp，从而产生紫（品红）向量尾部相连的运动轨迹，最终再形成类似太阳升降的白向量尾部相连的曲线运动轨迹。
+  
+  至此基本明白Slerp代码之外的其他代码的作用了：sunrise与sunset两向量如果共线则直接做Slerp运动是水平方向的曲线！由于这两个点并未指定初始值而是用户可以任调整的值，所以说做这些多就只是为了将任意值的起点与终点作偏移使得运动轨迹初终能更符合太阳升降的曲线。
+  
+  当看到绿蓝向量间做Slerp运动可以形成紫向量那样的运动轨迹时，可能有的童鞋也可以猜到了，只要两条向量间的夹角不是180度，Slerp的结果就不会是水平方向的弧线。看下图：
+  ```
+
+  ![img](Unity API.assets/908578-20160725150159778-500525640.png)
+
+  ``` tex
+  上面那条曲线即是将起点和终点向量稍微上移之后直接进行Slerp运动时的轨迹。可见相比直接Slerp，转换过后的曲线弯曲程度也得到了调节更符合太阳升起降落的轨迹。
+  
+  由此知道两向量直接进行Slerp球形插值时是能直接产生一个曲线弧形的轨迹，不同位置的向量可以产生不同面上的弧形，在两向量位置固定不可变时可以像官方例子这样调整两向量获得中间向量再Slerp。
+  
+  官方代码说明到此结束，至此Slerp为什么被称作球形插值也就明白了，看下图：
+  ```
+
+  ![img](Unity API.assets/908578-20161208152037444-1788428465.png)
+
+  ``` tex
+  当两向量长度相同时，Slerp的结果即是两向量所在球形表面两点之间的弧线！
+  如此，当两向量为180度水平共线时为什么会形成水平方向的弧形了也就很显然了，因为两点所在球面上的弧线本来就是这样一条弧线。
+  ```
+
+  
+
+
+
 
 
 

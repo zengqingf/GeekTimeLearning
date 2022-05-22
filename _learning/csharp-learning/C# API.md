@@ -112,6 +112,68 @@
 
   
 
+* Disposable应用
+
+  ref: https://blog.csdn.net/zhifeiya/article/details/8923280
+
+  ``` c#
+  [ComVisible(true)]
+  public interface IDisposable
+  {    // Methods
+      void Dispose();
+  }
+  
+  1.[ComVisible(true)]：
+      指示该托管类型对 COM 是可见的.
+  2.此接口的主要用途是释放非托管资源。
+      当不再使用托管对象时，垃圾回收器会自动释放分配给该对象的内存。但无法预测进行垃圾回收的时间。另外，垃圾回收器对窗口句柄或打开的文件和流等非托管资源一无所知。将此接口的Dispose方法与垃圾回收器一起使用来显式释放非托管资源。当不再需要对象时，对象的使用者可以调用此方法。
+  ```
+
+  **Dispose()方法必须需要实现！**
+
+  * 应用1
+
+    ``` c#
+    public class CaryClass :IDisposable
+    {
+        public void DoSomething()
+        {
+            Console.WriteLine("Do some thing....");
+        }
+        public void Dispose()
+        {
+             Console.WriteLine("及时释放资源");
+        }
+    }
+    
+    //调用方式1：使用Using语句会自动调用Dispose方法
+      using (CaryClass caryClass = new CaryClass())
+      {
+           caryClass.DoSomething();
+      }
+    
+    //调用方式2: 先实调用该接口的Dispose方法
+     CaryClass caryClass = new CaryClass();
+        try{
+               caryClass.DoSomething();
+         }
+         finally
+         {
+           IDisposable disposable = caryClass as IDisposable;
+           if (disposable != null)
+                disposable.Dispose();
+         }
+    
+    //两种方式的执行结果是一样的。
+    /*
+    使用try/finally 块比使用 using 块的好处是即使using中的代码引发异常，CaryClass的Dispose方法仍有机会清理该对象。所以从这里看还是使用try/catch好一些。
+    */
+    ```
+
+    
+
+
+
 
 
 ---
