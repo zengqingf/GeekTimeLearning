@@ -138,6 +138,50 @@
 
 
 
+* Alignment （对齐）
+
+  ``` tex
+  对齐是控件的枢轴点
+  从左上角(0,0)开始，到右下角(1,1)结束
+  移动对齐点可以移动控件的原点
+  ```
+
+  
+
+* Clipping（裁剪）
+
+  ![image-20220518144030365](UE4 UI开发.assets/image-20220518144030365-16528560314741.png)
+
+  ![image-20220518144104535](UE4 UI开发.assets/image-20220518144104535-16528560655922.png)
+
+  ![image-20220518144120810](UE4 UI开发.assets/image-20220518144120810-16528560823993.png)
+
+  ![image-20220518144136546](UE4 UI开发.assets/image-20220518144136546-16528560974394.png)
+
+  ![image-20220518144152140](UE4 UI开发.assets/image-20220518144152140-16528561129645.png)
+
+  ![image-20220518144248735](UE4 UI开发.assets/image-20220518144248735-16528561697316.png)
+
+  * 裁剪应用1
+
+    ``` tex
+    需要子节点中的各组件锚点配合父节点的裁剪方向，做调整
+    ```
+
+    ![image-20220518152943383](UE4 UI开发.assets/image-20220518152943383-16528589846567.png)
+
+    ![image-20220518153126950](UE4 UI开发.assets/image-20220518153126950-16528590883008.png)
+
+    
+
+  * 应用2
+
+    ![image-20220520095900601](UE4 UI开发.assets/image-20220520095900601-165301194163513.png)
+
+
+
+
+
 * RichTextBlock 富文本实现
 
   ![](UE4 UI开发.assets/202111181158658.png)
@@ -170,7 +214,7 @@
 * 界面层级
 
   ``` tex
-  处于同一嵌套层级的UI，通过Set ZOrder，可以设置哪个Widget的前后关系
+  处于同一嵌套层级的UI，通过Set ZOrder，可以设置哪个Widget的前后关系，Order越大，显示越前
   
   动态创建的子 Widget，通过add child节点而非add to viewport，挂载到指定父widget下，该子widget能显示在父widget之前
   ```
@@ -200,6 +244,20 @@
     **Down and Up 修改为 Precise Tap**，避免滑动列表不能接收到鼠标左键或者手机中的屏幕点击滑动消息
   
     ![image-20220210144129965](UE4 UI开发.assets/image-20220210144129965-16444752919941.png)
+  
+    * 实践（使用Button代替触发Toggle Checked状态）
+  
+      ![image-20220520092610259](UE4 UI开发.assets/image-20220520092610259-16530099714269.png)
+  
+      ![image-20220520092745924](UE4 UI开发.assets/image-20220520092745924-165301006687810.png)
+  
+      ![image-20220520092808597](UE4 UI开发.assets/image-20220520092808597-165301008966211.png)
+  
+      ![image-20220520092823745](UE4 UI开发.assets/image-20220520092823745-165301010470812.png)
+  
+  
+  
+  
   
   * 多排多列滑动列表
   
@@ -396,9 +454,10 @@
   ![image-20220511110615605](UE4 UI开发.assets/image-20220511110615605-16522383769892.png)
 
   ``` tex
-  设置Checkbox IsEnabled为false, 新增Button，添加OnClick响应Checkbox SetIsCheckDirty 触发选中回调
+  设置Checkbox [[IsEnabled为false  不需要设置，只需要保证Toggle无法接受点击即可]]
+  新增Button，添加OnClick响应Checkbox SetIsCheckDirty 触发选中回调
   ```
-
+  
   ``` c++
   void UToggleEx::SetIsCheckDirty(bool InIsChecked)
   {
