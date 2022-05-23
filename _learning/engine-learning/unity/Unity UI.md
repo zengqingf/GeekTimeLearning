@@ -172,6 +172,127 @@ ref: https://www.cnblogs.com/suoluo/p/5427514.html
 
 ---
 
+### UGUI
+
+* 基础
+
+  ref: https://blog.csdn.net/SerenaHaven/article/details/78826851
+
+  * RectTransform
+
+    ``` tex
+    Position, size, anchor and pivot information for a rectangle.
+    RectTransforms are used for GUI but can also be used for other things. It’s used to store and manipulate the position, size, and anchoring of a rectangle and supports various forms of scaling based on a parent RectTransform.
+    RectTransform主要提供一个矩形的位置、尺寸、锚点和中心信息以及操作这些属性的方法，同时提供多种基于父级RectTransform的缩放形式。
+    ```
+
+  * Anchor（锚点）
+
+    ``` tex
+    锚点（四个）由两个Vector2的向量确定，这两个向量确定两个点，归一化坐标分别是Min和Max，再由这两个点确定一个矩形，这个矩形的四个顶点就是锚点。
+    在Min的x、y值分别小于Max的x、y值时，Min确定矩形左下角的归一化坐标，Max确定矩形右上角的归一化坐标。刚创建的Image，其Anchor的默认值为Min（0.5，0.5)和Max（0.5，0.5）。也就是说，Min和Max重合了，四个锚点合并成一点。
+    
+    ```
+
+  * Pivot（中心点）
+
+    ``` tex
+    Pivot用来指示一个RectTransform（或者说是矩形）的中心点。矩形左下角为（0，0），右上角为（1，1）。Pivot为（0，0）时，即与矩形左下角重合。默认状态下，Pivot为（0.5，0.5），即Pivot在矩形中心。
+    
+    蓝色圆圈表示的就是Pivot。如果无法看见，需要在工具栏中选择Transform Tools的最后一个选项，或者使用快捷键T。
+    
+    可以通过直接在Scene视图中拖动Pivot来调整锚点位置，也可以在Inspector中直接输入Pivot的两个值以得到精确的位置。当对RectTransform进行定位、旋转和缩放操作时，都将以Pivot为参考点进行
+    ```
+
+    ``` tex
+    子级RectTransform的在父级RectTransfrom中的定位是由子级Anchor和Pivot共同作用完成的。
+    
+    在锚点全部重合的情况下，PosX、PosY和PosZ确定了它的Pivot相对于Anchor的位置，Width和Height确定了它的尺寸。
+    
+    在仅左右拉伸的情况下，子RectTransform的左边和右边会分别与其左右两个Anchor保持Left和Right的距离；相对于两个Anchor连线的竖直偏移由PosY确定；自身的高度由Height确定。
+    
+    在仅上下拉伸的情况下，子RectTransform的上边和下边会分别与其上下两个Anchor保持Top和Bottom的距离；相对于两个Anchor连线的水平偏移由PosX确定；自身的宽度由Width确定。
+    
+    在上下左右均拉伸的情况下，子RectTransform的上下左右会分别与其上下左右四个Anchor保持Top、Bottom、Left和Right的距离；其位置和尺寸完全由父RectTransform控制。
+    ```
+
+  * postion localPosition anchoredPosition anchoredPosition3D
+
+    ``` tex
+    Transform有position和localPosition属性，这两个分别代表在世界空间的绝对位置和相对于父级物体的相对位置。RectTransform引入了anchoredPosition和anchoredPosition3D，它们都是相对位置，但是相对的是自身的Anchor。
+    
+    当锚点全部重合时，anchoredPosition代表的就是自身Pivot到Anchor的向量。
+    
+    anchoredPosition和anchoredPositoin3D都可以认为是以像素为单位。
+    
+    关于RectTransform的position和localPosition，它们的值根其所属的Canvas的渲染模式有关。
+    在Screen Space——Overlay的模式下，由于Canvas的世界尺寸与其像素尺寸在数值上相等，因此其rectTransform的position与其在屏幕空间的坐标在数值上也相等。这种模式下，要获取某个RectTransform的屏幕坐标，直接使用position就可以。
+    
+    在Screen Space——Camera的模式和World Space下，RectTransform的渲染与摄像机有关，在获取其屏幕坐标时，需要利用canvas.worldCamera，或者transform.TransformPoint等坐标转换函数进行坐标转换。
+    ```
+
+    ![这里写图片描述](Unity UI.assets/format,png.png)
+
+  * offsetMax offsetMin
+
+    ``` tex
+    offsetMax The offset of the upper right corner of the rectangle relative to the upper right anchor.
+    offsetMin The offset of the lower left corner of the rectangle relative to the lower left anchor.
+    
+    offsetMax是RectTransform右上角相对于右上Anchor的距离；
+    offsetMin是RectTransform左下角相对于左下Anchor的距离。
+    
+    offset可以认为是以像素为单位。
+    ```
+
+    ``` c#
+    //用代码控制RectTransform时很有用，比如在制作UI时，其中有个RectTransform采用的是“绝对定位”，
+    //运行时需要用代码来将其设置为全拉伸，那么对该RectTransform执行如下操作就可以实现：
+    rectTransform.anchorMin = Vector2.zero;
+    rectTransform.anchorMax = Vector2.one;
+    rectTransform.offsetMin = Vector2.zero;
+    rectTransform.offsetMax = Vector2.zero;
+    ```
+
+  * sizeDelta
+
+    ``` tex
+    sizeDelta是个由引擎计算出来的值，这个值很容易被错误地使用。要正确地使用sizeDelta，就要先理解它是怎么算出来的。
+    
+    The size of this RectTransform relative to the distances between the anchors.
+    If the anchors are together, sizeDelta is the same as size. If the anchors are in each of the four corners of the parent, the sizeDelta is how much bigger or smaller the rectangle is compared to its parent.
+    
+    sizeDelta是offsetMax-offsetMin的结果。
+    在锚点全部重合的情况下，它的值就是面板上的（Width，Height）。
+    在锚点完全不重合的情况下，它是相对于父矩形的尺寸。
+    
+    一个常见的错误是，当RectTransform的锚点并非全部重合时，使用sizeDelta作为这个RectTransform的尺寸。此时拿到的结果一般来说并非预期的结果。
+    
+    sizeDelta可以认为以像素为单位。
+    ```
+
+  * rect
+
+    ``` tex
+    获取一个RectTransform的矩形信息，应该使用rectTransform.rect属性
+    rect属性同样是一个计算出来的值，但是它表示的是该rectTransform对应的矩形的相关信息。其中前两个参数分别代表矩形左下角相对于锚点的x和y坐标，后两个参数分别代表矩形的宽度和高度。
+    
+    rect可以认为是以像素为单位。
+    ```
+
+  * RectTransformUtility
+
+    ``` tex
+    RectTransformUtility是原生的RectTransform工具
+    它提供了多个静态函数来对RectTransform进行操作，如坐标转换、范围测试等等
+    ```
+
+    
+
+
+
+---
+
 
 
 ### NGUI使用问题
