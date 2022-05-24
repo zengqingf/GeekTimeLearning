@@ -65,6 +65,8 @@
   [学堂在线](https://www.xuetangx.com/)
 
   [中国大学mooc](https://www.icourse163.org/)
+  
+  [部分付费-unity教程-国外](http://www.alanzucconi.com/tutorials/)
 
 
 
@@ -118,6 +120,12 @@
 
   [航歌-开发者知识平台](http://www.hangge.com/)
 
+  [web后端开发-精子blog](https://jysperm.me/)
+
+  [阮一峰blog](https://www.ruanyifeng.com/blog/)
+
+  [仙剑5前传-同人游戏-blog](http://pal5h.com/)
+
   
 
 * 教程
@@ -135,6 +143,20 @@
   [飞雪无情-android](https://www.flysnow.org/categories/Android/)
 
   [廖雪峰](https://www.liaoxuefeng.com/)
+
+  
+
+  * 设计模式
+
+    [C#设计模式](https://www.cnblogs.com/rush/category/268894.html)
+
+    [C#设计模式2](https://www.cnblogs.com/smile-xiaoyu/category/463456.html)
+
+    [Java设计模式](https://blog.csdn.net/cselmu9/category_1244266.html)
+
+  * C++
+
+    [cnblog-c++并发编程](https://www.cnblogs.com/xudong-bupt/category/489888.html)
 
   
 
