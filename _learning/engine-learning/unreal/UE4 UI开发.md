@@ -487,6 +487,18 @@
 
 
 
+* Toggle（CheckBox）增加响应区域
+
+  ``` tex
+  对Toggle的子节点，设置为Visible，可以增大响应Toggle点击区域
+  ```
+
+  ![image-20220524160640040](UE4 UI开发.assets/image-20220524160640040.png)
+
+
+
+
+
 ---
 
 
@@ -505,6 +517,18 @@
           // do something using CylinderHitLocation.Key;
      }
     ```
+  
+  * 3D WidgetComponent 滑动和点击不灵敏
+  
+    ``` tex
+    根据不同页面，设置Input - Mouse Capture Mode为 永久捕获（包括鼠标按下）
+    ```
+  
+    ![image-20220524113706916](UE4 UI开发.assets/image-20220524113706916.png)
+  
+    ![image-20220524113758069](UE4 UI开发.assets/image-20220524113758069.png)
+  
+    ![image-20220524113901381](UE4 UI开发.assets/image-20220524113901381.png)
 
 
 
