@@ -11,7 +11,7 @@ mss==4.0.3
 numpy==1.19.3
 opencv-contrib-python==4.5.1.48
 pefile==2019.4.18
-Pillow==8.1.0
+Pillow==9.0.1
 pyinstaller==4.2
 pyinstaller-hooks-contrib==2020.11
 pypiwin32==223
