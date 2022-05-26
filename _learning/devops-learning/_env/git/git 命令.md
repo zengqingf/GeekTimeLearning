@@ -128,4 +128,18 @@ link:
 
   
 
+* 测试github链接时，报错"You've successfully authenticated, but GitHub does not provide shell access."
+
+  ``` tex
+  $ ssh -T git@github.com
+  Enter passphrase for key '/c/Users/AuroreGame/.ssh/id_rsa':
+  Hi MJX1010! You've successfully authenticated, but GitHub does not provide shell access.
+  ```
+
+  ``` shell
+  #重新生成 ssh key 将之前 GitHub 保存的秘钥删除(也可以直接添加新的,不用管之前的).
+  #生成 ssh key 命令:
+  ssh-keygen -t rsa -C “your_email.com”
+  ```
+
   

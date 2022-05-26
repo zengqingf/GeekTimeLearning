@@ -58,6 +58,31 @@
 
   
 
+---
+
+
+
+### API
+
+* 获取屏幕大小、中心点、视口缩放比例
+
+ ``` c++
+ int32 X = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().X;
+ int32 Y = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().Y;
+ UE_LOG(LogTemp, Warning, TEXT("X : %d, Y : %d"), X, Y);
+ 
+  //Viewport Size
+  const FVector2D ViewportSize = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
+  //Viewport Center      
+  const FVector2D ViewportCenter = FVector2D(ViewportSize.X/2, ViewportSize.Y/2);
+ 
+  float Scale = UWidgetLayoutLibrary::GetViewportScale(this);
+  FVector2D Vec2D;
+  Vec2D.X = X / 2 / Scale - 200;
+  Vec2D.Y = Y / 2 / Scale;
+  SetRenderTranslation(Vec2D);
+ ```
+
 
 
 
