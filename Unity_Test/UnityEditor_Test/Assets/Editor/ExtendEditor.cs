@@ -38,3 +38,49 @@ public class ProjectCreateButtonMenu
        GameObject.CreatePrimitive(PrimitiveType.Sphere);  //创建球体
     }
 }
+
+public class ProjectExtendLayout
+{
+    [InitializeOnLoadMethod]                                        //在C#代码每次编译完成后会首先调用
+    static void InitializeOnLoadMethod()
+    {
+        EditorApplication.projectWindowItemOnGUI = delegate(string guid,        //使用GUI方法绘制自定义的UI元素（按钮、文本、图片、滚动条、下拉框）
+                Rect selectionRect) {
+                    //在Project视图中选择一个资源
+                    if (Selection.activeObject &&
+                        guid == AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(Selection.activeObject))) {
+                            //设置扩展按钮区域
+                            float width = 50f;
+                            SelectionRect.x += (selectionRect.width - width);
+                            SelectionRect.y += 2f;
+                            SelectionRect.width = width;
+                            GUI.color = Color.red;
+                            //点击事件
+                            if(GUI.Button(selectionRect, "click")) {
+                                Debug.LogFormat("click : {0}", Selection.activeObject.name);
+                            }
+                            GUI.color = Color.white;
+                        }
+                }
+    }
+}
+
+public class ProjectOperationListener
+{
+    [InitializeOnLoadMethod]
+    static void InitializeOnLoadMethod()
+    {
+        //全局监听Project 视图下的资源是否发生变化（添加、删除或移动）
+        EditorApplication.projectWidowChanged = delegate() {
+            Debug.Log("project view change");
+        };
+    }
+
+    public static bool IsOpenForEdit(string assetPath, out string msg)
+    {
+        msg = null;
+        Debug.LogFormat("assetPath : {0}", assetPath);
+        //true: 资源可以打开；false: 不允许在Unity中打开
+        return true;
+    }
+}
