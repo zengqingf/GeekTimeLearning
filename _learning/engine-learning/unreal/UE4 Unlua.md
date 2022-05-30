@@ -182,7 +182,60 @@
   end
   ```
 
+  * **延迟调用问题**
   
+    **UnLua使用UE4提供的延迟调用函数，在延迟回调里的UpValue变量会被置空**
+  
+    ``` lua
+    -- 更新可接取的任务列表
+    function TaskDataManager:UpdateCanAccquireTask(autoAccquire)
+    	--...
+      local sortedTaskList = self:GetShowSortedTaskList()
+        --由于数据没有isTriggerC 需要主动触发一次
+      UIEventSystemMgr:SendUIEvent(EBeEventUIType.OnTaskListUpdate, sortedTaskList)  
+        -- C++也需要触发
+      UTMBlueprintFunctionLibrary.TriggerUIEvent(EBeEventUIType.OnTaskListUpdate)
+      	--...
+    end
+    
+    function MainTownTaskWidget_C:OnTaskListUpdate(uiEventID, ...)
+        --[[
+        local params = {...}
+        if #params > 0 then
+        	if nil == delayPlayTaskOverHandle then
+            	delayPlayTaskOverHandle = CommonUtility.DelayCall(				--延迟调用
+                        {self,
+                        function ()
+                            if params[1]:Size() > 0 then						--回调里的params被置空了！！！				
+                               print("### task on event", params[1][1]:TaskId(), params[1][1]:TaskStatus())
+                           	else
+                                print("### task on event, task is 0")
+                            end
+                            self:Update(params[1])
+                            CommonUtility.ClearDelayCall(self, delayPlayTaskOverHandle)
+                            delayPlayTaskOverHandle = nil
+                        end}, 
+                        self:GetTaskOverAnimPlayDuration(), false)
+       		end
+        end
+        ]]
+    
+        --修复后
+        if nil == delayPlayTaskOverHandle then
+            delayPlayTaskOverHandle = CommonUtility.DelayCall(
+                        {self,
+                        function ()
+                            local taskSortList = TaskDataMgr:GetShowSortedTaskList()
+                            self:Update(taskSortList)
+                            CommonUtility.ClearDelayCall(self, delayPlayTaskOverHandle)
+                            delayPlayTaskOverHandle = nil
+                        end}, 
+                        self:GetTaskOverAnimPlayDuration(), false)
+        end  
+    end
+    ```
+  
+    
 
 
 
