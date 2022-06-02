@@ -474,24 +474,115 @@
 
   > 全局变量、文件域的静态变量和类的静态成员变量在main执行之前的静态初始化过程中分配内存并初始化；局部静态变量（一般为函数内的静态变量）在第一次使用时分配内存并初始化。这里的变量包含内置数据类型和自定义类型的对象。
 
-  **静态变量初始化的线程安全性说明**
+  修改：
 
+  ``` tex
+  局部静态变量的内存分配应该和全局变量一样，在main函数之前分配好，在第一次调用的时候只是初始化。
+  ```
+
+  
+  
+  **静态变量初始化的线程安全性说明**
+  
   > 非局部静态变量一般在main执行之前的静态初始化过程中分配内存并初始化，可以认为是线程安全的；
   >
   > 局部静态变量在编译时，编译器的实现一般是在初始化语句之前设置一个局部静态变量的标识来判断是否已经初始化，运行的时候每次进行判断，如果需要初始化则执行初始化操作，否则不执行。这个过程本身不是线程安全的。
-
+  
   C++11标准针规定了局部静态变量初始化需要保证线程安全，具体说明如下：
   If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization
 
   新的编译器大多对C++11的标准支持，因此也保证了这一点，但是C++03标准之前并无此说明，所以很多旧版本的编译器并不能完全支持。
-
+  
   注：VS2008 测试多线程的条件下虽然只有一个线程执行一次初始化，但非初始化的线程并不会等待初始化结束，而是立即返回未正确初始化的静态对象。
-
+  
   针对局部静态变量初始化的线程安全性，g++编译器的实现相当于使用了一个全局锁来控制一个局部静态变量的标识（标识用来判定是否已经初始化）。详情参考：[http://www.cnblogs.com/xuxm2007/p/4652944.html](https://link.segmentfault.com/?enc=DE7TAsn5gSzW7%2Bvvfm0%2BtA%3D%3D.9jLYm1gI%2FeZ%2FBDy4iOpW57c5VeEdNX2fvuR3g%2BPEc4nc9rrVK6DuJHa8ey6Kx6hj)
-
+  
   **使用相关：**
-
+  
   以前的标准都没有规定局部静态变量的初始化在并发模式下是否安全，很多旧版本的编译器并没有处理它的并发安全问题。因此在不支持C++11标准的编译环境下，多线程程序最好不要使用需要明显初始化的局部静态变量（对象），如果需要使用（比如单例模式中），则可以考虑使用一个全局锁或静态成员变量锁，最好不要使用局部静态变量锁，因为其本身存在一个构造的问题，多个线程获取实例的时候，可能会出现一个线程在进行锁对象构造，另一个线程则避开了构造，在锁对象还没有完全构造完成的情况下，就lock了，这个时候的行为能不能成功锁定取决于锁的实现了，虽然一般的实现不会出现问题但终归不是很严谨。
+
+
+
+
+
+* C++ const 常量内存分配 ???
+
+  ``` tex
+  ref: https://blog.csdn.net/xiazhiyiyun/article/details/71969618
+  对于const全局常量，如果初始值是字面值常量，一般会存放在常量表中，编译器在编译过程中就会直接使用常量表中的值来进行语句的操作。如果经过优化，可能会使得直接使用常而放弃存储在常量表中。
+  对于编译器没有办法处理的初始值常量，一般就需要分配到内存空间，然后等待运行时进行赋值，取值时候也是从内存空间中提取。
+  对于非static 的 const局部变量(如函数中)，由于其是局部变量，符号表中将不存在其值，如果需要内存空间也是在栈中进行分配。根据编译器的优化，以及const 变量初始值的不同来决定是否需要分配内存空间。
+  对于static 的 const局部变量(如函数中)，会根据编译器的优化能力，以及初始值，来决定其是不进行存储，还是直接存储在常量符号表，或者是栈中等等均有可能。
+  对于第三点和第四点可以尝试验证。
+  ```
+
+  
+
+
+
+
+
+* C++局部静态变量的内存什么时候创建
+
+  ``` tex
+  ref:https://www.zhihu.com/question/40693991
+  
+  局部静态变量是保持在程序的全局/静态存储区，初始化是在第一次执行时处理
+  
+  在Windows和Linux平台，全局/静态存储区跟执行代码一样，是在编译过程中就已经生成在执行文件中。
+  在执行文件被加载（比如执行a.exe或a.out）时，由操作系统直接映射到内存中，即是在程序运行时就创建
+  
+  局部静态跟全局静态内存中性质一样，文件里都在数据段。
+  唯一区别局部静态变量有作用域限制，是靠编译器帮忙语法检测。
+  局部静态变量有个初始化问题，当多次调用一个含有局部静态变量的函数时候，怎么保持之初始化一次。
+  程序会在内存中第一个bit位，来标识是否初始化过。所以答案是，该局部静态变量跟全局变量一样很早就存在于全局数据区。
+  但当第一次运行到该函数，会检测一个位，来判断是否已经初始化
+  ```
+
+  ``` tex
+  《Working Draft, Standard for Programming Language C++》
+  
+  The keyword static can be used to declare a local variable with static storage duration.
+  The static storage shall last for the duration of the program. 
+  The zero-initialization of all block-scope variables with static storage duration is performed before any other initialization takes place. 
+  Constant initialization of a block-scope entity with static storage duration, if applicable, is performed before its block is first entered. 
+  Such a variable is initialized the first time control passes through its declaration; 
+  such a variable is considered initialized upon the completion of its initialization. 
+  If the initialization exits by throwing an exception, the initialization is not complete, so it will be tried again the next time control enters the declaration. 
+  If control enters the declaration concurrently while the variable is being initialized, the concurrent execution shall wait for completion of the initialization. 
+  If control re-enters the declaration recursively while the variable is being initialized, the behavior is undefined. Destructors for initialized objects (that is, objects whose lifetime has begun) with static storage duration are called as a result of returning from main and as a result of calling std::exit.
+  ```
+
+  
+
+* 初始化、显示初始化、隐式初始化
+
+  ``` tex
+  ref: https://www.zhihu.com/question/31938613
+  
+  初始化：分配空间给变量后，赋予初值
+  
+  非自动变量是在编译期分配其空间，可以显式（即手工）给予初值，否则会隐式把该空间内所有内容设为零。
+  
+  自动变量是运行时每次进入函数时，才分配空间的，同一变量名实际上会对应不同的空间（例如考虑递归时的情况）
+  与非自动变量不同，自动变量是不会自隐式清零的。若没有在定义变量时显式初始化，未赋值前，该变量的内容是不确定值。
+  
+  区分是否可以自动清零的原因：
+  非自动变量只有一份，可以在编译、链接及加载过程初始化其值，而没有什么运行时开销。
+  自动变量进行初始化是有运行时开销的。
+  存在只需为变量分配空间而不需初始化，例如sprintf(buffer, ...)中的buffer若是自动变量，为它初始化是徒劳无功的。
+  所以C语言设计时为了性能，便容许自动变量不进行初始化。这和许多语言不一样。
+  
+  
+  静态变量的隐示初始化，是在加载的时候，.bss区直接初始化为0。即不赋值，静态变量为0。
+  静态变量声明不初始化，会在.bss中。.bss不会占据可执行文件空间。
+  在程序加载时，映射到匿名文件二进制清零。声明的变量是要占空间的。只是如果是指针，没有初始化分配，不占堆空间
+  
+  常量，比如立即数，可能在代码段。但是常量串，比如"hello world"在.rodata常量区。
+  另外用const修饰的全局变量是放入常量区的，但是使用const修饰的局部变量只是设置为只读起到防止修改的效果（因此可以通过地址修改），没有放入常量区。
+  ```
+
+  
 
 
 

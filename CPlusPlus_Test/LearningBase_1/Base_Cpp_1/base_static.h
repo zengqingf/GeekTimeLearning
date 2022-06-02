@@ -6,8 +6,8 @@ class BaseStatic_1
 	public:
 		BaseStatic_1()
 		{
-			//sleep(10); // ¹ÊÒâÈÃ³õÊ¼»¯¹ı³Ì·ÅÂı
-			std::this_thread::sleep_for(std::chrono::milliseconds(10));	// ¹ÊÒâÈÃ³õÊ¼»¯¹ı³Ì·ÅÂı
+			//sleep(10); // æ•…æ„è®©åˆå§‹åŒ–è¿‡ç¨‹æ”¾æ…¢
+			std::this_thread::sleep_for(std::chrono::milliseconds(10));	// æ•…æ„è®©åˆå§‹åŒ–è¿‡ç¨‹æ”¾æ…¢
 			m_num = 1;
 		};
 		~BaseStatic_1() {};
@@ -20,16 +20,16 @@ class BaseStatic_1
 
 void func(int index)
 {
-	//static BaseStatic_1 bs; // ¾²Ì¬¾Ö²¿±äÁ¿£¬Ä¬ÈÏ¹¹Ôì
+	//static BaseStatic_1 bs; // é™æ€å±€éƒ¨å˜é‡ï¼Œé»˜è®¤æ„é€ 
 	BaseStatic_1 b;
-	static BaseStatic_1 bs = b; // ¾²Ì¬¾Ö²¿±äÁ¿£¬¿½±´¹¹Ôì
+	static BaseStatic_1 bs = b; // é™æ€å±€éƒ¨å˜é‡ï¼Œæ‹·è´æ„é€ 
 
 	bs.print(index);
 }
 
 void test_static()
 {
-	// Èı¸öÏß³ÌÍ¬Ê±Ö´ĞĞ
+	// ä¸‰ä¸ªçº¿ç¨‹åŒæ—¶æ‰§è¡Œ
 	//boost::thread trd1(boost::bind(&func, 1));
 	//boost::thread trd2(boost::bind(&func, 2));
 	//boost::thread trd3(boost::bind(&func, 3));
