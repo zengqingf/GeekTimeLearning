@@ -160,6 +160,12 @@
 
     [Java设计模式](https://blog.csdn.net/cselmu9/category_1244266.html)
 
+    [图说设计模式](https://design-patterns.readthedocs.io/zh_CN/latest/index.html)
+
+    [菜鸟教程-设计模式](https://www.runoob.com/design-pattern/design-pattern-tutorial.html)
+
+    [游戏设计模式](http://gameprogrammingpatterns.com/contents.html)
+
   * C++
 
     [cnblog-c++并发编程](https://www.cnblogs.com/xudong-bupt/category/489888.html)
