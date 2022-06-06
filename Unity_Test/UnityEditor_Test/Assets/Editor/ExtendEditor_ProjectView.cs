@@ -76,11 +76,38 @@ public class ProjectOperationListener
         };
     }
 
+    //监听“双击鼠标左键，打开资源”事件
     public static bool IsOpenForEdit(string assetPath, out string msg)
     {
         msg = null;
         Debug.LogFormat("assetPath : {0}", assetPath);
         //true: 资源可以打开；false: 不允许在Unity中打开
         return true;
+    }
+
+    //监听“资源即将被创建”事件
+    public static void OnWillCreateAsset(string path)
+    {}
+
+    //监听资源即将被保存
+    public static string[] OnWillSaveAssets(string[] paths)
+    {
+        if (paths != null) {
+            Debug.LogFormat("path: {0}", string.Join(",", paths));
+        }
+        return paths;
+    }
+
+    //监听“资源即将被移动”
+    public static AssetMoveResult OnWillMoveAsset(string oldPaht, string newPath)
+    {
+        //AssetMoveResult.DidMove 表示该资源可以移动
+        return AssetMoveResult.DidMove;
+    }
+
+    public static AssetDeleteResult OnWillDeleteAsset(string assetPath. RemoveAssetOptions option)
+    {
+        //AssetDeleteResult.DidNotDelete 表示该资源不能被删除
+        return AssetDeleteResult.DidNotDelete
     }
 }

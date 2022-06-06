@@ -11,15 +11,36 @@
 #include "base_7.h"
 
 #include "base_static.h"
+#include "base_static_2.h"
 
 #include <math.h>
+
+/*
+在程序执行到该对象的定义处时，创建对象并调用相应的构造函数！
+如果在定义对象时没有提供初始指，则会暗中调用默认构造函数，如果没有默认构造函数，则自动初始化为0。
+如果在定义对象时提供了初始值，则会暗中调用类型匹配的带参的构造函数（包括拷贝构造函数），
+如果没有定义这样的构造函数，编译器可能报错！直到main（）结束后才会调用析构函数！
+链接：https://www.zhihu.com/question/40693991/answer/87843670
+*/
 
 int main()
 {
     std::cout << "Hello World!\n";
 
+	//base_static_2.h 测试局部静态变量内存分配时间、静态变量的初始化时间、常量折叠
+	test_static_3();	
+							/*
+							output：
+							class B construct
+							Hello World!
+							class A construct
+							*/
+	//test_local_1();
+	test_static_2();
+
 	//base_static.h 测试局部静态变量分配内存和初始化时间
 	test_static();
+	return 0;
 
 	//base_2.h 测试传值 vs. 传引用 vs. 传指针
 	Base_2 b22;
