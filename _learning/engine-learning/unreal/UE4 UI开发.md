@@ -164,6 +164,84 @@
 * DPI屏幕适配
 
   ref: https://www.jianshu.com/p/2d37cf49580e
+  
+  ``` tex
+  一般选择市场主流机型进行参考（分辨率，内存等参数），分辨率越高占用内存越大
+  
+  UE4中有 短边 长边  水平 垂直 自定义 5中设置方案， 本文采取自定义的方式
+  
+  
+  ```
+  
+  ![img](UE4 UI开发.assets/webp.webp)
+  
+  ![img](UE4 UI开发.assets/webp-16544815014092.webp)
+  
+  ``` c++
+  //藤木 A8 项目，基于标准分辨率 2340 * 1080
+  
+  #include "CoreMinimal.h"
+  #include "Engine/DPICustomScalingRule.h"
+  #include "UDPIScalingRuleEx.generated.h"
+  
+  UCLASS()
+  class HITBOXMAKERBLUEPRINT_API UDPIScalingRuleEx : public UDPICustomScalingRule
+  {
+  	GENERATED_BODY()
+  
+  public:
+  	float GetDPIScaleBasedOnSize(FIntPoint Size) const override;
+  };
+  
+  
+  #include "UI/UDPIScalingRuleEx.h"
+  float UDPIScalingRuleEx::GetDPIScaleBasedOnSize(FIntPoint Size) const
+  {
+  	if (Size.X == 0 || Size.Y == 0)
+  	{
+  		return 1;
+  	}
+  
+  	float NormalAspectRatio = (19.5f / 9.0f);  // (即：2340 / 1080 = 2.1667)  ---标准适配比例
+  	float MinAspectRatio = (16.0f / 9.0f);  // (即：1920 / 1080 = 1.7778)  ---最低兼容适配比例
+  	float curRatio = (float)Size.X / Size.Y;
+  
+  	//UE_LOG(LogTemp, Log, TEXT("[UDPIScalingRuleEx] X=%d, Y=%d, Ratio:%f"), Size.X, Size.Y, curRatio);
+  
+  	if (curRatio >= NormalAspectRatio) // 宽屏    比如: 2560×1080(高不变, 宽更长), 2340×900(宽不变, 高更短),
+  	{								   //         2800×1200(宽高都变大，但宽高比也变更大), 1600×720(宽高都变小，但宽高比变更大)	
+  		return (Size.Y / 1080.0f);
+  	}
+  	else			                   // 窄屏    比如: 1920×1080(高不变, 宽更短), 2340×1200(宽不变, 高更长),   
+  	{				                   //		  2560×1200(宽高都变大，但宽高比变小), 1280×720(宽高都变小，但宽高比变更小)
+  		if (curRatio > MinAspectRatio)
+  		{
+  			if (Size.X > 1920.0f && Size.X < 2340.0f)
+  			{
+  				return (Size.Y / 1080.0f);
+  			}
+  			else
+  			{
+  				return (Size.X / 2340.0f);
+  			}
+  		}
+  		else
+  		{
+  			return (Size.X / 2340.0f);
+  		}
+  	}
+  }
+  ```
+  
+  * 安全区处理
+  
+    ``` tex
+    为适配刘海屏等区域，UE4提供了SafeZone组件供我们使用，唯一需要注意的是，我们需要监听屏幕的旋转变化，来判断刘海在那一边进行不同的处理（UE4好像没有自动处理好）
+    ```
+  
+    ![img](UE4 UI开发.assets/webp-16544815475674.webp)
+  
+    ![img](UE4 UI开发.assets/webp-16544815589026.webp)
 
 
 
