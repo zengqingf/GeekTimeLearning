@@ -416,7 +416,7 @@
 
 ### 对象模型 Object Model
 
-* 虚指针、虚表
+* 虚机制（Virtual mechanism）- 虚指针、虚表
 
   ref: 《侯捷C++面向对象下》
   
@@ -426,8 +426,8 @@
   public:
     virtual void vfunc1();
     virtual void vfunc2();
-    				void func1();
-    				void func2();
+    		  void func1();
+    		  void func2();
     
   private:
     int m_data1, m_data2;
@@ -436,7 +436,7 @@
   class B : public A {
   public:
     virtual void vfunc1();
-    				void func2();
+    		  void func2();
   private:
     int m_data3;
   };
@@ -444,14 +444,35 @@
   class C : public B {
   public:
     virtual void vfunc1();
-    				void func2();
+    		  void func2();
   private:
     int m_data1, m_data4;
   };
+  
+  
+  //虚表访问 编译器内部方式
+  (* (p->vptr)[n])(p);
+  或
+  (* p->vptr[n] )(p);
   ```
   
+  ![](drawio/C++虚指针虚表.drawio.png)
   
   
+  
+* 函数调用 - 动态绑定 vs. 静态绑定
+
+  ``` tex
+  静态绑定调用：
+  	汇编指令call + 函数地址
+  	
+  动态绑定调用：
+  	需要满足三个条件：
+  		1. 是指针调用
+  		2. 指针会向上转型(Upcasting)，即派生类转为基类，安全转型，即多态
+  		3. 调用虚函数
+  ```
+
   
 
 

@@ -73,7 +73,7 @@ end
     在lua中 0.7 % 0.1 = 0.1
     导致结果错误
 ]]
-function math.getPreciseDecimalFloor(nNum, n)
+function math.getPreciseDecimalFloor2(nNum, n)
     if type(nNum) ~= "number" then
         return nNum;
     end
@@ -85,6 +85,9 @@ function math.getPreciseDecimalFloor(nNum, n)
     local nDecimal = 1/(10 ^ n)
     if nDecimal == 1 then
         nDecimal = nNum;
+    end
+    if nNum % 1 == 0 then
+        return tonumber(string.format("%d", nNum))
     end
     local nLeft = nNum % nDecimal;
     return nNum - nLeft;
@@ -317,12 +320,16 @@ do
 
     print(math.getPreciseDecimalFloor(4.53, 1)) --output: 4.5
     print(math.getPreciseDecimalFloor(4.56, 1)) --output: 4.5
-    print(math.getPreciseDecimalFloor(4.50, 1)) --output: 4.5
-    print(math.getPreciseDecimalFloor(4.0, 1))  --output: 4.0
+    print(math.getPreciseDecimalFloor(4.50, 1)) --output: 4.4
+    print(math.getPreciseDecimalFloor(4.0, 1))  --output: 3.9
     print(math.getPreciseDecimalFloor(4.0, 0))  --output: 4.0
-    print(math.getPreciseDecimalFloor(4.54, 0))  --output: 4.0
-    print(math.getPreciseDecimalFloor(4.8, 0))  --output: 4.0
-    print(math.getPreciseDecimalFloor(4.8, 1))  --output: 4.8
+    print(math.getPreciseDecimalFloor(4.54, 0))  --output: 4.54
+    print(math.getPreciseDecimalFloor(4.8, 0))  --output: 4.8
+    print(math.getPreciseDecimalFloor(4.8, 1))  --output: 4.7
+    print(math.getPreciseDecimalFloor(0.7, 1))  --output: 4.6
+    print(math.getPreciseDecimalFloor2(1.0, 0))  --output: 1.0
+    print(math.getPreciseDecimalFloor2(1.0, 1))  --output: 1.0
+    print(math.getPreciseDecimalRound(1.5, 0))  --output: 4.7
 
     --[[
         结论：
