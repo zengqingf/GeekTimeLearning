@@ -1084,6 +1084,14 @@ do
         print(string.gsub('Hanazawa Kana', '(n)(a)', function(a,b) return a..'y'..b end))  --Hanyazawa Kanya 2
         print(string.gsub('Hanazawa Kana', '(n)(a)', '%1y%2'))      --Hanyazawa Kanya 2
         print("-----------------------string gsub test--------------------")
+
+
+        --做保护
+        local strValue = "血量低于60%时，\n 攻击速度提升:  %s%%"
+        strValue = string.gsub(strValue, "(%d+%%)", function (s)
+            return s .. "%"
+        end)
+        strValue = string.format(strValue, args[i])
     end
 
 
