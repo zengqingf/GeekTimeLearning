@@ -30,3 +30,17 @@
 * 动画：Text vs Image
   * 如果Image上做了动画则Canvas需要重建，Image的顶点数一般不会很多，开销不会很大。
   * Text与文本内容（生成的网格数）相关，如果文字比较多则相比Image开销可能会翻倍。
+
+
+
+
+
+---
+
+
+
+### UGUI源码
+
+* 源码调试
+
+  [Unity UGUI源码调试与修改](https://blog.csdn.net/andyqingliu/article/details/54600961)

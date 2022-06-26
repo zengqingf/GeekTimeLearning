@@ -48,7 +48,159 @@
   //output: A is 100,B is 10;
   ```
   
+  ``` c#
+  1. static readonly MyClass myins = new MyClass();
+  2. static readonly MyClass myins = null;
+  3. static readonly A = B * 20;
+     static readonly B = 10;
+  4. static readonly int [] constIntArray = new int[] {1, 2, 3};
+  5. void SomeFunction()
+     {
+        const int a = 10;
+        ...
+     }
   
+  /*
+  1：不可以换成const。new操作符是需要执行构造函数的，所以无法在编译期间确定
+  2：可以换成const。我们也看到，Reference类型的常量（除了String）只能是Null。
+  3：可以换成const。我们可以在编译期间很明确的说，A等于200。
+  4：不可以换成const。道理和1是一样的，虽然看起来1,2,3的数组的确就是一个常量。
+  5：不可以换成readonly，readonly只能用来修饰类的field，不能修饰局部变量，也不能修饰property等其他类成员。
+  */
+  ```
+  
+  ``` c#
+  //属于常量，但是不能使用const来声明
+  public class Color
+  {
+      public static readonly Color Black = new Color(0, 0, 0);
+      public static readonly Color White = new Color(255, 255, 255);
+      public static readonly Color Red = new Color(255, 0, 0);
+      public static readonly Color Green = new Color(0, 255, 0);
+      public static readonly Color Blue = new Color(0, 0, 255);
+  
+      private byte red, green, blue;
+  
+      public Color(byte r, byte g, byte b)
+      {
+          red = r;
+          green = g;
+          blue = b;
+      }
+  }
+  ```
+  
+  ``` c#
+  /*
+  static readonly需要注意的一个问题是，对于一个static readonly的Reference类型，只是被限定不能进行赋值（写）操作而已。而对其成员的读写仍然是不受限制的。
+  */
+  public static readonly MyClass myins = new MyClass();
+  …
+  myins.SomeProperty = 10;  //正常
+  myins = new MyClass();    //出错，该对象是只读的
+  
+  /*
+  如果MyClass是struct，则上述两句都出错
+  */
+  ```
+  
+  
+
+
+
+
+
+* static class 静态类
+
+  ``` tex
+  类可以声明为 static 的，以指示它仅包含静态成员。
+  静态类在加载包含该类的程序或命名空间时，由 .NET Framework 公共语言运行库 (CLR;特指：C#语言) 自动加载。
+  使用静态类来包含不与特定对象关联的方法，具有通用性
+  ```
+
+  ``` tex
+  注意事项：
+  (1) 不能使用 new 关键字创建静态类的实例；
+  (2) 仅包含静态成员；
+  (3) 不能被实例化；
+  (4) 密封的，不能被继承；
+  (5) 不能包含实例构造函数，但可以包含静态构造函数；
+  ```
+
+  ``` tex
+  关于静态构造函数的补充：
+  (1) 静态构造函数不可继承；
+  (2) 静态构造函数可以用于静态类，也可用于非静态类；
+  (3) 静态构造函数无访问修饰符、无参数，只有一个 static 标志；
+  (4) 静态构造函数不可被直接调用，当创建类实例或引用任何静态成员之前，静态构造函数被自动执行，并且只执行一次。
+  ```
+
+  ``` c#
+      //ref: https://blog.csdn.net/xiaobai1593/article/details/7278014
+  		public class ClassA
+      {
+          public static string AppName = "hello, this is a static class test";
+          public static int num = 5;
+   
+          public ClassA()
+          {
+              num = 15;
+          }
+   
+          public static int getNum()
+          {
+              return num;
+          }
+      }
+  
+          static void Main(string[] args)
+          {
+              int num=ClassA.getNum();
+              Console.WriteLine(num);
+              Console.ReadLine();
+          }
+  
+  				//需要实例化
+          static void Main(string[] args)
+          {
+              ClassA a = new ClassA();
+              int num=ClassA.getNum();
+              Console.WriteLine(num);
+              Console.ReadLine();
+          }
+  ```
+
+  ``` c#
+     
+  		//使用静态类
+  		public static class ClassA
+      {
+          public static string AppName = "hello, this is a static class test";
+          public static int num = 5;
+   
+          static ClassA()
+          {
+              num = 15;
+          }
+   
+          public static int getNum()
+          {
+              return num;
+          }
+      }
+  
+  				//静态构造函数会在调用静态类的方法时自动调用
+          static void Main(string[] args)
+          {
+              int num=ClassA.getNum();
+              Console.WriteLine(num);
+              Console.ReadLine();
+          }
+  ```
+
+  
+
+
 
 
 
@@ -256,7 +408,107 @@
           }
   ```
 
-  
+
+
+
+
+
+* String Format() / ToString()
+
+  ``` c#
+  String.Format (String, Object) 将指定的 String 中的格式项替换为指定的 Object 实例的值的文本等效项。
+  String.Format (String, Object[]) 将指定 String 中的格式项替换为指定数组中相应 Object 实例的值的文本等效项。
+  String.Format (IFormatProvider, String, Object[]) 将指定 String 中的格式项替换为指定数组中相应 Object 实例的值的文本等效项。指定的参数提供区域性特定的格式设置信息。
+  String.Format (String, Object, Object) 将指定的 String 中的格式项替换为两个指定的 Object 实例的值的文本等效项。
+  String.Format (String, Object, Object, Object) 将指定的 String 中的格式项替换为三个指定的 Object 实例的值的文本等效项。
+  ```
+
+  | **字符** | **说明**         | **示例**                               | **输出**   |
+  | -------- | ---------------- | -------------------------------------- | ---------- |
+  | C        | 货币             | **string.Format**("{0:C3}", 2)         | ＄2.000    |
+  | D        | 十进制           | **string.Format**("{0:D3}", 2)         | 002        |
+  | E        | 科学计数法       | 1.20E+001                              | 1.20E+001  |
+  | G        | 常规             | **string.Format**("{0:G}", 2)          | 2          |
+  | N        | 用分号隔开的数字 | **string.Format**("{0:N}", 250000)     | 250,000.00 |
+  | X        | 十六进制         | **string.Format**("{0:X000}", 12)      | C          |
+  |          |                  | **string.Format**("{0:000.000}", 12.2) | 012.200    |
+
+  * 数字格式
+
+    ``` c#
+     string str1 =string.Format("{0:N1}",);               //result: 56,789.0
+     string str2 =string.Format("{0:N2}",);               //result: 56,789.00
+     string str3 =string.Format("{0:N3}",);               //result: 56,789.000
+     string str8 =string.Format("{0:F1}",);               //result: 56789.0
+     string str9 =string.Format("{0:F2}",);               //result: 56789.00
+     string str11 =( / 100.0).ToString("#.##");           //result: 567.89
+     string str12 =( / ).ToString("#.##");             //result: 567
+    ```
+
+  * 格式化货币
+
+    ``` c#
+    //跟随系统语言，中文为人民币 英文为美元，默认保留两位小数
+    string.Format("{0:C}",0.2)   ¥0.20  ｜ $0.20
+    
+    //默认格式化小数点后面保留两位小数，如果需要保留一位或者更多，可以指定位数，（会四舍五入）
+    string.Format("{0:C1}",23.15)  ¥23.2.  
+    ```
+
+  * 十进制数字（**格式化成固定的位数，位数不能少于未格式化前，只支持整形**）
+
+    ``` c#
+    string.Format("{0:D3}",) //结果为：023
+    string.Format("{0:D2}",) //结果为：1223，（精度说明符指示结果字符串中所需的最少数字个数。）
+    ```
+
+  * **用分号隔开的数字，并指定小数点后的位数**
+
+    ``` c#
+    string.Format("{0:N}", ) //结果为：14,200.00 （默认为小数点后面两位）
+    string.Format("{0:N3}", 14200.2458) //结果为：14,200.246 （自动四舍五入）
+    ```
+
+  * 格式化百分比
+
+    ``` c#
+    string.Format("{0:P}", 0.24583) //结果为：24.58% （默认保留百分的两位小数）
+    string.Format("{0:P1}", 0.24583) //结果为：24.6% （自动四舍五入）
+    ```
+
+  * 零占位符和数字占位符
+
+    ``` c#
+    string.Format("{0:0000.00}", 12394.039) //结果为：12394.04
+    string.Format("{0:0000.00}", 194.039) //结果为：0194.04
+    string.Format("{0:###.##}", 12394.039) //结果为：12394.04
+    string.Format("{0:####.#}", 194.039) //结果为：194
+      
+    /*
+    零占位符： 如果格式化的值在格式字符串中出现“0”的位置有一个数字，则此数字被复制到结果字符串中。小数点前最左边的“0”的位置和小数点后最右边的“0”的位置确定总在结果字符串中出现的数字范围。 “00”说明符使得值被舍入到小数点前最近的数字，其中零位总被舍去。
+    数字占位符： 如果格式化的值在格式字符串中出现“#”的位置有一个数字，则此数字被复制到结果字符串中。否则，结果字符串中的此位置不存储任何值。
+    
+    如果“0”不是有效数字，此说明符永不显示“0”字符，即使“0”是字符串中唯一的数字。如果“0”是所显示的数字中的有效数字，则显示“0”字符。 “##”格式字符串使得值被舍入到小数点前最近的数字，其中零总被舍去。
+    */
+    ```
+
+  * 日期格式化
+
+    ``` c#
+    string.Format("{0:d}",System.DateTime.Now) //结果为：2009-3-20 （月份位置不是03）
+    string.Format("{0:D}",System.DateTime.Now) //结果为：2009年3月20日
+    string.Format("{0:f}",System.DateTime.Now) //结果为：2009年3月20日 15:37
+    string.Format("{0:F}",System.DateTime.Now) //结果为：2009年3月20日 15:37:52
+    string.Format("{0:g}",System.DateTime.Now) //结果为：2009-3-20 15:38
+    string.Format("{0:G}",System.DateTime.Now) //结果为：2009-3-20 15:39:27
+    string.Format("{0:m}",System.DateTime.Now) //结果为：3月20日
+    string.Format("{0:t}",System.DateTime.Now) //结果为：15:41
+    string.Format("{0:T}",System.DateTime.Now) //结果为：15:41:50
+    ```
+
+    
+
+
 
 
 

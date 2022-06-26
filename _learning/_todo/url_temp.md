@@ -97,12 +97,24 @@
   [Godot引擎 Docs](https://docs.godotengine.org/en/stable/index.html)
   
   [Cocos Docs](https://www.cocos.com/docs)
+  
+  [Unity Manual](https://docs.unity3d.com/Manual/)
 
 
 
 * UnrealEngine
 
    [UnrealEngine BenUI](https://benui.ca/)
+
+
+
+* Unity
+
+  [Unity - QFramework](http://liangxiegame.com/)
+
+  [Unity UGUI 原理篇](https://www.arkaistudio.com/blog/2016/03/25/unity-ugui-%e5%8e%9f%e7%90%86%e7%af%87-%e4%b8%80%ef%bc%9acanvas/)
+
+  [Unity一些tips](https://blog.csdn.net/mseol/category_6522386.html)
 
 
 
@@ -152,11 +164,23 @@
 
   
 
+  * 在线
+
+    [Coursera在线](https://www.coursera.org/)
+
+  
+
   * 设计模式
 
     [C#设计模式](https://www.cnblogs.com/rush/category/268894.html)
 
-    [C#设计模式2](https://www.cnblogs.com/smile-xiaoyu/category/463456.html)
+    [C#设计模式2](https://www.cnblogs.com/smile-xiaoyu/category/463456.html.)
+
+    [C#设计模式3](https://www.cnblogs.com/zhenyulu/category/6930.;html?page=1)
+
+    [《模式——工程化实现及扩展》(设计模式C# 版)](https://www.cnblogs.com/callwangxiang/tag/%E6%A8%A1%E5%BC%8F/default.html?page=2)
+
+    [《无废话C#设计模式》](https://www.cnblogs.com/lovecherry/archive/2007/10/05/914921.html)
 
     [Java设计模式](https://blog.csdn.net/cselmu9/category_1244266.html)
 
@@ -166,11 +190,41 @@
 
     [游戏设计模式](http://gameprogrammingpatterns.com/contents.html)
 
+    
+
   * C++
 
     [cnblog-c++并发编程](https://www.cnblogs.com/xudong-bupt/category/489888.html)
+    
+    [cnblog-c++自我精讲](https://www.cnblogs.com/joinclear/category/496005.html)
+    
+    [cnblog-c++一些笔记](https://www.cnblogs.com/flytrace/tag/c%2B%2B/)
+    
+    [三十分钟掌握STL](https://cloud.tencent.com/developer/article/1335701)
 
   
+
+  * 数据结构和算法
+
+    [C++数据结构和算法](https://www.cnblogs.com/skywang12345/p/3603935.html)
+
+    [五大常用算法](https://www.cnblogs.com/steven_oyj/category/246990.html)
+
+    [五大算法总结](https://blog.csdn.net/zolalad/article/details/11393915)
+
+    [算法](https://www.kancloud.cn/qiaodong/datastructure/134481)
+
+    [算法大O](https://blog.csdn.net/zolalad/article/details/11848739)
+
+    * 实例算法
+
+      * KMS
+
+        [KMS算法](https://www.cnblogs.com/kanekiken/p/7469397.html)
+
+        [KMP Algorithm](http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/)
+
+        [从头到尾彻底理解KMP（2014年8月22日版）](https://blog.csdn.net/v_july_v/article/details/7041827)
 
 * 框架
 
@@ -179,9 +233,11 @@
   [ProtocolBuf](https://developers.google.com/protocol-buffers/docs/cpptutorial)
   
   [flatbuffers](https://halfrost.com/flatbuffers_schema/)
-  
-  
-  
+
+
+
+
+
 * 官方
 
   [.Net Ref Source](https://referencesource.microsoft.com/)
@@ -201,7 +257,7 @@
   [Python Docs](https://docs.python.org/zh-cn/3/library/index.html)
 
   [SS64 Commond Line Ref Docs](https://ss64.com/)
-  
+
   [C#编程指南](https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/)
 
 
@@ -209,6 +265,10 @@
 * books
 
   [看云](https://www.kancloud.cn/explore)
+
+  [程序员自我修养](https://leohxj.gitbooks.io/a-programmer-prepares/content/index.html)
+
+  [C# in depth](https://csharpindepth.com/)
 
   
 
