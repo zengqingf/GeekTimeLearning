@@ -301,7 +301,7 @@ void PluginManager::CheckNetReachablity(const FString& url, NetReachabilityCallb
 {
 	float tempTimeout = FHttpModule::Get().GetHttpTimeout();
 	FHttpModule::Get().SetHttpTimeout(3);
-	TSharedRef<IHttpRequest> req = FHttpModule::Get().CreateRequest();
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> req = FHttpModule::Get().CreateRequest();
 	req->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
 	req->SetURL(*(FString::Printf(TEXT("https://%s"), *url)));
 	req->SetVerb(TEXT("Post"));

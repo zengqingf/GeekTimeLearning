@@ -6,6 +6,7 @@
 
 #include <list>
 #include <math.h>
+#include <cmath>
 
 FString HotfixState2Desc(TM_HotfixState state)
 {
