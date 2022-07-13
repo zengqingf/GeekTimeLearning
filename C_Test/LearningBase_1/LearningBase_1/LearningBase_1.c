@@ -37,7 +37,8 @@ int main()
 	*/
 
 	//TestVirtualAddress_1();
-	TestVirtualAddress_2();
+	//TestVirtualAddress_2();
+	TestVirtualAddress_4();
 
 	return 0;
 }

@@ -529,6 +529,12 @@
   ScrollBox如果其下挂载的组件均不可点击，则需要设置为Visible
   如果其下组件平铺并且可响应点击，则可以不设置为Visible
   ```
+  
+  * ScrollBox下的元素设置偏移值
+  
+    
+
+
 
 
 
@@ -664,13 +670,92 @@
 
 
 
+* 3d UI 可能被角色Actor导致射线
 
+  ``` tex
+  SetCollisionProfileName(visible ? UCollisionProfile::BlockAllDynamic_ProfileName : UCollisionProfile::NoCollision_ProfileName);
+  
+  运行时，显示Actor时，遍历Actor下的各挂点是否带有Collison项，将其动态设为NoCollison，并且再隐藏时，恢复
+  ```
+
+  ![img](UE4 UI开发.assets/企业微信截图_1656684513673.png)
+
+
+
+
+
+* 3d UI ListView + Button 点击问题
+
+  ``` c++
+  void SButtonEx::OnMouseLeave(const FPointerEvent& MouseEvent)
+  {
+  	const bool bWasHovered = IsHovered();
+  
+      	// Call parent implementation
+      	SWidget::OnMouseLeave( MouseEvent );
+  
+      	// If we're setup to click on mouse-down, then we never capture the mouse and may not receive a
+      	// mouse up event, so we need to make sure our pressed state is reset properly here
+      	if (!bWasHovered && (ClickMethod == EButtonClickMethod::MouseDown || IsPreciseTapOrClick(MouseEvent)) )
+      	{
+      		Release();
+      	}
+  
+      	if (bWasHovered)
+      	{
+      		OnUnhovered.ExecuteIfBound();
+      	}
+  
+      	Invalidate(EInvalidateWidget::Layout);
+  	if (ClickMethod == EButtonClickMethod::MouseDown || IsPreciseTapOrClick(MouseEvent))
+  	{
+  		OnMouseButtonLateUpDelegate.Broadcast(FGeometry(), MouseEvent);
+  	}
+  }
+  ```
+
+  ![image-20220701222057065](UE4 UI开发.assets/image-20220701222057065-16566852582711.png)
+
+  ``` c++
+  template <typename ItemType>
+  class STileViewEx : public STileView<ItemType>
+  {
+  public:
+      //...
+  	virtual void OnMouseLeave( const FPointerEvent& MouseEvent ) override
+  	{
+  		if(MouseEvent.GetGestureType() == EGestureEvent::None)
+  		{
+  			SCompoundWidget::OnMouseLeave(MouseEvent);
+  		}else
+  		{
+  			STableViewBase::OnMouseLeave(MouseEvent);
+  		}
+  	}
+  };
+  ```
+
+  ![image-20220701222210944](UE4 UI开发.assets/image-20220701222210944-16566853324762.png)
+
+
+
+* 解决3d UI 透明度 叠加问题 导致的UI模糊
+
+  ```
+  同步有修改引擎源码
+  ```
+
+  ![img](UE4 UI开发.assets/企业微信截图_16551311294896.png)
+
+  ![img](UE4 UI开发.assets/企业微信截图_16551312033847.png)
 
 
 
 
 
 ---
+
+
 
 
 
@@ -813,8 +898,6 @@
   	(不要过多的使用容器套娃),套用越多,函数调用递归性越强,执行代码越多,查找Vtable也越多.有可能会造成CPU缓存缺失.
   	窗口小部件树越小，函数调用越少
   	窗口小部件树越扁平，递归越少
-  
-  
   ```
 
 
@@ -981,3 +1064,21 @@
   ```
 
   
+
+
+
+---
+
+
+
+### RenderTarget & SceneCapture
+
+* 注意点
+
+  * 角色rt模糊 可能是因为把角色创建在没有灯光的场景中
+
+  * 模型模糊，可能需要放大模型Scale
+
+    ![img](UE4 UI开发.assets/企业微信截图_16565938346332.png)
+
+    ![img](UE4 UI开发.assets/企业微信截图_16565137548490.png)

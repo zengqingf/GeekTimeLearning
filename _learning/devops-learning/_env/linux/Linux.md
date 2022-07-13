@@ -67,6 +67,31 @@
   ![](https://i.loli.net/2021/04/13/7b6TSqsNHBh9UDR.png)
 
   ![](https://i.loli.net/2021/04/13/YSOjKtv9V6aRmAq.png)
+  
+  * VirtualBox
+  
+    * 解决VirtualBox显示“不能为虚拟电脑打开一个新任务”的问题
+  
+      Implementation of the USB 2.0 controller not found!
+  
+      ``` tex
+      打开虚拟机设置，选择USB 1.1控制器
+      虚拟机版本和virtualbox版本不一致导致
+      ```
+  
+    * 不能为虚拟电脑**打开一个新任务 VT-x is disabled in the BIOS for all CPU modes
+  
+      ``` tex
+      VT-x is disabled in the BIOS的意思是VT-X虚拟化技术处于禁止关闭状态，需要在电脑主板BIOS中开启CPU虚拟化技术
+      
+      重启F1进入BIOS，选择:
+      Sercurity => Virtualization => Enable
+      
+      AMD CPU 进入BIOS 选择
+      CPU Features->SVM Mode 选项改成[Enabled]
+      ```
+  
+      
 
 
 

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <stdlib.h>
 
 #ifndef TEST_VIRTUAL_MEMORY_ADDRESS
 #define TEST_VIRTUAL_MEMORY_ADDRESS
@@ -125,12 +126,81 @@ static变量： 将全局变量的作用域限定在当前源文件内，对于�
 
 存储期：
 静态存储期（static storage duration）:
-			全局变量、文件内的static变量、带static限定的局部变量
-			生命周期：从程序开始到结束为止
+		全局变量、文件内的static变量、带static限定的局部变量
+			生命周期：从程序开始到结束为止，一直存在于内存的同一地址上
+
+自动存储期（auto storage duration）
+		自动变量：不带static限定的局部变量
+			生命周期：程序进入其所在代码块（一般是程序进入函数时）分配内存，离开该代码块时内存空间被释放
+				实现特性：使用栈机制
+
+C语言使用malloc()动态分配内存，使用free()释放内存
 */
 
 /*
+关键字：存储类说明符
 
+static 函数内部：用于指定变量存储期
+	   函数外部：控制变量作用域
+
+extern  使在别处定义的外部变量在此处可见
+auto	默认，无需指定
+register 用于给编译器提供优化提示，使变量会被优先分配给寄存器（无法使用&取内存地址），但目前编译器优化程度高，不需要主动使用该说明符
+typedef  用于类型名称 而不是变量名
 
 */
+
+
+/*
+指向函数的指针 和 指向int或char的指针不同，是不能转换为void*
+printf() 无法输出指向函数的指针，（%p 可以输出 void*）
+*/
+int global_variable;
+static int file_static_variable;
+void func1(void)
+{
+	int func1_variable;
+	static int local_static_variable;
+
+	printf("&func1_variable .. %p\n", (void*)&func1_variable);
+	printf("&local_static_variable .. %p\n", (void*)&local_static_variable);
+}
+void func2(void)
+{
+	int func2_variable;
+
+	printf("&func2_variable .. %p\n", (void*)&func2_variable);
+}
+
+void TestVirtualAddress_4()
+{
+	int *p;
+
+	//尝试输出函数指针
+	printf("func1 .. %p \n", (void*)func1);
+	printf("func2 .. %p \n", (void*)func2);
+
+	printf("string literal .. %p \n", (void*)"jz");
+
+	printf("&global_variable .. %p \n", (void*)&global_variable);
+
+	printf("&file_static_variable .. %p \n", (void*)&file_static_variable);
+
+	func1();
+	func2();
+
+	p = (int*)malloc(sizeof(int));
+	printf("malloc address .. %p \n", (void*)p);
+}
+
+/*
+  内存区域1： 指向函数的指针 和 字符串字面量 放置接近的内存区域
+
+  内存区域2： 静态变量（文件内的static变量、static局部变量、全局变量）
+
+  内存区域3： 通过malloc()分配的内存空间
+
+  内存区域4： 函数内的自动变量，分配了相同的内存地址
+*/
+
 #endif //TEST_VIRTUAL_MEMORY_ADDRESS

@@ -48,4 +48,17 @@
 
   
 
+---
 
+
+
+### UE4 蓝图遇到的问题
+
+* PreConstruct 事件
+
+  ``` tex
+  PreConstruct会导致缓存最开始设置的值，导致之后修改的值不起作用！！！
+  勾选了IsDesginTime 会导致：运行时只会使用缓存第一次设置的值
+  ```
+
+  ![img](UE4 Blueprint.assets/企业微信截图_16562933661122.png)![img](UE4 Blueprint.assets/企业微信截图_16562934701095.png)

@@ -394,13 +394,36 @@
     TSubclassOf<AActor> UnitSelectorClass = (UClass*)UnitSelector.Object->GeneratedClass;  
     ```
 
-    
+
+
+
+* UE4 创建 DataAsset 资源（持久存储）
+
+  ``` tex
+  创建 DataAsset资源
+  C++中 UPROPERTY() 和 UPROPERTY(Blueprint..)不支持容器嵌套 TMap<int, TArray<int>>
+  使用USTRUCT() 的 struct封装数据结构 到 UCLASS(Blueprintable, BlueprintType) 的 class中
+  
+  DataAsset存储数据需要添加 UPROPERTY()
+  UPROPERTY()里面BlueprintReadOnly不能添加 编译不过
+  ```
+
+  **注意： struct和class中的定义的变量，UPROPERTY()中不能定义 BlueprintReadOnly等描述，留空即可**
+
+  ![img](UE4 资源打包Packing.assets/企业微信截图_16576334179857.png)
+
+
+
+
 
 * UE4 Android apk size > 2GB
 
   ``` text
   解决1：
   Packaging - 高级 - Create compressed cooked packages
+  
+  解决2：
+  使用XApk方式( 使用 ApkPure等app 自动安装大于2GB以上的 后缀为XAPK的压缩包 )
   ```
 
 * UE4 iOS ipa : per pak size > 2GB

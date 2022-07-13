@@ -235,7 +235,30 @@
     end
     ```
   
+
+
+
+* UnLua调用UE4 层封装的反射接口
+
+  * Image设置
+
+    ``` lua
+    if sprite.__name == nil or sprite.__name == 'UTexture2D' then
+       data.Image:SetBrushFromTexture(sprite, true)
+    elseif sprite.__name == 'UPaperSprite' then
+       data.Image:SetBrushFromAtlasInterface(sprite, true)
+    elseif sprite.__name == 'UMaterialInstanceConstant' then
+       data.Image:SetBrushFromMaterial(sprite)
+    end
+    ```
+
     
+
+
+
+
+
+
 
 
 
@@ -463,3 +486,18 @@
   ```
   
   ![image-20220517194437191](UE4 Unlua.assets/image-20220517194437191.png)
+
+
+
+
+
+* UnLua 结合 UE4 ，UnLua继承关系的两个Lua对象的构造函数执行顺序 
+
+  ``` tex
+  PackageBag3DRedDot_C 继承 RedDotBase_C
+  RedDotBase_C是一个纯绑定UserWidget的Lua对象
+  
+  调用顺序如下图所示
+  ```
+
+  ![image-20220712092943617](UE4 Unlua.assets/image-20220712092943617-16575893849091.png)

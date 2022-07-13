@@ -436,3 +436,15 @@ do
     a >> n
     ]]
 end
+
+
+--[[
+    部分数学计算接口 替代为  数学计算符号
+
+    1 / a  ==>  a ^ (-1)
+]]
+do
+    local scale = { X = 1, Y = 2}
+    print(scale.X ^ (-1), scale.Y ^ (-1),
+          1/scale.X,      1/scale.Y)
+end

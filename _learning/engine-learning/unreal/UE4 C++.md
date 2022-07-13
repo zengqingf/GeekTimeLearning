@@ -1451,6 +1451,28 @@
 
 
 
+* UE4 画面设置
+
+  * android画面设置，直接赋值会卡顿，使用命令行可以改善
+
+    ![image-20220705163529957](UE4 C++.assets/image-20220705163529957-16570101316061.png)
+
+
+
+* UE4 屏幕保护（屏幕常亮）
+
+  * iOS在StartPlay()等函数中调用接口时，需要延迟调用，同一帧调用会无效
+
+    [iOS Control Screensaver doesn’t work](https://forums.unrealengine.com/t/ios-control-screensaver-doesnt-work/432541)
+
+    ``` tex
+    FPlatformApplicationMisc::ControlScreensaver not work in BeginPlay() but worked when call it delay several second. 需要延迟1s执行
+    ```
+
+    
+
+
+
 
 ---
 
