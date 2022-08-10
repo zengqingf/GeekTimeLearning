@@ -193,6 +193,17 @@ Sample_1::Sample_1()
 	FString fstr8 = FString::SanitizeFloat(f1);
 
 
+	FString fstr9 = TEXT("123.2222,446.4444,55234.2342");
+
+	//error: const TArray<uint16*>& parsedArray = reinterpret_cast<const TArray<uint16*>&>(Parsed);
+
+	TArray<uint16> intArray;
+	for (const auto& str : fstr9)
+	{
+		intArray.Add(FCString::Atoi(str));
+	}
+
+
 	//FArrayReaderPtr to FString
 	//uint8 data1[512];
 	//FMemory::Memzero(data1, 512);
@@ -234,6 +245,16 @@ Sample_1::Sample_1()
 	FString fstr_6("1, 2, 3");
 	TArray<FString> fstr_array1;
 	fstr_6.ParseIntoArray(fstr_array1, TEXT(","), false);
+
+	//Split the string into an array by comma
+	FString level = TEXT("1,2,3");
+	TArray<FString> LevelArr;
+	level.ParseIntoArray(LevelArr, TEXT(","), true);
+
+	//Convert the string array to integer
+	int32 level0 = 0;
+	level0 = (int32)FCString::Atoi(*LevelArr[0]);
+
 
 	//字符串截取
 	FString fstr_7("Hello World");
@@ -579,4 +600,178 @@ void Sample_1::Init()
 	//	FString buglyEnableStr = buglyP->IsEnabled() ? "enabled" : "not enabled";
 	//	UE_LOG(LogTemp, Warning, TEXT("bugly plugin is %s"), &buglyEnableStr);
 	//}
+}
+
+
+//ref: https ://blog.csdn.net/luomogenhaoqi/article/details/100130741
+/*
+=0#0#0
+=8#8#8
+...
+*/
+
+#include "Misc/FileHelper.h"
+
+USTRUCT(BlueprintType)
+struct FAxisInfo
+{
+	GENERATED_USTRUCT_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MotoShakeDll")
+		int32 axis1;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MotoShakeDll")
+		int32 axis2;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MotoShakeDll")
+		int32 axis3;
+
+	FAxisInfo()
+	{
+		axis1 = 0;
+		axis2 = 0;
+		axis3 = 0;
+	}
+};
+TArray<FAxisInfo> AxisInfoArray;
+
+void Sample_1::FStringSplit_1()
+{
+	FString IniFilePath = FPaths::Combine(*FPaths::ProjectPluginsDir(), TEXT("AxisData.ini"));
+	FString Text;
+
+	AxisInfoArray.Empty();//清空之前的数据
+
+	if (FFileHelper::LoadFileToString(Text, *IniFilePath))//头文件#include "Misc/FileHelper.h"//
+	{
+
+		TArray<FString>    StrGroupArray;
+		FString LeftS;
+		FString RightS;
+
+		Text.TrimStartAndEnd();//去掉所有空格
+		FString DataX, DataY, DataZ;
+
+		FAxisInfo CurInfo;
+		if (Text.Split("=", &LeftS, &RightS))//首字符"="
+		{
+			while (RightS.Split("=", &LeftS, &RightS) && !RightS.Equals("End"))
+			{
+				StrGroupArray.Add(LeftS);//每项都是0#0#0    8#8#8  16#16#16 等格式
+			}
+
+			UE_LOG(LogTemp, Warning, TEXT("InitDataFile: StrGroupArray=%d"), StrGroupArray.Num());
+
+			for (int32 i = 0; i < StrGroupArray.Num(); i++)
+			{
+
+
+				//每项都是0#0#0    8#8#8  16#16#16 等格式  每一项数字读取处理，两次切割每项字符串
+				if (StrGroupArray[i].Split("#", &LeftS, &RightS))
+				{
+					DataX = LeftS;
+					if (RightS.Split("#", &LeftS, &RightS))
+					{
+						DataY = LeftS;
+						DataZ = RightS;
+					}
+				}
+
+				//添加到自定义结构体数字
+				CurInfo.axis1 = FCString::Atoi(*DataX);
+				CurInfo.axis2 = FCString::Atoi(*DataY);
+				CurInfo.axis3 = FCString::Atoi(*DataZ);
+
+				AxisInfoArray.Add(CurInfo);
+			}
+		}
+		UE_LOG(LogTemp, Warning, TEXT("InitDataFile:AxisInfoArray= %d"), AxisInfoArray.Num());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("InitDataFile: Null "));
+	}
+}
+
+//ref: https ://blog.csdn.net/luomogenhaoqi/article/details/100137679
+/*
+0	0	0
+8	8	9
+...
+*/
+void Sample_1::FStringSplit_2()
+{
+	FString IniFilePath = FPaths::Combine(*FPaths::ProjectPluginsDir(), TEXT("AxisData.ini"));
+	FString Text;
+
+	AxisInfoArray.Empty();//清空之前的数据
+
+	if (FFileHelper::LoadFileToString(Text, *IniFilePath))
+	{
+
+		TArray<FString>    StrGroupArray;
+		FString LeftS;
+		FString RightS;
+
+		FString DataX, DataY, DataZ;
+
+		FAxisInfo CurInfo;
+
+		//把换行回车符 替换成==，使用这个==切割
+		Text.ReplaceCharInline('\n', '=');
+		Text.ReplaceCharInline('\r', '=');
+
+
+		RightS = Text;
+		while (RightS.Split("==", &LeftS, &RightS))
+		{
+
+			//StrGroupArray.Append(const_cast<FString*>(&LeftS),1);//每项都是 0 0 0 0等格式
+			StrGroupArray.Add(LeftS);//每项都是 0 0 0 等格式
+		}
+
+		UE_LOG(LogTemp, Warning, TEXT("InitDataFile: StrGroupArray=%d"), StrGroupArray.Num());
+
+		for (int32 i = 0; i < StrGroupArray.Num(); i++)
+		{
+			//每项都是 0 0 0 等格式  每一项数字读取处理，两次切割每项字符串
+
+			FString TemStr = StrGroupArray[i];
+			TemStr = TemStr.TrimStartAndEnd();//TemStr.TrimStartAndEndInline();
+			if (TemStr.IsEmpty())//空行去掉
+				continue;
+
+			StrGroupArray[i].TrimStartInline();//去掉第一个字符前空格 //TemStr.TrimStartAndEndInline();
+			if (StrGroupArray[i].Split(" ", &LeftS, &RightS))
+			{
+				DataX = LeftS;
+
+				RightS.TrimStartInline();//去掉第一个字符前空格 //TemStr.TrimStartAndEndInline();
+				if (RightS.Split(" ", &LeftS, &RightS))
+				{
+					DataY = LeftS;
+					DataZ = RightS;
+				}
+				else
+				{
+					continue;
+				}
+
+			}
+			else
+			{
+				continue;
+			}
+
+			//添加到自定义结构体数字
+			CurInfo.axis1 = FCString::Atoi(*(DataX.TrimStartAndEnd()));
+			CurInfo.axis2 = FCString::Atoi(*(DataY.TrimStartAndEnd()));
+			CurInfo.axis3 = FCString::Atoi(*(DataZ.TrimStartAndEnd()));
+
+			AxisInfoArray.Add(CurInfo);//AxisInfoArray.Append(const_cast<FAxisInfo*>(&CurInfo), 1);
+		}
+
+		UE_LOG(LogTemp, Warning, TEXT("InitDataFile:AxisInfoArray= %d"), AxisInfoArray.Num());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("InitDataFile: Null "));
+	}
 }

@@ -23,6 +23,8 @@ public class GCloudTest : ModuleRules
 		"TApm", "GCloud", "GCloudCore", "GVoiceSDK", "TDM", "TGPAPlugin", "TuringShield", // GCloudSDK
 		"Json", "JsonUtilities", // UE4 JSON
 		"TMSDKCommon",
+
+		"UMG", "Slate", "SlateCore",
 		});
 
         // Uncomment if you are using Slate UI

@@ -10,6 +10,7 @@
 #include "Kismet/GameplayStatics.h"
 
 #include "HAL/PlatformFilemanager.h"
+#include "UnLua/HelloLuaActor.h"
 
 UUGCloudGameInstance* UUGCloudGameInstance::m_instance = nullptr;
 
@@ -76,6 +77,26 @@ bool UUGCloudGameInstance::Tick(float DeltaSeconds)
 void UUGCloudGameInstance::OpenLevel(FName levelName)
 {
 	UGameplayStatics::OpenLevel(GetWorld(), levelName);
+}
+
+void UUGCloudGameInstance::ConsoleFunction(FString info)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Purple, info);
+}
+
+bool UUGCloudGameInstance::ProcessConsoleExec(const TCHAR* Cmd, FOutputDevice& Ar, UObject* Executor)
+{
+	bool res = Super::ProcessConsoleExec(Cmd, Ar, Executor);
+	if (!res)
+	{
+		/*
+		for (TActorIterator<AHelloLuaActor> it(GetWorld()); it; ++it)
+		{
+
+		}
+		*/
+	}
+	return res;
 }
 
 void UUGCloudGameInstance::_mountPakWithMountPoint(FString pakName, FString mountPoint)

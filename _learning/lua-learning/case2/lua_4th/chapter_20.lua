@@ -37,43 +37,61 @@ end
 
 
 do
-    local Set = {}
-    local mt = {}
+    require("Metatable_Set")     --require加载模块，模块文件名和模块内的table名不需要一致
+    print(Set.TestCount)
+    local s1 = Set.new{10, 20, 30, 50}
+    local s2 = Set.new({30, 1})
+    print(s1)
+    print(s2)
 
-    function Set.new(l)
-        local set = {}
-        setmetatable(set, mt)
-        for _, v in ipairs(l) do
-            set[v] = true
-        end
-    end
+    --元表相同
+    print(getmetatable(s1))     --table: 0000000000a9a5d0
+    print(getmetatable(s2))     --table: 0000000000a9a5d0
 
-    function Set.union(a, b)
-        local res = Set.new{}
-        for k in pairs(a) do
-            res[k] = true
-        end
-        for k in pairs(b) do
-            res[k] = true
-        end
-        return res
-    end
+    --把两个集合相加时，使用哪个元表是确定的
+    local s3 = s1 + s2
+    print(Set.tostring(s3))         --{1, 20, 10, 30, 50}
+    print(Set.tostring(s3 * s1))    --{20, 50, 10, 30}
+    print(Set.tostring(s3 * s2))    --{1, 30}
 
-    function Set.intersection(a, b)
-        local res = Set.new{}
-        for k in pairs(a) do
-            res[k] = b[k]
-        end
-        return res
-    end
 
-    function Set.tostring(set)
-        local l = {}
-        for e in pairs(set) do
-            l[#l + 1] = tostring(e)
-        end
-        return "{" .. table.concat(l, ", ") .. "}"
-    end
+    --[[
+        Lua语言会按照如下步骤来查找元方法：
+        如果第一个值有元表且元表中存在所需的元方法，那么Lua语言就使用这个元方法，与第二个值无关；
+        如果第二个值有元表且元表中存在所需的元方法，Lua语言就使用这个元方法；
+        否则，Lua语言就抛出异常。因此，上例会调用Set.union，
+        而表达式10+s和"hello"+s同理（由于数值和字符串都没有元方法__add）
+    ]]
+    local s4 = Set.new{1, 2, 3}
+    --s4 = s4 + 8                 --.\chapter_20.lua:65: attempt to 'add' a set with a non-set value
+    print(Set.tostring(s4))
+end
 
-    return Set
+do
+    --[[
+        元表：指定关系运算符  __eq ==   __lt <  __le <=
+             其他关系运算符没有单独元方法，需要通过上述运算符转换
+             a ~= b  ==>  not(a == b)
+             a > b ==>  b < a
+             a >= b ==>  b <= a
+    ]]
+
+    --[[
+        注意：部分有序（partial order）的情况下，a<=b转换为not (b<a) 可能不成立，
+        部分有序：并非所有类型的元素都能够被正确排序，如，遇到Not a Number(NaN)时，大多数机器的浮点数并不是完全可以排序的，
+        根据IEEE 754标准， NaN代表未定义的值（如0 / 0 结果为未定义），即涉及NaN的比较，返回都是false，NaN <= x ==> false，x < NaN ==> false
+        即 a<=b转换为not (b<a) 不成立
+    ]]
+    --[[
+        集合中， <= 表示集合包含， a <= b 表示 a是b的一个子集，
+        需要自定义实现 __le（子集关系） 和  __lt （真子集关系）
+    ]]
+
+    local s1 = Set.new{2, 4}
+    local s2 = Set.new{4, 10, 2}
+    print(s1 <= s2)
+    print(s1 < s2)
+    print(s1 >= s1)
+    print(s1 > s1)
+    print(s1 == s2 * s1)
 end

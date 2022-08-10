@@ -380,16 +380,24 @@ const FString& PluginManager::GetVersionName()
 	{
 		FPlatformProcess::WaitForProc(ProcHandle);
 		mVersionName = FPlatformProcess::ReadPipe(ReadPipe);
-
-		int32 NewLine = INDEX_NONE;
-		// windows: 123456\r\n
-		if (mVersionName.FindChar('\r', NewLine))
+		int versionNum = std::atoi(TCHAR_TO_ANSI(*mVersionName));
+		//int versionNum2 = std::stoi(*mVersionName);				//当mVersionName不是number时，转换失败，crash
+		if (versionNum > 0)
 		{
-			mVersionName.LeftInline(NewLine);
+			int32 NewLine = INDEX_NONE;
+			// windows: 123456\r\n
+			if (mVersionName.FindChar('\r', NewLine))
+			{
+				mVersionName.LeftInline(NewLine);
+			}
+			if (mVersionName.FindChar('\n', NewLine))
+			{
+				mVersionName.LeftInline(NewLine);
+			}
 		}
-		if (mVersionName.FindChar('\n', NewLine))
+		else
 		{
-			mVersionName.LeftInline(NewLine);
+			mVersionName = TEXT("0");
 		}
 
 		//临时格式

@@ -480,8 +480,39 @@
 
 
 
+---
+
+
+
+### Command Tortoise
+
+* 通用格式
+
+  ``` powershell
+  bin/TortoiseProc.exe /commond:XXX /path:YYY /closeonend:0
+  
+  # command: update  cleanup  revert  commit  log   repostatus
+  
+  # closeonend: 
+  #		 /closeonend:0 don't close the dialog automatically
+  #        /closeonend:1 auto close if no errors
+  #        /closeonend:2 auto close if no errors and conflicts
+  #        /closeonend:3 auto close if no errors, conflicts and merges
+  
+  ```
+
+  ![mRTDU](SVN.assets/mRTDU.png)
+
+
+
+
+
+
+
 
 ---
+
+
 
 
 

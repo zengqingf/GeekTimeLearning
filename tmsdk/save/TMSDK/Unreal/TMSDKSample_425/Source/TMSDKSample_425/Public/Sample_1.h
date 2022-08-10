@@ -27,4 +27,8 @@ public:
 	~Sample_1();
 
 	void Init();
+
+
+	void FStringSplit_1();
+	void FStringSplit_2();
 };

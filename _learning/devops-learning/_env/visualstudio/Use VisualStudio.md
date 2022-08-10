@@ -68,6 +68,25 @@
 
 
 
+---
+
+
+
+### 快捷键
+
+[VS编辑器的使用](https://docs.microsoft.com/zh-cn/visualstudio/ide/writing-code-in-the-code-and-text-editor?view=vs-2019)
+
+* 大小写转换
+
+  ``` tex
+  要将文本全部转换为大写，请选择“编辑”>“高级”>“转换为大写”，或按 Ctrl+Shift+U 。
+  要将文本全部转换为小写，请选择“编辑”>“高级”>“转换为小写”，或按 Ctrl+U 。 （如果已安装 C++ 开发工作负载，可以通过其他命令使用此键绑定。）
+  ```
+
+  
+
+
+
 
 
 

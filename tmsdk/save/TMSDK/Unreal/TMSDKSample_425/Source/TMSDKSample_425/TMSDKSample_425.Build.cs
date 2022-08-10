@@ -25,6 +25,8 @@ public class TMSDKSample_425 : ModuleRules
             "TMSDK", 
             "Http",
             "TestTools",
+
+            "UMG", "Slate", "SlateCore"
         });
 
         //if (Target.Configuration != UnrealTargetConfiguration.Shipping)

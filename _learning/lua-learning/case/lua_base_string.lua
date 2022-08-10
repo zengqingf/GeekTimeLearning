@@ -1091,7 +1091,21 @@ do
         strValue = string.gsub(strValue, "(%d+%%)", function (s)
             return s .. "%"
         end)
-        strValue = string.format(strValue, args[i])
+        strValue = string.format(strValue, 100)
+
+
+        local p1 = '<tag color="#ffff50">前往探索[dgn]，请小心！</>'
+        print(string.gsub(p1, '%[dgn%]', '酒吧街道'))
+        local p2 = '<link size="20" type="4" type2="chapter" p1="0">[dgn][[hard]]难度以上击杀任意boss([step1]/[maxStep1])</>'
+        p2 = string.gsub(p2, '%[(%w+)%]', {dgn = "酒吧街道", hard = '冒险'})
+        print(p2)
+        --print(string.gsub(p2, '%[hard%]', '冒险'))
+        local p3 = '<link size="20" type="4" type2="chapter" p1="0">[dgn]击杀[mst]([step1]/[maxStep1])</>'
+        p3 = string.gsub(p3, '%[(%w+)%]', {dgn = "酒吧街道", hard = '冒险', mst = '海盗'})
+        print(p3)
+        local p3 = '<link type="4" type2="npc" p1="[id]">帮助[npc]寻找失踪的维修师</>'
+        p3 = string.gsub(p3, '%[(%w+)%]', {npc = '哎咿呀'})
+        print(p3)
     end
 
 

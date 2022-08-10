@@ -1,0 +1,8 @@
+{
+	"BuildId": "17155196",
+	"Modules": 
+	{
+		"TMSDK": "UE4Editor-TMSDK-Win64-DebugGame.dll",
+		"TMSDKBridge": "UE4Editor-TMSDKBridge-Win64-DebugGame.dll"
+	}
+}

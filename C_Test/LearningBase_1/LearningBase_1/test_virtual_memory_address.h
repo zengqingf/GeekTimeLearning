@@ -203,4 +203,62 @@ void TestVirtualAddress_4()
   内存区域4： 函数内的自动变量，分配了相同的内存地址
 */
 
+
+/*
+只读内存区： 函数主体（1. 保证执行程序只读，操作系统禁止改写函数，保证了代码可读性；
+					   2. 多个相同程序可以共享物理地址上存放的程序，内存不足时，可以直接舍弃程序块，不需要切换到内存交换区？？？）
+			 字符串字面量
+					 （从gcc 4.0开始，修改字符串字面量的行为设为未定义）
+
+*/
+
+/*
+指向函数的指针：
+			表达式中的函数 会被解释为 指向函数的指针，即将 func() 写成 func
+
+			指向函数的指针类型*  根据对象函数的返回值和参数而定
+
+			如： int func(double d);
+				保存指向函数func的指针的指针变量声明： 
+				 int (*func_p)(double);
+*/
+
+void func3(double d)
+{
+	printf("func3: d + 1.0 = %f \n", d + 1.0);
+}
+void func4(double d)
+{
+	printf("func4: d + 2.0 = %f \n", d + 2.0);
+}
+void TestVirtualAddress_5()
+{
+	void(*func_p)(double);
+
+	func_p = func3;
+	func_p(1.0);			//将函数调用符() 作用于指向函数的指针 func_p
+							//如 printf("hello. \n");
+						    //表达式中 将printf解释为指向函数的指针
+							//同理： 数组中 将array[i] 中的 array 看作指向数组初始元素的指针
+
+	func_p = func4;
+	func_p(1.0);
+}
+
+
+
+/*
+静态变量
+		从程序启动到结束为止 一直存在的变量
+		在（虚拟）内存地址空间上，静态变量占有固定区域
+		包括 全局变量、文件内static变量、以及带static限定的局部变量
+		由于作用域不同、编译和链接时会具有不同含义，但是在运行时作用相似
+*/
+
+/*
+分割编译和链接
+		
+*/
+
+
 #endif //TEST_VIRTUAL_MEMORY_ADDRESS

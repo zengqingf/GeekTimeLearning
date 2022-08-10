@@ -28,6 +28,24 @@ public:
 
 	static UUGCloudGameInstance* GetInstance() { return m_instance; }
 
+
+public:
+
+	//UE4.Editor: 自定义控制台可调用函数
+
+	/*
+	UFUNCTION里面标记为Exec宏的函数就可以在控制台调用执行，
+	在UGameInstance的派生类里面这样声明的可以直接调用访问，
+	*/
+	UFUNCTION(Exec, Category = "Console")
+	void ConsoleFunction(FString info);
+
+	/*
+	在其他场景类里面声明的要在UGameInstance的派生类里面重写ProcessConsoleExec方法调用一下才可以在控制台调用。
+	*/
+	virtual bool ProcessConsoleExec(const TCHAR* Cmd, FOutputDevice& Ar, UObject* Executor) override;
+
+
 private:
 	static UUGCloudGameInstance* m_instance;
 

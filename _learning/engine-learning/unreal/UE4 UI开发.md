@@ -66,24 +66,68 @@
 
 * 获取屏幕大小、中心点、视口缩放比例
 
- ``` c++
- int32 X = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().X;
- int32 Y = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().Y;
- UE_LOG(LogTemp, Warning, TEXT("X : %d, Y : %d"), X, Y);
- 
-  //Viewport Size
-  const FVector2D ViewportSize = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
-  //Viewport Center      
-  const FVector2D ViewportCenter = FVector2D(ViewportSize.X/2, ViewportSize.Y/2);
- 
-  float Scale = UWidgetLayoutLibrary::GetViewportScale(this);
-  FVector2D Vec2D;
-  Vec2D.X = X / 2 / Scale - 200;
-  Vec2D.Y = Y / 2 / Scale;
-  SetRenderTranslation(Vec2D);
- ```
+  ``` c++
+  int32 X = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().X;
+  int32 Y = GetWorld()->GetGameViewport()->Viewport->GetSizeXY().Y;
+  UE_LOG(LogTemp, Warning, TEXT("X : %d, Y : %d"), X, Y);
+  
+   //Viewport Size
+   const FVector2D ViewportSize = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
+   //Viewport Center      
+   const FVector2D ViewportCenter = FVector2D(ViewportSize.X/2, ViewportSize.Y/2);
+  
+   float Scale = UWidgetLayoutLibrary::GetViewportScale(this);
+   FVector2D Vec2D;
+   Vec2D.X = X / 2 / Scale - 200;
+   Vec2D.Y = Y / 2 / Scale;
+   SetRenderTranslation(Vec2D);
+  ```
+
+  
 
 
+
+
+
+* ListView / TileView
+
+  ``` lua
+      local tileViewRuneItemSize = self.TileViewRune:GetNumItems()
+      print("###### ResetRuneItemList tileViewRuneItemSize ", tileViewRuneItemSize)
+      local tileViewRuneItemLength = self.TileViewRune:GetListItems():Length()
+      print("###### ResetRuneItemList tileViewRuneItemLength", tileViewRuneItemLength)
+      local tileViewRuneItemDisplayEntryLength = self.TileViewRune:GetDisplayedEntryWidgets():Length()
+      print("###### ResetRuneItemList tileViewRuneItemDisplayEntryLength", tileViewRuneItemDisplayEntryLength)
+          
+      for i = 1, tileViewRuneItemSize do
+          local runeItem = self.TileViewRune:GetItemAt(i - 1)
+          if nil == runeItem then
+              print("###### ResetRuneItemList item index", i, "is nil")
+          end
+          --if runeItem ~= nil and runeItem.bpRuneItemGuid > 0 and runeItem.bpRuneItemResetHandle then
+          if runeItem ~= nil and runeItem.bpRuneItemResetHandle then
+              runeItem.bpRuneItemResetHandle:Broadcast(self.mCurSelectRuneGuid, i)
+          end
+      end
+  ```
+
+  ``` lua
+  function MainTownTaskWidget_C:RefreshAllTaskItem()					
+      --self.ListView:RequestRefresh()
+      local displayTaskItems = self.ListView:GetDisplayedEntryWidgets()
+      --获取当前可见的ListView Entry对象，可以调用C++中定义的蓝图方法或者蓝图方法和lua方法
+      if displayTaskItems ~= nil and displayTaskItems:Length() > 0 then
+          for i = 1, displayTaskItems:Length() do
+              local taskItem = displayTaskItems:Get(i)
+              if taskItem then
+                  taskItem:Refresh()
+              end
+          end
+      end
+  end
+  ```
+
+  
 
 
 
@@ -753,6 +797,19 @@
 
 
 
+* 3D UI 遇到的问题
+
+  1. 使用ListView 和 TileView 的BP_SetSelectedItem 和 回调 BP_OnItemSelectionChanged 
+     在 3D UI 中部分机型会出现点击不响应的情况 
+
+     ``` tex
+     解决方法：使用Button + 自定义ToggleGroup实现 Toggle效果
+     ```
+
+     
+
+
+
 ---
 
 
@@ -1082,3 +1139,48 @@
     ![img](UE4 UI开发.assets/企业微信截图_16565938346332.png)
 
     ![img](UE4 UI开发.assets/企业微信截图_16565137548490.png)
+
+
+---
+
+### UI材质效果
+
+* 图片置灰
+
+
+
+
+---
+
+### UI Animation
+
+* 动画制作经验
+
+  1. UserWidget隐藏时，其下的动画不会Tick
+
+     ``` tex
+     UI Animation Sequeue 播放时 如果UserWidget被隐藏（置为Hidden）后 动画的状态不会刷新 ！！！  即隐藏前动画是什么就是什么状态 不会改变
+     ```
+
+     
+
+  2. 动画复用，实现多个动画切换时，动画播放效果一致
+
+     ``` tex
+     循环的动画 需要考虑多个存在时的播放一致性表现  
+     所以一般不要暂停 只是隐藏（隐藏方式不涉及动画中控制的变量，如动画控制了透明度变化，隐藏方式就采用可视性设置）
+     
+     一般需要先暂停动画，再一起播放当前状态下的动画
+     
+     把动画复用 调整为两个动画一起播放 而不是在一个动画中重复设置另一个动画的表现  这样在需要控制两个动画切换时 保持动画播放阶段一致时 可能会比较麻烦
+     ```
+
+  
+
+  3. 开放动画参数
+
+     ``` tex
+     蓝图动画参数一般都需要开放出来，不要直接进蓝图函数中改变量 ！！！
+     ```
+
+     

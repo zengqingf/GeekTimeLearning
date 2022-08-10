@@ -254,11 +254,147 @@
 
     
 
+* UnLua继承实现
 
+  ``` lua
+  --ToggleBase_C                基类
+  --绑定UMG ToggleBase
+  
+  local ToggleBase_C = Class()
+  
+  function ToggleBase_C:Construct()
+      if self.Toggle ~= nil then
+          self.Toggle.OnCheckStateChanged:Add(self, ToggleBase_C.OnToggleChanged)
+      end
+  end
+  
+  function ToggleBase_C:Destruct()
+      if self.Toggle ~= nil then
+          self.Toggle.OnCheckStateChanged:Remove(self, ToggleBase_C.OnToggleChanged)
+      end
+      self:RemoveFromParent()
+      UIManager:DestroyUObject(self)
+  end
+  
+  function ToggleBase_C:SetToggleIndex(index)
+      ---蓝图变量
+      self.Index = index
+  end
+  
+  --子类实现，处理一些特殊情况
+  function ToggleBase_C:UpdateState(isChecked)
+  end
+  return ToggleBase_C
+  ```
 
+  ``` lua
+  --ComVerticalTabBase_C					扩展子类基类
+  --绑定UMG ComVerticalTabBase
+  
+  local ComVerticalTabBase_C = Class(ToggleBasePath)        --Class(ToggleBasePath)  需要使用纯UObject
+  
+  function ComVerticalTabBase_C:Construct()
+      if nil == self.mSuper then
+          self.mSuper = self.Super.Super					--注意
+      end
+      self.mSuper.Construct(self)
+      self.mIsToggleEnable = true
+      self.mTabData = nil
+  end
+  
+  function ComVerticalTabBase_C:Destruct()
+      self.mIsToggleEnable = true
+      self.mTabData = nil
+  
+      self.mSuper.Destruct(self)
+      self.mSuper = nil
+  end
+  
+  function ComVerticalTabBase_C:SetData(index, obj)
+      if nil == self.mSuper then
+          self.mSuper = self.Super.Super					--注意
+      end
+      self.mSuper.SetToggleIndex(self, index)
+      self.mTabData = obj
+  end
+  return ComVerticalTabBase_C
+  ```
 
+  ``` lua
+  --TaskTabTreeBody_C						--扩展子类
+  --绑定UMG TaskTabTreeBody
+  
+  local TaskTabTreeBody_C = Class(ComVerticalTabBasePath)     --TODO test 继承Com
+  
+  function TaskTabTreeBody_C:Construct()
+      self.Super.Construct(self)
+  end
+  
+  function TaskTabTreeBody_C:Destruct()
+      self.Super.Destruct(self)
+  end
+  
+  function TaskTabTreeBody_C:SetData(index, obj)
+      self.Super.SetData(self, index, obj)
+      if obj ~= nil then
+          self.TextBody:SetText(obj:GetName())
+          self:UpdateState(false)
+      end
+  end
+  
+  --子类实现
+  function TaskTabTreeBody_C:UpdateState(isChecked)
+      if isChecked then
+          self:BP_SetToggleTextSelectedColor() 
+      else
+          self:BP_SetToggleTextUnSelectedColor()
+      end
+  end
+  return TaskTabTreeBody_C
+  ```
 
+  * UnLua继承结构
+  
+    ``` tex
+    UnLua继承有一层了，就需要加一个Super
+    子类可以直接调用父类的方法，self:父类方法()
+    
+    上层调用AuxiliaryLibraryRoleItem:SetDefaultSelectedToggle(true)
+    
+    在子类中这么定义
+    function AuxiliaryLibraryRoleItem_C:SetDefaultSelectedToggle(isChecked) 
+        self.Super.SetDefaultSelectedToggle(self, isChecked)
+    end
+    或者子类中不定义
+    ```
+  
+    ``` lua
+    local AuxiliaryLibraryRoleItem_C = Class(ToggleBasePath)
+    --可以不定义，上层获取到AuxiliaryLibraryRoleItem_C，可以直接调用父类的SetDefaultSelectedToggle
+    --可以定义，上层获取到AuxiliaryLibraryRoleItem_C，可以直接调用子类重写的SetDefaultSelectedToggle
+    function AuxiliaryLibraryRoleItem_C:SetDefaultSelectedToggle(isChecked) 
+        self.Super.SetDefaultSelectedToggle(self, isChecked)
+    end
+    return AuxiliaryLibraryRoleItem_C
+    
+    
+    local ToggleBase_C = Class()
+    function ToggleBase_C:SetDefaultSelectedToggle(isChecked)
+        self:OnToggleChangedCallBack(isChecked)
+    end
+    return ToggleBase_C
+    ```
+  
+    
 
+* UnLua  ListView/TileView中 BP_OnItemSelectionChanged  循环调用的情况
+
+  ``` tex
+  重写BP_OnItemSelectionChanged以及上层放置Button ButtonClick时调用 BP_OnItemSelectionChanged(true) 时
+  这时 BP_OnItemSelectionChanged内部一定要判断 isSelected 否则可能会循环触发
+  ```
+
+  
 
 
 
@@ -314,6 +450,78 @@
 * UnLua使用UE4容器
 
   ![image-20220330085529077](UE4 Unlua.assets/image-20220330085529077-16486017301711.png)
+
+
+
+* UnLua UserWidget创建方式调用先后顺序
+
+  * 通过UwidgetBlueprintLibrary.Create()创建
+
+    ``` lua
+    function EngineInterface.CreateWidget(path, successCB, failedCB, param)
+        local widget = UWidgetBlueprintLibrary.Create(UTMBlueprintFunctionLibrary.GetCurWorld(), UE4.UClass.Load(path))
+        if successCB ~= nil and widget ~= nil then
+            successCB(widget, path, param)
+        elseif widget == nil and failedCB ~= nil then
+            failedCB(path, param)
+        elseif widget ~= nil then
+            UObject.Destroy(widget)
+        end
+    end
+    ```
+
+    ``` lua
+        local paramData = {
+            [1] = self.mItemData,
+            [2] = self.ScrollBoxContentRoot,
+            [3] = self.mCompareItemData,
+        }
+    	local  function LoadEquipViewSucc(widgetItem, path, paramData)
+            widgetItem:InitEquipView(paramData[1], paramData[3])
+        end
+    	UIManager.LoadWidget(self, EQUIP_VIEW_PATH, LoadEquipViewSucc, nil, paramData)
+    
+    
+    local ItemTipEquipView_C = Class(UserWidgetExPath)
+    function ItemTipEquipView_C:Construct()
+        self.Super.Construct(self)						--先调用
+    end
+    function ItemTipEquipView_C:Destruct()
+        self.Super.Destruct(self)
+    end
+    function ItemTipEquipView_C:InitEquipView(itemData, compareItemData, parent)
+        self.mItemData = itemData						--后调用
+    end
+    ```
+
+  * ListView、TileView 添加EntryItem
+
+    ``` lua
+    local MailItem_C = Class(UserWidgetExPath)
+    function MailItem_C:Construct()
+        self.Super.Construct(self)
+        self.mItemData = nil								--后调用
+    end
+    
+    function MailItem_C:Destruct()
+        self.mItemData = nil
+        self.Super.Destruct(self)
+    end
+    
+    function MailItem_C:OnListItemObjectSet(itemObj)
+        self.mItemData = itemObj							--先调用
+    end
+    ```
+
+
+
+
+
+* UnLua抽出通用接口，同时用于继承
+
+  **子类继承这个通用接口类时，会传入子类的self，UnLua销毁时会调用子类的self**
+
+  ![image-20220801110636618](UE4 Unlua.assets/image-20220801110636618.png)
 
 
 

@@ -62,3 +62,35 @@
   ```
 
   ![img](UE4 Blueprint.assets/企业微信截图_16562933661122.png)![img](UE4 Blueprint.assets/企业微信截图_16562934701095.png)
+
+
+
+* 蓝图也需要考虑空引用的情况，需要判空
+
+  > 如下图，图片上挂载材质，获取材质后，尝试设置材质参数，如果材质不存在，会报错
+
+  ![image-20220808103038827](UE4 Blueprint.assets/image-20220808103038827.png)
+
+
+
+---
+
+
+
+### 蓝图 - 材质
+
+* 材质和材质实例
+
+  ``` tex
+  创建好材质后，可以右键创建多个材质实例（Material Instance）
+  
+  材质实例就是材质的实例。它继承于材质，拥有材质的着色器逻辑，但是只暴露了可调节参数（也就是 Params） 而屏蔽了编辑着色器的能力，目的是当某个（些）模型需要修改参数时，不会影响到使用该材质的其它模型。并且当材质的逻辑更新以后，所有的材质实例也会随之更新。
+  ```
+
+  材质编辑界面：
+
+  ![在这里插入图片描述](UE4 Blueprint.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hlbGxvX3R1dGU=,size_16,color_FFFFFF,t_70.png)
+
+  材质实例编辑界面：
+
+  ![img](UE4 Blueprint.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hlbGxvX3R1dGU=,size_16,color_FFFFFF,t_70-16581939456433.png)
