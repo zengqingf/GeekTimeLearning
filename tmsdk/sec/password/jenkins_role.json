@@ -1,0 +1,14 @@
+{
+    "qa":{
+        "password":"123456"
+    },
+    "dev":{
+        "password":"g9sHAMTuAVR1rnZw"
+    },
+    "robot":{
+        "password":"l2MMOF4xf5GI8LFj"
+    },
+    "manager":{
+        "password":"W8Jn8mxIjQJGb06r"
+    }
+}

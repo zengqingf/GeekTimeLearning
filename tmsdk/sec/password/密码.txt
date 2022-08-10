@@ -24,3 +24,17 @@ X!#xwD*DXyvCKK65
 
 //不知道是什么密码
 t3dQkzZNyhwzB4ko
+
+
+postgres-passwd
+R0N8!75@!yzq^^*c
+
+pgpass
+leBltoQOE$Qvg%s0
+
+
+git AuroreRobot
+YK19QzlC6JywpYxKa@
+
+tencentgit token
+FTweBVVQfUDlonc50IvZ
